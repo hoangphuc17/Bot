@@ -9,7 +9,7 @@ from CoreChatbot.Preparation.fbpage import page
 
 
 def home(sender_id):
-    page.send(sender_id, "ham home")
+    # page.send(sender_id, "ham home")
     elements = [
         Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",

@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+from ApiMessenger import Attachment, Template
+from ApiMessenger.payload import QuickReply
+from ApiMessenger.fbmq import Page
+
+import CoreChatbot.Preparation.messenger
+from CoreChatbot.Preparation.config import CONFIG
+from CoreChatbot.Preparation.fbpage import page
+
+
+def vote_guess(sender_id):
+    # gui 1 tin nhan text
+    question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
+    page.send(sender_id, question)
+
+    # gui hinh anh
+    page.send(sender_id, Attachment.Image(
+        "http://210.211.109.211/weqbfyretnccbsaf/home_hinh3_du_doan.jpg"))
+
+    # gui cac quick reply
+    quick_replies = [
+        QuickReply(title="Action", payload="PICK_ACTION"),
+        QuickReply(title="Comedy", payload="PICK_COMEDY")
+    ]
+
+    page.send(sender_id,
+              "What's your favorite movie genre?",
+              quick_replies=quick_replies,
+              metadata="DEVELOPER_DEFINED_METADATA")

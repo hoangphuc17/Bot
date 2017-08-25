@@ -18,6 +18,8 @@ from CoreChatbot.Preparation.fbpage import page
 
 
 from CoreChatbot.TheVoiceKid.home import *
+from CoreChatbot.TheVoiceKid.vote_guess import *
+
 
 app = Flask(__name__)
 
@@ -68,7 +70,9 @@ def postback_handler(event):
     if postback == 'home':
         home(sender_id)
         return
-    # elif postback == '':
+    elif postback == 'vote_guess':
+        vote_guess(sender_id)
+        return
 
     return
 
