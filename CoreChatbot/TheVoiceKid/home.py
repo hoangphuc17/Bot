@@ -44,12 +44,12 @@ def home(sender_id):
                                 buttons=[
                                     # Template.ButtonWeb(
                                     #     "Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
-                                    # Template.ButtonWeb(
-                                    #     "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
+                                    Template.ButtonWeb(
+                                        "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
                                     Template.ButtonPostBack(
                                         "Giờ phát sóng", "about_us_timeline"),
                                     Template.ButtonPostBack(
-                                        "Tổng quan về chương trình", "about_us_introduce")
+                                        "Giới thiệu", "about_us_introduce")
                                 ])
     ]
     page.send(sender_id, Template.Generic(elements))
