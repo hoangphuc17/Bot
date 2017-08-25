@@ -11,11 +11,6 @@ from CoreChatbot.Preparation.fbpage import page
 def home(sender_id):
     # page.send(sender_id, "ham home")
 
-    page_id = page.page_id
-    page_name = page.page_name
-    user_profile = page.get_user_profile(event.sender_id)  # return dict
-    print(user_profile)
-
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg"))
     elements = [
