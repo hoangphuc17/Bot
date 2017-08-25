@@ -79,14 +79,15 @@ def received_message(event):
         print("quick reply for message %s with payload %s" % (message_id, quick_reply_payload))
         page.send(sender_id, "a")
 
+        s = "Vũ Cát Tường"
         # if danh_sach_HLV.count(quick_reply_payload) == 1:
         #     page.send(sender_id, "a")
 
-        if isinstance(quick_reply_payload, str):
+        if isinstance(s, str):
             page.send(sender_id, "str")
-        elif isinstance(quick_reply_payload, unicode):
+        elif isinstance(s, unicode):
             page.send(sender_id, "unicode")
-        elif isinstance(quick_reply_payload, ascii):
+        elif isinstance(s, ascii):
             page.send(sender_id, "ascii")
 
         # if quick_reply_payload in danh_sach_HLV:
