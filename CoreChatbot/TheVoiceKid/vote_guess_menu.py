@@ -13,8 +13,9 @@ db = client.voted_users
 
 
 def vote_guess_menu(sender_id):
-    voter = db.voter
-    check_voter = voter.find_one()
+    voters = db.voters
+    check_voter = voters.find_one({'id_user': sender_id})
+    page.send(sender_id, check_voter["first_name"])
 
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/home_hinh3_du_doan.jpg"))
