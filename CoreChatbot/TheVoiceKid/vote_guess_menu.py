@@ -35,14 +35,26 @@ def vote_guess_menu(sender_id):
         text = space.join(seq)
         # page.send(sender_id, "abc")
 
+        # buttons = [
+        #     Templates.ButtonPostBack("Bình chọn lại", "revote"),
+        #     Templates.ButtonPostBack("Home", "home")
+        # ]
+        #
+        #
+        # page.send(sender_id, Template.Buttons(text, buttons))
         buttons = [
-            Templates.ButtonPostBack("Bình chọn lại", "revote"),
-            Templates.ButtonPostBack("Home", "home")
+            Templates.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
+            Templates.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
+            Templates.ButtonPhoneNumber("Call Phone Number", "+16505551234")
         ]
         page.send(sender_id, "abc")
+        # you can use a dict instead of a Button class
+        #
+        # buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
+        #          {'type': 'postback', 'title': 'trigger Postback', 'value': 'DEVELOPED_DEFINED_PAYLOAD'},
+        #          {'type': 'phone_number', 'title': 'Call Phone Number', 'value': '+16505551234'}]
 
-        page.send(sender_id, Template.Buttons(text, buttons))
-
+        page.send(sender_id, Template.Buttons("hello", buttons))
     else:
         page.send(sender_id, "User chua binh chon")
         page.send(sender_id, Attachment.Image(
