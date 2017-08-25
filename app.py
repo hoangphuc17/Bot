@@ -66,10 +66,8 @@ def message_handler(event):
 
         # page_id = page.page_id
         # page_name = page.page_name
-        user_profile = page.get_user_profile(event.sender_id)  # return dict
-        print(user_profile)
-        first_name = user_profile["first_name"]
-        page.send(sender_id, first_name)
+
+        # page.send(sender_id, first_name)
 
         return
 

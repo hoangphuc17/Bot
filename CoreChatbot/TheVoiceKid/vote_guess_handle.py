@@ -14,6 +14,12 @@ db = client.voted_users
 
 def vote_guess_handle(sender_id, quick_reply_payload):
 
+    # get user info
+    user_profile = page.get_user_profile(event.sender_id)  # return dict
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
+    id_user = user_profile["id"]
+
     space = " "
     text = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
     text = text.decode('utf-8')
@@ -24,11 +30,17 @@ def vote_guess_handle(sender_id, quick_reply_payload):
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
 
+    # insert user vao database
     voters = db.voters
     voter = {
-
+        'first_name': first_name,
+        'last_name': last_name,
+        'id_user': id_user,
+        'HLV_da_binh_chon': quick_reply_payload
+        'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
     }
     insert_voter = voters.insert_one(voter)
+    print('One post: {0}'.format(insert_voter.inserted_id))
 
     return
     # page.send(sender_id, quick_reply_payload)
