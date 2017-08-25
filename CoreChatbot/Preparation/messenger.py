@@ -84,7 +84,7 @@ def received_message(event):
 
         if isinstance(quick_reply_payload, str):
             print 's is a string object'
-        elif isinstance(s, unicode):
+        elif isinstance(quick_reply_payload, unicode):
             print 's is a unicode object'
 
         if quick_reply_payload in danh_sach_HLV:
