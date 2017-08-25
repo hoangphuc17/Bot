@@ -36,7 +36,7 @@ def vote_guess_handle(sender_id, quick_reply_payload):
         'first_name': first_name,
         'last_name': last_name,
         'id_user': id_user,
-        'HLV_da_binh_chon': quick_reply_payload
+        'HLV_da_binh_chon': quick_reply_payload,
         'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
     }
     insert_voter = voters.insert_one(voter)
