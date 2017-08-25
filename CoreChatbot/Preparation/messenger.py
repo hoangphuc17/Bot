@@ -81,15 +81,15 @@ def received_message(event):
 
         if quick_reply_payload == 'Vũ Cát Tường':
             page.send(sender_id, Attachment.Image(
-                "http://210.211.109.211/weqbfyretnccbsaf/home_hinh5_minigame.jpg"))
+                "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
             return
         elif quick_reply_payload == 'Tiên Cookie và Hương Tràm':
             page.send(sender_id, Attachment.Image(
-                "http://210.211.109.211/weqbfyretnccbsaf/home_hinh6_minigame.jpg"))
+                "http://210.211.109.211/weqbfyretnccbsaf/hinh6_minigame.jpg"))
             return
         elif quick_reply_payload == 'Soobin':
             page.send(sender_id, Attachment.Image(
-                "http://210.211.109.211/weqbfyretnccbsaf/home_hinh7_minigame.jpg"))
+                "http://210.211.109.211/weqbfyretnccbsaf/hinh7_minigame.jpg"))
             return
         else:
             pass
