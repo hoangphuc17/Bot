@@ -83,11 +83,11 @@ def received_message(event):
         #     page.send(sender_id, "a")
 
         if isinstance(quick_reply_payload, str):
-            page.send(sender_id, "b")
+            page.send(sender_id, "str")
         elif isinstance(quick_reply_payload, unicode):
-            page.send(sender_id, "b")
+            page.send(sender_id, "unicode")
         elif isinstance(quick_reply_payload, ascii):
-            page.send(sender_id, "b")
+            page.send(sender_id, "ascii")
 
         # if quick_reply_payload in danh_sach_HLV:
         #     page.send(sender_id, "b")
