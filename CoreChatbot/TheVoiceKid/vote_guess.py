@@ -11,7 +11,7 @@ from CoreChatbot.Preparation.fbpage import page
 def vote_guess(sender_id):
     # gui 1 tin nhan text
     question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
-    page.send(sender_id, question)
+    # page.send(sender_id, question)
 
     # gui hinh anh
     page.send(sender_id, Attachment.Image(
@@ -19,11 +19,12 @@ def vote_guess(sender_id):
 
     # gui cac quick reply
     quick_replies = [
-        QuickReply(title="Action", payload="PICK_ACTION"),
-        QuickReply(title="Comedy", payload="PICK_COMEDY")
+        QuickReply(title="#teamcôTường", payload="teamcoTuong"),
+        QuickReply(title="#teamcôTiênvàcôTràm", payload="teamcoTienvacoTram"),
+        QuickReply(title="#teamchúSoobin", payload="teamchuSoobin")
     ]
 
     page.send(sender_id,
-              "What's your favorite movie genre?",
+              question,
               quick_replies=quick_replies,
               metadata="DEVELOPER_DEFINED_METADATA")
