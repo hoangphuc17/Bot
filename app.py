@@ -82,10 +82,24 @@ def postback_handler(event):
     if postback == 'home':
         home(sender_id)
         return
+    elif postback == 'news_read':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'news_follow':
+        vote_guess_menu(sender_id)
+        return
     elif postback == 'vote_guess_menu':
         vote_guess_menu(sender_id)
         return
-
+    elif postback == 'vote_rule':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'about_us_timeline':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'about_us_introduce':
+        vote_guess_menu(sender_id)
+        return
     return
 
 
