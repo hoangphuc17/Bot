@@ -13,7 +13,7 @@ def home(sender_id):
     elements = [
         Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
-                                image_url="Pictures/hinh2_home_tin_tuc.jpg",
+                                # image_url="Pictures/hinh2_home_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
                                         "Lấy Fansign", "fansign")
