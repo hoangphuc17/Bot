@@ -72,8 +72,13 @@ def received_message(event):
         quick_reply_payload = quick_reply.get('payload')
         print("quick reply for message %s with payload %s" % (message_id, quick_reply_payload))
 
-        text = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của " + quick_reply_payload
-        page.send(sender_id, text)
+        space = " "
+        text = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
+        text = text.decode('utf-8')
+        seq = (text, quick_reply_payload)
+        a = space.join(seq)
+
+        page.send(sender_id, a)
 
     if message_text:
         send_message(sender_id, message_text)
