@@ -126,9 +126,9 @@ def postback_handler(event):
 #     if
 
 #
-# def log(message):
-#     print(message)
-#     sys.stdout.flush()
+def log(message):
+    print(message)
+    sys.stdout.flush()
 
 
 if __name__ == '__main__':
