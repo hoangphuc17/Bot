@@ -11,9 +11,9 @@ from CoreChatbot.Preparation.fbpage import page
 def home(sender_id):
     page.send(sender_id, "ham home")
     elements = [
-        Template.GenericElement("Fansign",
-                                subtitle="Cùng đón nhận những lời chúc từ các thí sinh của The Face Việt Nam 2017 nào!",
-                                image_url="https://img.saostar.vn/w600/2017/05/20/1288771/ava-top9.png",
+        Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
+                                subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
+                                image_url="Pictures/hinh2_home_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
                                         "Lấy Fansign", "fansign")
