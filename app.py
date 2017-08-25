@@ -50,13 +50,15 @@ def message_handler(event):
 
     if message == 'home':
         home(sender_id)
-        break
+        return
     # elif message == 'vote':
     #     vote()
     # elif message == 'chao':
     #     greeting(sender_id)
     # else:
     #     print('')
+
+    return
 
 
 def postback_handler(event):
@@ -65,8 +67,10 @@ def postback_handler(event):
 
     if postback == 'home':
         home(sender_id)
-        break
+        return
     # elif postback == '':
+
+    return
 
 
 def log(message):
