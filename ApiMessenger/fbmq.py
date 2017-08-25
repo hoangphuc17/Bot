@@ -198,11 +198,11 @@ class Page(object):
         def get_events(data):
             for entry in data.get("entry"):
                 for messaging in entry.get("messaging"):
-                    if messaging is None:
-                        pass
-                    else:
-                        event = Event(messaging)
-                        yield event
+                    # if messaging is None:
+                    #     pass
+                    # else:
+                    event = Event(messaging)
+                    yield event
 
         for event in get_events(data):
             if event.is_optin:
