@@ -93,7 +93,7 @@ def postback_handler(event):
         # vote_guess_menu(sender_id)
         return
     elif postback == 'vote_menu':
-        vote_guess_menu(sender_id)
+        vote_menu(sender_id)
         return
     elif postback == 'revote':
         revote(sender_id)
