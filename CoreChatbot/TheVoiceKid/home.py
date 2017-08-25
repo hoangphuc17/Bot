@@ -16,16 +16,18 @@ def home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Lấy Fansign", "fansign")
+                                        "Xem tin tức 👓", "news_read"),
+                                    Template.ButtonPostBack(
+                                        "Theo dõi tin tức 📸", "news_follow")
                                 ]),
-        Template.GenericElement("Tin tức mới nhất từ The Face 2017",
-                                subtitle="Nơi cập nhật các tin tức mới nhất từ The Face 2017.",
+        Template.GenericElement("Video Full - The Voice Kids 2017 | Giọng Hát Việt Nhí mùa 5",
+                                subtitle="Xem lại bản đầy dủ các tập đã được phát sóng trên Youtube, Live Streaming",
                                 image_url="http://2sao.vietnamnetjsc.vn/images/2017/06/14/08/58/the-face-2017.png",
                                 buttons=[
-                                    Template.ButtonPostBack(
-                                        "Xem tin tức", "xem_tin_tuc"),
-                                    Template.ButtonPostBack(
-                                        "Theo dõi tin tức", "theo_doi_tin_tuc")
+                                    Template.ButtonWeb(
+                                        "Xem trên Youtube", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBmMRpojxlAB4pcOA9V18B8J"),
+                                    Template.ButtonWeb(
+                                        "Xem trên Youtube", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBmMRpojxlAB4pcOA9V18B8J")
                                 ]),
         Template.GenericElement("Bình chọn thí sinh yêu thích nhất hàng tuần",
                                 subtitle="Hãy bình chọn cho thí sinh bạn yêu thích nhất hàng tuần bạn nhé!",
