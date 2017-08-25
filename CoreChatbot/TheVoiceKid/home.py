@@ -37,7 +37,7 @@ def home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh3_du_doan.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Tham gia dự đoán 👍", "vote_guess"),
+                                        "Tham gia dự đoán 👍", "vote_guess_menu"),
                                     Template.ButtonPostBack(
                                         "Thể lệ dự đoán 📜", "vote_rule")
                                 ]),
