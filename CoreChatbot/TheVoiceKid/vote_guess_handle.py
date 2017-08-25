@@ -9,6 +9,7 @@ from CoreChatbot.Preparation.fbpage import page
 
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
+db = client.voted_users
 
 
 def vote_guess_handle(sender_id, quick_reply_payload):
@@ -22,6 +23,12 @@ def vote_guess_handle(sender_id, quick_reply_payload):
 
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
+
+    voters = db.voters
+    voter = {
+
+    }
+    insert_voter = voters.insert_one(voter)
 
     return
     # page.send(sender_id, quick_reply_payload)
