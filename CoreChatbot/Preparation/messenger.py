@@ -79,6 +79,7 @@ def received_message(event):
         # a = space.join(seq)
         # page.send(sender_id, a)
 
+        page.send(sender_id, quick_reply_payload)
         if quick_reply_payload == "Vũ Cát Tường":
             page.send(sender_id, Attachment.Image(
                 "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
