@@ -200,10 +200,12 @@ class Page(object):
             for entry in data.get("entry"):
                 if entry.get("messaging") is None:
                     print "STANDBY LA: ", entry.get("standby")
+                    a = entry.get("standby")
                 else:
                     print "MESSAGING LA: ", entry.get("messaging")
+                    a = entry.get("messaging")
 
-                for messaging in entry.get("messaging"):
+                for messaging in a:
                     event = Event(messaging)
                     yield event
 
