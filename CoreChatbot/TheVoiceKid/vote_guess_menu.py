@@ -28,8 +28,8 @@ def vote_guess_menu(sender_id):
         text = space.join(seq)
 
         buttons = [
-            Templates.ButtonPostBack("Bình chọn lại", "revote"),
-            Templates.ButtonPostBack("Home", "home")
+            Template.ButtonPostBack("Bình chọn lại", "revote"),
+            Template.ButtonPostBack("Home", "home")
         ]
         page.send(sender_id, Template.Buttons(text, buttons))
 
