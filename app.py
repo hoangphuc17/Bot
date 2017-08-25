@@ -57,7 +57,7 @@ def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
     message = event.message_text
-    quickreply = event.quick_reply_payload
+    quickreply = event.quick_reply_payload.decode('utf-8')
 
     if message == 'home':
         home(sender_id)
