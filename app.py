@@ -82,7 +82,7 @@ def postback_handler(event):
     if postback == 'home':
         home(sender_id)
         return
-    elif postback == 'vote_guess':
+    elif postback == 'vote_guess_menu':
         vote_guess_menu(sender_id)
         return
 
