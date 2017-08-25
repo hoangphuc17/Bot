@@ -77,8 +77,20 @@ def received_message(event):
         text = text.decode('utf-8')
         seq = (text, quick_reply_payload)
         a = space.join(seq)
-
         page.send(sender_id, a)
+
+        if quick_reply_payload == 'Vũ Cát Tường':
+            page.send(sender_id, Attachment.Image(
+                "http://210.211.109.211/weqbfyretnccbsaf/home_hinh5_minigame.jpg"))
+            return
+        if quick_reply_payload == 'Tiên Cookie và Hương Tràm':
+            page.send(sender_id, Attachment.Image(
+                "http://210.211.109.211/weqbfyretnccbsaf/home_hinh6_minigame.jpg"))
+            return
+        if quick_reply_payload == 'Soobin':
+            page.send(sender_id, Attachment.Image(
+                "http://210.211.109.211/weqbfyretnccbsaf/home_hinh7_minigame.jpg"))
+            return
 
     if message_text:
         send_message(sender_id, message_text)
