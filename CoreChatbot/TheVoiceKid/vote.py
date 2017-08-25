@@ -10,8 +10,8 @@ from CoreChatbot.Preparation.fbpage import page
 import datetime
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
-db = client.voted_users
-voters = db.voters
+db = client.Phuc
+voters = db.user
 
 
 def revote(sender_id):
@@ -63,17 +63,12 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     id_user = user_profile["id"]
 
     space = " "
-    text = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-    text = text.decode('utf-8')
+    a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
+    a = text.decode('utf-8')
     seq = (text, quick_reply_payload)
-    a = space.join(seq)
-    page.send(sender_id, a)
+    text = space.join(seq)
+    page.send(sender_id, text)
 
-    page.send(sender_id, Attachment.Image(
-        "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
-
-    # insert user vao database hoac update database
-    check_voter = voters.find_one({'id_user': sender_id})
     voter = {
         'first_name': first_name,
         'last_name': last_name,
@@ -82,14 +77,16 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
         'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
     }
 
+    check_voter = voters.find_one({'id_user': sender_id})
     if bool(check_voter):
         # update
-        voters.update_one({'_id': check_voter}, {"$set": voter}, upsert=False)
-        page.send(sender_id, voter["HLV_da_binh_chon"])
-
+        voters.update_one(
+            {'id_user': sender_id},
+            {'$set': {'HLV_da_binh_chon': quick_reply_payload}}
+        )
     else:
         # insert
-        insert_voter = voters.insert_one(voter)
-        page.send(sender_id, voter["HLV_da_binh_chon"])
+        voters.insert_one(voter)
+        # voters.delete_many({'id_user': sender_id})
 
     return

@@ -46,10 +46,7 @@ def verify():
 def webhook():
     payload = request.get_data(as_text=True)
     print "PAYLOAD LA: ", payload
-    # page.handle_webhook(payload, postback=postback_handler)
     page.handle_webhook(payload, message=message_handler, postback=postback_handler)
-
-    # , message=message_handler, postback=postback_handler
 
     return "ok", 200
 
@@ -75,8 +72,6 @@ def message_handler(event):
         pass
 
     return
-
-# @page.handle_postback
 
 
 def postback_handler(event):
@@ -108,24 +103,9 @@ def postback_handler(event):
         # vote_guess_menu(sender_id)
         return
 
-    # options = {
-    #     'home': home(sender_id),
-    #     'vote_menu': vote_menu(sender_id),
-    #     'revote': revote(sender_id)
-    # }
-    #
-    # options[postback]()
-
     return
 
 
-# def quickreply_handler(event):
-#     sender_id = event.sender_id
-#     quickreply = event.quick_reply_payload
-#
-#     if
-
-#
 def log(message):
     print(message)
     sys.stdout.flush()
