@@ -13,7 +13,7 @@ def home(sender_id):
     elements = [
         Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_tin_tuc.jpg",
+                                # image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
                                         "Xem tin tức 👓", "news_read"),
@@ -22,7 +22,7 @@ def home(sender_id):
                                 ]),
         Template.GenericElement("Video Full - The Voice Kids 2017 | Giọng Hát Việt Nhí mùa 5",
                                 subtitle="Xem lại bản đầy dủ các tập đã được phát sóng trên Youtube, Live Streaming",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_xem_video.jpg",
+                                # image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_xem_video.jpg",
                                 buttons=[
                                     Template.ButtonWeb(
                                         "Xem trên Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
@@ -50,7 +50,6 @@ def home(sender_id):
                                         "Giờ phát sóng", "about_us_timeline"),
                                     Template.ButtonPostBack(
                                         "Tổng quan về chương trình", "about_us_introduce")
-
                                 ])
     ]
     page.send(sender_id, Template.Generic(elements))
