@@ -78,7 +78,10 @@ def postback_handler(event):
     sender_id = event.sender_id
     postback = event.postback_payload
 
-    if postback == 'home':
+    if postback == 'greeting':
+        greeting(sender_id)
+        return
+    elif postback == 'home':
         home(sender_id)
         return
     elif postback == 'news_read':

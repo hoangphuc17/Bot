@@ -11,7 +11,7 @@ import datetime
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.Phuc
-voters = db.user
+users = db.user
 
 
 def revote(sender_id):
@@ -30,15 +30,13 @@ def revote(sender_id):
 
 
 def vote_menu(sender_id):
-    check_voter = voters.find_one({'id_user': sender_id})
+    check_voter = users.find_one({'id_user': sender_id})
     if bool(check_voter):
-        page.send(sender_id, "User da binh chon")
-
+        # page.send(sender_id, "User da binh chon")
         space = " "
         a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
         a = a.decode('utf-8')
         b = check_voter["HLV_da_binh_chon"]
-
         seq = (a, b)
         text = space.join(seq)
 
@@ -46,6 +44,7 @@ def vote_menu(sender_id):
             Template.ButtonPostBack("Bình chọn lại", "revote"),
             Template.ButtonPostBack("Home", "home")
         ]
+
         page.send(sender_id, Template.Buttons(text, buttons))
 
     else:
@@ -56,12 +55,6 @@ def vote_menu(sender_id):
 
 def vote_handle_quick_reply(sender_id, quick_reply_payload):
 
-    # get user info
-    user_profile = page.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
-    id_user = user_profile["id"]
-
     space = " "
     a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
     a = a.decode('utf-8')
@@ -69,25 +62,9 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     text = space.join(seq)
     page.send(sender_id, text)
 
-    voter = {
-        'first_name': first_name,
-        'last_name': last_name,
-        'id_user': id_user,
-        'HLV_da_binh_chon': quick_reply_payload,
-        'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M"),
-
-    }
-
-    check_voter = voters.find_one({'id_user': sender_id})
-    if bool(check_voter):
-        # update
-        voters.update_one(
-            {'id_user': sender_id},
-            {'$set': {'HLV_da_binh_chon': quick_reply_payload}}
-        )
-    else:
-        # insert
-        voters.insert_one(voter)
-        # voters.delete_many({'id_user': sender_id})
+    users.update_one(
+        {'id_user': sender_id},
+        {'$set': {'HLV_da_binh_chon': quick_reply_payload}}
+    )
 
     return
