@@ -23,6 +23,12 @@ from CoreChatbot.TheVoiceKid.vote_guess import *
 
 app = Flask(__name__)
 
+danh_sach_HLV = [
+    "Vũ Cát Tường",
+    "Tiên Cookie và Hương Tràm",
+    "Soobin"
+]
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -71,7 +77,9 @@ def message_handler(event):
     # else:
     #     pass
 
-    return
+    if danh_sach_HLV.count(quickreply) == 1:
+        page.send(sender_id, "ok ok ok")
+        return
 
 
 # @page.handle_postback
