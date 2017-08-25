@@ -42,6 +42,6 @@ def vote_guess_handle(sender_id, quick_reply_payload):
     }
     insert_voter = voters.insert_one(voter)
     print('One post: {0}'.format(insert_voter.inserted_id))
-
+    page.send(sender_id, voter["last_name"])
     return
     # page.send(sender_id, quick_reply_payload)
