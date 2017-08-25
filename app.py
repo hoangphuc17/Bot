@@ -48,7 +48,7 @@ def webhook():
     payload = request.get_data(as_text=True)
     print "PAYLOAD LA: ", payload
     # page.handle_webhook(payload, postback=postback_handler)
-    page.handle_webhook(payload)
+    page.handle_webhook(payload, message=message_handler, postback=postback_handler)
 
     # , message=message_handler, postback=postback_handler
 
