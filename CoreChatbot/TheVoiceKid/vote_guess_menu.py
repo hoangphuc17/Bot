@@ -32,12 +32,12 @@ def vote_guess_menu(sender_id):
 
         seq = (a, b)
         text = space.join(seq)
-        buttons = [
-            Templates.ButtonPostBack("Bình chọn lại", "revote"),
-            Templates.ButtonPostBack("Home", "home")
-        ]
-
-        page.send(sender_id, Template.Buttons(text, buttons))
+        # buttons = [
+        #     Templates.ButtonPostBack("Bình chọn lại", "revote"),
+        #     Templates.ButtonPostBack("Home", "home")
+        # ]
+        #
+        # page.send(sender_id, Template.Buttons(text, buttons))
 
     else:
         page.send(sender_id, "User chua binh chon")
