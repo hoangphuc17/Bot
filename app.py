@@ -47,7 +47,7 @@ def verify():
 def webhook():
     payload = request.get_data(as_text=True)
     # page.handle_webhook(payload, postback=postback_handler)
-    page.handle_webhook(payload, message=message_handler)
+    page.handle_webhook(payload, message=message_handler, postback=postback_handler)
     # page.handle_webhook(payload, quick_reply=quickreply_handler)
 
     return "ok", 200
@@ -75,32 +75,32 @@ def message_handler(event):
 
 
 # @page.handle_postback
-# def postback_handler(event):
-#     sender_id = event.sender_id
-#     postback = event.postback_payload
-#
-#     if postback == 'home':
-#         home(sender_id)
-#         return
-#     elif postback == 'news_read':
-#         vote_guess_menu(sender_id)
-#         return
-#     elif postback == 'news_follow':
-#         vote_guess_menu(sender_id)
-#         return
-#     elif postback == 'vote_guess_menu':
-#         vote_guess_menu(sender_id)
-#         return
-#     elif postback == 'vote_rule':
-#         vote_guess_menu(sender_id)
-#         return
-#     elif postback == 'about_us_timeline':
-#         vote_guess_menu(sender_id)
-#         return
-#     elif postback == 'about_us_introduce':
-#         vote_guess_menu(sender_id)
-#         return
-#     return
+def postback_handler(event):
+    sender_id = event.sender_id
+    postback = event.postback_payload
+
+    if postback == 'home':
+        home(sender_id)
+        return
+    elif postback == 'news_read':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'news_follow':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'vote_guess_menu':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'vote_rule':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'about_us_timeline':
+        vote_guess_menu(sender_id)
+        return
+    elif postback == 'about_us_introduce':
+        vote_guess_menu(sender_id)
+        return
+    return
 
 
 # def quickreply_handler(event):
