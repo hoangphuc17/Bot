@@ -77,7 +77,7 @@ def message_handler(event):
 # @page.handle_postback
 def postback_handler(event):
     sender_id = event.sender_id
-    postback = event.postback_payload
+    postback = event.payload
 
     if postback == 'home':
         home(sender_id)
