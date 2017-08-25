@@ -16,6 +16,12 @@ from ApiMessenger.fbmq import NotificationType
 
 USER_SEQ = {}
 
+danh_sach_HLV = [
+    "Vũ Cát Tường",
+    "Tiên Cookie và Hương Tràm",
+    "Soobin"
+]
+
 
 @page.handle_optin
 def received_authentication(event):
@@ -71,6 +77,9 @@ def received_message(event):
     if quick_reply:
         quick_reply_payload = quick_reply.get('payload')
         print("quick reply for message %s with payload %s" % (message_id, quick_reply_payload))
+
+        if danh_sach_HLV.count(quick_reply_payload) == 1:
+            page.send(sender_id, "a")
 
         # if quick_reply_payload == "Vũ Cát Tường":
         #     page.send(sender_id, Attachment.Image(
