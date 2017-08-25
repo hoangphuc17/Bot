@@ -14,7 +14,7 @@ db = client.voted_users
 
 def vote_guess_menu(sender_id):
     voters = db.voters
-    check_voter = voters.find_one({'id_user': sender_id})
+    check_voter = voters.find_one({'id_user': 123})
     if bool(check_voter):
         page.send(sender_id, "User da binh chon")
         # page.send(sender_id, check_voter["HLV_da_binh_chon"])
