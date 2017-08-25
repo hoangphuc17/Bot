@@ -292,7 +292,8 @@ class Page(object):
         if sys.version_info >= (3, 0):
             text = message if isinstance(message, str) else None
         else:
-            text = message if isinstance(message, str) else message.encode('utf-8') if isinstance(message, unicode) else None
+            text = message if isinstance(message, str) else message.encode(
+                'utf-8') if isinstance(message, unicode) else None
 
         attachment = message if not text else None
 

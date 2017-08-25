@@ -38,17 +38,19 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-    page.handle_webhook(payload,
-                        postback=postback_handler)
-    page.handle_webhook(payload,
-                        message=message_handler)
+    page.handle_webhook(payload, postback=postback_handler)
+    page.handle_webhook(payload, message=message_handler)
+    # page.handle_webhook(payload, quick_reply=quickreply_handler)
+
     return "ok", 200
 
 
+@page.handle_message
 def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
     message = event.message_text
+    quickreply = event.quick_reply_payload
 
     if message == 'home':
         home(sender_id)
@@ -59,10 +61,14 @@ def message_handler(event):
     #     greeting(sender_id)
     # else:
     #     print('')
+    if quickreply == "teamcoTuong":
+        page.send(sender_id, "ban da chon co Tuong")
+        return
 
     return
 
 
+@page.handle_postback
 def postback_handler(event):
     sender_id = event.sender_id
     postback = event.postback_payload
@@ -75,6 +81,13 @@ def postback_handler(event):
         return
 
     return
+
+
+# def quickreply_handler(event):
+#     sender_id = event.sender_id
+#     quickreply = event.quick_reply_payload
+#
+#     if
 
 
 def log(message):
