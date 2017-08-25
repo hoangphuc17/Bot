@@ -83,14 +83,14 @@ def received_message(event):
             page.send(sender_id, Attachment.Image(
                 "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
             return
-        elif quick_reply_payload == 'Tiên Cookie và Hương Tràm':
-            page.send(sender_id, Attachment.Image(
-                "http://210.211.109.211/weqbfyretnccbsaf/hinh6_minigame.jpg"))
-            return
-        elif quick_reply_payload == 'Soobin':
-            page.send(sender_id, Attachment.Image(
-                "http://210.211.109.211/weqbfyretnccbsaf/hinh7_minigame.jpg"))
-            return
+        # elif quick_reply_payload == 'Tiên Cookie và Hương Tràm':
+        #     page.send(sender_id, Attachment.Image(
+        #         "http://210.211.109.211/weqbfyretnccbsaf/hinh6_minigame.jpg"))
+        #     return
+        # elif quick_reply_payload == 'Soobin':
+        #     page.send(sender_id, Attachment.Image(
+        #         "http://210.211.109.211/weqbfyretnccbsaf/hinh7_minigame.jpg"))
+        #     return
         else:
             page.send(sender_id, "da gui hinh")
 
