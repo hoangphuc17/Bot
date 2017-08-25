@@ -83,30 +83,39 @@ def postback_handler(event):
     sender_id = event.sender_id
     postback = event.postback_payload
 
-    if postback == 'home':
-        home(sender_id)
-        break
-    elif postback == 'news_read':
-        # vote_guess_menu(sender_id)
-        break
-    elif postback == 'news_follow':
-        # vote_guess_menu(sender_id)
-        break
-    elif postback == 'vote_menu':
-        vote_guess_menu(sender_id)
-        break
-    elif postback == 'revote':
-        revote(sender_id)
-        break
-    elif postback == 'vote_rule':
-        # vote_guess_menu(sender_id)
-        break
-    elif postback == 'about_us_timeline':
-        # vote_guess_menu(sender_id)
-        break
-    elif postback == 'about_us_introduce':
-        # vote_guess_menu(sender_id)
-        break
+    # if postback == 'home':
+    #     home(sender_id)
+    #     break
+    # elif postback == 'news_read':
+    #     # vote_guess_menu(sender_id)
+    #     break
+    # elif postback == 'news_follow':
+    #     # vote_guess_menu(sender_id)
+    #     break
+    # elif postback == 'vote_menu':
+    #     vote_guess_menu(sender_id)
+    #     break
+    # elif postback == 'revote':
+    #     revote(sender_id)
+    #     break
+    # elif postback == 'vote_rule':
+    #     # vote_guess_menu(sender_id)
+    #     break
+    # elif postback == 'about_us_timeline':
+    #     # vote_guess_menu(sender_id)
+    #     break
+    # elif postback == 'about_us_introduce':
+    #     # vote_guess_menu(sender_id)
+    #     break
+
+    options = {
+        'home': home(sender_id),
+        'vote_menu': vote_menu(sender_id),
+        'revote': revote(sender_id)
+    }
+
+    options[postback]()
+
     return
 
 
