@@ -23,4 +23,5 @@ def vote_guess_handle(sender_id, quick_reply_payload):
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
 
+    return
     # page.send(sender_id, quick_reply_payload)

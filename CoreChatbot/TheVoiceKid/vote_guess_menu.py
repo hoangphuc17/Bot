@@ -26,3 +26,5 @@ def vote_guess_menu(sender_id):
               question,
               quick_replies=quick_replies,
               metadata="DEVELOPER_DEFINED_METADATA")
+
+    return
