@@ -7,6 +7,9 @@ import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 
+from pymongo import MongoClient
+client = MongoClient('localhost', 27017)
+
 
 def vote_guess(sender_id):
     page.send(sender_id, Attachment.Image(
