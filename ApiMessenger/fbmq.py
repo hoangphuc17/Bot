@@ -118,7 +118,7 @@ class Event(object):
 
     @property
     def is_postback(self):
-        return 'postback' in self.messaging
+        # return 'postback' in self.messaging
         return self.standby.get("postback", {}).get("title", None) is not None
 
     @property
@@ -198,6 +198,7 @@ class Page(object):
         # There may be multiple if batched
         def get_events(data):
             for entry in data.get("entry"):
+                print "MESSAGING LA: ", entry.get("messaging")
                 for messaging in entry.get("messaging"):
                     # if messaging is None:
                     #     pass
