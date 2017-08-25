@@ -64,9 +64,10 @@ def message_handler(event):
     #     greeting(sender_id)
     # else:
     #     print('')
-    if quickreply == "teamcoTuong":
-        page.send(sender_id, "ban da chon co Tuong")
-        return
+
+    # if quickreply == "teamcoTuong":
+    #     page.send(sender_id, "ban da chon co Tuong")
+    #     return
 
     else:
         pass

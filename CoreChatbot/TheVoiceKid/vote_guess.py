@@ -15,9 +15,9 @@ def vote_guess(sender_id):
     # gui cac quick reply
     question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
     quick_replies = [
-        QuickReply(title="#teamcôTường", payload="teamcoTuong"),
-        QuickReply(title="#teamcôTiênvàcôTràm", payload="teamcoTienvacoTram"),
-        QuickReply(title="#teamchúSoobin", payload="teamchuSoobin")
+        QuickReply(title="#teamcôTường", payload="Vũ Cát Tường"),
+        QuickReply(title="#teamcôTiênvàcôTràm", payload="Tiên Cookie và Hương Tràm"),
+        QuickReply(title="#teamchúSoobin", payload="Soobin")
     ]
     page.send(sender_id,
               question,
