@@ -77,7 +77,9 @@ def message_handler(event):
     if danh_sach_HLV.count(quickreply) == 1:
         vote_guess_handle(sender_id, quickreply)
         page.send(sender_id, "ok ok ok")
-        # return
+        return
+    else:
+        pass
 
 
 # @page.handle_postback
