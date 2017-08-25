@@ -17,6 +17,12 @@ def vote_guess_menu(sender_id):
     voters = db.voters
     check_voter = voters.find_one({'id_user': sender_id})
     if bool(check_voter):
+        buttons = [
+            Templates.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
+            Templates.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
+            Templates.ButtonPhoneNumber("Call Phone Number", "+16505551234")
+        ]
+        page.send(sender_id, "abc")
         page.send(sender_id, "User da binh chon")
 
         space = " "
@@ -24,12 +30,12 @@ def vote_guess_menu(sender_id):
         a = a.decode('utf-8')
         b = check_voter["HLV_da_binh_chon"]
 
-        if isinstance(b, str):
-            page.send(sender_id, "str")
-        elif isinstance(b, unicode):
-            page.send(sender_id, "unicode")
-        elif isinstance(b, ascii):
-            page.send(sender_id, "ascii")
+        # if isinstance(b, str):
+        #     page.send(sender_id, "str")
+        # elif isinstance(b, unicode):
+        #     page.send(sender_id, "unicode")
+        # elif isinstance(b, ascii):
+        #     page.send(sender_id, "ascii")
 
         seq = (a, b)
         text = space.join(seq)
@@ -42,12 +48,7 @@ def vote_guess_menu(sender_id):
         #
         #
         # page.send(sender_id, Template.Buttons(text, buttons))
-        buttons = [
-            Templates.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
-            Templates.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
-            Templates.ButtonPhoneNumber("Call Phone Number", "+16505551234")
-        ]
-        page.send(sender_id, "abc")
+
         # you can use a dict instead of a Button class
         #
         # buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
