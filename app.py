@@ -19,6 +19,7 @@ from CoreChatbot.Preparation.fbpage import page
 
 from CoreChatbot.TheVoiceKid.home import *
 from CoreChatbot.TheVoiceKid.vote import *
+from CoreChatbot.TheVoiceKid.greeting import *
 
 
 app = Flask(__name__)
