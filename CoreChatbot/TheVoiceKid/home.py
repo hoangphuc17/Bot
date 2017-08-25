@@ -19,16 +19,16 @@ def home(sender_id):
                                         "Xem tin tức 👓", "news_read"),
                                     Template.ButtonPostBack(
                                         "Theo dõi tin tức 📸", "news_follow")
+                                ]),
+        Template.GenericElement("Video Full - The Voice Kids 2017 | Giọng Hát Việt Nhí mùa 5",
+                                subtitle="Xem lại bản đầy dủ các tập đã được phát sóng trên Youtube, Live Streaming",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_xem_video.jpg",
+                                buttons=[
+                                    Template.ButtonWeb(
+                                        "Xem trên Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
+                                    Template.ButtonWeb(
+                                        "Xem trên Facebook", "https://www.youtube.com/user/btcgionghatvietnhi")
                                 ])
-        # Template.GenericElement("Video Full - The Voice Kids 2017 | Giọng Hát Việt Nhí mùa 5",
-        #                         subtitle="Xem lại bản đầy dủ các tập đã được phát sóng trên Youtube, Live Streaming",
-        #                         # image_url="http://210.211.109.211/weqbfyretnccbsaf/hinh2_home_xem_video.jpg",
-        #                         buttons=[
-        #                             Template.ButtonWeb(
-        #                                 "Xem trên Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
-        #                             Template.ButtonWeb(
-        #                                 "Xem trên Facebook", "https://www.youtube.com/user/btcgionghatvietnhi")
-        #                         ]),
         # Template.GenericElement("Dự đoán kết quả và giành lấy cơ hội nhận quà",
         #                         subtitle="Tham gia dự đoán kết quả của cuộc thi để nhận được những phần quà hấp dẫn nhất từ ban tổ chức",
         #                         image_url="https://img.saostar.vn/2017/03/28/1168861/thefaceonline-concept-milor-hoangku.jpg",
