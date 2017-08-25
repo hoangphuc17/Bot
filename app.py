@@ -55,6 +55,9 @@ def message_handler(event):
     if message == 'home':
         home(sender_id)
         return
+
+    else:
+        pass
     # elif message == 'vote':
     #     vote()
     # elif message == 'chao':
@@ -64,6 +67,9 @@ def message_handler(event):
     if quickreply == "teamcoTuong":
         page.send(sender_id, "ban da chon co Tuong")
         return
+
+    else:
+        pass
 
     return
 
