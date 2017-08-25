@@ -56,3 +56,4 @@ def home(sender_id):
                                 ])
     ]
     page.send(sender_id, Template.Generic(elements))
+    return
