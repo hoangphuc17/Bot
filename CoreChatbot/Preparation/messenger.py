@@ -92,7 +92,7 @@ def received_message(event):
                 "http://210.211.109.211/weqbfyretnccbsaf/hinh7_minigame.jpg"))
             return
         else:
-            pass
+            page.send(sender_id, "da gui hinh")
 
     if message_text:
         send_message(sender_id, message_text)
