@@ -1,4 +1,5 @@
-from . import utils
+# from .utils import *
+from ApiMessenger import utils
 
 
 class Payload(object):
@@ -6,13 +7,15 @@ class Payload(object):
         self.recipient = recipient
         self.message = message
         if sender_action is not None and sender_action not in ['typing_off', 'typing_on', 'mark_seen']:
-            raise ValueError('invalid sender_action : it must be one of "typing_off","typing_on","mark_seen"')
+            raise ValueError(
+                'invalid sender_action : it must be one of "typing_off","typing_on","mark_seen"')
 
         self.sender_action = sender_action
 
         if notification_type is not None \
                 and notification_type not in ['REGULAR', 'SILENT_PUSH', 'NO_PUSH']:
-            raise ValueError('invalid notification_type : it must be one of "REGULAR","SILENT_PUSH","NO_PUSH"')
+            raise ValueError(
+                'invalid notification_type : it must be one of "REGULAR","SILENT_PUSH","NO_PUSH"')
 
         self.notification_type = notification_type
 

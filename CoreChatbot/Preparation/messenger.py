@@ -4,9 +4,15 @@ parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.sys.path.insert(0, parentdir)
 
 import json
-from Core_chatbot.config import CONFIG
-from fbmq import Attachment, Template, QuickReply, NotificationType
-from Core_chatbot.fbpage import page
+from CoreChatbot.Preparation.config import CONFIG
+from CoreChatbot.Preparation.fbpage import page
+
+
+# from ApiMessenger import Attachment, Template, QuickReply, NotificationType
+from ApiMessenger import Attachment, Template
+from ApiMessenger.payload import QuickReply
+from ApiMessenger.fbmq import NotificationType
+
 
 USER_SEQ = {}
 

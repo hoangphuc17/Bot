@@ -1,14 +1,21 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.sys.path.insert(0, parentdir)
 
-import Core_chatbot.messenger
 from flask import Flask, request, send_from_directory, render_template
-from Core_chatbot.config import CONFIG
-from Core_chatbot.fbpage import page
-from fbmq import Attachment, Template, QuickReply, Page
+
+# from ApiMessenger import Attachment, Template, QuickReply, Page
+from ApiMessenger import Attachment, Template
+from ApiMessenger.payload import QuickReply
+from ApiMessenger.fbmq import Page
+
+
+import CoreChatbot.Preparation.messenger
+from CoreChatbot.Preparation.config import CONFIG
+from CoreChatbot.Preparation.fbpage import page
 
 app = Flask(__name__)
 
@@ -46,7 +53,7 @@ def message_handler(event):
     elif message == 'chao':
         greeting(sender_id)
     else:
-        print('dmm, tao lay m, lam on nhap lai tin nhan dung cu phap dum tao, dcmm')
+        print('')
 
 
 def postback_handler(event):
@@ -64,4 +71,4 @@ def log(message):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
+    app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)

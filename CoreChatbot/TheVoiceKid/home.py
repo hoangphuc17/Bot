@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 
 def home(sender_id):
     page.send(sender_id, "ham home")
