@@ -119,7 +119,7 @@ class Event(object):
     @property
     def is_postback(self):
         # return 'postback' in self.messaging
-        return self.standby.get("postback", {}).get("title", None) is not None
+        return self.get("postback", {}).get("title", None) is not None
 
     @property
     def is_postback_referral(self):
