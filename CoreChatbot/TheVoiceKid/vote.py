@@ -84,7 +84,7 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
 
     if bool(check_voter):
         # update
-        voters.update_one({'_id': check_voter._id}, {"$set": voter}, upsert=False)
+        voters.update_one({'_id': check_voter}, {"$set": voter}, upsert=False)
         page.send(sender_id, HLV_da_binh_chon)
 
     else:
