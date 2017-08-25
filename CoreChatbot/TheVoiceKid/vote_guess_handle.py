@@ -12,10 +12,10 @@ client = MongoClient('localhost', 27017)
 db = client.voted_users
 
 
-def vote_guess_handle(sender_id, quick_reply_payload):
+def vote_guess_handle(event, sender_id, quick_reply_payload):
 
     # get user info
-    user_profile = page.get_user_profile(event.sender_id)  # return dict
+    user_profile = page.get_user_profile(sender_id)  # return dict
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
