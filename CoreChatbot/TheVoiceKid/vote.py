@@ -64,8 +64,8 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
 
     space = " "
     a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-    a = text.encode('utf-8')
-    seq = (text, quick_reply_payload)
+    a = a.decode('utf-8')
+    seq = (a, quick_reply_payload)
     text = space.join(seq)
     page.send(sender_id, text)
 
@@ -74,7 +74,8 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
         'last_name': last_name,
         'id_user': id_user,
         'HLV_da_binh_chon': quick_reply_payload,
-        'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
+        'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M"),
+
     }
 
     check_voter = voters.find_one({'id_user': sender_id})
