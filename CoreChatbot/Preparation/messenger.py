@@ -121,6 +121,9 @@ def received_postback(event):
           % (sender_id, recipient_id, payload, time_of_postback))
 
     page.send(sender_id, "Postback called")
+    if payload == 'news_read':
+        vote_guess_menu(sender_id)
+        return
 
 
 @page.handle_read
