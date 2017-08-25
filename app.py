@@ -68,9 +68,8 @@ def message_handler(event):
     # if quickreply == "teamcoTuong":
     #     page.send(sender_id, "ban da chon co Tuong")
     #     return
-
-    else:
-        pass
+    # else:
+    #     pass
 
     return
 
