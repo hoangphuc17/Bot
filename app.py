@@ -63,22 +63,9 @@ def message_handler(event):
 
     if message == 'home':
         home(sender_id)
-
-        # page_id = page.page_id
-        # page_name = page.page_name
-
-        # page.send(sender_id, first_name)
-
         return
-
     else:
         pass
-    # elif message == 'vote':
-    #     vote()
-    # elif message == 'chao':
-    #     greeting(sender_id)
-    # else:
-    #     print('')
 
     if danh_sach_HLV.count(quickreply) == 1:
         vote_guess_handle(sender_id, quickreply)
