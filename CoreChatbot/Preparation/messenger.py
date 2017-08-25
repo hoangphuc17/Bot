@@ -82,12 +82,13 @@ def received_message(event):
         s = "Vũ Cát Tường"
         # if danh_sach_HLV.count(quick_reply_payload) == 1:
         #     page.send(sender_id, "a")
+        h = quick_reply_payload.encode('utf-8')
 
-        if isinstance(s, str):
+        if isinstance(h, str):
             page.send(sender_id, "str")
-        elif isinstance(s, unicode):
+        elif isinstance(h, unicode):
             page.send(sender_id, "unicode")
-        elif isinstance(s, ascii):
+        elif isinstance(h, ascii):
             page.send(sender_id, "ascii")
 
         # if quick_reply_payload in danh_sach_HLV:
