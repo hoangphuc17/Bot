@@ -18,8 +18,7 @@ from CoreChatbot.Preparation.fbpage import page
 
 
 from CoreChatbot.TheVoiceKid.home import *
-from CoreChatbot.TheVoiceKid.vote_guess_menu import *
-from CoreChatbot.TheVoiceKid.vote_guess_handle import *
+from CoreChatbot.TheVoiceKid.vote import *
 
 
 app = Flask(__name__)
@@ -70,7 +69,7 @@ def message_handler(event):
         pass
 
     if danh_sach_HLV.count(quickreply) == 1:
-        vote_guess_handle(sender_id, quickreply)
+        vote_handle_quick_reply(sender_id, quickreply)
         return
     else:
         pass
@@ -93,8 +92,11 @@ def postback_handler(event):
     elif postback == 'news_follow':
         # vote_guess_menu(sender_id)
         return
-    elif postback == 'vote_guess_menu':
+    elif postback == 'vote_menu':
         vote_guess_menu(sender_id)
+        return
+    elif postback == 'revote':
+        revote(sender_id)
         return
     elif postback == 'vote_rule':
         # vote_guess_menu(sender_id)
