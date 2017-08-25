@@ -13,7 +13,7 @@ db = client.voted_users
 
 
 def vote_guess_menu(sender_id):
-    page.send(sender_id, "abc")
+    # page.send(sender_id, "abc")
     voters = db.voters
     check_voter = voters.find_one({'id_user': sender_id})
     if bool(check_voter):
@@ -33,6 +33,8 @@ def vote_guess_menu(sender_id):
 
         seq = (a, b)
         text = space.join(seq)
+        page.send(sender_id, "abc")
+
         buttons = [
             Templates.ButtonPostBack("Bình chọn lại", "revote"),
             Templates.ButtonPostBack("Home", "home")
