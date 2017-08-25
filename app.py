@@ -12,10 +12,11 @@ from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
 
-
-import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
+import CoreChatbot.Preparation.messenger
+
+import CoreChatbot.TheVoiceKid.home
 
 app = Flask(__name__)
 
@@ -48,12 +49,12 @@ def message_handler(event):
 
     if message == 'home':
         home(sender_id)
-    elif message == 'vote':
-        vote()
-    elif message == 'chao':
-        greeting(sender_id)
-    else:
-        print('')
+    # elif message == 'vote':
+    #     vote()
+    # elif message == 'chao':
+    #     greeting(sender_id)
+    # else:
+    #     print('')
 
 
 def postback_handler(event):
