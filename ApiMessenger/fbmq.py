@@ -196,10 +196,10 @@ class Page(object):
         # Iterate over each entry
         # There may be multiple if batched
         def get_events(data):
-            if entry is None:
-                pass
-            else:
-                for entry in data.get("entry"):
+            for entry in data.get("entry"):
+                if entry is None:
+                    pass
+                else:
                     for messaging in entry.get("messaging"):
                         event = Event(messaging)
                         yield event
