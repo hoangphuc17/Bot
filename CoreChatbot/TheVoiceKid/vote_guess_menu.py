@@ -11,7 +11,7 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 
 
-def vote_guess(sender_id):
+def vote_guess_menu(sender_id):
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/home_hinh3_du_doan.jpg"))
 
