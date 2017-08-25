@@ -17,21 +17,21 @@ def vote_guess_menu(sender_id):
     check_voter = voters.find_one({'id_user': sender_id})
     if bool(check_voter):
         page.send(sender_id, "User da binh chon")
-        # page.send(sender_id, check_voter["HLV_da_binh_chon"])
-        space = " "
-        a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-        a = a.decode('utf-8')
-        b = check_voter["HLV_da_binh_chon"]
-
-        if isinstance(b, str):
-            page.send(sender_id, "str")
-        elif isinstance(b, unicode):
-            page.send(sender_id, "unicode")
-        elif isinstance(b, ascii):
-            page.send(sender_id, "ascii")
-
-        seq = (a, b)
-        text = space.join(seq)
+        #
+        # space = " "
+        # a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
+        # a = a.decode('utf-8')
+        # b = check_voter["HLV_da_binh_chon"]
+        #
+        # if isinstance(b, str):
+        #     page.send(sender_id, "str")
+        # elif isinstance(b, unicode):
+        #     page.send(sender_id, "unicode")
+        # elif isinstance(b, ascii):
+        #     page.send(sender_id, "ascii")
+        #
+        # seq = (a, b)
+        # text = space.join(seq)
         # buttons = [
         #     Templates.ButtonPostBack("Bình chọn lại", "revote"),
         #     Templates.ButtonPostBack("Home", "home")
