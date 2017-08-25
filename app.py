@@ -57,7 +57,7 @@ def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
     message = event.message_text
-    quickreply = event.quick_reply_payload
+    quickreply = event.quick_reply_payload.encode('utf-8')
 
     if message == 'home':
         home(sender_id)
@@ -72,9 +72,9 @@ def message_handler(event):
     # else:
     #     print('')
 
-    # if danh_sach_HLV.count(quickreply) == 1:
-    #     vote_guess_handle(sender_id)
-    #     page.send(sender_id, "ok ok ok")
+    if danh_sach_HLV.count(quickreply) == 1:
+        vote_guess_handle(sender_id, quickreply)
+        page.send(sender_id, "ok ok ok")
         # return
 
 
