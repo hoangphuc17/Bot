@@ -29,6 +29,7 @@ danh_sach_HLV = [
     "Tiên Cookie và Hương Tràm",
     "Soobin"
 ]
+danh_sach_HLV = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in danh_sach_HLV]
 
 
 @app.route('/', methods=['GET'])
@@ -58,7 +59,7 @@ def message_handler(event):
     sender_id = event.sender_id
     message = event.message_text
     quickreply = event.quick_reply_payload
-    quickreply_encode = event.quick_reply_payload.encode('utf-8')
+    # quickreply_encode = event.quick_reply_payload.encode('utf-8')
 
     if message == 'home':
         home(sender_id)
@@ -73,7 +74,7 @@ def message_handler(event):
     # else:
     #     print('')
 
-    if danh_sach_HLV.count(quickreply_encode) == 1:
+    if danh_sach_HLV.count(quickreply) == 1:
         vote_guess_handle(sender_id, quickreply)
         page.send(sender_id, "ok ok ok")
         # return
