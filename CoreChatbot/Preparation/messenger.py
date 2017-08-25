@@ -82,23 +82,13 @@ def received_message(event):
         # if danh_sach_HLV.count(quick_reply_payload) == 1:
         #     page.send(sender_id, "a")
 
+        if isinstance(quick_reply_payload, str):
+            print 's is a string object'
+        elif isinstance(s, unicode):
+            print 's is a unicode object'
+
         if quick_reply_payload in danh_sach_HLV:
             page.send(sender_id, "b")
-
-        # if quick_reply_payload == "Vũ Cát Tường":
-        #     page.send(sender_id, Attachment.Image(
-        #         "http://210.211.109.211/weqbfyretnccbsaf/hinh5_minigame.jpg"))
-        #     return
-        # elif quick_reply_payload == 'Tiên Cookie và Hương Tràm':
-        #     page.send(sender_id, Attachment.Image(
-        #         "http://210.211.109.211/weqbfyretnccbsaf/hinh6_minigame.jpg"))
-        #     return
-        # elif quick_reply_payload == 'Soobin':
-        #     page.send(sender_id, Attachment.Image(
-        #         "http://210.211.109.211/weqbfyretnccbsaf/hinh7_minigame.jpg"))
-        #     return
-        # else:
-        #     page.send(sender_id, "da gui hinh")
 
     if message_text:
         send_message(sender_id, message_text)
