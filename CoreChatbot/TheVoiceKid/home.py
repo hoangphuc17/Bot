@@ -28,28 +28,28 @@ def home(sender_id):
                                         "Xem trên Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
                                     Template.ButtonWeb(
                                         "Xem trên Facebook", "https://www.youtube.com/user/btcgionghatvietnhi")
+                                ]),
+        Template.GenericElement("Dự đoán kết quả và giành lấy cơ hội nhận quà",
+                                subtitle="Tham gia dự đoán kết quả của cuộc thi để nhận được những phần quà hấp dẫn nhất từ ban tổ chức",
+                                image_url="https://img.saostar.vn/2017/03/28/1168861/thefaceonline-concept-milor-hoangku.jpg",
+                                buttons=[
+                                    Template.ButtonPostBack(
+                                        "Tham gia dự đoán 👍", "vote_guess"),
+                                    Template.ButtonPostBack(
+                                        "Thể lệ dự đoán 📜", "vote_rule")
+                                ]),
+        Template.GenericElement("About us",
+                                subtitle="Theo dõi chương trình Giọng Hát Việt Nhí 2017 tại các kênh truyền thông",
+                                image_url="http://static.vietnammoi.vn/stores/news_dataimages/duynt/042017/17/16/1002_the-face-vietnam.jpg",
+                                buttons=[
+                                    # Template.ButtonWeb(
+                                    #     "Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
+                                    # Template.ButtonWeb(
+                                    #     "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
+                                    Template.ButtonPostBack(
+                                        "Giờ phát sóng", "about_us_timeline"),
+                                    Template.ButtonPostBack(
+                                        "Tổng quan về chương trình", "about_us_introduce")
                                 ])
-        # Template.GenericElement("Dự đoán kết quả và giành lấy cơ hội nhận quà",
-        #                         subtitle="Tham gia dự đoán kết quả của cuộc thi để nhận được những phần quà hấp dẫn nhất từ ban tổ chức",
-        #                         image_url="https://img.saostar.vn/2017/03/28/1168861/thefaceonline-concept-milor-hoangku.jpg",
-        #                         buttons=[
-        #                             Template.ButtonPostBack(
-        #                                 "Tham gia dự đoán 👍", "vote_guess"),
-        #                             Template.ButtonPostBack(
-        #                                 "Thể lệ dự đoán 📜", "vote_rule")
-        #                         ]),
-        # Template.GenericElement("About us",
-        #                         subtitle="Theo dõi chương trình Giọng Hát Việt Nhí 2017 tại các kênh truyền thông",
-        #                         image_url="http://static.vietnammoi.vn/stores/news_dataimages/duynt/042017/17/16/1002_the-face-vietnam.jpg",
-        #                         buttons=[
-        #                             Template.ButtonWeb(
-        #                                 "Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
-        #                             Template.ButtonWeb(
-        #                                 "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
-        #                             Template.ButtonPostBack(
-        #                                 "Giờ phát sóng", "about_us_timeline"),
-        #                             Template.ButtonPostBack(
-        #                                 "Tổng quan về chương trình", "about_us_introduce")
-        #                         ])
     ]
     page.send(sender_id, Template.Generic(elements))
