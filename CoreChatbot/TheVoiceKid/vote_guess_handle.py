@@ -7,6 +7,7 @@ import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 
+import datetime
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.voted_users
