@@ -77,9 +77,13 @@ def received_message(event):
     if quick_reply:
         quick_reply_payload = quick_reply.get('payload')
         print("quick reply for message %s with payload %s" % (message_id, quick_reply_payload))
+        page.send(sender_id, "a")
 
-        if danh_sach_HLV.count(quick_reply_payload) == 1:
-            page.send(sender_id, "a")
+        # if danh_sach_HLV.count(quick_reply_payload) == 1:
+        #     page.send(sender_id, "a")
+
+        if quick_reply_payload in danh_sach_HLV:
+            page.send(sender_id, "b")
 
         # if quick_reply_payload == "Vũ Cát Tường":
         #     page.send(sender_id, Attachment.Image(
