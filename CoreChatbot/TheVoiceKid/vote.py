@@ -33,25 +33,27 @@ def vote_menu(sender_id):
     check_vote = users.find_one({'id_user': sender_id})
     # check_voter = users.find_one({'HLV_da_binh_chon': ''})
 
-    if check_vote["HLV_da_binh_chon"] == ""
-        print "user chua binh chon"
-        revote(sender_id)
+    page.send(sender_id, check_vote["HLV_da_binh_chon"])
 
-    else:
-        # page.send(sender_id, "User da binh chon")
-        space = " "
-        a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-        a = a.decode('utf-8')
-        b = check_vote["HLV_da_binh_chon"]
-        seq = (a, b)
-        text = space.join(seq)
-
-        buttons = [
-            Template.ButtonPostBack("Bình chọn lại", "revote"),
-            Template.ButtonPostBack("Home", "home")
-        ]
-
-        page.send(sender_id, Template.Buttons(text, buttons))
+    # if check_vote["HLV_da_binh_chon"] == ""
+    #     print "user chua binh chon"
+    #     revote(sender_id)
+    #
+    # else:
+    #     # page.send(sender_id, "User da binh chon")
+    #     space = " "
+    #     a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
+    #     a = a.decode('utf-8')
+    #     b = check_vote["HLV_da_binh_chon"]
+    #     seq = (a, b)
+    #     text = space.join(seq)
+    #
+    #     buttons = [
+    #         Template.ButtonPostBack("Bình chọn lại", "revote"),
+    #         Template.ButtonPostBack("Home", "home")
+    #     ]
+    #
+    #     page.send(sender_id, Template.Buttons(text, buttons))
     return
 
 
