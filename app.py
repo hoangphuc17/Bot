@@ -21,6 +21,8 @@ from CoreChatbot.TheVoiceKid.home import *
 from CoreChatbot.TheVoiceKid.vote import *
 from CoreChatbot.TheVoiceKid.greeting import *
 from CoreChatbot.TheVoiceKid.news import *
+from CoreChatbot.TheVoiceKid.about_us import *
+
 
 app = Flask(__name__)
 
@@ -91,7 +93,7 @@ def postback_handler(event):
         home(sender_id)
         return
     elif postback == 'read_news':
-        # vote_guess_menu(sender_id)
+        read_news(sender_id)
         return
     elif postback == 'subscribe_news':
         subscribe_news(sender_id)
