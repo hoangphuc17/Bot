@@ -57,12 +57,21 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
 
 def read_news(sender_id):
     elements = [
-        Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
-                                subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
+        Template.GenericElement(title="Tập 3 The Voice Kids: HLV Hương Tràm trổ tài hát Bolero theo yêu cầu của thí sinh",
+                                subtitle="Thí sinh này trong tập 3 sắp tới đây còn muốn các HLV phải hát dòng nhạc không phải sở trường để có thể lựa chọn đội mình thích nhất.",
+                                image_url="https://img.saostar.vn/2017/08/25/1518165/animation.gif",
+                                item_url="https://saostar.vn/tv-show/tap-3-voice-kids-hlv-huong-tram-tro-tai-hat-bolero-theo-yeu-cau-cua-thi-sinh-1518165.html",
+                                buttons=[
+                                    Template.ButtonShare()
+                                ]),
+        Template.GenericElement(title="Vũ Cát Tường thích thú nhún nhảy nghe fan hát ‘Em ơi’ trước giờ ghi hình The Voice Kids ",
+                                subtitle=" Bạn sẽ tan chảy với loạt biểu cảm đáng yêu này của HLV Vũ Cát Tường mất thôi! ",
+                                image_url="https://img.saostar.vn/2017/08/23/1514781/pastelgranularargusfish.gif",
+                                item_url="https://saostar.vn/tv-show/vu-cat-tuong-thich-thu-nhun-nhay-nghe-fan-hat-em-oi-truoc-gio-ghi-hinh-voice-kids-1514781.html",
                                 buttons=[
                                     Template.ButtonShare()
                                 ])
+
     ]
     page.send(sender_id, Template.Generic(elements))
 
