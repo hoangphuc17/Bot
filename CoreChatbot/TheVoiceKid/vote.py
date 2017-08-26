@@ -30,7 +30,7 @@ def revote(sender_id):
 
 
 def vote_menu(sender_id):
-    check_voter = users.find_one({'id_user': sender_id})
+    check_voter = users.find_one({'HLV_da_binh_chon': ''})
     if bool(check_voter):
         # page.send(sender_id, "User da binh chon")
         space = " "
