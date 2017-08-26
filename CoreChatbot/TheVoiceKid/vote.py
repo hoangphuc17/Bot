@@ -14,6 +14,9 @@ db = client.Phuc
 users = db.user
 
 
+check_voter = users.find_one({'HLV_da_binh_chon': ''})
+
+
 def revote(sender_id):
     question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
     quick_replies = [
@@ -30,7 +33,6 @@ def revote(sender_id):
 
 
 def vote_menu(sender_id):
-    check_voter = users.find_one({'HLV_da_binh_chon': ''})
     if bool(check_voter):
         print "user chua binh chon"
         revote(sender_id)
