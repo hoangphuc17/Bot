@@ -57,17 +57,17 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
 
 def read_news(sender_id):
     elements = [
-        Template.GenericElement(title="Tập 3 The Voice Kids: HLV Hương Tràm trổ tài hát Bolero theo yêu cầu của thí sinh",
-                                subtitle="Thí sinh này trong tập 3 sắp tới đây còn muốn các HLV phải hát dòng nhạc không phải sở trường để có thể lựa chọn đội mình thích nhất.",
-                                image_url="https://img.saostar.vn/2017/08/25/1518165/animation.gif",
-                                item_url="https://saostar.vn/tv-show/tap-3-voice-kids-hlv-huong-tram-tro-tai-hat-bolero-theo-yeu-cau-cua-thi-sinh-1518165.html",
+        Template.GenericElement(title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào ",
+                                subtitle=" Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ. ",
+                                image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
+                                item_url="https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html",
                                 buttons=[
                                     Template.ButtonShare()
                                 ]),
-        Template.GenericElement(title="Vũ Cát Tường thích thú nhún nhảy nghe fan hát ‘Em ơi’ trước giờ ghi hình The Voice Kids ",
-                                subtitle=" Bạn sẽ tan chảy với loạt biểu cảm đáng yêu này của HLV Vũ Cát Tường mất thôi! ",
-                                image_url="https://img.saostar.vn/2017/08/23/1514781/pastelgranularargusfish.gif",
-                                item_url="https://saostar.vn/tv-show/vu-cat-tuong-thich-thu-nhun-nhay-nghe-fan-hat-em-oi-truoc-gio-ghi-hinh-voice-kids-1514781.html",
+        Template.GenericElement(title="Thể hiện hit của diva Hà Trần, ‘thiên thần nhí’ khiến Soobin, Vũ Cát Tường phải tung ‘chiêu’ hết mình chinh phục  ",
+                                subtitle="  Lần đầu tiên ở mùa giải năm nay, Giọng hát Việt nhí 2017 đã có một thí sinh khiến các HLV phải tung hết tất cả các chiêu trò để chiêu dụ về đội của mình. ",
+                                image_url="https://img.saostar.vn/265x149/2017/08/19/1500621/mg_8085.jpg",
+                                item_url="https://saostar.vn/tv-show/hien-hit-cua-diva-ha-tran-thien-nhi-khien-soobin-vu-cat-tuong-phai-tung-chieu-het-minh-chinh-phuc-1500621.html",
                                 buttons=[
                                     Template.ButtonShare()
                                 ])
