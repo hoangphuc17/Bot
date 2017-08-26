@@ -67,8 +67,17 @@ def message_handler(event):
     if message == 'home':
         home(sender_id)
         return
+    elif message == 'chao' or message == 'hi':
+        greeting(sender_id)
+        return
+
     else:
-        pass
+        text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
+        buttons = [
+            Template.ButtonPostBack(
+                "Home", "home")
+        ]
+        page.send(sender_id, Template.Buttons(text, buttons))
 
     if danh_sach_HLV.count(quickreply) == 1:
         vote_handle_quick_reply(sender_id, quickreply)
