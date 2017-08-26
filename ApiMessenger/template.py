@@ -43,6 +43,11 @@ class BaseButton(object):
     pass
 
 
+class ButtonShare(BaseButton):
+    def __init__(self):
+        self.type = 'element_share'
+
+
 class ButtonWeb(BaseButton):
     def __init__(self, title, url):
         self.type = 'web_url'

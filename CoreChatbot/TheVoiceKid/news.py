@@ -61,7 +61,7 @@ def read_news(sender_id):
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
                                 buttons=[
-                                    type: 'element_share'
+                                    Template.ButtonShare()
                                 ])
     ]
     page.send(sender_id, Template.Generic(elements))
