@@ -40,3 +40,6 @@ def greeting(sender_id):
             # 'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
         }
         users.insert_one(new_user)
+
+    page.send(sender_id, "da them new_user")
+    return

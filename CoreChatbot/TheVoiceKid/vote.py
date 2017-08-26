@@ -60,7 +60,12 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     a = a.decode('utf-8')
     seq = (a, quick_reply_payload)
     text = space.join(seq)
-    page.send(sender_id, text)
+    # page.send(sender_id, text)
+    buttons = [
+        Template.ButtonPostBack("Bình chọn lại", "revote"),
+        Template.ButtonPostBack("Home", "home")
+    ]
+    page.send(sender_id, Template.Buttons(text, buttons))
 
     users.update_one(
         {'id_user': sender_id},
