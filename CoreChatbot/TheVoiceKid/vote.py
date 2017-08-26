@@ -76,3 +76,15 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     )
 
     return
+
+
+def vote_rule(sender_id):
+    text = "- Mỗi bạn tham gia sẽ có 01 lựa chọn cho việc dự đoán đội huấn luyện viên có thí sinh đạt được giải quán quân 🎊 của chương trình.\n- Nếu bạn thay đổi ý kiến, dự đoán được BTC ghi nhận là dự đoán cuối cùng mà bạn chọn.\n- Nếu dự đoán đúng và may mắn, bạn sẽ nhận được 01 phần quà 🎁 hấp dẫn từ ban tổ chức.\n Hãy tận dụng “giác quan thứ 6” của mình để 'rinh' quà về nhà nào!\n👉👉👉 “Giọng Hát Việt Nhí” 2017 sẽ chính thức được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3"
+
+    buttons = [
+        Template.ButtonPostBack("Home", "home")
+    ]
+
+    page.send(sender_id, Template.Buttons(text, buttons))
+
+    return

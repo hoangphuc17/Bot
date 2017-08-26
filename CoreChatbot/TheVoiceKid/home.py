@@ -50,9 +50,9 @@ def home(sender_id):
                                     Template.ButtonWeb(
                                         "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
                                     Template.ButtonPostBack(
-                                        "Giờ phát sóng", "about_us_timeline"),
+                                        "Giờ phát sóng", "timeline"),
                                     Template.ButtonPostBack(
-                                        "Giới thiệu", "about_us_introduce")
+                                        "Giới thiệu", "introduce")
                                 ])
     ]
     page.send(sender_id, Template.Generic(elements))

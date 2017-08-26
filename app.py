@@ -103,13 +103,13 @@ def postback_handler(event):
         revote(sender_id)
         return
     elif postback == 'vote_rule':
-        # vote_guess_menu(sender_id)
+        vote_rule(sender_id)
         return
-    elif postback == 'about_us_timeline':
-        # vote_guess_menu(sender_id)
+    elif postback == 'timeline':
+        timeline(sender_id)
         return
-    elif postback == 'about_us_introduce':
-        # vote_guess_menu(sender_id)
+    elif postback == 'introduce':
+        introduce(sender_id)
         return
 
     return
