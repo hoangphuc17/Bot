@@ -20,7 +20,7 @@ from CoreChatbot.Preparation.fbpage import page
 from CoreChatbot.TheVoiceKid.home import *
 from CoreChatbot.TheVoiceKid.vote import *
 from CoreChatbot.TheVoiceKid.greeting import *
-
+from CoreChatbot.TheVoiceKid.news import *
 
 app = Flask(__name__)
 
@@ -30,6 +30,8 @@ danh_sach_HLV = [
     "Soobin"
 ]
 danh_sach_HLV = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in danh_sach_HLV]
+
+subscribe_options = ["yes", "no"]
 
 
 @app.route('/', methods=['GET'])
@@ -69,6 +71,9 @@ def message_handler(event):
     if danh_sach_HLV.count(quickreply) == 1:
         vote_handle_quick_reply(sender_id, quickreply)
         return
+    elif subscribe_options.count(quickreply) == 1:
+        handle_subscribe_news(sender_id, quickreply)
+        return
     else:
         pass
 
@@ -85,11 +90,11 @@ def postback_handler(event):
     elif postback == 'home':
         home(sender_id)
         return
-    elif postback == 'news_read':
+    elif postback == 'read_news':
         # vote_guess_menu(sender_id)
         return
-    elif postback == 'news_follow':
-        # vote_guess_menu(sender_id)
+    elif postback == 'subscribe_news':
+        subscribe_news(sender_id)
         return
     elif postback == 'vote_menu':
         vote_menu(sender_id)

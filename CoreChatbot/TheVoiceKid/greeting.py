@@ -36,7 +36,8 @@ def greeting(sender_id):
             'first_name': first_name,
             'last_name': last_name,
             'id_user': id_user,
-            'HLV_da_binh_chon': ''
+            'HLV_da_binh_chon': '',
+            'subscribe': 'no'
             # 'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
         }
         users.insert_one(new_user)
