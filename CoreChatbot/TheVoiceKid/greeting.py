@@ -27,14 +27,15 @@ def greeting(sender_id):
     a = a.decode('utf-8')
     b = b.decode('utf-8')
     seq = (a, first_name, b)
+    text = space.join(seq)
     buttons = [
         Template.ButtonPostBack(
             "Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
 
-    check_voter = users.find_one({'id_user': sender_id})
-    if bool(check_voter):
+    check_user = users.find_one({'id_user': sender_id})
+    if bool(check_user):
         pass
     else:
         new_user = {
