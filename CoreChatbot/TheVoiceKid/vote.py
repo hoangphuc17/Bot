@@ -33,7 +33,7 @@ def vote_menu(sender_id):
     check_vote = users.find_one({'id_user': sender_id})
     # check_voter = users.find_one({'HLV_da_binh_chon': ''})
 
-    page.send(sender_id, check_vote["HLV_da_binh_chon"])
+    # page.send(sender_id, check_vote["HLV_da_binh_chon"])
 
     if check_vote["HLV_da_binh_chon"] == "":
         print "user chua binh chon"

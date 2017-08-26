@@ -19,9 +19,9 @@ def home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Xem tin tức 👓", "news_read"),
+                                        "Xem tin tức 👓", "read_news"),
                                     Template.ButtonPostBack(
-                                        "Theo dõi tin tức 📸", "news_follow")
+                                        "Theo dõi tin tức 📸", "subscribe_news")
                                 ]),
         Template.GenericElement("Video Full - The Voice Kids 2017 | Giọng Hát Việt Nhí mùa 5",
                                 subtitle="Xem lại bản đầy dủ các tập đã được phát sóng trên Youtube, Live Streaming",
