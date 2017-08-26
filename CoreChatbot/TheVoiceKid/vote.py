@@ -32,6 +32,10 @@ def revote(sender_id):
 def vote_menu(sender_id):
     check_voter = users.find_one({'HLV_da_binh_chon': ''})
     if bool(check_voter):
+        print "user chua binh chon"
+        revote(sender_id)
+
+    else:
         # page.send(sender_id, "User da binh chon")
         space = " "
         a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
@@ -46,10 +50,6 @@ def vote_menu(sender_id):
         ]
 
         page.send(sender_id, Template.Buttons(text, buttons))
-
-    else:
-        print "user chua binh chon"
-        revote(sender_id)
     return
 
 
