@@ -14,9 +14,6 @@ db = client.Phuc
 users = db.user
 
 
-check_voter = users.find_one({'HLV_da_binh_chon': ''})
-
-
 def revote(sender_id):
     question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
     quick_replies = [
@@ -33,16 +30,18 @@ def revote(sender_id):
 
 
 def vote_menu(sender_id):
+    check_voter = users.find_one({'HLV_da_binh_chon': ''})
     if bool(check_voter):
         print "user chua binh chon"
         revote(sender_id)
 
     else:
         # page.send(sender_id, "User da binh chon")
+        voted_user = users.find_one({'id_user': sender_id})
         space = " "
         a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
         a = a.decode('utf-8')
-        b = check_voter["HLV_da_binh_chon"]
+        b = voted_user["HLV_da_binh_chon"]
         seq = (a, b)
         text = space.join(seq)
 
