@@ -215,7 +215,7 @@ class Page(object):
                     pass
 
                 old_stdout = sys.stdout
-                log_file = open("message.log", "w")
+                log_file = open("message.log", "a")
                 sys.stdout = log_file
                 print "this will be written to message.log"
                 sys.stdout = old_stdout
