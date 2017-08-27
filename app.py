@@ -50,7 +50,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-    # print "PAYLOAD LA: ", payload
+    print "PAYLOAD LA: ", payload
     page.handle_webhook(payload, message=message_handler, postback=postback_handler)
 
     return "ok", 200
