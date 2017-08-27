@@ -200,16 +200,8 @@ class Page(object):
 
             for entry in data.get("entry"):
 
-                # if entry.get("messaging"):
-                #     print "MESSAGING LA: ", entry.get("messaging")
-                #     entry = entry.get("messaging")
-                # elif entry.get("standby"):
-                #     print "STANDBY LA: ", entry.get("standby")
-                #     entry = entry.get("standby")
-                # else:
-                #     pass
-
-                if data.get("entry") is not None:
+                # tranh truong hop get duoc "standby"
+                if entry.get("messaging") is not None:
 
                     for messaging in entry.get("messaging"):
                         event = Event(messaging)
