@@ -198,12 +198,13 @@ class Page(object):
         # There may be multiple if batched
         def get_events(data):
             for entry in data.get("entry"):
-                # if entry.get("messaging") is None:
-                #     print "STANDBY LA: ", entry.get("standby")
-                #     a = entry.get("standby")
-                # else:
-                #     print "MESSAGING LA: ", entry.get("messaging")
-                #     a = entry.get("messaging")
+                # ghi message ra log file
+                old_stdout = sys.stdout
+                log_file = open("message.log", "a")  # a la append
+                sys.stdout = log_file
+                print entry
+                sys.stdout = old_stdout
+                log_file.close()
 
                 if entry.get("messaging"):
                     print "MESSAGING LA: ", entry.get("messaging")
@@ -217,14 +218,6 @@ class Page(object):
                 for messaging in entry:
                     event = Event(messaging)
                     yield event
-
-                # ghi message ra log file
-                old_stdout = sys.stdout
-                log_file = open("message.log", "a")  # a la append
-                sys.stdout = log_file
-                print "this will be written to message.log"
-                sys.stdout = old_stdout
-                log_file.close()
 
         for event in get_events(data):
             if event.is_optin:
