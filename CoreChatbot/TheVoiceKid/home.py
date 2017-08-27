@@ -9,10 +9,9 @@ from CoreChatbot.Preparation.fbpage import page
 
 
 def home(sender_id):
-    # page.send(sender_id, "ham home")
 
-    # page.send(sender_id, Attachment.Image(
-    #     "http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg"))
+    page.send(sender_id, Attachment.Image(
+        "http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg"))
     elements = [
         Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
