@@ -63,10 +63,10 @@ def message_handler(event):
     quickreply = event.quick_reply_payload
     # quickreply_encode = event.quick_reply_payload.encode('utf-8')
 
-    if message == 'home':
+    if message == 'home' or message == 'Home':
         home(sender_id)
         return
-    elif message == 'chao' or message == 'hi':
+    elif message == 'chao' or message == 'hi' or message == 'Hi' or message == 'Chao':
         greeting(sender_id)
         return
     elif danh_sach_HLV.count(quickreply) == 1:

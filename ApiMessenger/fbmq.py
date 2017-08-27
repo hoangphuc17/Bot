@@ -207,16 +207,16 @@ class Page(object):
 
             for entry in data.get("entry"):
 
-                if entry.get("messaging"):
-                    print "MESSAGING LA: ", entry.get("messaging")
-                    entry = entry.get("messaging")
-                elif entry.get("standby"):
-                    print "STANDBY LA: ", entry.get("standby")
-                    entry = entry.get("standby")
-                else:
-                    pass
+                # if entry.get("messaging"):
+                #     print "MESSAGING LA: ", entry.get("messaging")
+                #     entry = entry.get("messaging")
+                # elif entry.get("standby"):
+                #     print "STANDBY LA: ", entry.get("standby")
+                #     entry = entry.get("standby")
+                # else:
+                #     pass
 
-                for messaging in entry:
+                for messaging in entry.get("messaging"):
                     event = Event(messaging)
                     yield event
 
