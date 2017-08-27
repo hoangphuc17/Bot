@@ -64,9 +64,9 @@ def vote_menu(sender_id):
 
 
 def vote_handle_quick_reply(sender_id, quick_reply_payload):
-    link_hinh_hlv = "http://210.211.109.211/weqbfyretnccbsaf/" + \
-        danh_sach_hinh_anh_HLV[quick_reply_payload]
-    page.send(sender_id, Attachment.Image(link_hinh_hlv))
+    hinh_hlv = "http://210.211.109.211/weqbfyretnccbsaf/" + \
+        danh_sach_hinh_anh_HLV[quick_reply_payload.encode('utf-8')]
+    page.send(sender_id, Attachment.Image(hinh_hlv))
 
     space = " "
     a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
