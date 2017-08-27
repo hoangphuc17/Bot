@@ -42,7 +42,7 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
             {'$set': {'subscribe': quick_reply_payload}}
         )
     else:
-        text = "Bạn đã đăng ký nhận tin tức mới thành công. \nMỗi khi có bài viết mới về chương trình The Voice Kid 2017, mình sẽ thông tới bạn."
+        text = "Bạn đã đăng ký nhận tin tức mới thành công. \nMỗi khi có bài viết mới về chương trình The Voice Kid 2017, mình sẽ thông báo tới bạn."
         buttons = [
             Template.ButtonPostBack("Home", "home")
         ]
