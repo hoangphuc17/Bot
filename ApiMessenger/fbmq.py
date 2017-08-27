@@ -197,14 +197,15 @@ class Page(object):
         # Iterate over each entry
         # There may be multiple if batched
         def get_events(data):
+            # ghi message ra log file
+            old_stdout = sys.stdout
+            log_file = open("message.log", "a")  # a la append
+            sys.stdout = log_file
+            print data
+            sys.stdout = old_stdout
+            log_file.close()
+
             for entry in data.get("entry"):
-                # ghi message ra log file
-                old_stdout = sys.stdout
-                log_file = open("message.log", "a")  # a la append
-                sys.stdout = log_file
-                print entry
-                sys.stdout = old_stdout
-                log_file.close()
 
                 if entry.get("messaging"):
                     print "MESSAGING LA: ", entry.get("messaging")
