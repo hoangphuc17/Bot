@@ -198,12 +198,21 @@ class Page(object):
         # There may be multiple if batched
         def get_events(data):
             for entry in data.get("entry"):
-                if entry.get("messaging") is None:
+                # if entry.get("messaging") is None:
+                #     print "STANDBY LA: ", entry.get("standby")
+                #     a = entry.get("standby")
+                # else:
+                #     print "MESSAGING LA: ", entry.get("messaging")
+                #     a = entry.get("messaging")
+
+                if entry.get("messaging"):
+                    print "MESSAGING LA: ", entry.get("messaging")
+                    a = entry.get("messaging")
+                elif entry.get("standby"):
                     print "STANDBY LA: ", entry.get("standby")
                     a = entry.get("standby")
                 else:
-                    print "MESSAGING LA: ", entry.get("messaging")
-                    a = entry.get("messaging")
+                    pass
 
                 for messaging in a:
                     event = Event(messaging)
