@@ -77,7 +77,7 @@ def message_handler(event):
         'chào': greeting,
 
     }
-    keyword_list[message]()
+    keyword_list[message](sender_id)
 
     # if message == 'home' or message == 'Home':
     #     home(sender_id)
