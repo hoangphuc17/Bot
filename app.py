@@ -68,21 +68,24 @@ def webhook():
 def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
-    message = event.message_text
+    message = event.message_text.lower()
     quickreply = event.quick_reply_payload
 
-    myDict = {
-        "home": home
+    keyword_list = {
+        'home': home,
+        'hi': greeting,
+        'chào': greeting,
 
     }
+    keyword_list[message]()
 
-    if message == 'home' or message == 'Home':
-        home(sender_id)
-        return
-    elif message == 'chao' or message == 'hi' or message == 'Hi' or message == 'Chao':
-        greeting(sender_id)
-        return
-    elif danh_sach_HLV.count(quickreply) == 1:
+    # if message == 'home' or message == 'Home':
+    #     home(sender_id)
+    #     return
+    # elif message == 'chao' or message == 'hi' or message == 'Hi' or message == 'Chao':
+    #     greeting(sender_id)
+    #     return
+    if danh_sach_HLV.count(quickreply) == 1:
         vote_handle_quick_reply(sender_id, quickreply)
         return
     elif subscribe_options.count(quickreply) == 1:
