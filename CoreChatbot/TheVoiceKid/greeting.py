@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+import sys
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
@@ -17,7 +19,14 @@ users = db.user
 def greeting(sender_id):
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
+    # ghi message ra log file
+    old_stdout = sys.stdout
+    log_file = open("message.log", "a")  # a la append
+    sys.stdout = log_file
     print user_profile
+    sys.stdout = old_stdout
+    log_file.close()
+
     # first_name = user_profile["first_name"]
     # last_name = user_profile["last_name"]
     # id_user = user_profile["id"]
