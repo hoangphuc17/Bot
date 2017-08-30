@@ -70,7 +70,11 @@ def message_handler(event):
     sender_id = event.sender_id
     message = event.message_text
     quickreply = event.quick_reply_payload
-    # quickreply_encode = event.quick_reply_payload.encode('utf-8')
+
+    myDict = {
+        "home": home
+
+    }
 
     if message == 'home' or message == 'Home':
         home(sender_id)
