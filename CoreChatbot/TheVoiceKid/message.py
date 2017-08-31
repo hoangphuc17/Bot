@@ -21,13 +21,6 @@ users = db.user
 FAQ = db.FAQ
 
 
-# step 1: insert cau hoi va cau tra loi
-# step 2: viet dieu kien trong file app.py
-# step 3: viet minigame va hoan thanh cong viec
-# step 4: xem lai vu submission cua fb
-# step 5: gap thay
-
-
 def answer(message, sender_id):
     found_question = False
     for data in FAQ.find():
