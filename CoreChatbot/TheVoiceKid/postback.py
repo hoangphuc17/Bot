@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
@@ -8,12 +10,15 @@ from ApiMessenger.fbmq import Page
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
+from CoreChatbot.TheVoiceKid.database import *
+
 
 import datetime
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.Phuc
 users = db.user
+FAQ = db.FAQ
 
 danh_sach_hinh_anh_HLV = {
     "Vũ Cát Tường": "hinh5_minigame.jpg",
@@ -23,6 +28,9 @@ danh_sach_hinh_anh_HLV = {
 
 
 def greeting(sender_id):
+    # them cau hoi vao data FAQ
+    insert_new_questions()
+
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
     first_name = user_profile["first_name"]

@@ -28,12 +28,6 @@ FAQ = db.FAQ
 # step 5: gap thay
 
 
-def insert_new_questions():
-    insert_question(["ai", "vũ cát tường"], "ai là Vũ Cát Tường?", "VCT là ...", "")
-    insert_question(["ai", "soobin"], "ai là Soobin?", "Sb là ...", "")
-    insert_question(["ai", "hương tràm"], "ai là Hương Tràm?", "HT là ...", "")
-
-
 def answer(message, sender_id):
     found_question = False
     for data in FAQ.find():

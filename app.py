@@ -2,6 +2,8 @@
 
 import os
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 import requests
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.sys.path.insert(0, parentdir)
@@ -82,12 +84,12 @@ def message_handler(event):
     elif danh_sach_HLV.count(quickreply) == 1:
         vote_handle_quick_reply(sender_id, quickreply)
         return
+
     elif subscribe_options.count(quickreply) == 1:
         handle_subscribe_news(sender_id, quickreply)
         return
 
     else:
-        insert_new_questions()
         answer(message, sender_id)
 
     return
@@ -115,9 +117,9 @@ def postback_handler(event):
     return
 
 
-def log(message):
-    print(message)
-    sys.stdout.flush()
+# def log(message):
+#     print(message)
+#     sys.stdout.flush()
 
 
 if __name__ == '__main__':

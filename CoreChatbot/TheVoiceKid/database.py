@@ -30,3 +30,11 @@ def insert_question(metadata, question, answer, rank):
             "rank": rank
         }
         FAQ.insert_one(new_question)
+
+
+def insert_new_questions():
+    insert_question(["ai", "vũ cát tường"], "ai là Vũ Cát Tường?", "VCT là ...", "")
+    insert_question(["ai", "soobin"], "ai là Soobin?", "Sb là ...", "")
+    insert_question(["ai", "hương tràm"], "ai là Hương Tràm?", "HT là ...", "")
+    insert_question(["đăng ký", "nhí"], "Làm sao để đăng ký tham gia Giọng Hát Việt Nhí ?",
+                    "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn/ và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
