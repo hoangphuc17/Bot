@@ -24,9 +24,9 @@ def insert_question(metadata, question, answer, rank):
         pass
     else:
         new_question = {
-            "metadata" = metadata,
-            "question" = question,
-            "answer" = answer,
-            "rank" = rank
+            "metadata": metadata,
+            "question": question,
+            "answer": answer,
+            "rank": rank
         }
         FAQ.insert_one(new_question)
