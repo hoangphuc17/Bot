@@ -66,6 +66,9 @@ def message_handler(event):
     message = event.message_text
     quickreply = event.quick_reply_payload
 
+    # them cau hoi vao data FAQ
+    insert_new_questions()
+
     keyword_list = {
         'home': home,
         'hello': greeting,

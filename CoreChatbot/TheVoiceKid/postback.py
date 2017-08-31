@@ -28,8 +28,6 @@ danh_sach_hinh_anh_HLV = {
 
 
 def greeting(sender_id):
-    # them cau hoi vao data FAQ
-    insert_new_questions()
 
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
