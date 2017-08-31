@@ -18,12 +18,13 @@ from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 
 
-from CoreChatbot.TheVoiceKid.home import *
-from CoreChatbot.TheVoiceKid.vote import *
-from CoreChatbot.TheVoiceKid.greeting import *
-from CoreChatbot.TheVoiceKid.news import *
-from CoreChatbot.TheVoiceKid.about_us import *
-from CoreChatbot.TheVoiceKid.answer import *
+# from CoreChatbot.TheVoiceKid.home import *
+# from CoreChatbot.TheVoiceKid.vote import *
+# from CoreChatbot.TheVoiceKid.greeting import *
+# from CoreChatbot.TheVoiceKid.news import *
+# from CoreChatbot.TheVoiceKid.about_us import *
+from CoreChatbot.TheVoiceKid.message import *
+from CoreChatbot.TheVoiceKid.postback import *
 
 
 app = Flask(__name__)
@@ -45,22 +46,13 @@ def verify():
         if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
-    log('verify successfully')
+    # log('verify successfully')
     return "Hello world", 200
 
 
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-
-    # ghi message ra log file
-    # old_stdout = sys.stdout
-    # log_file = open("message.log", "a")  # a la append
-    # sys.stdout = log_file
-    # print payload
-    # sys.stdout = old_stdout
-    # log_file.close()
-
     page.handle_webhook(payload, message=message_handler, postback=postback_handler)
     return "ok", 200
 
@@ -81,7 +73,7 @@ def message_handler(event):
     if message in keyword_list:
         keyword_list[message](sender_id)
     else:
-        insert_question()
+        insert_new_questions()
         answer(message, sender_id)
 
     # if message == 'home' or message == 'Home':
@@ -113,33 +105,48 @@ def postback_handler(event):
     sender_id = event.sender_id
     postback = event.postback_payload
 
-    if postback == 'greeting':
-        greeting(sender_id)
-        return
-    elif postback == 'home':
-        home(sender_id)
-        return
-    elif postback == 'read_news':
-        read_news(sender_id)
-        return
-    elif postback == 'subscribe_news':
-        subscribe_news(sender_id)
-        return
-    elif postback == 'vote_menu':
-        vote_menu(sender_id)
-        return
-    elif postback == 'revote':
-        revote(sender_id)
-        return
-    elif postback == 'vote_rule':
-        vote_rule(sender_id)
-        return
-    elif postback == 'timeline':
-        timeline(sender_id)
-        return
-    elif postback == 'introduce':
-        introduce(sender_id)
-        return
+    postback_list = {
+        'greeting': greeting,
+        'home': home,
+        'read_news': read_news,
+        'subscribe_news': subscribe_news,
+        'vote_menu': vote_menu,
+        'revote': revote,
+        'vote_rule': vote_rule,
+        'timeline': timeline,
+        'introduce': introduce
+    }
+
+    if postback in postback_list:
+        postback_list[postback](sender_id)
+
+    # if postback == 'greeting':
+    #     greeting(sender_id)
+    #     return
+    # elif postback == 'home':
+    #     home(sender_id)
+    #     return
+    # elif postback == 'read_news':
+    #     read_news(sender_id)
+    #     return
+    # elif postback == 'subscribe_news':
+    #     subscribe_news(sender_id)
+    #     return
+    # elif postback == 'vote_menu':
+    #     vote_menu(sender_id)
+    #     return
+    # elif postback == 'revote':
+    #     revote(sender_id)
+    #     return
+    # elif postback == 'vote_rule':
+    #     vote_rule(sender_id)
+    #     return
+    # elif postback == 'timeline':
+    #     timeline(sender_id)
+    #     return
+    # elif postback == 'introduce':
+    #     introduce(sender_id)
+    #     return
 
     return
 
