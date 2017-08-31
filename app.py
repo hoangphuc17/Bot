@@ -23,6 +23,7 @@ from CoreChatbot.TheVoiceKid.vote import *
 from CoreChatbot.TheVoiceKid.greeting import *
 from CoreChatbot.TheVoiceKid.news import *
 from CoreChatbot.TheVoiceKid.about_us import *
+from CoreChatbot.TheVoiceKid.answer import *
 
 
 app = Flask(__name__)
@@ -74,10 +75,14 @@ def message_handler(event):
     keyword_list = {
         'home': home,
         'hi': greeting,
-        'chào': greeting,
-
+        'chào': greeting
     }
-    keyword_list[message](sender_id)
+
+    if message in keyword_list:
+        keyword_list[message](sender_id)
+    else:
+        insert_question()
+        answer(message, sender_id)
 
     # if message == 'home' or message == 'Home':
     #     home(sender_id)
@@ -85,6 +90,7 @@ def message_handler(event):
     # elif message == 'chao' or message == 'hi' or message == 'Hi' or message == 'Chao':
     #     greeting(sender_id)
     #     return
+
     if danh_sach_HLV.count(quickreply) == 1:
         vote_handle_quick_reply(sender_id, quickreply)
         return
