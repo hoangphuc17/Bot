@@ -66,10 +66,14 @@ def message_handler(event):
 
     keyword_list = {
         'home': home,
+        'hello': greeting,
         'hi': greeting,
         'chào': greeting,
         'alo': greeting,
-        'chao': greeting
+        'chao': greeting,
+        'giờ phát sóng': timeline,
+        'lịch phát sóng': timeline,
+        'giới thiệu': introduce
     }
 
     if message in keyword_list:
@@ -107,34 +111,6 @@ def postback_handler(event):
 
     if postback in postback_list:
         postback_list[postback](sender_id)
-
-    # if postback == 'greeting':
-    #     greeting(sender_id)
-    #     return
-    # elif postback == 'home':
-    #     home(sender_id)
-    #     return
-    # elif postback == 'read_news':
-    #     read_news(sender_id)
-    #     return
-    # elif postback == 'subscribe_news':
-    #     subscribe_news(sender_id)
-    #     return
-    # elif postback == 'vote_menu':
-    #     vote_menu(sender_id)
-    #     return
-    # elif postback == 'revote':
-    #     revote(sender_id)
-    #     return
-    # elif postback == 'vote_rule':
-    #     vote_rule(sender_id)
-    #     return
-    # elif postback == 'timeline':
-    #     timeline(sender_id)
-    #     return
-    # elif postback == 'introduce':
-    #     introduce(sender_id)
-    #     return
 
     return
 
