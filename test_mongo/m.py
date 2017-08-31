@@ -36,7 +36,9 @@ def insert_new_questions():
 
 
 def answer(message, sender_id):
+    found_question = False
     for data in FAQ.find():
+        final_data = {}
         count = 0
         metadata = data['metadata']
         print metadata
@@ -46,15 +48,27 @@ def answer(message, sender_id):
             else:
                 break
         if count == len(data['metadata']):
-            print 'cau tra loi cho cau hoi', data['question'], 'la:'
-            print data['answer']
+            final_data = data
+            print 'final_data la', final_data
+            found_question = True
+            break
+        else:
+            found_question = False
+
+    if found_question:
+        print 'cau tra loi cho cau hoi', final_data['question'], 'la:'
+        print final_data['answer']
+    else:
+        print 'khong tim thay cau hoi trong FAQ'
 
 
 sender_id = 123
 message = [
     "ai là Vũ Cát Tường ?",
-    "làm sao đăng ký GHV nhí"
+    "làm sao đăng ký GHV nhí",
+    "UHP là ai?",
+    "ai la soobin ?"
 ]
 
 insert_new_questions()
-answer(message[1], sender_id)
+answer(message[3], sender_id)

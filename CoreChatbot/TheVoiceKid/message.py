@@ -35,15 +35,33 @@ def insert_new_questions():
 
 
 def answer(message, sender_id):
+    found_question = False
     for data in FAQ.find():
+        final_data = {}
         count = 0
         metadata = data['metadata']
-        print metadata
         for word in metadata:
             if word in message.lower():
                 count = count + 1
             else:
                 break
         if count == len(data['metadata']):
-            print 'cau tra loi cho cau hoi', data['question'], 'la:'
-            print data['answer']
+            final_data = data
+            print 'final_data la', final_data
+            found_question = True
+            break
+        else:
+            found_question = False
+
+    if found_question:
+        print 'cau tra loi cho cau hoi', final_data['question'], 'la:'
+        print final_data['answer']
+        page.send(sender_id, "tim thay cau hoi")
+    else:
+        print 'khong tim thay cau hoi trong FAQ'
+        text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
+        buttons = [
+            Template.ButtonPostBack(
+                "Home", "home")
+        ]
+        page.send(sender_id, Template.Buttons(text, buttons))

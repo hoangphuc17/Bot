@@ -74,18 +74,8 @@ def message_handler(event):
 
     if message in keyword_list:
         keyword_list[message](sender_id)
-    else:
-        insert_new_questions()
-        answer(message, sender_id)
 
-    # if message == 'home' or message == 'Home':
-    #     home(sender_id)
-    #     return
-    # elif message == 'chao' or message == 'hi' or message == 'Hi' or message == 'Chao':
-    #     greeting(sender_id)
-    #     return
-
-    if danh_sach_HLV.count(quickreply) == 1:
+    elif danh_sach_HLV.count(quickreply) == 1:
         vote_handle_quick_reply(sender_id, quickreply)
         return
     elif subscribe_options.count(quickreply) == 1:
@@ -93,12 +83,8 @@ def message_handler(event):
         return
 
     else:
-        text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
-        buttons = [
-            Template.ButtonPostBack(
-                "Home", "home")
-        ]
-        page.send(sender_id, Template.Buttons(text, buttons))
+        insert_new_questions()
+        answer(message, sender_id)
 
     return
 
