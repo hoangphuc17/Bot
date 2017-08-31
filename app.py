@@ -69,6 +69,8 @@ def message_handler(event):
     # them cau hoi vao data FAQ
     insert_new_questions()
 
+    print message
+
     keyword_list = {
         'home': home,
         'hello': greeting,
