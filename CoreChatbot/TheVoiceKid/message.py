@@ -48,9 +48,8 @@ def answer(message, sender_id):
             found_question = False
 
     if found_question:
-        print 'cau tra loi cho cau hoi', final_data['question'], 'la:'
-        print final_data['answer']
-        page.send(sender_id, "tim thay cau hoi")
+
+        page.send(sender_id, final_data['answer'])
     else:
         print 'khong tim thay cau hoi trong FAQ'
         text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
