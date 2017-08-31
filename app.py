@@ -61,13 +61,15 @@ def webhook():
 def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
-    message = event.message_text.lower()
+    message = event.message_text
     quickreply = event.quick_reply_payload
 
     keyword_list = {
         'home': home,
         'hi': greeting,
-        'chào': greeting
+        'chào': greeting,
+        'alo': greeting,
+        'chao': greeting
     }
 
     if message in keyword_list:

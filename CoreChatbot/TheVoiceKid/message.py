@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
@@ -33,10 +35,15 @@ def insert_new_questions():
 
 
 def answer(message, sender_id):
-    count = 0
-    for data in FAQ:
-        for word in data['metadata']:
-            if word in message:
+    for data in FAQ.find():
+        count = 0
+        metadata = data['metadata']
+        print metadata
+        for word in metadata:
+            if word in message.lower():
                 count = count + 1
-            if count == len(data['metadata']):
-                print 'message nam trong data nay', data['metadata']
+            else:
+                break
+        if count == len(data['metadata']):
+            print 'cau tra loi cho cau hoi', data['question'], 'la:'
+            print data['answer']
