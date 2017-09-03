@@ -155,7 +155,7 @@ def read_news(sender_id):
             subtitle=news['subtitle'],
             image_url=news['image_url'],
             buttons=[
-                Template.ButtonWeb('Đọc tin', item_url),
+                Template.ButtonWeb('Đọc tin', news['item_url']),
                 Template.ButtonPostBack('Về Home', 'home')
             ])
         elements.append(element)
