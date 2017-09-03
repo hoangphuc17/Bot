@@ -20,6 +20,7 @@ client = MongoClient('localhost', 27017)
 db = client.Phuc
 USER = db.USER
 FAQ = db.FAQ
+NEWS = db.NEWS
 
 
 def answer(message, sender_id):

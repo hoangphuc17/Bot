@@ -1,3 +1,24 @@
+import os
+import sys
+from ApiMessenger import Attachment, Template
+from ApiMessenger.payload import QuickReply
+from ApiMessenger.fbmq import Page
+
+import CoreChatbot.Preparation.messenger
+from CoreChatbot.Preparation.config import CONFIG
+from CoreChatbot.Preparation.fbpage import page
+
+from CoreChatbot.TheVoiceKid.database import *
+
+import datetime
+from pymongo import MongoClient
+client = MongoClient('localhost', 27017)
+db = client.Phuc
+
+USER = db.USER
+FAQ = db.FAQ
+NEWS = db.NEWS
+
 
 def insert_new_questions():
     insert_question(["ai", "vũ cát tường"], "ai là Vũ Cát Tường?", "VCT là ...", "")

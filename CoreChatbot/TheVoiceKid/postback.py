@@ -20,6 +20,7 @@ client = MongoClient('localhost', 27017)
 db = client.Phuc
 USER = db.USER
 FAQ = db.FAQ
+NEWS = db.NEWS
 
 danh_sach_hinh_anh_HLV = {
     "Vũ Cát Tường": "hinh5_minigame.jpg",
