@@ -27,13 +27,13 @@ def insert_new_user(first_name, last_name, id_user):
         'last_name': last_name,
         'id_user': id_user,
         'HLV_da_binh_chon': '',
-        'subscribe': 'no',
+        'subscribe_news': 'no',
         'message': [
-            {
-                'content': '',
-                'time': '',
-                'type': ''
-            }
+            # {
+            #     'content': '',
+            #     'time': '',
+            #     'type': ''
+            # }
         ]
     }
     USER.insert_one(new_user)
