@@ -21,7 +21,7 @@ NEWS = db.NEWS
 # collection USER
 
 
-def insert_new_user():
+def insert_new_user(first_name, last_name, id_user):
     new_user = {
         'first_name': first_name,
         'last_name': last_name,

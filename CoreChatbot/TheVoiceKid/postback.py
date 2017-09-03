@@ -54,7 +54,7 @@ def greeting(sender_id):
     if bool(check_user):
         pass
     else:
-        insert_new_user()
+        insert_new_user(first_name, last_name, id_user)
     return
 
 
