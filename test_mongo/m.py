@@ -1,74 +1,39 @@
 # -*- coding: utf-8 -*-
-
-from pymongo import MongoClient
-import datetime
-
+import os
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+# sys.path.insert(0, '/Users/mac/Desktop/Bot/ApiMessenger')
+# # from ApiMessenger import Attachment, Template
+# from ApiMessenger.attachment import *
+# from ApiMessenger.template import *
+# from ApiMessenger.payload import QuickReply
+# from ApiMessenger.fbmq import Page
+#
+# import CoreChatbot.Preparation.messenger
+# from CoreChatbot.Preparation.config import CONFIG
+# from CoreChatbot.Preparation.fbpage import page
 
+import datetime
+from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.Phuc
-users = db.user
+
+USER = db.USER
 FAQ = db.FAQ
+NEWS = db.NEWS
 
 
-def insert_question(metadata, question, answer, rank):
-    check_question = FAQ.find_one({'question': question})
-    if bool(check_question):
-        pass
-    else:
-        new_question = {
-            "metadata": metadata,
-            "question": question,
-            "answer": answer,
-            "rank": rank
-        }
-        FAQ.insert_one(new_question)
+def insert_news(title, subtitle, image_url, item_url):
+    new_news = {
+        'title': title,
+        'subtitle': subtitle,
+        'image_url': image_url,
+        'item_url': item_url
+    }
+    NEWS.insert_one(new_news)
 
 
-def insert_new_questions():
-    insert_question(["ai", "vũ cát tường"], "ai là Vũ Cát Tường?", "VCT là ...", "")
-    insert_question(["ai", "soobin"], "ai là Soobin?", "Sb là ...", "")
-    insert_question(["ai", "hương tràm"], "ai là Hương Tràm?", "HT là ...", "")
-    insert_question(["đăng ký", "nhí"], "Làm sao để đăng ký tham gia Giọng Hát Việt Nhí ?",
-                    "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn/ và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
+def get_news_elements():
+    print 'day la ham get_news_elements'
 
 
-def answer(message, sender_id):
-    found_question = False
-    for data in FAQ.find():
-        final_data = {}
-        count = 0
-        metadata = data['metadata']
-        print metadata
-        for word in metadata:
-            if word in message.lower():
-                count = count + 1
-            else:
-                break
-        if count == len(data['metadata']):
-            final_data = data
-            print 'final_data la', final_data
-            found_question = True
-            break
-        else:
-            found_question = False
-
-    if found_question:
-        print 'cau tra loi cho cau hoi', final_data['question'], 'la:'
-        print final_data['answer']
-    else:
-        print 'khong tim thay cau hoi trong FAQ'
-
-
-sender_id = 123
-message = [
-    "ai là Vũ Cát Tường ?",
-    "làm sao đăng ký GHV nhí",
-    "UHP là ai?",
-    "ai la soobin ?"
-]
-
-insert_new_questions()
-answer(message[3], sender_id)
+insert_news("a", "a", "a", "a")

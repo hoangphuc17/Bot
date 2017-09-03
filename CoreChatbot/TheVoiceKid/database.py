@@ -14,10 +14,40 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.Phuc
 
-users = db.user
+USER = db.USER
 FAQ = db.FAQ
+NEWS = db.NEWS
+
+# collection USER
 
 
+def insert_new_user():
+    new_user = {
+        'first_name': first_name,
+        'last_name': last_name,
+        'id_user': id_user,
+        'HLV_da_binh_chon': '',
+        'subscribe': 'no',
+        'message': [
+            {
+                'content': '',
+                'time': '',
+                'type': ''
+            }
+        ]
+    }
+    USER.insert_one(new_user)
+
+
+def save_message(sender_id, message, typeOfMessage):
+    print 'day la ham save_message cua user'
+    USER.update(
+        {'id_user': sender_id},
+        {'$push': {'message': {'content': message, 'time': datetime.datetime.now(), 'type': typeOfMessage}}}
+    )
+
+
+# collection FAQ
 def insert_question(metadata, question, answer, rank):
     check_question = FAQ.find_one({'question': question})
     if bool(check_question):
@@ -32,13 +62,16 @@ def insert_question(metadata, question, answer, rank):
         FAQ.insert_one(new_question)
 
 
-def insert_new_questions():
-    insert_question(["ai", "vũ cát tường"], "ai là Vũ Cát Tường?", "VCT là ...", "")
-    insert_question(["ai", "soobin"], "ai là Soobin?", "Sb là ...", "")
-    insert_question(["ai", "hương tràm"], "ai là Hương Tràm?", "HT là ...", "")
-    insert_question(["đăng ký", "nhí"], "Làm sao để đăng ký tham gia Giọng Hát Việt Nhí ?",
-                    "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn/ và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
-    insert_question(["vòng giấu mặt", "tập"], "Vòng giấu mặt có bao nhiêu tập?",
-                    "Bạn thân mến! Vòng giấu mặt Giọng Hát Việt Nhí có tất cả 5 tập. Xem lại chương trình đã phát sóng trên Youtube: http://youtube.com/btcgionghatvietnhi/", "")
-    insert_question(["hlv"], "HLV Giọng Hát Việt Nhí 2017 là ai?",
-                    "HLV Giọng Hát Việt Nhí 2017 bao gồm ghế đôi ca sĩ Hương Tràm & nhạc sĩ Tiên Cookie, ghế đơn ca sĩ Soobin Hoàng Sơn và sự trở lại của HLV Giọng Hát Việt Nhí 2016 Vũ Cát Tường. Theo dõi chương trình và ủng hộ các đội mà bạn yêu thích nhé! ❤", "")
+# collection NEWS
+def insert_news(title, subtitle, image_url, item_url):
+    check_news = FAQ.find_one({'item_url': item_url})
+    if bool(check_question):
+        pass
+    else:
+        new_news = {
+            'title': title,
+            'subtitle': subtitle,
+            'image_url': image_url,
+            'item_url': item_url
+        }
+        NEWS.insert_one(new_news)

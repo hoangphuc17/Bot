@@ -10,6 +10,7 @@ from ApiMessenger.fbmq import Page
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
+
 from CoreChatbot.TheVoiceKid.database import *
 
 
@@ -17,7 +18,7 @@ import datetime
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.Phuc
-users = db.user
+USER = db.USER
 FAQ = db.FAQ
 
 danh_sach_hinh_anh_HLV = {
@@ -48,26 +49,11 @@ def greeting(sender_id):
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
 
-    check_user = users.find_one({'id_user': sender_id})
+    check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
         pass
     else:
-        new_user = {
-            'first_name': first_name,
-            'last_name': last_name,
-            'id_user': id_user,
-            'HLV_da_binh_chon': '',
-            'subscribe': 'no'
-            # 'tin_tuc_da_doc': {
-            #     'title': '',
-            #     'subtitle': '',
-            #     'item_url': '',
-            #     'image_url': ''
-            # }
-            # 'thoi_gian': datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
-        }
-        users.insert_one(new_user)
-
+        insert_new_user()
     return
 
 
@@ -142,7 +128,7 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
         ]
 
         page.send(sender_id, Template.Buttons(text, buttons))
-        users.update_one(
+        USER.update_one(
             {'id_user': sender_id},
             {'$set': {'subscribe': quick_reply_payload}}
         )
@@ -153,7 +139,7 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
         ]
 
         page.send(sender_id, Template.Buttons(text, buttons))
-        users.update_one(
+        USER.update_one(
             {'id_user': sender_id},
             {'$set': {'subscribe': quick_reply_payload}}
         )
@@ -161,23 +147,35 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
 
 
 def read_news(sender_id):
-    elements = [
-        Template.GenericElement(title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào ",
-                                subtitle=" Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ. ",
-                                image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
-                                item_url="https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html",
-                                buttons=[
-                                    Template.ButtonShare()
-                                ]),
-        Template.GenericElement(title="Thể hiện hit của diva Hà Trần, ‘thiên thần nhí’ khiến Soobin, Vũ Cát Tường phải tung ‘chiêu’ hết mình chinh phục  ",
-                                subtitle="  Lần đầu tiên ở mùa giải năm nay, Giọng hát Việt nhí 2017 đã có một thí sinh khiến các HLV phải tung hết tất cả các chiêu trò để chiêu dụ về đội của mình. ",
-                                image_url="https://img.saostar.vn/265x149/2017/08/19/1500621/mg_8085.jpg",
-                                item_url="https://saostar.vn/tv-show/hien-hit-cua-diva-ha-tran-thien-nhi-khien-soobin-vu-cat-tuong-phai-tung-chieu-het-minh-chinh-phuc-1500621.html",
-                                buttons=[
-                                    Template.ButtonShare()
-                                ])
+    elements = []
+    for news in NEWS.find():
+        element = Template.GenericElement(
+            title=news['title'],
+            subtitle=news['subtitle'],
+            image_url=news['image_url'],
+            buttons=[
+                Template.ButtonWeb('Đọc tin', item_url),
+                Template.ButtonPostBack('Về Home', 'home')
+            ])
+        elements.append(element)
 
-    ]
+    # elements = [
+    #     Template.GenericElement(title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào",
+    #                             subtitle="Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
+    #                             image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
+    #                             item_url="https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html",
+    #                             buttons=[
+    #                                 Template.ButtonShare()
+    #                             ]),
+    #     Template.GenericElement(title="Thể hiện hit của diva Hà Trần, ‘thiên thần nhí’ khiến Soobin, Vũ Cát Tường phải tung ‘chiêu’ hết mình chinh phục  ",
+    #                             subtitle="  Lần đầu tiên ở mùa giải năm nay, Giọng hát Việt nhí 2017 đã có một thí sinh khiến các HLV phải tung hết tất cả các chiêu trò để chiêu dụ về đội của mình. ",
+    #                             image_url="https://img.saostar.vn/265x149/2017/08/19/1500621/mg_8085.jpg",
+    #                             item_url="https://saostar.vn/tv-show/hien-hit-cua-diva-ha-tran-thien-nhi-khien-soobin-vu-cat-tuong-phai-tung-chieu-het-minh-chinh-phuc-1500621.html",
+    #                             buttons=[
+    #                                 Template.ButtonShare()
+    #                             ])
+    #
+    # ]
     page.send(sender_id, Template.Generic(elements))
 
     return
@@ -199,8 +197,8 @@ def revote(sender_id):
 
 
 def vote_menu(sender_id):
-    check_vote = users.find_one({'id_user': sender_id})
-    # check_voter = users.find_one({'HLV_da_binh_chon': ''})
+    check_vote = USER.find_one({'id_user': sender_id})
+    # check_voter = USER.find_one({'HLV_da_binh_chon': ''})
 
     # page.send(sender_id, check_vote["HLV_da_binh_chon"])
 
@@ -243,7 +241,7 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
 
-    users.update_one(
+    USER.update_one(
         {'id_user': sender_id},
         {'$set': {'HLV_da_binh_chon': quick_reply_payload}}
     )

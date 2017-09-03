@@ -19,12 +19,6 @@ import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 
-
-# from CoreChatbot.TheVoiceKid.home import *
-# from CoreChatbot.TheVoiceKid.vote import *
-# from CoreChatbot.TheVoiceKid.greeting import *
-# from CoreChatbot.TheVoiceKid.news import *
-# from CoreChatbot.TheVoiceKid.about_us import *
 from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
@@ -69,8 +63,6 @@ def message_handler(event):
     # them cau hoi vao data FAQ
     insert_new_questions()
 
-    print message
-
     keyword_list = {
         'home': home,
         'hello': greeting,
@@ -95,6 +87,9 @@ def message_handler(event):
         return
 
     else:
+        # luu tin nhan
+        save_message(sender_id, message, "message")
+        # tra loi tin nhan
         answer(message, sender_id)
 
     return
@@ -120,11 +115,6 @@ def postback_handler(event):
         postback_list[postback](sender_id)
 
     return
-
-
-# def log(message):
-#     print(message)
-#     sys.stdout.flush()
 
 
 if __name__ == '__main__':

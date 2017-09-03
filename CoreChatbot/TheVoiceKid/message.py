@@ -3,6 +3,7 @@ import os
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
+
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
@@ -17,7 +18,7 @@ import datetime
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.Phuc
-users = db.user
+USER = db.USER
 FAQ = db.FAQ
 
 
