@@ -160,23 +160,6 @@ def read_news(sender_id):
             ])
         elements.append(element)
 
-    # elements = [
-    #     Template.GenericElement(title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào",
-    #                             subtitle="Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
-    #                             image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
-    #                             item_url="https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html",
-    #                             buttons=[
-    #                                 Template.ButtonShare()
-    #                             ]),
-    #     Template.GenericElement(title="Thể hiện hit của diva Hà Trần, ‘thiên thần nhí’ khiến Soobin, Vũ Cát Tường phải tung ‘chiêu’ hết mình chinh phục  ",
-    #                             subtitle="  Lần đầu tiên ở mùa giải năm nay, Giọng hát Việt nhí 2017 đã có một thí sinh khiến các HLV phải tung hết tất cả các chiêu trò để chiêu dụ về đội của mình. ",
-    #                             image_url="https://img.saostar.vn/265x149/2017/08/19/1500621/mg_8085.jpg",
-    #                             item_url="https://saostar.vn/tv-show/hien-hit-cua-diva-ha-tran-thien-nhi-khien-soobin-vu-cat-tuong-phai-tung-chieu-het-minh-chinh-phuc-1500621.html",
-    #                             buttons=[
-    #                                 Template.ButtonShare()
-    #                             ])
-    #
-    # ]
     page.send(sender_id, Template.Generic(elements))
 
     return
