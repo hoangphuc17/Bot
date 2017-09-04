@@ -75,7 +75,7 @@ def home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh2_xem_video.jpg",
                                 buttons=[
                                     Template.ButtonWeb(
-                                        "Xem lại tập đã phát sóng", "https://www.youtube.com/user/btcgionghatvietnhi"),
+                                        "Xem lại tập đã phát", "https://www.youtube.com/user/btcgionghatvietnhi"),
                                     Template.ButtonWeb(
                                         "Oh my kids", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBml5RPOlILDvj5DqNwmG9AI"),
                                     Template.ButtonWeb(
@@ -107,7 +107,7 @@ def home(sender_id):
 
 
 def minigame1(sender_id):
-    text = "Minigame 1:\nDự đoán đội quán quân"
+    text = "Minigame 1:\n   Dự đoán đội quán quân"
     buttons = [
         Template.ButtonPostBack(
             "Tham gia dự đoán 👍", "minigame1_menu"),
@@ -118,7 +118,7 @@ def minigame1(sender_id):
 
 
 def minigame2(sender_id):
-    text = "Minigame 2:\nĐoán từ khóa nhận Sticker"
+    text = "Minigame 2:\n   Đoán từ khóa nhận Sticker"
     buttons = [
         Template.ButtonPostBack(
             "Tham gia dự đoán 👍", "minigame2_menu"),
