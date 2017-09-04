@@ -104,7 +104,7 @@ def home(sender_id):
     return
 
 
-def minigame1():
+def minigame1(sender_id):
     text = "Minigame 1:\nDự đoán đội quán quân"
     buttons = [
         Template.ButtonPostBack(
@@ -115,7 +115,7 @@ def minigame1():
     page.send(sender_id, Template.Buttons(text, buttons))
 
 
-def minigame2():
+def minigame2(sender_id):
     text = "Minigame 2:\nĐoán từ khóa nhận Sticker"
     buttons = [
         Template.ButtonPostBack(
