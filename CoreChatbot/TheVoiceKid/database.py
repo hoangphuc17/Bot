@@ -18,9 +18,8 @@ USER = db.USER
 FAQ = db.FAQ
 NEWS = db.NEWS
 
+
 # collection USER
-
-
 def insert_new_user(first_name, last_name, id_user):
     new_user = {
         'first_name': first_name,

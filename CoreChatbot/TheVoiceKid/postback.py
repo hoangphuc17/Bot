@@ -84,16 +84,14 @@ def home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh3_du_doan.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Tham gia dự đoán 👍", "vote_menu"),
+                                        "Minigame 1", "minigame1"),
                                     Template.ButtonPostBack(
-                                        "Thể lệ dự đoán 📜", "vote_rule")
+                                        "Minigame 2", "minigame2")
                                 ]),
         Template.GenericElement("About us",
                                 subtitle="Theo dõi chương trình Giọng Hát Việt Nhí 2017 tại các kênh truyền thông",
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh4_about_us.jpg",
                                 buttons=[
-                                    # Template.ButtonWeb(
-                                    #     "Youtube", "https://www.youtube.com/user/btcgionghatvietnhi"),
                                     Template.ButtonWeb(
                                         "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
                                     Template.ButtonPostBack(
@@ -104,6 +102,28 @@ def home(sender_id):
     ]
     page.send(sender_id, Template.Generic(elements))
     return
+
+
+def minigame1():
+    text = "Minigame 1:\nDự đoán đội quán quân"
+    buttons = [
+        Template.ButtonPostBack(
+            "Tham gia dự đoán 👍", "minigame1_menu"),
+        Template.ButtonPostBack(
+            "Thể lệ dự đoán 📜", "minigame1_rule")
+    ]
+    page.send(sender_id, Template.Buttons(text, buttons))
+
+
+def minigame2():
+    text = "Minigame 2:\nĐoán từ khóa nhận Sticker"
+    buttons = [
+        Template.ButtonPostBack(
+            "Tham gia dự đoán 👍", "minigame2_menu"),
+        Template.ButtonPostBack(
+            "Thể lệ dự đoán 📜", "minigame2_rule")
+    ]
+    page.send(sender_id, Template.Buttons(text, buttons))
 
 
 def subscribe_news(sender_id):
@@ -165,7 +185,7 @@ def read_news(sender_id):
     return
 
 
-def revote(sender_id):
+def minigame1_vote(sender_id):
     question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
     quick_replies = [
         QuickReply(title="#teamcôTường", payload="Vũ Cát Tường"),
@@ -180,18 +200,14 @@ def revote(sender_id):
     return
 
 
-def vote_menu(sender_id):
+def minigame1_menu(sender_id):
     check_vote = USER.find_one({'id_user': sender_id})
-    # check_voter = USER.find_one({'HLV_da_binh_chon': ''})
-
-    # page.send(sender_id, check_vote["HLV_da_binh_chon"])
 
     if check_vote["HLV_da_binh_chon"] == "":
-        print "user chua binh chon"
-        revote(sender_id)
-
+        # user chua binh chon
+        minigame1_vote(sender_id)
     else:
-        # page.send(sender_id, "User da binh chon")
+        # user da binh chon
         space = " "
         a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
         a = a.decode('utf-8')
@@ -200,7 +216,7 @@ def vote_menu(sender_id):
         text = space.join(seq)
 
         buttons = [
-            Template.ButtonPostBack("Bình chọn lại", "revote"),
+            Template.ButtonPostBack("Bình chọn lại", "minigame1_vote"),
             Template.ButtonPostBack("Home", "home")
         ]
 
@@ -208,7 +224,7 @@ def vote_menu(sender_id):
     return
 
 
-def vote_handle_quick_reply(sender_id, quick_reply_payload):
+def minigame1_handle_quick_reply(sender_id, quick_reply_payload):
     hinh_hlv = "http://210.211.109.211/weqbfyretnccbsaf/" + \
         danh_sach_hinh_anh_HLV[quick_reply_payload.encode('utf-8')]
     page.send(sender_id, Attachment.Image(hinh_hlv))
@@ -218,9 +234,8 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     a = a.decode('utf-8')
     seq = (a, quick_reply_payload)
     text = space.join(seq)
-    # page.send(sender_id, text)
     buttons = [
-        Template.ButtonPostBack("Bình chọn lại", "revote"),
+        Template.ButtonPostBack("Bình chọn lại", "minigame1_vote"),
         Template.ButtonPostBack("Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
@@ -233,15 +248,21 @@ def vote_handle_quick_reply(sender_id, quick_reply_payload):
     return
 
 
-def vote_rule(sender_id):
+def minigame1_rule(sender_id):
     text = "- Mỗi bạn tham gia sẽ có 01 lựa chọn cho việc dự đoán đội huấn luyện viên có thí sinh đạt được giải quán quân 🎊 của chương trình.\n- Nếu bạn thay đổi ý kiến, dự đoán được BTC ghi nhận là dự đoán cuối cùng mà bạn chọn.\n- Nếu dự đoán đúng và may mắn, bạn sẽ nhận được 01 phần quà 🎁 hấp dẫn từ ban tổ chức.\n Hãy tận dụng “giác quan thứ 6” của mình để 'rinh' quà về nhà nào!\n👉👉👉 “Giọng Hát Việt Nhí” 2017 sẽ chính thức được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3"
-
     buttons = [
         Template.ButtonPostBack("Home", "home")
     ]
-
     page.send(sender_id, Template.Buttons(text, buttons))
+    return
 
+
+def minigame2_rule(sender_id):
+    text = "- Mỗi bạn tham gia được dự đoán không giới hạn ‘Từ khóa’ may mắn để nhận được trọn bộ Sticker hình vẽ HLV Giọng Hát Việt Nhí 2017.\n- ‘Từ khóa’ có thể gồm 1 từ hoặc 1 cụm từ miêu tả gần giống với các HLV nhất.\n- Nếu dự đoán đúng từ khóa. Bạn sẽ nhận được những Sticker ‘Siêu Đáng Yêu’.\nNgại gì không thử??\n\n👉👉👉 “Giọng Hát Việt Nhí” 2017 sẽ chính thức được phát sóng vào lúc 21h10 thứ 7 hằng tuần (từ ngày 12/8/2017) trên kênh VTV3"
+    buttons = [
+        Template.ButtonPostBack("Home", "home")
+    ]
+    page.send(sender_id, Template.Buttons(text, buttons))
     return
 
 

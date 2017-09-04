@@ -76,7 +76,7 @@ def message_handler(event):
         keyword_list[message](sender_id)
 
     elif danh_sach_HLV.count(quickreply) == 1:
-        vote_handle_quick_reply(sender_id, quickreply)
+        minigame1_handle_quick_reply(sender_id, quickreply)
         return
 
     elif subscribe_options.count(quickreply) == 1:
@@ -101,9 +101,12 @@ def postback_handler(event):
         'home': home,
         'read_news': read_news,
         'subscribe_news': subscribe_news,
-        'vote_menu': vote_menu,
-        'revote': revote,
-        'vote_rule': vote_rule,
+        'minigame1': minigame1,
+        'minigame1_menu': minigame1_menu,
+        'minigame1_vote': minigame1_vote,
+        'minigame1_rule': minigame1_rule,
+        'minigame2': minigame2,
+        'minigame2_rule': minigame2_rule,
         'timeline': timeline,
         'introduce': introduce
     }
