@@ -47,10 +47,10 @@ def verify():
 
     # return "verify successfully", 200
 
-    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
-        return request.args["hub.challenge"], 200
+    if request.args.get("hub.verify_token") == 'phuc123':
+        return "token ok", 200
     else:
-        return "trouble in hub.mode or hub.challenge", 403
+        return "token sai", 403
 
 
 @app.route('/', methods=['POST'])
