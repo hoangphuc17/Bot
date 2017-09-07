@@ -42,8 +42,10 @@ def verify():
         if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
+    else:
+        return "trouble in hub.mode or hub.challenge", 200
     # log('verify successfully')
-    return "Hello world", 200
+    return "verify successfully", 200
 
 
 @app.route('/', methods=['POST'])
