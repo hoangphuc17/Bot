@@ -38,14 +38,19 @@ subscribe_options = ["yes", "no"]
 @app.route('/', methods=['GET'])
 def verify():
     # Webhook verification
-    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-        if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
-            return "Verification token mismatch", 403
+    # if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+    #     if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
+    #         return "Verification token mismatch", 403
+    #     return request.args["hub.challenge"], 200
+    # else:
+    #     return "trouble in hub.mode or hub.challenge", 200
+
+    # return "verify successfully", 200
+
+    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
         return request.args["hub.challenge"], 200
     else:
-        return "trouble in hub.mode or hub.challenge", 200
-    # log('verify successfully')
-    return "verify successfully", 200
+        return "trouble in hub.mode or hub.challenge", 403
 
 
 @app.route('/', methods=['POST'])
