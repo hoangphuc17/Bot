@@ -41,7 +41,7 @@ def verify():
     #     return request.args["hub.challenge"], 200
     # else:
     #     return "Verification token mismatch", 403
-    Webhook verification
+    # Webhook verification
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
         if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
             return "Verification token mismatch", 403
