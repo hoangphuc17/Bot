@@ -35,23 +35,21 @@ danh_sach_HLV = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in 
 subscribe_options = ["yes", "no"]
 
 
-# Webhook verification
-# if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-#     if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
-#         return "Verification token mismatch", 403
-#     return request.args["hub.challenge"], 200
-# else:
-#     return "trouble in hub.mode or hub.challenge", 200
-
-# return "verify successfully", 200
-
-
 @app.route('/', methods=['GET'])
 def verify():
-    if request.args.get("hub.verify_token") == 'phuc123':
+    # if request.args.get("hub.verify_token") == 'phuc123':
+    #     return request.args["hub.challenge"], 200
+    # else:
+    #     return "Verification token mismatch", 403
+    Webhook verification
+    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+        if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
+            return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
     else:
-        return "Verification token mismatch", 403
+        return "trouble in hub.mode or hub.challenge", 200
+
+    return "verify successfully", 200
 
 
 @app.route('/', methods=['POST'])
