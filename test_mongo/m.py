@@ -12,14 +12,10 @@ import sys
 # from CoreChatbot.Preparation.config import CONFIG
 # from CoreChatbot.Preparation.fbpage import page
 
-import datetime
-from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
-db = client.Phuc
 
-USER = db.USER
-FAQ = db.FAQ
-NEWS = db.NEWS
+from pymongo import MongoClient
+client = MongoClient('cb.saostar.vn', 27017)
+db = client.Phuc
 a = db.a
 
 
@@ -31,10 +27,6 @@ def insert_news(title, subtitle, image_url, item_url):
         'item_url': item_url
     }
     a.insert_one(new_news)
-
-
-def get_news_elements():
-    print 'day la ham get_news_elements'
 
 
 insert_news("a", "a", "a", "a")
