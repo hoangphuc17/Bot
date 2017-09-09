@@ -16,7 +16,7 @@ from CoreChatbot.TheVoiceKid.database import *
 
 import datetime
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
+client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
 USER = db.USER
 FAQ = db.FAQ

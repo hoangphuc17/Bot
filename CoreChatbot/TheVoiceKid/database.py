@@ -11,7 +11,7 @@ from CoreChatbot.Preparation.fbpage import page
 
 import datetime
 from pymongo import MongoClient
-client = MongoClient('mongodb://localhost:27017')
+client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
 
 USER = db.USER
@@ -35,7 +35,7 @@ def insert_new_user(first_name, last_name, id_user):
             # }
         ]
     }
-    USER.insert_one(new_user)
+    USER.insert(new_user)
 
 
 def save_message(sender_id, message, typeOfMessage):
@@ -58,7 +58,7 @@ def insert_question(metadata, question, answer, rank):
             "answer": answer,
             "rank": rank
         }
-        FAQ.insert_one(new_question)
+        FAQ.insert(new_question)
 
 
 # collection NEWS
@@ -73,4 +73,4 @@ def insert_news(title, subtitle, image_url, item_url):
             'image_url': image_url,
             'item_url': item_url
         }
-        NEWS.insert_one(new_news)
+        NEWS.insert(new_news)
