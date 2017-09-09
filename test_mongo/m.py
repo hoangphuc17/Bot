@@ -26,7 +26,7 @@ def insert_news(title, subtitle, image_url, item_url):
         'image_url': image_url,
         'item_url': item_url
     }
-    a.insert_one(new_news)
+    a.insert(new_news)
 
 
 insert_news("a", "a", "a", "a")
