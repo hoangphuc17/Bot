@@ -20,6 +20,7 @@ db = client.Phuc
 USER = db.USER
 FAQ = db.FAQ
 NEWS = db.NEWS
+a = db.a
 
 
 def insert_news(title, subtitle, image_url, item_url):
@@ -29,7 +30,7 @@ def insert_news(title, subtitle, image_url, item_url):
         'image_url': image_url,
         'item_url': item_url
     }
-    NEWS.insert_one(new_news)
+    a.insert_one(new_news)
 
 
 def get_news_elements():
