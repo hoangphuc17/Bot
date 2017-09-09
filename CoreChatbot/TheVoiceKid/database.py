@@ -11,7 +11,7 @@ from CoreChatbot.Preparation.fbpage import page
 
 import datetime
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
+client = MongoClient('localhost', 27017, connect=False)
 db = client.Phuc
 
 USER = db.USER
