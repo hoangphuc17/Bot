@@ -67,31 +67,30 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    while True:
-        payload = request.get_data(as_text=True)
-        page.handle_webhook(payload, message=message_handler,
-                            postback=postback_handler)
+    payload = request.get_data(as_text=True)
+    page.handle_webhook(payload, message=message_handler,
+                        postback=postback_handler)
 
-        if a == 0:
-            # print ('a bang 0')
-            # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
+    if a == 0:
+        # print ('a bang 0')
+        # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
 
-            # check = USER.find({'subscribe_news': 'yes'})
-            # if bool(check):
-            #     print('user da subscribe')
-            # else:
-            #     print('user chua subscribe')
+        # check = USER.find({'subscribe_news': 'yes'})
+        # if bool(check):
+        #     print('user da subscribe')
+        # else:
+        #     print('user chua subscribe')
 
-            for user in USER.find({'subscribe_news': 'yes'}):
-                print user['id_user']
-                print('bbbb')
-                # page.send("dfdafdasfdas", user['id_user'])
-                # send_news(user['id_user'])
-                # print("da gui tin tuc moi")
-            for user in USER.find():
-                page.send(user['id_user'], 'alo alo')
-        print('aaaaa')
-        return "ok", 200
+        for user in USER.find({'subscribe_news': 'yes'}):
+            print user['id_user']
+            print('bbbb')
+            # page.send("dfdafdasfdas", user['id_user'])
+            # send_news(user['id_user'])
+            # print("da gui tin tuc moi")
+        for user in USER.find():
+            page.send(user['id_user'], 'alo alo')
+    print('aaaaa')
+    return "ok", 200
 
 
 # @page.handle_message
