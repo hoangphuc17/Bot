@@ -66,15 +66,15 @@ def webhook():
             print ('a bang 0')
             # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
 
-            check = USER.find({'subscribe_news': 'yes'})
-            if bool(check):
-                print('user da subscribe')
-            else:
-                print('user chua subscribe')
+            # check = USER.find({'subscribe_news': 'yes'})
+            # if bool(check):
+            #     print('user da subscribe')
+            # else:
+            #     print('user chua subscribe')
 
             for user in USER.find({'subscribe_news': 'yes'}):
                 print ('da tim thay user')
-                page.send("dfdafdasfdas", user['id_user'])
+                # page.send("dfdafdasfdas", user['id_user'])
                 # send_news(user['id_user'])
                 # print("da gui tin tuc moi")
 
