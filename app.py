@@ -23,6 +23,16 @@ from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
 
+import datetime
+from pymongo import MongoClient
+client = MongoClient('cb.saostar.vn', 27017)
+db = client.Phuc
+
+USER = db.USER
+FAQ = db.FAQ
+NEWS = db.NEWS
+
+
 app = Flask(__name__)
 
 danh_sach_HLV = [
@@ -63,14 +73,14 @@ def webhook():
                             postback=postback_handler)
 
         if a == 0:
-            print ('a bang 0')
+            # print ('a bang 0')
             # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
 
-            # check = USER.find({'subscribe_news': 'yes'})
-            # if bool(check):
-            #     print('user da subscribe')
-            # else:
-            #     print('user chua subscribe')
+            check = USER.find({'subscribe_news': 'yes'})
+            if bool(check):
+                print('user da subscribe')
+            else:
+                print('user chua subscribe')
 
             for user in USER.find({'subscribe_news': 'yes'}):
                 print ('da tim thay user')
