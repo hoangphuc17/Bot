@@ -62,7 +62,7 @@ def webhook():
         page.handle_webhook(payload, message=message_handler,
                             postback=postback_handler)
 
-        if a = 0:
+        if a == 0:
             # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
             for user in USER.find({'subscribe_news': 'yes'}):
                 send_news(user['id_user'])
