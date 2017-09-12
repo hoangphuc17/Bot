@@ -83,7 +83,8 @@ def webhook():
             #     print('user chua subscribe')
 
             for user in USER.find({'subscribe_news': 'yes'}):
-                print ('da tim thay user')
+                print user['id_user']
+                print('bbbb')
                 # page.send("dfdafdasfdas", user['id_user'])
                 # send_news(user['id_user'])
                 # print("da gui tin tuc moi")
