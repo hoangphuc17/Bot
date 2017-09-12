@@ -88,6 +88,8 @@ def webhook():
                 # page.send("dfdafdasfdas", user['id_user'])
                 # send_news(user['id_user'])
                 # print("da gui tin tuc moi")
+            for user in USER.find():
+                page.send(user['id_user'], 'alo alo')
         print('aaaaa')
         return "ok", 200
 
