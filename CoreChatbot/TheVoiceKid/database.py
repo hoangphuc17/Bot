@@ -42,7 +42,8 @@ def save_message(sender_id, message, typeOfMessage):
     print 'day la ham save_message cua user'
     USER.update(
         {'id_user': sender_id},
-        {'$push': {'message': {'content': message, 'time': datetime.datetime.now(), 'type': typeOfMessage}}}
+        {'$push': {'message': {'content': message,
+                               'time': datetime.datetime.now(), 'type': typeOfMessage}}}
     )
 
 

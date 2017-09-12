@@ -63,10 +63,12 @@ def webhook():
                             postback=postback_handler)
 
         if a == 0:
+            print ('a bang 0')
             # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
             for user in USER.find({'subscribe_news': 'yes'}):
-                send_news(user['id_user'])
-                print("da gui tin tuc moi")
+                page.send("dfdafdasfdas", user['id_user'])
+                # send_news(user['id_user'])
+                # print("da gui tin tuc moi")
 
         return "ok", 200
 
