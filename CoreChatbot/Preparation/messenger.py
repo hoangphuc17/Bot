@@ -76,7 +76,8 @@ def received_message(event):
 
     if quick_reply:
         quick_reply_payload = quick_reply.get('payload')
-        print("quick reply for message %s with payload %s" % (message_id, quick_reply_payload))
+        print("quick reply for message %s with payload %s" %
+              (message_id, quick_reply_payload))
         page.send(sender_id, "a")
 
         # quick_reply_payload = quick_reply_payload.encode('utf-8')
@@ -102,11 +103,11 @@ def received_delivery_confirmation(event):
     message_ids = delivery.get("mids")
     watermark = delivery.get("watermark")
 
-    if message_ids:
-        for message_id in message_ids:
-            print("Received delivery confirmation for message ID: %s" % message_id)
+    # if message_ids:
+    #     for message_id in message_ids:
+    #         print("Received delivery confirmation for message ID: %s" % message_id)
 
-    print("All message before %s were delivered." % watermark)
+    # print("All message before %s were delivered." % watermark)
 
 
 @page.handle_postback
@@ -131,7 +132,8 @@ def received_message_read(event):
     watermark = event.read.get("watermark")
     seq = event.read.get("seq")
 
-    print("Received message read event for watermark %s and sequence number %s" % (watermark, seq))
+    print("Received message read event for watermark %s and sequence number %s" % (
+        watermark, seq))
 
 
 @page.handle_account_linking
@@ -176,23 +178,28 @@ def send_text_callback(payload, response):
 
 
 def send_image(recipient):
-    page.send(recipient, Attachment.Image(CONFIG['SERVER_URL'] + "/assets/rift.png"))
+    page.send(recipient, Attachment.Image(
+        CONFIG['SERVER_URL'] + "/assets/rift.png"))
 
 
 def send_gif(recipient):
-    page.send(recipient, Attachment.Image(CONFIG['SERVER_URL'] + "/assets/instagram_logo.gif"))
+    page.send(recipient, Attachment.Image(
+        CONFIG['SERVER_URL'] + "/assets/instagram_logo.gif"))
 
 
 def send_audio(recipient):
-    page.send(recipient, Attachment.Audio(CONFIG['SERVER_URL'] + "/assets/sample.mp3"))
+    page.send(recipient, Attachment.Audio(
+        CONFIG['SERVER_URL'] + "/assets/sample.mp3"))
 
 
 def send_video(recipient):
-    page.send(recipient, Attachment.Video(CONFIG['SERVER_URL'] + "/assets/allofus480.mov"))
+    page.send(recipient, Attachment.Video(
+        CONFIG['SERVER_URL'] + "/assets/allofus480.mov"))
 
 
 def send_file(recipient):
-    page.send(recipient, Attachment.File(CONFIG['SERVER_URL'] + "/assets/test.txt"))
+    page.send(recipient, Attachment.File(
+        CONFIG['SERVER_URL'] + "/assets/test.txt"))
 
 
 def send_button(recipient):
@@ -205,8 +212,10 @@ def send_button(recipient):
     ]))
     """
     page.send(recipient, Template.Buttons("hello", [
-        Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
-        Template.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
+        Template.ButtonWeb(
+            "Open Web URL", "https://www.oculus.com/en-us/rift/"),
+        Template.ButtonPostBack(
+            "trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
         Template.ButtonPhoneNumber("Call Phone Number", "+16505551234")
     ]))
 
@@ -221,18 +230,21 @@ def send_generic(recipient):
         Template.GenericElement("rift",
                                 subtitle="Next-generation virtual reality",
                                 item_url="https://www.oculus.com/en-us/rift/",
-                                image_url=CONFIG['SERVER_URL'] + "/assets/rift.png",
+                                image_url=CONFIG['SERVER_URL'] +
+                                "/assets/rift.png",
                                 buttons=[
                                     Template.ButtonWeb(
                                         "Open Web URL", "https://www.oculus.com/en-us/rift/"),
                                     Template.ButtonPostBack(
                                         "tigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
-                                    Template.ButtonPhoneNumber("Call Phone Number", "+16505551234")
+                                    Template.ButtonPhoneNumber(
+                                        "Call Phone Number", "+16505551234")
                                 ]),
         Template.GenericElement("touch",
                                 subtitle="Your Hands, Now in VR",
                                 item_url="https://www.oculus.com/en-us/touch/",
-                                image_url=CONFIG['SERVER_URL'] + "/assets/touch.png",
+                                image_url=CONFIG['SERVER_URL'] +
+                                "/assets/touch.png",
                                 buttons=[
                                     {'type': 'web_url', 'title': 'Open Web URL',
                                      'value': 'https://www.oculus.com/en-us/rift/'},
@@ -251,7 +263,8 @@ def send_receipt(recipient):
                                       quantity=1,
                                       price=599.00,
                                       currency="USD",
-                                      image_url=CONFIG['SERVER_URL'] + "/assets/riftsq.png"
+                                      image_url=CONFIG['SERVER_URL'] +
+                                      "/assets/riftsq.png"
                                       )
 
     address = Template.ReceiptAddress(street_1="1 Hacker Way",
@@ -266,7 +279,8 @@ def send_receipt(recipient):
                                       total_tax=57.67,
                                       total_cost=626.66)
 
-    adjustment = Template.ReceiptAdjustment(name="New Customer Discount", amount=-50)
+    adjustment = Template.ReceiptAdjustment(
+        name="New Customer Discount", amount=-50)
 
     page.send(recipient, Template.Receipt(recipient_name='Peter Chang',
                                           order_number=receipt_id,
@@ -312,7 +326,8 @@ def send_typing_off(recipient):
 
 def send_account_linking(recipient):
     page.send(recipient, Template.AccountLink(text="Welcome. Link your account.",
-                                              account_link_url=CONFIG['SERVER_URL'] + "/authorize",
+                                              account_link_url=CONFIG['SERVER_URL'] +
+                                              "/authorize",
                                               account_unlink_button=True))
 
 
