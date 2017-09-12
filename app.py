@@ -128,6 +128,7 @@ def postback_handler(event):
 @app.route('/send_news', methods=['POST'])
 def handle_subscribe():
     news_for_subscribe()
+    return "ok", 200
 
 
 def send_news(sender_id):
