@@ -36,21 +36,21 @@ danh_sach_HLV = [i.decode('UTF-8') if isinstance(i,
 subscribe_options = ["yes", "no"]
 
 
-@app.route('/', methods=['GET'])
-def verify():
-    # if request.args.get("hub.verify_token") == 'phuc123':
-    #     return request.args["hub.challenge"], 200
-    # else:
-    #     return "Verification token mismatch", 403
-    # Webhook verification
-    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-        if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
-            return "Verification token mismatch", 403
-        return request.args["hub.challenge"], 200
-    else:
-        return "trouble in hub.mode or hub.challenge", 200
+# @app.route('/', methods=['GET'])
+# def verify():
+#     # if request.args.get("hub.verify_token") == 'phuc123':
+#     #     return request.args["hub.challenge"], 200
+#     # else:
+#     #     return "Verification token mismatch", 403
+#     # Webhook verification
+#     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+#         if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
+#             return "Verification token mismatch", 403
+#         return request.args["hub.challenge"], 200
+#     else:
+#         return "trouble in hub.mode or hub.challenge", 200
 
-    return "verify successfully", 200
+#     return "verify successfully", 200
 
 
 @app.route('/', methods=['POST'])
@@ -128,6 +128,7 @@ def postback_handler(event):
 @app.route('/', methods=['POST'])
 def handle_subscribe():
     news_for_subscribe()
+    print('day la handle subscribe')
     return "ok", 200
 
 
@@ -148,6 +149,7 @@ def send_news(sender_id):
 def news_for_subscribe():
     for user in USER.find({'subscribe_news': 'yes'}):
         send_news(user['id_user'])
+        print("da gui")
     return
 
 
