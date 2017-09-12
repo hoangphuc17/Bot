@@ -22,16 +22,6 @@ from CoreChatbot.Preparation.fbpage import page
 from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
-import schedule
-import time
-
-
-def job():
-    print("I'm working...")
-
-
-schedule.every(0.1).minutes.do(job)
-
 
 app = Flask(__name__)
 
@@ -65,13 +55,10 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-        payload = request.get_data(as_text=True)
-        page.handle_webhook(payload, message=message_handler,
-                            postback=postback_handler)
-        return "ok", 200
+    payload = request.get_data(as_text=True)
+    page.handle_webhook(payload, message=message_handler,
+                        postback=postback_handler)
+    return "ok", 200
 
 
 # @page.handle_message
@@ -136,6 +123,29 @@ def postback_handler(event):
         postback_list[postback](sender_id)
 
     return
+
+
+@app.route('/send_news', methods=['POST'])
+def handle_subscribe():
+    news_for_subscribe()
+
+
+def send_news(sender_id):
+    element = Template.GenericElement(
+        title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào",
+        subtitle="Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
+        image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
+        buttons=[
+            Template.ButtonWeb(
+                'Đọc tin', "https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html"),
+            Template.ButtonPostBack('Về Home', 'home')
+        ])
+    page.send(sender_id, Template.Generic(element))
+
+
+def news_for_subscribe():
+    for user in USER.find({'subscribe_news': 'yes'}):
+        send_news(user['id_user'])
 
 
 if __name__ == '__main__':
