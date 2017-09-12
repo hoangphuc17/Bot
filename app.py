@@ -45,8 +45,6 @@ danh_sach_HLV = [i.decode('UTF-8') if isinstance(i,
 
 subscribe_options = ["yes", "no"]
 
-a = 0
-
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -70,8 +68,8 @@ def webhook():
     payload = request.get_data(as_text=True)
     page.handle_webhook(payload, message=message_handler,
                         postback=postback_handler)
-
-    if a == 0:
+    a = 0
+    if a < 2:
         # print ('a bang 0')
         # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
 
@@ -81,15 +79,16 @@ def webhook():
         # else:
         #     print('user chua subscribe')
 
-        for user in USER.find({'subscribe_news': 'yes'}):
-            print user['id_user']
-            print('bbbb')
-            # page.send("dfdafdasfdas", user['id_user'])
-            # send_news(user['id_user'])
-            # print("da gui tin tuc moi")
+        # for user in USER.find({'subscribe_news': 'yes'}):
+        #     print user['id_user']
+        #     print('bbbb')
+        #     # page.send("dfdafdasfdas", user['id_user'])
+        #     # send_news(user['id_user'])
+        #     # print("da gui tin tuc moi")
+        a = a + 1
         for user in USER.find():
             page.send(user['id_user'], 'alo alo')
-    print('aaaaa')
+    # print('aaaaa')
     return "ok", 200
 
 
