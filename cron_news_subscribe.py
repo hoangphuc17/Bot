@@ -37,7 +37,7 @@ def send_news(sender_id):
 
 def news_for_subscribe():
     for user in USER.find({'subscribe_news': 'yes'}):
-        send_news(user['user_id'])
+        send_news(user['id_user'])
 
 
 news_for_subscribe()
