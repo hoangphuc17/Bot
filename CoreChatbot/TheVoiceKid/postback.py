@@ -52,7 +52,8 @@ def greeting(sender_id):
 
     check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
-        pass
+        # pass
+        page.send(sender_id, "user da co trong database")
     else:
         insert_new_user(first_name, last_name, id_user)
     return

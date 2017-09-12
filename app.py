@@ -124,7 +124,7 @@ def message_handler(event):
 
     else:
         # luu tin nhan
-        save_message(sender_id, message, "message")
+        save_message(sender_id, message)
         # tra loi tin nhan
         # answer(message, sender_id)
         page.send(sender_id, "ko hieu tin nhan")
