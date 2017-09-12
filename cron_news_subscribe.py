@@ -41,3 +41,15 @@ def news_for_subscribe():
 
 
 news_for_subscribe()
+
+
+@app.route('/', methods=['POST'])
+def webhook():
+    payload = request.get_data(as_text=True)
+    page.handle_webhook(payload, message=message_handler,
+                        postback=postback_handler)
+    return "ok", 200
+
+
+if __name__ == '__main__':
+    app.run(host='210.211.109.211', port=5000, debug=True, threaded=True)

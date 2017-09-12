@@ -22,6 +22,16 @@ from CoreChatbot.Preparation.fbpage import page
 from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
+import schedule
+import time
+
+
+def job():
+    print("I'm working...")
+
+
+schedule.every(0.1).minutes.do(job)
+
 
 app = Flask(__name__)
 
@@ -30,7 +40,8 @@ danh_sach_HLV = [
     "Tiên Cookie và Hương Tràm",
     "Soobin"
 ]
-danh_sach_HLV = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in danh_sach_HLV]
+danh_sach_HLV = [i.decode('UTF-8') if isinstance(i,
+                                                 basestring) else i for i in danh_sach_HLV]
 
 subscribe_options = ["yes", "no"]
 
@@ -54,9 +65,13 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    payload = request.get_data(as_text=True)
-    page.handle_webhook(payload, message=message_handler, postback=postback_handler)
-    return "ok", 200
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+        payload = request.get_data(as_text=True)
+        page.handle_webhook(payload, message=message_handler,
+                            postback=postback_handler)
+        return "ok", 200
 
 
 # @page.handle_message
