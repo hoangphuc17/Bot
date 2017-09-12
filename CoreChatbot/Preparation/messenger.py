@@ -132,8 +132,8 @@ def received_message_read(event):
     watermark = event.read.get("watermark")
     seq = event.read.get("seq")
 
-    print("Received message read event for watermark %s and sequence number %s" % (
-        watermark, seq))
+    # print("Received message read event for watermark %s and sequence number %s" % (
+    #     watermark, seq))
 
 
 @page.handle_account_linking
