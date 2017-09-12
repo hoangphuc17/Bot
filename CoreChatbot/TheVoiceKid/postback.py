@@ -153,7 +153,7 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
         page.send(sender_id, Template.Buttons(text, buttons))
         USER.update_one(
             {'id_user': sender_id},
-            {'$set': {'subscribe': quick_reply_payload}}
+            {'$set': {'subscribe_news': quick_reply_payload}}
         )
     else:
         text = "Bạn đã đăng ký nhận tin tức mới thành công. \nMỗi khi có bài viết mới về chương trình The Voice Kid 2017, mình sẽ thông báo tới bạn."
@@ -164,7 +164,7 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
         page.send(sender_id, Template.Buttons(text, buttons))
         USER.update_one(
             {'id_user': sender_id},
-            {'$set': {'subscribe': quick_reply_payload}}
+            {'$set': {'subscribe_news': quick_reply_payload}}
         )
     return
 
@@ -191,7 +191,8 @@ def minigame1_vote(sender_id):
     question = "Bạn dự đoán thí sinh thuộc đội của huấn luyện viên nào sẽ xuất sắc giành lấy ngôi vị quán quân của chương trình?"
     quick_replies = [
         QuickReply(title="#teamcôTường", payload="Vũ Cát Tường"),
-        QuickReply(title="#teamcôTiênvàcôTràm", payload="Tiên Cookie và Hương Tràm"),
+        QuickReply(title="#teamcôTiênvàcôTràm",
+                   payload="Tiên Cookie và Hương Tràm"),
         QuickReply(title="#teamchúSoobin", payload="Soobin")
     ]
     page.send(sender_id,
