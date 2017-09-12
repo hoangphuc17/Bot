@@ -39,7 +39,7 @@ def insert_new_user(first_name, last_name, id_user):
 
 
 def save_message(sender_id, message, typeOfMessage):
-    print 'day la ham save_message cua user'
+    # print 'day la ham save_message cua user'
     USER.update_one(
         {'id_user': sender_id},
         {'$push': {'message': {'content': message,

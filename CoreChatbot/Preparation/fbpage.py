@@ -13,4 +13,5 @@ page = Page(CONFIG['FACEBOOK_TOKEN'])
 def after_send(payload, response):
     # print('AFTER_SEND : ' + payload.to_json())
     # print('RESPONSE : ' + response.text)
-    print ('day la ham after_send: Preparation/fbpage.py')
+    # print ('day la ham after_send: Preparation/fbpage.py')
+    x = 0
