@@ -66,6 +66,7 @@ def webhook():
             print ('a bang 0')
             # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
             for user in USER.find({'subscribe_news': 'yes'}):
+                print ('da tim thay user')
                 page.send("dfdafdasfdas", user['id_user'])
                 # send_news(user['id_user'])
                 # print("da gui tin tuc moi")
