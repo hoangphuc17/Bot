@@ -53,3 +53,5 @@ def answer(message, sender_id):
                 "Home", "home")
         ]
         page.send(sender_id, Template.Buttons(text, buttons))
+
+    return

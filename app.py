@@ -142,11 +142,13 @@ def send_news(sender_id):
             Template.ButtonPostBack('Về Home', 'home')
         ])
     page.send(sender_id, Template.Generic(element))
+    return
 
 
 def news_for_subscribe():
     for user in USER.find({'subscribe_news': 'yes'}):
         send_news(user['id_user'])
+    return
 
 
 if __name__ == '__main__':
