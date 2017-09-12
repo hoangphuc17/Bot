@@ -35,6 +35,8 @@ danh_sach_HLV = [i.decode('UTF-8') if isinstance(i,
 
 subscribe_options = ["yes", "no"]
 
+a = 0
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -59,6 +61,12 @@ def webhook():
         payload = request.get_data(as_text=True)
         page.handle_webhook(payload, message=message_handler,
                             postback=postback_handler)
+
+        if (a=0):  # dieu kien ve thoi gian, chua giai quyet duoc van de minh la nguoi bat dau message
+            for user in USER.find({'subscribe_news': 'yes'}):
+                send_news(user['id_user'])
+                print("da gui tin tuc moi")
+
         return "ok", 200
 
 
@@ -133,18 +141,18 @@ def postback_handler(event):
 #     return "ok", 200
 
 
-# def send_news(sender_id):
-#     element = Template.GenericElement(
-#         title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào",
-#         subtitle="Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
-#         image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
-#         buttons=[
-#             Template.ButtonWeb(
-#                 'Đọc tin', "https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html"),
-#             Template.ButtonPostBack('Về Home', 'home')
-#         ])
-#     page.send(sender_id, Template.Generic(element))
-#     return
+def send_news(sender_id):
+    element = Template.GenericElement(
+        title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào",
+        subtitle="Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
+        image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
+        buttons=[
+            Template.ButtonWeb(
+                'Đọc tin', "https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html"),
+            Template.ButtonPostBack('Về Home', 'home')
+        ])
+    page.send(sender_id, Template.Generic(element))
+    return
 
 
 # def news_for_subscribe():
