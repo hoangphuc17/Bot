@@ -24,6 +24,21 @@ NEWS = db.NEWS
 
 
 def answer(message, sender_id):
+
+    user_profile = page.get_user_profile(sender_id)  # return dict
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
+    id_user = user_profile["id"]
+
+    # kiem tra user, neu chua co thi them vao database
+    check_user = USER.find_one({'id_user': sender_id})
+    if bool(check_user):
+        # pass
+        # page.send(sender_id, "user da co trong database")
+        print('user da co trong database')
+    else:
+        insert_new_user(first_name, last_name, id_user)
+
     found_question = False
     for data in FAQ.find():
         final_data = {}

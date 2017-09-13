@@ -63,6 +63,20 @@ def greeting(sender_id):
 
 def home(sender_id):
 
+    user_profile = page.get_user_profile(sender_id)  # return dict
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
+    id_user = user_profile["id"]
+
+    # kiem tra user, neu chua co thi them vao database
+    check_user = USER.find_one({'id_user': sender_id})
+    if bool(check_user):
+        # pass
+        # page.send(sender_id, "user da co trong database")
+        print('user da co trong database')
+    else:
+        insert_new_user(first_name, last_name, id_user)
+
     elements = [
         Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
@@ -135,6 +149,20 @@ def minigame2(sender_id):
 
 
 def subscribe_news(sender_id):
+
+    user_profile = page.get_user_profile(sender_id)  # return dict
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
+    id_user = user_profile["id"]
+
+    # kiem tra user, neu chua co thi them vao database
+    check_user = USER.find_one({'id_user': sender_id})
+    if bool(check_user):
+        # pass
+        # page.send(sender_id, "user da co trong database")
+        print('user da co trong database')
+    else:
+        insert_new_user(first_name, last_name, id_user)
 
     question = "Bằng cách đồng ý theo dõi tin tức dưới đây, bạn sẽ nhận được thông báo mỗi khi tin tức mới của chương trình “Giọng Hát Việt Nhí” 2017 được cập nhật.\nBạn muốn nhận thông báo chứ?"
     quick_replies = [
