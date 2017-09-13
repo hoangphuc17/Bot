@@ -88,11 +88,16 @@ def message_handler(event):
         'giờ phát sóng': timeline,
         'lịch phát sóng': timeline,
         'giới thiệu': introduce,
-        'subscribe': handle_subscribe_1,
+        'subscribe': handle_subscribe_1
     }
+    minigame2_keyword_list = ["đỉnh", "xinh", "bánh bèo", "chất",
+                              "phũ", "cá tính", "đẹp trai", "ế", "cao", "hit", "cute", "nhọ"]
 
     if message in keyword_list:
         keyword_list[message](sender_id)
+
+    elif message in minigame2_keyword_list:
+        minigame2_handle_result(message)
 
     elif danh_sach_HLV.count(quickreply) == 1:
         minigame1_handle_quick_reply(sender_id, quickreply)
@@ -107,8 +112,6 @@ def message_handler(event):
         save_message(sender_id, message)
         # tra loi tin nhan
         answer(message, sender_id)
-        page.send(sender_id, "ko hieu tin nhan")
-
     return
 
 
@@ -127,6 +130,7 @@ def postback_handler(event):
         'minigame1_rule': minigame1_rule,
         'minigame2': minigame2,
         'minigame2_rule': minigame2_rule,
+        'minigame2_menu': minigame2_menu,
         'timeline': timeline,
         'introduce': introduce
     }

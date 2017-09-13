@@ -118,6 +118,7 @@ def minigame1(sender_id):
             "Thể lệ dự đoán 📜", "minigame1_rule")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
+    return
 
 
 def minigame2(sender_id):
@@ -128,7 +129,9 @@ def minigame2(sender_id):
         Template.ButtonPostBack(
             "Thể lệ dự đoán 📜", "minigame2_rule")
     ]
+
     page.send(sender_id, Template.Buttons(text, buttons))
+    return
 
 
 def subscribe_news(sender_id):
@@ -279,6 +282,7 @@ def timeline(sender_id):
     ]
 
     page.send(sender_id, Template.Buttons(text, buttons))
+    return
 
 
 def introduce(sender_id):
@@ -288,6 +292,7 @@ def introduce(sender_id):
     ]
 
     page.send(sender_id, Template.Buttons(text, buttons))
+    return
 
 
 def handle_subscribe_1(sender_id):
@@ -308,3 +313,26 @@ def handle_subscribe_1(sender_id):
 
 
 # def handle_subscribe_3():
+def minigame2_menu(sender_id):
+    text = "Nhập một từ khóa bất kỳ để có cơ hội nhận Sticker 'Siêu Đáng Yêu' hình vẽ các HLV mà bạn yêu thích !! Ngại gì không thử ?? 👇👇.\n=> Gợi ý: Những từ/cụm từ được các HLV sử dụng nhiều nhất trong chương trình Giọng Hát Việt Nhí 2017."
+    page.send(sender_id, text)
+    return
+
+
+def minigame2_handle_result(message, sender_id):
+    message = message.lower()
+    huong_tram = ["đỉnh", "xinh", "bánh bèo"]
+    vu_cat_tuong = ["chất", "cá tính", "phũ"]
+    soobin = ["đẹp trai", "ế", "cao"]
+    tien_cookie = ["hit", "cute", "nhọ"]
+    if message in huong_tram:
+        game2_hlv_url = "http://210.211.109.211/weqbfyretnccbsaf/game2_huongtram.png"
+        page.send(sender_id, Attachment.Image(game2_hlv_url))
+        text = "Chính xác!!!!!!!!"
+        buttons = [
+            Template.ButtonPostBack("Đoán thêm lần nữa 😻", "minigame2_menu"),
+            Template.ButtonPostBack("Home", "home")
+        ]
+    # elif message in vu_cat_tuong:
+    # elif message in soobin:
+    # elif message in tien_cookie:
