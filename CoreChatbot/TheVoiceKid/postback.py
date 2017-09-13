@@ -166,7 +166,8 @@ def subscribe_news(sender_id):
 
     question = "Bằng cách đồng ý theo dõi tin tức dưới đây, bạn sẽ nhận được thông báo mỗi khi tin tức mới của chương trình “Giọng Hát Việt Nhí” 2017 được cập nhật.\nBạn muốn nhận thông báo chứ?"
     quick_replies = [
-        QuickReply(title="Đồng ý luôn 😈", payload="yes"),
+        QuickReply(title="1 tuần 1 lần 😋", payload="yes1"),
+        QuickReply(title="1 tuần 2 lần 😈", payload="yes2"),
         QuickReply(title="Nhắc lại sau 😜", payload="no")
     ]
     page.send(sender_id,
@@ -326,7 +327,8 @@ def introduce(sender_id):
 def handle_subscribe_1(sender_id):
     question = "Bằng cách đồng ý theo dõi, để nhận các tin tức mới nhất của Giọng Hát Việt Nhí 2017, các nhắc nhở giờ phát sóng của tập mới, bạn muốn nhận thông báo chứ?"
     quick_replies = [
-        QuickReply(title="Đồng ý luôn 😈", payload="yes"),
+        QuickReply(title="1 tuần 1 lần 😋", payload="yes1"),
+        QuickReply(title="1 tuần 2 lần 😈", payload="yes2"),
         QuickReply(title="Nhắc lại sau 😜", payload="no")
     ]
     page.send(sender_id,

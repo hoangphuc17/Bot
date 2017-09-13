@@ -43,7 +43,7 @@ danh_sach_HLV = [
 danh_sach_HLV = [i.decode('UTF-8') if isinstance(i,
                                                  basestring) else i for i in danh_sach_HLV]
 
-subscribe_options = ["yes", "no"]
+subscribe_options = ["yes1", "yes2", "no"]
 
 
 @app.route('/', methods=['GET'])
