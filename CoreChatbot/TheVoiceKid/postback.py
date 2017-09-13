@@ -326,7 +326,7 @@ def minigame2_handle_result(message, sender_id):
     soobin = ["đẹp trai", "ế", "cao"]
     tien_cookie = ["hit", "cute", "nhọ"]
     if message in huong_tram:
-        game2_hlv_url = "http://210.211.109.211/weqbfyretnccbsaf/hinh6_minigame.jpg"
+        game2_hlv_url = "http://210.211.109.211/weqbfyretnccbsaf/game2_huongtram.jpg"
         page.send(sender_id, Attachment.Image(game2_hlv_url))
         text = "Chính xác!!!!!!!!"
         buttons = [
