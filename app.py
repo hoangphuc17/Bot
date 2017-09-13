@@ -75,7 +75,7 @@ def webhook():
 def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
-    message = event.message_text
+    message = event.message_text.lower()
     quickreply = event.quick_reply_payload
 
     keyword_list = {
@@ -94,7 +94,7 @@ def message_handler(event):
                               "phũ", "cá tính", "đẹp trai", "ế", "cao", "hit", "cute", "nhọ"]
 
     if message in keyword_list:
-        message = message.lower()
+        # message = message.lo
         keyword_list[message](sender_id)
         return
 
