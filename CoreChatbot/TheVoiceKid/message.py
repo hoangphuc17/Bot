@@ -62,7 +62,7 @@ def answer(message, sender_id):
     else:
         print 'khong tim thay cau hoi trong FAQ'
         # text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
-        text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử đoán lại với một ‘Từ Khóa’ khác nhé!"
+        text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử lại với một ‘Từ Khóa’ khác nhé!"
         buttons = [
             Template.ButtonPostBack(
                 "Home", "home")
