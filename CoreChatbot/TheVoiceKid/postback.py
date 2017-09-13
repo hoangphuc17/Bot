@@ -30,12 +30,20 @@ danh_sach_hinh_anh_HLV = {
 
 
 def greeting(sender_id):
-
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
+
+    # kiem tra user, neu chua co thi them vao database
+    check_user = USER.find_one({'id_user': sender_id})
+    if bool(check_user):
+        # pass
+        # page.send(sender_id, "user da co trong database")
+        print('day la ham greeting, user da co trong database')
+    else:
+        insert_new_user(first_name, last_name, id_user)
 
     space = " "
     a = "Chào"
@@ -50,12 +58,6 @@ def greeting(sender_id):
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
 
-    check_user = USER.find_one({'id_user': sender_id})
-    if bool(check_user):
-        # pass
-        page.send(sender_id, "user da co trong database")
-    else:
-        insert_new_user(first_name, last_name, id_user)
     return
 
 
@@ -157,7 +159,7 @@ def handle_subscribe_news(sender_id, quick_reply_payload):
             {'$set': {'subscribe_news': quick_reply_payload}}
         )
     else:
-        text = "Bạn đã đăng ký nhận tin tức mới thành công. \nMỗi khi có bài viết mới về chương trình The Voice Kid 2017, mình sẽ thông báo tới bạn."
+        text = "Bạn đã đăng ký nhận thông báo thành công. \nMỗi khi có thông báo mới về chương trình The Voice Kid 2017, mình sẽ gửi tới bạn."
         buttons = [
             Template.ButtonPostBack("Home", "home")
         ]
@@ -286,3 +288,23 @@ def introduce(sender_id):
     ]
 
     page.send(sender_id, Template.Buttons(text, buttons))
+
+
+def handle_subscribe_1(sender_id):
+    question = "Bằng cách đồng ý theo dõi, để nhận các tin tức mới nhất của Giọng Hát Việt Nhí 2017, các nhắc nhở giờ phát sóng của tập mới, bạn muốn nhận thông báo chứ?"
+    quick_replies = [
+        QuickReply(title="Đồng ý luôn 😈", payload="yes"),
+        QuickReply(title="Nhắc lại sau 😜", payload="no")
+    ]
+    page.send(sender_id,
+              question,
+              quick_replies=quick_replies,
+              metadata="DEVELOPER_DEFINED_METADATA")
+
+    return
+
+
+# def handle_subscribe_2():
+
+
+# def handle_subscribe_3():

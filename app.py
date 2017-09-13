@@ -87,7 +87,8 @@ def message_handler(event):
         'chao': greeting,
         'giờ phát sóng': timeline,
         'lịch phát sóng': timeline,
-        'giới thiệu': introduce
+        'giới thiệu': introduce,
+        'subscribe': handle_subscribe_1,
     }
 
     if message in keyword_list:
@@ -105,7 +106,7 @@ def message_handler(event):
         # luu tin nhan
         save_message(sender_id, message)
         # tra loi tin nhan
-        # answer(message, sender_id)
+        answer(message, sender_id)
         page.send(sender_id, "ko hieu tin nhan")
 
     return
