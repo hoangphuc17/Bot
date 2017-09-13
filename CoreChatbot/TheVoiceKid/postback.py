@@ -1,4 +1,26 @@
+# -*- coding: utf-8 -*-
+import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+from ApiMessenger import Attachment, Template
+from ApiMessenger.payload import QuickReply
+from ApiMessenger.fbmq import Page
 
+import CoreChatbot.Preparation.messenger
+from CoreChatbot.Preparation.config import CONFIG
+from CoreChatbot.Preparation.fbpage import page
+
+from CoreChatbot.TheVoiceKid.database import *
+
+
+import datetime
+from pymongo import MongoClient
+client = MongoClient('cb.saostar.vn', 27017)
+db = client.Phuc
+USER = db.USER
+FAQ = db.FAQ
+NEWS = db.NEWS
 
 danh_sach_hinh_anh_HLV = {
     "Vũ Cát Tường": "hinh5_minigame.jpg",
