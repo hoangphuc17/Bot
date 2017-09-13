@@ -85,6 +85,7 @@ def message_handler(event):
         'chào': greeting,
         'alo': greeting,
         'chao': greeting,
+        'xin chào': greeting,
         'giờ phát sóng': timeline,
         'lịch phát sóng': timeline,
         'giới thiệu': introduce,
