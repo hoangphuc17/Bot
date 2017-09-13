@@ -326,8 +326,8 @@ def minigame2_handle_result(message, sender_id):
     soobin = ["đẹp trai", "ế", "cao"]
     tien_cookie = ["hit", "cute", "nhọ"]
     if message in huong_tram:
-        game2_hlv_url = "http://210.211.109.211/weqbfyretnccbsaf/game2_huongtram.png"
-        page.send(sender_id, Attachment.Image(game2_hlv_url))
+        # game2_hlv_url = "http://210.211.109.211/weqbfyretnccbsaf/game2_huongtram.png"
+        # page.send(sender_id, Attachment.Image(game2_hlv_url))
         text = "Chính xác!!!!!!!!"
         buttons = [
             Template.ButtonPostBack("Đoán thêm lần nữa 😻", "minigame2_menu"),
