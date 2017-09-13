@@ -333,6 +333,7 @@ def minigame2_handle_result(message, sender_id):
             Template.ButtonPostBack("Đoán thêm lần nữa 😻", "minigame2_menu"),
             Template.ButtonPostBack("Home", "home")
         ]
+        page.send(sender_id, Template.Buttons(text, buttons))
     # elif message in vu_cat_tuong:
     # elif message in soobin:
     # elif message in tien_cookie:

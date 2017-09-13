@@ -98,7 +98,7 @@ def message_handler(event):
         return
 
     elif message in minigame2_keyword_list:
-        minigame2_handle_result(message)
+        minigame2_handle_result(message, sender_id)
         return
 
     elif danh_sach_HLV.count(quickreply) == 1:
