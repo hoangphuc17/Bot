@@ -43,7 +43,6 @@ def answer(message, sender_id):
             found_question = False
 
     if found_question:
-
         page.send(sender_id, final_data['answer'])
     else:
         print 'khong tim thay cau hoi trong FAQ'

@@ -113,7 +113,7 @@ def message_handler(event):
         # luu tin nhan
         save_message(sender_id, message)
         # tra loi tin nhan
-        # answer(message, sender_id)
+        answer(message, sender_id)
     return
 
 
