@@ -94,6 +94,7 @@ def message_handler(event):
                               "phũ", "cá tính", "đẹp trai", "ế", "cao", "hit", "cute", "nhọ"]
 
     if message in keyword_list:
+        message = message.lower()
         keyword_list[message](sender_id)
         return
 
