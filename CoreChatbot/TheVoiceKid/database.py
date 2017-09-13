@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
@@ -9,11 +11,13 @@ import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 
+# from CoreChatbot.TheVoiceKid.database import *
+
+
 import datetime
 from pymongo import MongoClient
 client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
-
 USER = db.USER
 FAQ = db.FAQ
 NEWS = db.NEWS
@@ -41,11 +45,6 @@ def insert_new_user(first_name, last_name, id_user):
 def save_message(sender_id, message):
     # print 'day la ham save_message cua user'
 
-    user_profile = page.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
-    id_user = user_profile["id"]
-
     # kiem tra user, neu chua co thi them vao database
     check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
@@ -53,6 +52,10 @@ def save_message(sender_id, message):
         # page.send(sender_id, "user da co trong database")
         print('user da co trong database')
     else:
+        user_profile = page.get_user_profile(sender_id)  # return dict
+        first_name = user_profile["first_name"]
+        last_name = user_profile["last_name"]
+        id_user = user_profile["id"]
         insert_new_user(first_name, last_name, id_user)
 
     USER.update_one(
