@@ -25,6 +25,7 @@ NEWS = db.NEWS
 id_phuc = "1588973231176132"
 id_phuc2 = "1370330196399177"
 id_chau = "1318278091631838"
+id_duc = "1627683190629761"
 
 
 def send_broadcast(sender_id):
@@ -38,8 +39,9 @@ def send_broadcast(sender_id):
     page.send(sender_id, Template.Buttons(text, buttons))
 
 
-send_broadcast(id_chau)
+# send_broadcast(id_chau)
+
 
 for user in USER.find():
     print "user aaaaa"
-    # send_broadcast(user['id_user'])
+    send_broadcast(user['id_user'])
