@@ -38,7 +38,7 @@ def send_broadcast(sender_id):
     page.send(sender_id, Template.Buttons(text, buttons))
 
 
-send_broadcast(id_phuc2)
+send_broadcast(id_chau)
 
 for user in USER.find():
     print "user aaaaa"
