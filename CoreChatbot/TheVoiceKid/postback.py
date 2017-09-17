@@ -391,3 +391,7 @@ def minigame2_handle_result(message, sender_id):
             Template.ButtonPostBack("Home", "home")
         ]
         page.send(sender_id, Template.Buttons(text, buttons))
+
+
+# def receive_feedback:
+    # template để hiện nút và hình cho user gửi feedback
