@@ -44,7 +44,7 @@ def answer(message, sender_id):
         count = 0
         metadata = data['metadata']
         for word in metadata:
-            if word in message.lower():
+            if word in message:
                 count = count + 1
             else:
                 break
