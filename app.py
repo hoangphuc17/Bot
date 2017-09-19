@@ -75,8 +75,13 @@ def webhook():
 def message_handler(event):
     """:type event: fbmq.Event"""
     sender_id = event.sender_id
-    message = event.message_text.lower()
+    message = event.message_text
     quickreply = event.quick_reply_payload
+
+    if message is not None:
+        message = message.lower()
+    else:
+        pass
 
     keyword_list = {
         'home': home,
