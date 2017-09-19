@@ -53,7 +53,7 @@ def send_video_broadcast(sender_id):
 
 check = USER.find_one({'id_user': id_phuc})
 if bool(check):
-    send_video_broadcast(id_phuc)
+    send_video_broadcast(id_duc)
 else:
     pass
 
