@@ -47,7 +47,7 @@ def greeting(sender_id):
 
     space = " "
     a = "Chào"
-    b = "😍. Cùng mình cập nhật những tin tức “nóng hổi” của chương trình “Giọng Hát Việt Nhí” 2017 tại chatbot này bạn nhé 😉. Ngoài ra, bạn còn có cơ hội tham gia các màn dự đoán “nẩy lửa” và nếu may mắn bạn có thể “rinh” về những phần quà vô cùng hấp dẫn nữa đấy. Giờ thì còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” này nào !!!\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺"
+    b = "đến với Giọng Hát Việt Nhí. Tại đây, bạn có thể đặt câu hỏi, chơi Mini game và theo dõi những tin tức “nóng hổi” nhất từ chương trình. Còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” ngay nào !!! ;) ;)\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺"
     a = a.decode('utf-8')
     b = b.decode('utf-8')
     seq = (a, first_name, b)
