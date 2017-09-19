@@ -51,4 +51,7 @@ def send_video_broadcast(sender_id):
     page.send(sender_id, Attachment.Video(url_video))
 
 
-for user in USER.find():
+send_video_broadcast(id_phuc)
+
+# for user in USER.find():
+#     send_video_broadcast(id_phuc)
