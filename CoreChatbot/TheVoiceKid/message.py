@@ -24,48 +24,53 @@ NEWS = db.NEWS
 
 
 def answer(message, sender_id):
+    if message is not None:
 
-    # kiem tra user, neu chua co thi them vao database
-    check_user = USER.find_one({'id_user': sender_id})
-    if bool(check_user):
-        # pass
-        # page.send(sender_id, "user da co trong database")
-        print('user da co trong database')
-    else:
-        user_profile = page.get_user_profile(sender_id)  # return dict
-        first_name = user_profile["first_name"]
-        last_name = user_profile["last_name"]
-        id_user = user_profile["id"]
-        insert_new_user(first_name, last_name, id_user)
-
-    found_question = False
-    for data in FAQ.find():
-        final_data = {}
-        count = 0
-        metadata = data['metadata']
-        for word in metadata:
-            if word in message:
-                count = count + 1
-            else:
-                break
-        if count == len(data['metadata']):
-            final_data = data
-            print 'final_data la', final_data
-            found_question = True
-            break
+        # kiem tra user, neu chua co thi them vao database
+        check_user = USER.find_one({'id_user': sender_id})
+        if bool(check_user):
+            # pass
+            # page.send(sender_id, "user da co trong database")
+            print('user da co trong database')
         else:
-            found_question = False
+            user_profile = page.get_user_profile(sender_id)  # return dict
+            first_name = user_profile["first_name"]
+            last_name = user_profile["last_name"]
+            id_user = user_profile["id"]
+            insert_new_user(first_name, last_name, id_user)
 
-    if found_question:
-        page.send(sender_id, final_data['answer'])
+        found_question = False
+
+        for data in FAQ.find():
+            final_data = {}
+            count = 0
+            metadata = data['metadata']
+            for word in metadata:
+                if word in message:
+                    count = count + 1
+                else:
+                    break
+            if count == len(data['metadata']):
+                final_data = data
+                print 'final_data la', final_data
+                found_question = True
+                break
+            else:
+                found_question = False
+
+        if found_question:
+            page.send(sender_id, final_data['answer'])
+        else:
+            print 'khong tim thay cau hoi trong FAQ'
+            # text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
+            text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử lại với một ‘Từ Khóa’ khác nhé!"
+            buttons = [
+                Template.ButtonPostBack(
+                    "Home", "home")
+            ]
+            page.send(sender_id, Template.Buttons(text, buttons))
+
     else:
-        print 'khong tim thay cau hoi trong FAQ'
-        # text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
-        text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử lại với một ‘Từ Khóa’ khác nhé!"
-        buttons = [
-            Template.ButtonPostBack(
-                "Home", "home")
-        ]
-        page.send(sender_id, Template.Buttons(text, buttons))
+        pass
 
     return
