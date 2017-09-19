@@ -51,7 +51,11 @@ def send_video_broadcast(sender_id):
     page.send(sender_id, Attachment.Video(url_video))
 
 
-send_video_broadcast(id_phuc)
+check = USER.find_one({'id_user': id_phuc})
+    if bool(check):
+        send_video_broadcast(id_phuc)
+    else:
+        pass
 
 # for user in USER.find():
 #     send_video_broadcast(id_phuc)
