@@ -95,7 +95,7 @@ def insert_news(title, subtitle, image_url, item_url):
         NEWS.insert_one(new_news)
 
 
-def first_level(id_first_level: int, id_node_children: int, keyword: dict):
+def first_level(id_first_level, id_node_children, keyword):
     first_level_node = {
         'id_first_level_node': id_first_level,
         'id_node_children': id_node_children,
@@ -105,7 +105,7 @@ def first_level(id_first_level: int, id_node_children: int, keyword: dict):
     FAQ.insert_one(first_level_node)
 
 
-def medial_level(id_medial_level: int, id_node_parent: int, id_node_children: int, keyword: dict):
+def medial_level(id_medial_level, id_node_parent, id_node_children, keyword):
     medial_level_node = {
         'id_medial_level_node': id_medial_level,
         'id_node_parent': id_node_parent,
@@ -116,7 +116,7 @@ def medial_level(id_medial_level: int, id_node_parent: int, id_node_children: in
     FAQ.insert_one(medial_level_node)
 
 
-def final_level(id_final_level: int, id_node_parent: int, keyword: dict, answer: dict):
+def final_level(id_final_level, id_node_parent, keyword, answer):
     final_level_node = {
         'id_final_level_node': id_final_level,
         'id_node_parent': id_node_parent,
