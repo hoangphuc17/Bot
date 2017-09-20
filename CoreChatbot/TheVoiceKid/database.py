@@ -93,3 +93,35 @@ def insert_news(title, subtitle, image_url, item_url):
             'item_url': item_url
         }
         NEWS.insert_one(new_news)
+
+
+def first_level(id_first_level: int, id_node_children: int, keyword: dict):
+    first_level_node = {
+        'id_first_level_node': id_first_level,
+        'id_node_children': id_node_children,
+        'keyword': keyword,
+        'priority': 1
+    }
+    FAQ.insert_one(first_level_node)
+
+
+def medial_level(id_medial_level: int, id_node_parent: int, id_node_children: int, keyword: dict):
+    medial_level_node = {
+        'id_medial_level_node': id_medial_level,
+        'id_node_parent': id_node_parent,
+        'id_node_children': id_node_children,
+        'keyword': keyword,
+        'priority': 2
+    }
+    FAQ.insert_one(medial_level_node)
+
+
+def final_level(id_final_level: int, id_node_parent: int, keyword: dict, answer: dict):
+    final_level_node = {
+        'id_final_level_node': id_final_level,
+        'id_node_parent': id_node_parent,
+        'keyword': keyword,
+        'answer': answer,
+        'priority': 3
+    }
+    FAQ.insert_one(final_level_node)

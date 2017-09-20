@@ -395,3 +395,17 @@ def minigame2_handle_result(message, sender_id):
 
 # def receive_feedback:
     # template để hiện nút và hình cho user gửi feedback
+
+# def fansign():
+#     font = ImageFont.truetype("./Arial.ttf", 50)
+#     imageFile = "dog1.jpg"
+#     im1 = Image.open(imageFile)
+
+#     userName = "phuc"
+#     draw = ImageDraw.Draw(im1)
+#     draw.text((0, 100), userName, (255, 255, 0), font=font)
+#     draw = ImageDraw.Draw(im1)
+
+#     # Save the image with a new name
+#     im1.save("named.jpg")
+#     print im1
