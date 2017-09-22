@@ -82,7 +82,7 @@ def insert_question(metadata, question, answer, rank):
 
 # collection NEWS
 def insert_news(title, subtitle, image_url, item_url):
-    check_news = FAQ.find_one({'item_url': item_url})
+    check_news = NEWS.find_one({'item_url': item_url})
     if bool(check_news):
         pass
     else:

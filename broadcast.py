@@ -29,11 +29,9 @@ id_duc = "1627683190629761"
 
 
 def send_broadcast(sender_id):
-    url_broadcast_image = "http://210.211.109.211/weqbfyretnccbsaf/poster-tap5-2.jpg"
+    url_broadcast_image = "http://210.211.109.211/weqbfyretnccbsaf/poster-tap6.jpg"
     page.send(sender_id, Attachment.Image(url_broadcast_image))
-
-    # text = "TADAA !! TUẦN MỚI LẠI ĐẾN Giọng Hát Việt Nhí trở lại với bạn rồi đây !!! Đón xem Tập 5 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 16/09/2017 trên kênh VTV3 các bạn nhé! ;) ;) ahihi"
-    text = "BẠN ĐÁNG YÊU ƠI !! Tập 5 | Giọng Hát Việt Nhí 2017 sắp phát sóng rồi đó !!! Bật ngay kênh VTV3 để theo dõi chương trình cùng Gia đình thân yêu bạn nhé !! :*"
+    text = "Cốc... Cốc... Bạn đẹp trai xinh gái gì đó ơi!!! Bạn còn nhớ cái hẹn tối thứ Bảy với Giọng Hát Việt Nhí đúng không nè?? Đón xem Tập đầu tiên Vòng đối đầu sẽ được phát sóng lúc 21h ngày 23/09/2017 trên kênh VTV3."
     buttons = [
         Template.ButtonPostBack("Home", "home")
     ]
@@ -58,4 +56,5 @@ def send_video_broadcast(sender_id):
 #     pass
 
 for user in USER.find():
-    send_video_broadcast(user['id_user'])
+    # send_video_broadcast(user['id_user'])
+    send_broadcast(user['id_user'])
