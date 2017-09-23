@@ -123,7 +123,7 @@ def new_faq_answer(message, sender_id):
                                 print("khong co level 2, nhung tim thay level 3")
                                 for keyword_2 in document_medial_level['keyword']:
                                     if keyword_2 in message:
-                                        final_data = document_final_level
+                                        final_data = document_medial_level
                                         found_question = True
 
         if found_question:
