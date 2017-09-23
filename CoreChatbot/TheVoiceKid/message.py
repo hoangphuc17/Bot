@@ -83,6 +83,7 @@ def new_faq_answer(message, sender_id):
         if bool(check_user):
             # pass
             # page.send(sender_id, "user da co trong database")
+            print("day la ham new_faq_answer")
             print('user da co trong database')
         else:
             user_profile = page.get_user_profile(sender_id)  # return dict
@@ -92,38 +93,38 @@ def new_faq_answer(message, sender_id):
             insert_new_user(first_name, last_name, id_user)
 
         found_question = False
+        final_data = {}
+        # task 1. check word trong first level
+        # task 2. neu co trong first level thi moi check tiep trong medial level
+        # task 3. neu co trong medial level thi check trong final level, va lay answer
 
+        # TASK 1:
         for document_first_level in FAQ.find():
-            # task 1. check word trong first level
-            # task 2. neu co trong first level thi moi check tiep trong medial level
-            # task 3. neu co trong medial level thi check trong final level, va lay answer
-            # TASK 1:
-            if document_first_level['priority'] == 1:  # check la first level
-                for keyword in document_first_level['keyword']:
-                    if keyword in message:
+            if document_first_level['priority'] == "1":
+                print("da tim thay level 1")
+                for keyword_1 in document_first_level['keyword']:
+                    if keyword_1 in message:
                         # TASK 2:
                         for document_medial_level in FAQ.find():
-                            # ko kiem tra children vi 1 parent co the co nhieu children
-                            if document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
-                                # TASK 3:
-                                for document_final_level in FAQ.find():
-                                    # kiem tra co phai la node con cua medial level hay khong?
-                                    if document_final_level['id_node_parent'] == document_medial_level['id_medial_level_node']:
+                            # 1 question co the co hoac khong co medial_level
+                            if document_medial_level['priority'] == "2":
+                                print("da tim thay level 2")
+                                for keyword_2 in document_medial_level['keyword']:
+                                    if keyword_2 in message:
+                                        # TASK 3:
+                                        for document_final_level in FAQ.find():
+                                            if document_final_level['priority'] == "3":
+                                                print("da tim thay level 3")
+                                                for keyword_3 in document_final_level['keyword']:
+                                                    if keyword_3 in message:
+                                                        final_data = document_final_level
+                                                        found_question = True
+                            elif document_medial_level['priority'] == "3":
+                                print("khong co level 2, nhung tim thay level 3")
+                                for keyword_2 in document_medial_level['keyword']:
+                                    if keyword_2 in message:
                                         final_data = document_final_level
-                                        # page.send(
-                                        # sender_id, document_final_level['answer'])
-                                        print("da tim thay cau hoi trong data")
                                         found_question = True
-                                        break
-                                    else:
-                                        pass
-                            else:
-                                pass
-
-                    else:
-                        pass
-            else:
-                pass
 
         if found_question:
             page.send(sender_id, final_data['answer'])

@@ -50,6 +50,7 @@ def save_message(sender_id, message):
     if bool(check_user):
         # pass
         # page.send(sender_id, "user da co trong database")
+        print("day la ham save_message()")
         print('user da co trong database')
     else:
         user_profile = page.get_user_profile(sender_id)  # return dict
