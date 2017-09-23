@@ -101,7 +101,7 @@ def first_level(id_first_level, id_node_children, keyword):
         'id_first_level_node': id_first_level,
         'id_node_children': id_node_children,
         'keyword': keyword,
-        'priority': 1
+        'priority': "1"
     }
     FAQ.insert_one(first_level_node)
 
@@ -112,7 +112,7 @@ def medial_level(id_medial_level, id_node_parent, id_node_children, keyword):
         'id_node_parent': id_node_parent,
         'id_node_children': id_node_children,
         'keyword': keyword,
-        'priority': 2
+        'priority': "2"
     }
     FAQ.insert_one(medial_level_node)
 
@@ -123,6 +123,6 @@ def final_level(id_final_level, id_node_parent, keyword, answer):
         'id_node_parent': id_node_parent,
         'keyword': keyword,
         'answer': answer,
-        'priority': 3
+        'priority': "3"
     }
     FAQ.insert_one(final_level_node)
