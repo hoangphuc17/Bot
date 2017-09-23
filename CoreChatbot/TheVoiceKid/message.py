@@ -103,9 +103,20 @@ def new_faq_answer(message, sender_id):
                     if keyword in message:
                         # TASK 2:
                         for document_medial_level in FAQ.find():
+                            # ko kiem tra children vi 1 parent co the co nhieu children
                             if document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
-                                # ko kiem tra children vi 1 parent co the co nhieu children
-                                print('a')
+                                # TASK 3:
+                                for document_final_level in FAQ.find():
+                                    # kiem tra co phai la node con cua medial level hay khong?
+                                    if document_final_level['id_node_parent'] == document_medial_level['id_medial_level_node']:
+                                        final_data = document_final_level
+                                        # page.send(
+                                        # sender_id, document_final_level['answer'])
+                                        print("da tim thay cau hoi trong data")
+                                        found_question = True
+                                        break
+                                    else:
+                                        pass
                             else:
                                 pass
 

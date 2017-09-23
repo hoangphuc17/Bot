@@ -95,6 +95,7 @@ def insert_news(title, subtitle, image_url, item_url):
         NEWS.insert_one(new_news)
 
 
+# FAQ collection
 def first_level(id_first_level, id_node_children, keyword):
     first_level_node = {
         'id_first_level_node': id_first_level,
