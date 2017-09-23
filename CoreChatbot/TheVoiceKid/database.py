@@ -43,24 +43,28 @@ def insert_new_user(first_name, last_name, id_user):
 
 
 def save_message(sender_id, message):
-    check_user = USER.find_one({'id_user': sender_id})
-    if bool(check_user):
-        print("Day la ham save_message(). User da co trong database")
+    if message is not None:
+        check_user = USER.find_one({'id_user': sender_id})
+        if bool(check_user):
+            print("Day la ham save_message(). User da co trong database")
+        else:
+            user_profile = page.get_user_profile(sender_id)
+            first_name = user_profile["first_name"]
+            last_name = user_profile["last_name"]
+            id_user = user_profile["id"]
+            insert_new_user(first_name, last_name, id_user)
+
+        USER.update_one(
+            {'id_user': sender_id},
+            {'$push': {'message': {'content': message,
+                                   'time': datetime.datetime.now()}}}
+        )
     else:
-        user_profile = page.get_user_profile(sender_id)
-        first_name = user_profile["first_name"]
-        last_name = user_profile["last_name"]
-        id_user = user_profile["id"]
-        insert_new_user(first_name, last_name, id_user)
-
-    USER.update_one(
-        {'id_user': sender_id},
-        {'$push': {'message': {'content': message,
-                               'time': datetime.datetime.now()}}}
-    )
-
+        pass
 
 # collection FAQ
+
+
 def insert_question(metadata, question, answer, rank):
     check_question = FAQ.find_one({'question': question})
     if bool(check_question):
@@ -91,21 +95,21 @@ def insert_news(title, subtitle, image_url, item_url):
 
 
 # FAQ collection
-def first_level(id_first_level, id_node_children, keyword):
+def first_level(id_first_level, keyword):
     first_level_node = {
         'id_first_level_node': id_first_level,
-        'id_node_children': id_node_children,
+        # 'id_node_children': id_node_children,
         'keyword': keyword,
         'priority': "1"
     }
     FAQ.insert_one(first_level_node)
 
 
-def medial_level(id_medial_level, id_node_parent, id_node_children, keyword):
+def medial_level(id_medial_level, id_node_parent, keyword):
     medial_level_node = {
         'id_medial_level_node': id_medial_level,
         'id_node_parent': id_node_parent,
-        'id_node_children': id_node_children,
+        # 'id_node_children': id_node_children,
         'keyword': keyword,
         'priority': "2"
     }
