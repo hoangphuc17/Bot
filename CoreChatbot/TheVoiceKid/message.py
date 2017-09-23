@@ -107,19 +107,19 @@ def new_faq_answer(message, sender_id):
                         # TASK 2:
                         for document_medial_level in FAQ.find():
                             # 1 question co the co hoac khong co medial_level
-                            if document_medial_level['priority'] == "2" & document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
+                            if document_medial_level['priority'] == "2" and document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
                                 print("da tim thay level 2")
                                 for keyword_2 in document_medial_level['keyword']:
                                     if keyword_2 in message:
                                         # TASK 3:
                                         for document_final_level in FAQ.find():
-                                            if document_final_level['priority'] == "3" & document_final_level['id_node_parent'] == document_medial_level['id_medial_level_node']:
+                                            if document_final_level['priority'] == "3" and document_final_level['id_node_parent'] == document_medial_level['id_medial_level_node']:
                                                 print("da tim thay level 3")
                                                 for keyword_3 in document_final_level['keyword']:
                                                     if keyword_3 in message:
                                                         final_data = document_final_level
                                                         found_question = True
-                            elif document_medial_level['priority'] == "3" & document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
+                            elif document_medial_level['priority'] == "3" and document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
                                 print("khong co level 2, nhung tim thay level 3")
                                 for keyword_2 in document_medial_level['keyword']:
                                     if keyword_2 in message:
