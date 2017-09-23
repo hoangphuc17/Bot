@@ -51,9 +51,9 @@ def insert_new_news():
 # insert_new_questions()
 
 def insert_node():
-    first_level(1, [2, 3], ["tổ chức"])
-    final_level(2, 1, ["ở đâu"], "38 Nguyễn Du")
-    final_level(3, 1, ["ai"], "Cat Tien Sa")
+    first_level("1", ["2", "3"], ["tổ chức"])
+    final_level("2", "1", ["ở đâu"], "38 Nguyễn Du")
+    final_level("3", "1", ["ai"], "Cat Tien Sa")
 
 
 insert_node()
