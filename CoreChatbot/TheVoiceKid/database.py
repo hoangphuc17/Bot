@@ -43,17 +43,11 @@ def insert_new_user(first_name, last_name, id_user):
 
 
 def save_message(sender_id, message):
-    # print 'day la ham save_message cua user'
-
-    # kiem tra user, neu chua co thi them vao database
     check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
-        # pass
-        # page.send(sender_id, "user da co trong database")
-        print("day la ham save_message()")
-        print('user da co trong database')
+        print("Day la ham save_message(). User da co trong database")
     else:
-        user_profile = page.get_user_profile(sender_id)  # return dict
+        user_profile = page.get_user_profile(sender_id)
         first_name = user_profile["first_name"]
         last_name = user_profile["last_name"]
         id_user = user_profile["id"]
