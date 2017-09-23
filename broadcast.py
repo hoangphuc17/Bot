@@ -29,9 +29,9 @@ id_duc = "1627683190629761"
 
 
 def send_broadcast(sender_id):
-    url_broadcast_image = "http://210.211.109.211/weqbfyretnccbsaf/poster-tap6.jpg"
+    url_broadcast_image = "http://210.211.109.211/weqbfyretnccbsaf/poster-tap6-2.jpg"
     page.send(sender_id, Attachment.Image(url_broadcast_image))
-    text = "Cốc... Cốc... Bạn đẹp trai xinh gái gì đó ơi!!! Bạn còn nhớ cái hẹn tối thứ Bảy với Giọng Hát Việt Nhí đúng không nè?? Đón xem Tập đầu tiên Vòng đối đầu sẽ được phát sóng lúc 21h ngày 23/09/2017 trên kênh VTV3."
+    text = "Hôm nay trời rộng lên cao. Hóng The Voice Kids nôn nao cả ngày !!! Nhớ đón xem Giọng Hát Việt Nhí vào 21h tối nay trên VTV3 nhé bạn đáng yêu ơi ! 💕💕 "
     buttons = [
         Template.ButtonPostBack("Home", "home")
     ]
