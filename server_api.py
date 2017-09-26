@@ -76,7 +76,7 @@ def logout(username):
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    register = False
+    register = 'False'
     if request.method == 'POST':
         users = mongo.db.USER_CMS
         existing_user = users.find_one({'name': request.form['username']})
@@ -87,7 +87,7 @@ def register():
                 'user_activation_key': '',
                 'group': request.form['group']
             })
-            register = True
+            register = 'True'
         else:
             return 'That username already exists!'
 
