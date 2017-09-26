@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from importlib import reload
+# from importlib import reload
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
