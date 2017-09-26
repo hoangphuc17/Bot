@@ -62,12 +62,16 @@ def logout(username):
     logged_out = False
     users = mongo.db.USER_CMS
     login_user = users.find_one({'username': username})
-    # session.pop('username', None)
-    users.update_one(
-        {'username': login_user['username']},
-        {'$set': {'user_activation_key': ''}}
-    )
-    return 'Removed user_activation_key'
+    if login_user:
+        users.update_one(
+            {'username': login_user['username']},
+            {'$set': {'user_activation_key': ''}}
+        )
+        logged_out = True
+    else:
+        logged_out = False
+    # return 'Removed user_activation_key'
+    return logged_out
 
 
 @app.route('/register', methods=['POST', 'GET'])
