@@ -59,7 +59,7 @@ def login():
 @app.route('/logout/<string:username>', methods=['POST'])
 def logout(username):
     # xoa user_activation_key
-    logged_out = False
+    logged_out = ''
     users = mongo.db.USER_CMS
     login_user = users.find_one({'username': username})
     if login_user:
@@ -67,9 +67,9 @@ def logout(username):
             {'username': login_user['username']},
             {'$set': {'user_activation_key': ''}}
         )
-        logged_out = True
+        logged_out = 'True'
     else:
-        logged_out = False
+        logged_out = "False"
     # return 'Removed user_activation_key'
     return logged_out
 
