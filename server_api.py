@@ -80,11 +80,13 @@ def register():
     if request.method == 'POST':
         users = mongo.db.USER_CMS
         existing_user = users.find_one({'name': request.form['username']})
-
         if existing_user is None:
-            users.insert(
-                {'username': request.form['username'], 'password': request.form['password'], 'user_activation_key': '', 'permission': ''})
-            # session['username'] = request.form['username']
+            users.insert({
+                'username': request.form['username'],
+                'password': request.form['password'],
+                'user_activation_key': '',
+                'group_user': request.form['group']
+            })
             register = True
         else:
             return 'That username already exists!'
