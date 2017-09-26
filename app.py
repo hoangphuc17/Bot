@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-
 import os
 import sys
+from importlib import reload
+
 reload(sys)
-sys.setdefaultencoding('utf8')
+sys.setdefaultencoding('utf-8')
 import requests
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.sys.path.insert(0, parentdir)

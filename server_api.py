@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-# from importlib import reload
+from importlib import reload
 
-# reload(sys)
-# sys.setdefaultencoding('utf8')
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
@@ -14,7 +14,6 @@ import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 # from CoreChatbot.TheVoiceKid.database import *
-
 
 from flask import Flask, render_template, url_for, request, session, redirect, jsonify
 from flask_pymongo import PyMongo, ObjectId
@@ -42,7 +41,6 @@ def login():
     login_user = users.find_one({'username': request.form['username']})
     if login_user:
         if login_user['password'] == request.form['password']:
-            # session['username'] = request.form['username']
             user_activation_key = bcrypt.hashpw(login_user['username'].encode(
                 'utf-8'), bcrypt.gensalt()).decode('utf-8')
             users.update_one(
@@ -74,27 +72,36 @@ def logout(username):
     return logged_out
 
 
-@app.route('/register', methods=['POST', 'GET'])
-def register():
-    register = 'False'
-    if request.method == 'POST':
-        users = mongo.db.USER_CMS
-        existing_user = users.find_one({'username': request.form['username']})
-        if existing_user is None:
-            users.insert({
-                'username': request.form['username'],
-                'password': request.form['password'],
-                'user_activation_key': '',
-                'group': request.form['group']
-            })
-            register = 'True'
-        else:
-            return 'That username already exists!'
-
-    return register
-
+@app.route('/register/<string:username>', methods=['POST', 'GET'])
+def register(username):
+    if username == 'admin':
+        register = 'False'
+        if request.method == 'POST':
+            users = mongo.db.USER_CMS
+            group = mongo.db.GROUP_USER_CMS
+            existing_user = users.find_one(
+                {'username': request.form['username']})
+            if existing_user is None:
+                users.insert({
+                    'username': request.form['username'],
+                    'password': request.form['password'],
+                    'user_activation_key': '',
+                    'group': request.form['group']
+                })
+                register = 'True'
+                group.insert({
+                    'username': request.form['username'],
+                    'group': request.form['group']
+                })
+            else:
+                return 'That username already exists!'
+        return register
+    else:
+        return 'Admin moi duoc dang ky user'
 
 # USER
+
+
 @app.route('/user/get', methods=['GET'])
 def get_all_user():
     user = mongo.db.USER
