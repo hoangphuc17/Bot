@@ -56,7 +56,7 @@ def login():
         return 'Invalid username'
 
 
-@app.route('/logout/', methods=['GET'])
+@app.route('/logout/<string:username>', methods=['POST'])
 def logout(username):
     # xoa user_activation_key
     logged_out = False
