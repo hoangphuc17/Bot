@@ -248,7 +248,7 @@ def minigame1_menu(sender_id):
         # user da binh chon
         space = " "
         a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-        a = a.decode('utf-8')
+        # a = a.decode('utf-8')
         b = check_vote["HLV_da_binh_chon"]
         seq = (a, b)
         text = space.join(seq)
@@ -269,7 +269,7 @@ def minigame1_handle_quick_reply(sender_id, quick_reply_payload):
 
     space = " "
     a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-    a = a.decode('utf-8')
+    # a = a.decode('utf-8')
     seq = (a, quick_reply_payload)
     text = space.join(seq)
     buttons = [
