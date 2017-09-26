@@ -79,7 +79,7 @@ def register():
     register = 'False'
     if request.method == 'POST':
         users = mongo.db.USER_CMS
-        existing_user = users.find_one({'name': request.form['username']})
+        existing_user = users.find_one({'username': request.form['username']})
         if existing_user is None:
             users.insert({
                 'username': request.form['username'],
