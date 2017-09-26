@@ -13,7 +13,7 @@ from ApiMessenger.fbmq import Page
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
-from CoreChatbot.TheVoiceKid.database import *
+# from CoreChatbot.TheVoiceKid.database import *
 
 
 from flask import Flask, render_template, url_for, request, session, redirect, jsonify
