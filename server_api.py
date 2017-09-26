@@ -85,7 +85,7 @@ def register():
                 'username': request.form['username'],
                 'password': request.form['password'],
                 'user_activation_key': '',
-                'group_user': request.form['group']
+                'group': request.form['group']
             })
             register = True
         else:
