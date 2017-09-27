@@ -32,6 +32,7 @@ danh_sach_hinh_anh_HLV = {
 def greeting(sender_id):
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
+    print(user_profile)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
