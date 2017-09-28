@@ -94,7 +94,7 @@ def insert_new_questions():
                     "Theo dõi Fanpage để cập nhật thông tin đăng  ký và địa điểm ghi hình sớm nhất bạn nhé!", "")
     insert_question(["năm sau", "tổ chức"], "Năm sau còn tổ chức nữa không ạ?",
                     "Bạn 'đáng yêu' ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!", "")
-    insert_question(["Tổ chức", "ở đâu"], "Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?",
+    insert_question(["tsổ chức", "ở đâu"], "Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?",
                     "Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!", "")
     insert_question(["giấu mặt"], "Vòng giấu mặt có bao nhiêu tập?",
                     "Vòng giấu mặt thường có 4-5 tập bạn nhé!", "")
