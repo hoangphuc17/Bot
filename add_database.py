@@ -23,6 +23,20 @@ FAQ = db.FAQ
 NEWS = db.NEWS
 
 
+def insert_question(metadata, question, answer, rank):
+    check_question = FAQ.find_one({'question': question})
+    if bool(check_question):
+        pass
+    else:
+        new_question = {
+            "metadata": metadata,
+            "question": question,
+            "answer": answer,
+            "rank": rank
+        }
+        FAQ.insert_one(new_question)
+
+
 def insert_new_questions():
     # insert_question(["ai", "vũ cát tường"],
     #                 "ai là Vũ Cát Tường?", "VCT là ...", "")
