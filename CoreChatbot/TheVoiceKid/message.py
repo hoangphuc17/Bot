@@ -51,6 +51,7 @@ def answer(message, sender_id):
                     if count == len(data['metadata']):
                         final_data = data
                         found_question = True
+                        break
                     else:
                         found_question = False
                 else:
