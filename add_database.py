@@ -23,18 +23,18 @@ FAQ = db.FAQ
 NEWS = db.NEWS
 
 
-def insert_question(metadata, question, answer, rank):
-    check_question = FAQ.find_one({'question': question})
-    if bool(check_question):
-        pass
-    else:
-        new_question = {
-            "metadata": metadata,
-            "question": question,
-            "answer": answer,
-            "rank": rank
-        }
-        FAQ.insert_one(new_question)
+# def insert_question(metadata, question, answer, rank):
+#     check_question = FAQ.find_one({'question': question})
+#     if bool(check_question):
+#         pass
+#     else:
+#         new_question = {
+#             "metadata": metadata,
+#             "question": question,
+#             "answer": answer,
+#             "rank": rank
+#         }
+#         FAQ.insert_one(new_question)
 
 
 def insert_new_questions():
@@ -51,10 +51,10 @@ def insert_new_questions():
     # insert_question(["tuyển"], "đăng ký tham gia Giọng Hát Việt Nhí ?",
     #                 "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn/ và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
 
-    insert_questions(["đăng ký", "tuyển sinh"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
-                     "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
-    insert_questions(["đăng ký", "tham gia"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
-                     "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
+    insert_question(["đăng ký", "tuyển sinh"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
+                    "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
+    insert_question(["đăng ký", "tham gia"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
+                    "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
     insert_question(["đăng ký", "thi"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
                     "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
 
