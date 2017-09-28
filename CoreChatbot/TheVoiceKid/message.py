@@ -52,10 +52,7 @@ def answer(message, sender_id):
                         final_data = data
                         found_question = True
                         break
-                    else:
-                        found_question = False
-                else:
-                    pass
+            break
 
         if found_question:
             page.send(sender_id, final_data['answer'])
