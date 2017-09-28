@@ -66,7 +66,7 @@ def save_message(sender_id, message):
 
 
 def insert_question(metadata, question, answer, rank):
-    check_question = FAQ.find_one({'question': question})
+    check_question = FAQ.find_one({'metadata': metadata})
     if bool(check_question):
         pass
     else:

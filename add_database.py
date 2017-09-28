@@ -53,9 +53,9 @@ def insert_new_questions():
 
     insert_question(["đăng ký", "tuyển sinh"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
                     "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
-    insert_question(["đăng ký", "tham gia"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
+    insert_question(["đăng ký", "tham gia"], "muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
                     "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
-    insert_question(["đăng ký", "thi"], "Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
+    insert_question(["đăng ký", "thi"], "Mình tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?",
                     "Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!", "")
 
     insert_question(["phát sóng", "tuần này"], "Tuần này có phát sóng Giọng Hát Việt Nhí 2017 không Ad?",
