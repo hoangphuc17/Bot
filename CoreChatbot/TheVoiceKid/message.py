@@ -48,13 +48,11 @@ def answer(message, sender_id):
             for word in metadata:
                 if word in message:
                     count = count + 1
-                    if count == len(data['metadata']):
-                        final_data = data
-                        found_question = True
-                        break
-                else:
-                    continue
-            # break
+
+            if count == len(data['metadata']):
+                final_data = data
+                found_question = True
+                break
 
         if found_question:
             page.send(sender_id, final_data['answer'])
