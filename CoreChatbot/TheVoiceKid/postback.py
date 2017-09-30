@@ -73,8 +73,6 @@ def home(sender_id):
     # kiem tra user, neu chua co thi them vao database
     check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
-        # pass
-        # page.send(sender_id, "user da co trong database")
         print('user da co trong database')
     else:
         insert_new_user(first_name, last_name, id_user)
@@ -407,6 +405,14 @@ def fansign_menu(sender_id):
     user_profile = page.get_user_profile(sender_id)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
+    id_user = user_profile["id"]
+    print(last_name + first_name)
+
+    check_user = USER.find_one({'id_user': sender_id})
+    if bool(check_user):
+        print('user da co trong database')
+    else:
+        insert_new_user(first_name, last_name, id_user)
 
     space = " "
     a = "ơi, bạn muốn nhận fansign từ HLV nào?"

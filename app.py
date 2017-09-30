@@ -91,7 +91,8 @@ def message_handler(event):
         'giờ phát sóng': timeline,
         'lịch phát sóng': timeline,
         'giới thiệu': introduce,
-        'subscribe': handle_subscribe_1
+        'subscribe': handle_subscribe_1,
+        'fansign': fansign_menu
     }
     minigame2_keyword_list = ["đỉnh", "xinh", "bánh bèo", "chất",
                               "phũ", "cá tính", "đẹp trai", "ế", "cao", "hit", "cute", "nhọ"]
