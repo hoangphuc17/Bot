@@ -437,16 +437,18 @@ def fansign_handle_quick_reply(sender_id, quickreply):
 
     def fs_vct():
         print('fs_vct function')
-        font = ImageFont.truetype("./font.ttf", 50)
+        font = ImageFont.truetype("./font.ttf", 100)
         imageFile = "image/vct.png"
         im = Image.open(imageFile)
-        userName = first_name + last_name
+        userName = last_name + first_name
         draw = ImageDraw.Draw(im)
-        draw.text((0, 100), userName, (255, 255, 0), font=font)
+        draw.text((250, 450), userName, (0, 0, 0), font=font)
         draw = ImageDraw.Draw(im)
-        im.save("fs_vct.jpg")
+        name_fansigned = "/Bot_Pictures/fs_vct" + sender_id + ".jpg"
+        im.save(name_fansigned)
         print("Da tao xong fansign Vu Cat Tuong")
-        page.send(sender_id, Attachment.Image("fs_vct.jpg"))
+        page.send(sender_id, Attachment.Image(
+            "http://210.211.109.211/weqbfyretnccbsaf/fs_vct" + sender_id + ".jpg"))
 
     def fs_ht():
         print('a')
