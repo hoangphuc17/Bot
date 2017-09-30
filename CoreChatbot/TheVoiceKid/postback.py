@@ -444,11 +444,12 @@ def fansign_handle_quick_reply(sender_id, quickreply):
         draw = ImageDraw.Draw(im)
         draw.text((250, 450), userName, (0, 0, 0), font=font)
         draw = ImageDraw.Draw(im)
-        name_fansigned = "./Bot_Pictures/fs_vct" + sender_id + ".jpg"
+        name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_vct" + \
+            sender_id + last_name + first_name + ".jpg"
         im.save(name_fansigned)
         print("Da tao xong fansign Vu Cat Tuong")
         page.send(sender_id, Attachment.Image(
-            "http://210.211.109.211/weqbfyretnccbsaf/fs_vct" + sender_id + ".jpg"))
+            "http://210.211.109.211/weqbfyretnccbsaf/fs_vct" + sender_id + last_name + first_name + ".jpg"))
 
     def fs_ht():
         print('a')
