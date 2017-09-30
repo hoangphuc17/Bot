@@ -13,6 +13,10 @@ from CoreChatbot.Preparation.fbpage import page
 
 from CoreChatbot.TheVoiceKid.database import *
 
+import PIL
+
+from PIL import Image, ImageDraw, ImageFont
+
 
 import datetime
 from pymongo import MongoClient
