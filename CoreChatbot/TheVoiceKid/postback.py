@@ -435,14 +435,28 @@ def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
     name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_" + hlv + \
         sender_id + last_name + first_name + ".jpg"
     im.save(name_fansigned)
+
+    hlv_dict = {
+        'sb': 'Soobin',
+        'vct': 'Vũ Cát Tường',
+        'ht': 'Hương Tràm',
+        'tc': 'Tiên Cookie'
+    }
+
+    text1 = hlv_dict.get(
+        hlv) + " đang viết lời chúc dành cho bạn. " + userName + " chờ xíu nhé 😉"
+    page.send(sender_id, text1)
+
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/fs_" + hlv + sender_id + last_name + first_name + ".jpg"))
-    text = ' '
+    text2 = 'Phía trên là hình fansign của ' + \
+        hlv_dict.get(
+            hlv) + ' dành riêng cho bạn. Hãy chia sẻ món quà này ngay kèm hashtag #gionghatvietnhifansign nha bạn ơi'
     buttons = [
         Template.ButtonPostBack("Fansign khác", "fansign"),
         Template.ButtonPostBack("Home", "home")
     ]
-    page.send(sender_id, Template.Buttons(text, buttons))
+    page.send(sender_id, Template.Buttons(text2, buttons))
 
 
 def fansign_handle_quick_reply(sender_id, quickreply):
