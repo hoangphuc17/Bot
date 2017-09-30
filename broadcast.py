@@ -39,13 +39,13 @@ def send_broadcast(sender_id):
 
 
 def send_video_broadcast(sender_id):
-    text = "Phiên bản Tài Smile Giọng Hát Việt Nhí 2017 đã xuất hiện thách thức phiên bản người lớn với màn Cover ca khúc HIT 'Phía Sau Một Cô Gái' siêu hài !!! 😁😁"
+    text = "Nào nào, trước khi Tập 7 lên sóng, chúng ta hãy cùng dự đoán kết quả đêm nay nhé !!! 😉😉\n\n⭐️ Đón xem Tập 7 - Vòng đối đầu | Giọng Hát Việt Nhí 2017 vào lúc 21h Ngày 30/09/2017 trên kênh VTV3.\n🔰 Livestream phát sóng độc quyền trên Fanpage Giọng Hát Việt Nhí."
     buttons = [
         Template.ButtonPostBack("Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
 
-    url_video = "http://210.211.109.211/weqbfyretnccbsaf/video_phiasaumotcogai_bolero.mp4"
+    url_video = "http://210.211.109.211/weqbfyretnccbsaf/video_30_9.mp4"
     page.send(sender_id, Attachment.Video(url_video))
 
 
@@ -56,5 +56,5 @@ def send_video_broadcast(sender_id):
 #     pass
 
 for user in USER.find():
-    # send_video_broadcast(user['id_user'])
-    send_broadcast(user['id_user'])
+    send_video_broadcast(user['id_user'])
+    # send_broadcast(user['id_user'])
