@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
