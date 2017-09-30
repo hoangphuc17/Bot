@@ -53,7 +53,7 @@ def send_video_broadcast(sender_id):
 # else:
 #     pass
 
-send_video_broadcast(id_phuc)
+send_video_broadcast(id_phuc2)
 
 
 # for user in USER.find():
