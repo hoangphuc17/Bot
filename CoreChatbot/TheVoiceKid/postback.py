@@ -32,7 +32,6 @@ danh_sach_hinh_anh_HLV = {
 def greeting(sender_id):
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
-    print(user_profile)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
@@ -48,9 +47,7 @@ def greeting(sender_id):
 
     space = " "
     a = "Chào"
-    b = "đến với Giọng Hát Việt Nhí. Tại đây, bạn có thể đặt câu hỏi, chơi Mini game và theo dõi những tin tức “nóng hổi” nhất từ chương trình. Còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” ngay nào !!! ;) ;)\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺"
-    # a = a.decode('utf-8')
-    # b = b.decode('utf-8')
+    b = "đến với Giọng Hát Việt Nhí. Tại đây, bạn có thể đặt câu hỏi, chơi Mini game và theo dõi những tin tức “nóng hổi” nhất từ chương trình. Còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” ngay nào !!! ;) ;)\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺 "
     seq = (a, first_name, b)
     text = space.join(seq)
     buttons = [
@@ -98,6 +95,13 @@ def home(sender_id):
                                         "Oh my kids", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBml5RPOlILDvj5DqNwmG9AI"),
                                     Template.ButtonWeb(
                                         "Off the air", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBk1BX8Jks9152rkNTIZQWuK")
+                                ]),
+        Template.GenericElement("Fansign",
+                                subtitle="Cùng đón nhận những lời chúc từ các huấn luyện viên Giọng Hát Việt Nhí 2017!!!",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
+                                buttons=[
+                                    Template.ButtonPostBack(
+                                        "Lấy Fansign", "fansign")
                                 ]),
         Template.GenericElement("Dự đoán kết quả và giành lấy cơ hội nhận quà",
                                 subtitle="Tham gia dự đoán kết quả của cuộc thi để nhận được những phần quà hấp dẫn nhất từ ban tổ chức",
@@ -396,17 +400,64 @@ def minigame2_handle_result(message, sender_id):
 
 # def receive_feedback:
     # template để hiện nút và hình cho user gửi feedback
+def fansign_menu(sender_id):
+    user_profile = page.get_user_profile(sender_id)
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
 
-# def fansign():
-#     font = ImageFont.truetype("./Arial.ttf", 50)
-#     imageFile = "dog1.jpg"
-#     im1 = Image.open(imageFile)
+    space = " "
+    a = "ơi, bạn muốn nhận fansign từ HLV nào?"
+    seq = (first_name, last_name, b)
+    question = space.join(seq)
 
-#     userName = "phuc"
-#     draw = ImageDraw.Draw(im1)
-#     draw.text((0, 100), userName, (255, 255, 0), font=font)
-#     draw = ImageDraw.Draw(im1)
+    quick_replies = [
+        QuickReply(title="Soobin", payload="sb"),
+        QuickReply(title="Vũ Cát Tường", payload="vct"),
+        QuickReply(title="Hương Tràm", payload="ht"),
+        QuickReply(title="Tiên Cookie", payload="tc")
+    ]
+    page.send(sender_id, question, quick_replies=quick_replies,
+              metadata="DEVELOPER_DEFINED_METADATA")
+    return
 
-#     # Save the image with a new name
-#     im1.save("named.jpg")
-#     print im1
+
+def fansign_handle_quick_reply(sender_id, quickreply):
+    # 1. lay ten cua user
+    # 2. bo ten vao hinh
+    # 3. gui hinh cho user
+
+    # TASK 1:
+    user_profile = page.get_user_profile(sender_id)
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
+
+    def fs_vct():
+        font = ImageFont.truetype("./font.ttf", 50)
+        imageFile = "image/vct.png"
+        im = Image.open(imageFile)
+        userName = first_name + last_name
+        draw = ImageDraw.Draw(im1)
+        draw.text((0, 100), userName, (255, 255, 0), font=font)
+        draw = ImageDraw.Draw(im1)
+        im.save("fs_vct.jpg")
+        print("Da tao xong fansign Vu Cat Tuong")
+        page.send(sender_id, Attachment.Image("fs_vct.jpg"))
+
+    def fs_ht():
+        print('a')
+
+    def fs_tc():
+        print('a')
+
+    def fs_sb():
+        print('a')
+
+    fs_hlv_list = {
+        'sb': fs_sb,
+        'vct': fs_vct,
+        'ht': fs_ht,
+        'tc': fs_tc
+    }
+
+    if quickreply in fs_hlv_list:
+        fs_hlv_list[quickreply]()

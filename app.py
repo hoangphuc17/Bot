@@ -36,15 +36,9 @@ NEWS = db.NEWS
 
 app = Flask(__name__)
 
-danh_sach_HLV = [
-    "Vũ Cát Tường",
-    "Tiên Cookie và Hương Tràm",
-    "Soobin"
-]
-# danh_sach_HLV = [i.decode('UTF-8') if isinstance(i,
-#                                                  basestring) else i for i in danh_sach_HLV]
-
+danh_sach_HLV = ["Vũ Cát Tường", "Tiên Cookie và Hương Tràm", "Soobin"]
 subscribe_options = ["yes1", "yes2", "no"]
+fansign_list = ["vct", "sb", "ht", "tc"]
 
 
 @app.route('/', methods=['GET'])
@@ -146,7 +140,8 @@ def postback_handler(event):
         'minigame2_rule': minigame2_rule,
         'minigame2_menu': minigame2_menu,
         'timeline': timeline,
-        'introduce': introduce
+        'introduce': introduce,
+        'fansign': fansign_menu
     }
 
     if postback in postback_list:
@@ -174,13 +169,6 @@ def send_news(sender_id):
         ])
     page.send(sender_id, Template.Generic(element))
     return
-
-
-# def news_for_subscribe():
-#     for user in USER.find({'subscribe_news': 'yes'}):
-#         send_news(user['id_user'])
-#         print("da gui")
-#     return
 
 
 if __name__ == '__main__':
