@@ -463,6 +463,7 @@ def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
         Template.ButtonPostBack("Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text2, buttons))
+    print('da gui hinh fansign')
 
 
 def fansign_handle_quick_reply(sender_id, quickreply):
