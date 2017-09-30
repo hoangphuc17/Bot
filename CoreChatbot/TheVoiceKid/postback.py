@@ -407,7 +407,7 @@ def fansign_menu(sender_id):
 
     space = " "
     a = "ơi, bạn muốn nhận fansign từ HLV nào?"
-    seq = (first_name, last_name, b)
+    seq = (first_name, last_name, a)
     question = space.join(seq)
 
     quick_replies = [
