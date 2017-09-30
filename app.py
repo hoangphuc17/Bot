@@ -113,6 +113,10 @@ def message_handler(event):
         handle_subscribe_news(sender_id, quickreply)
         return
 
+    elif fansign_list.count(quickreply) == 1:
+        fansign_handle_quick_reply(sender_id, quickreply)
+        return
+
     else:
         # luu tin nhan
         save_message(sender_id, message)

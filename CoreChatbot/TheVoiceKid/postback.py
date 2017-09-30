@@ -407,7 +407,7 @@ def fansign_menu(sender_id):
 
     space = " "
     a = "ơi, bạn muốn nhận fansign từ HLV nào?"
-    seq = (first_name, last_name, a)
+    seq = (last_name, first_name, a)
     question = space.join(seq)
 
     quick_replies = [
@@ -432,13 +432,14 @@ def fansign_handle_quick_reply(sender_id, quickreply):
     last_name = user_profile["last_name"]
 
     def fs_vct():
+        print('fs_vct function')
         font = ImageFont.truetype("./font.ttf", 50)
         imageFile = "image/vct.png"
         im = Image.open(imageFile)
         userName = first_name + last_name
-        draw = ImageDraw.Draw(im1)
+        draw = ImageDraw.Draw(im)
         draw.text((0, 100), userName, (255, 255, 0), font=font)
-        draw = ImageDraw.Draw(im1)
+        draw = ImageDraw.Draw(im)
         im.save("fs_vct.jpg")
         print("Da tao xong fansign Vu Cat Tuong")
         page.send(sender_id, Attachment.Image("fs_vct.jpg"))
