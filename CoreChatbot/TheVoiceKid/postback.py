@@ -448,7 +448,7 @@ def fansign_handle_quick_reply(sender_id, quickreply):
 
     def fs_vct():
         if len(userName) < 11:
-            image_fs(sender_id, 90, "vct", first_name, last_name, 180, 330)
+            image_fs(sender_id, 90, "vct", first_name, last_name, 180, 370)
         else:
             image_fs(sender_id, 80, "vct", first_name, last_name, 130, 330)
 
