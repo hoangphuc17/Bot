@@ -469,13 +469,13 @@ def fansign_handle_quick_reply(sender_id, quickreply):
         if len(userName) < 11:
             image_fs(sender_id, 90, "vct", first_name, last_name, 180, 370)
         else:
-            image_fs(sender_id, 80, "vct", first_name, last_name, 20, 330)
+            image_fs(sender_id, 80, "vct", first_name, last_name, 90, 370)
 
     def fs_ht():
         if len(userName) < 11:
             image_fs(sender_id, 80, "ht", first_name, last_name, 180, 330)
         else:
-            image_fs(sender_id, 65, "ht", first_name, last_name, 125, 325)
+            image_fs(sender_id, 65, "ht", first_name, last_name, 175, 325)
 
     def fs_tc():
         if len(userName) < 11:
@@ -487,7 +487,7 @@ def fansign_handle_quick_reply(sender_id, quickreply):
         if len(userName) < 11:
             image_fs(sender_id, 90, "sb", first_name, last_name, 20, 450)
         else:
-            image_fs(sender_id, 70, "sb", first_name, last_name, 130, 330)
+            image_fs(sender_id, 70, "sb", first_name, last_name, 20, 455)
 
     fs_hlv_list = {
         'sb': fs_sb,
