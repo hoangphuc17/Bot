@@ -425,78 +425,50 @@ def fansign_menu(sender_id):
     return
 
 
-def fansign_handle_quick_reply(sender_id, quickreply):
-    # 1. lay ten cua user
-    # 2. bo ten vao hinh
-    # 3. gui hinh cho user
+def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
+    userName = last_name + ' ' + first_name
+    font = ImageFont.truetype("./font.ttf", sizeFont)
+    imageFile = "image/" + hlv + ".png"
+    im = Image.open(imageFile)
+    draw = ImageDraw.Draw(im)
+    draw.text((x_Text, y_Text), userName, (0, 0, 0), font=font)
+    draw = ImageDraw.Draw(im)
+    name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_" + hlv + \
+        sender_id + last_name + first_name + ".jpg"
+    im.save(name_fansigned)
+    page.send(sender_id, Attachment.Image(
+        "http://210.211.109.211/weqbfyretnccbsaf/fs_" + hlv + sender_id + last_name + first_name + ".jpg"))
 
+
+def fansign_handle_quick_reply(sender_id, quickreply):
     user_profile = page.get_user_profile(sender_id)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
+    userName = last_name + ' ' + first_name
 
     def fs_vct():
-        print('fs_vct function')
-        font = ImageFont.truetype("./font.ttf", 90)
-        imageFile = "image/vct.png"
-        im = Image.open(imageFile)
-        userName = last_name + ' ' + first_name
-        draw = ImageDraw.Draw(im)
-        draw.text((250, 390), userName, (0, 0, 0), font=font)
-        draw = ImageDraw.Draw(im)
-        name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_vct" + \
-            sender_id + last_name + first_name + ".jpg"
-        im.save(name_fansigned)
-        print("Da tao xong fansign Vu Cat Tuong")
-        page.send(sender_id, Attachment.Image(
-            "http://210.211.109.211/weqbfyretnccbsaf/fs_vct" + sender_id + last_name + first_name + ".jpg"))
+        if len(userName) < 11:
+            image_fs(sender_id, 90, "vct", first_name, last_name, 180, 330)
+        else:
+            image_fs(sender_id, 80, "vct", first_name, last_name, 130, 330)
 
     def fs_ht():
-        print('fs_ht function')
-        font = ImageFont.truetype("./font.ttf", 80)
-        imageFile = "image/ht.png"
-        im = Image.open(imageFile)
-        userName = last_name + ' ' + first_name
-        draw = ImageDraw.Draw(im)
-        draw.text((200, 300), userName, (0, 0, 0), font=font)
-        draw = ImageDraw.Draw(im)
-        name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_ht" + \
-            sender_id + last_name + first_name + ".jpg"
-        im.save(name_fansigned)
-        print("Da tao xong fansign Huong Tram")
-        page.send(sender_id, Attachment.Image(
-            "http://210.211.109.211/weqbfyretnccbsaf/fs_ht" + sender_id + last_name + first_name + ".jpg"))
+        if len(userName) < 11:
+            image_fs(sender_id, 80, "ht", first_name, last_name, 180, 330)
+        else:
+            image_fs(sender_id, 80, "ht", first_name, last_name, 130, 330)
 
     def fs_tc():
-        print('fs_tc function')
-        font = ImageFont.truetype("./font.ttf", 90)
-        imageFile = "image/tc.png"
-        im = Image.open(imageFile)
-        userName = last_name + ' ' + first_name
-        draw = ImageDraw.Draw(im)
-        draw.text((180, 390), userName, (0, 0, 0), font=font)
-        draw = ImageDraw.Draw(im)
-        name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_tc" + \
-            sender_id + last_name + first_name + ".jpg"
-        im.save(name_fansigned)
-        print("Da tao xong fansign Tien Cookie")
-        page.send(sender_id, Attachment.Image(
-            "http://210.211.109.211/weqbfyretnccbsaf/fs_tc" + sender_id + last_name + first_name + ".jpg"))
+        if len(userName) < 11:
+            image_fs(sender_id, 90, "tc", first_name, last_name, 180, 390)
+        else:
+            image_fs(sender_id, 80, "tc", first_name, last_name, 130, 330)
 
     def fs_sb():
-        print('fs_sb function')
-        font = ImageFont.truetype("./font.ttf", 90)
-        imageFile = "image/sb.png"
-        im = Image.open(imageFile)
-        userName = last_name + ' ' + first_name
-        draw = ImageDraw.Draw(im)
-        draw.text((10, 450), userName, (0, 0, 0), font=font)
-        draw = ImageDraw.Draw(im)
-        name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_sb" + \
-            sender_id + last_name + first_name + ".jpg"
-        im.save(name_fansigned)
-        print("Da tao xong fansign Soobin")
-        page.send(sender_id, Attachment.Image(
-            "http://210.211.109.211/weqbfyretnccbsaf/fs_sb" + sender_id + last_name + first_name + ".jpg"))
+        if len(userName) < 11:
+            image_fs(sender_id, 90, "sb", first_name, last_name, 10, 450)
+        else:
+            image_fs(sender_id, 80, "sb", first_name, last_name, 130, 330)
 
     fs_hlv_list = {
         'sb': fs_sb,
