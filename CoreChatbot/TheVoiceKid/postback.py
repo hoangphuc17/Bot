@@ -278,7 +278,6 @@ def minigame1_handle_quick_reply(sender_id, quick_reply_payload):
 
     space = " "
     a = "Bạn đã dự đoán dự đoán thành công đội có thí sinh đạt được vị trí cao nhất của chương trình. Dự đoán của bạn đang dành cho team của"
-    # a = a.decode('utf-8')
     seq = (a, quick_reply_payload)
     text = space.join(seq)
     buttons = [
@@ -438,6 +437,12 @@ def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
     im.save(name_fansigned)
     page.send(sender_id, Attachment.Image(
         "http://210.211.109.211/weqbfyretnccbsaf/fs_" + hlv + sender_id + last_name + first_name + ".jpg"))
+    text = ' '
+    buttons = [
+        Template.ButtonPostBack("Fansign khác", "fansign"),
+        Template.ButtonPostBack("Home", "home")
+    ]
+    page.send(sender_id, Template.Buttons(text, buttons))
 
 
 def fansign_handle_quick_reply(sender_id, quickreply):
@@ -450,25 +455,25 @@ def fansign_handle_quick_reply(sender_id, quickreply):
         if len(userName) < 11:
             image_fs(sender_id, 90, "vct", first_name, last_name, 180, 370)
         else:
-            image_fs(sender_id, 80, "vct", first_name, last_name, 130, 330)
+            image_fs(sender_id, 80, "vct", first_name, last_name, 20, 330)
 
     def fs_ht():
         if len(userName) < 11:
             image_fs(sender_id, 80, "ht", first_name, last_name, 180, 330)
         else:
-            image_fs(sender_id, 80, "ht", first_name, last_name, 130, 330)
+            image_fs(sender_id, 65, "ht", first_name, last_name, 125, 325)
 
     def fs_tc():
         if len(userName) < 11:
             image_fs(sender_id, 90, "tc", first_name, last_name, 180, 390)
         else:
-            image_fs(sender_id, 80, "tc", first_name, last_name, 130, 330)
+            image_fs(sender_id, 80, "tc", first_name, last_name, 90, 380)
 
     def fs_sb():
         if len(userName) < 11:
-            image_fs(sender_id, 90, "sb", first_name, last_name, 10, 450)
+            image_fs(sender_id, 90, "sb", first_name, last_name, 20, 450)
         else:
-            image_fs(sender_id, 80, "sb", first_name, last_name, 130, 330)
+            image_fs(sender_id, 70, "sb", first_name, last_name, 130, 330)
 
     fs_hlv_list = {
         'sb': fs_sb,
