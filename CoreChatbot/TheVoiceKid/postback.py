@@ -433,7 +433,7 @@ def fansign_menu(sender_id):
 def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
     userName = last_name + ' ' + first_name
     font = ImageFont.truetype("./font.ttf", sizeFont)
-    imageFile = "image/" + hlv + ".png"
+    imageFile = "image/" + hlv + ".jpg"
     im = Image.open(imageFile)
     draw = ImageDraw.Draw(im)
     draw.text((x_Text, y_Text), userName, (0, 0, 0), font=font)
