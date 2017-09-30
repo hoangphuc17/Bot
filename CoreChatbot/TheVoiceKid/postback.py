@@ -437,12 +437,12 @@ def fansign_handle_quick_reply(sender_id, quickreply):
 
     def fs_vct():
         print('fs_vct function')
-        font = ImageFont.truetype("./font.ttf", 100)
+        font = ImageFont.truetype("./font.ttf", 80)
         imageFile = "image/vct.png"
         im = Image.open(imageFile)
         userName = last_name + first_name
         draw = ImageDraw.Draw(im)
-        draw.text((250, 450), userName, (0, 0, 0), font=font)
+        draw.text((250, 400), userName, (0, 0, 0), font=font)
         draw = ImageDraw.Draw(im)
         name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_vct" + \
             sender_id + last_name + first_name + ".jpg"
