@@ -78,6 +78,13 @@ def home(sender_id):
         insert_new_user(first_name, last_name, id_user)
 
     elements = [
+        Template.GenericElement("Fansign",
+                                subtitle="Cùng đón nhận những lời chúc từ các huấn luyện viên Giọng Hát Việt Nhí 2017!!!",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
+                                buttons=[
+                                    Template.ButtonPostBack(
+                                        "Lấy Fansign", "fansign")
+                                ]),
         Template.GenericElement("Tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 subtitle="Nơi cập nhật những tin tức mới nhất từ chương trình “Giọng Hát Việt Nhí” 2017",
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
@@ -98,13 +105,7 @@ def home(sender_id):
                                     Template.ButtonWeb(
                                         "Off the air", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBk1BX8Jks9152rkNTIZQWuK")
                                 ]),
-        Template.GenericElement("Fansign",
-                                subtitle="Cùng đón nhận những lời chúc từ các huấn luyện viên Giọng Hát Việt Nhí 2017!!!",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
-                                buttons=[
-                                    Template.ButtonPostBack(
-                                        "Lấy Fansign", "fansign")
-                                ]),
+
         Template.GenericElement("Dự đoán kết quả và giành lấy cơ hội nhận quà",
                                 subtitle="Tham gia dự đoán kết quả của cuộc thi để nhận được những phần quà hấp dẫn nhất từ ban tổ chức",
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh3_du_doan.jpg",
