@@ -406,7 +406,7 @@ def fansign_menu(sender_id):
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
-    print(last_name + first_name)
+    print(last_name + ' ' + first_name)
 
     check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
@@ -439,7 +439,7 @@ def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
     draw.text((x_Text, y_Text), userName, (0, 0, 0), font=font)
     draw = ImageDraw.Draw(im)
     name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_" + hlv + \
-        sender_id + last_name + first_name + ".jpg"
+        sender_id + ".jpg"
     im.save(name_fansigned)
 
     hlv_dict = {
@@ -454,7 +454,7 @@ def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
     page.send(sender_id, text1)
 
     page.send(sender_id, Attachment.Image(
-        "http://210.211.109.211/weqbfyretnccbsaf/fs_" + hlv + sender_id + last_name + first_name + ".jpg"))
+        "http://210.211.109.211/weqbfyretnccbsaf/fs_" + hlv + sender_id + ".jpg"))
     text2 = 'Phía trên là hình fansign của ' + \
         hlv_dict.get(
             hlv) + ' dành riêng cho bạn. Hãy chia sẻ món quà này ngay kèm hashtag #gionghatvietnhifansign nha bạn ơi'
