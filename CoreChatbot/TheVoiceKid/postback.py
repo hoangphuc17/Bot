@@ -489,16 +489,16 @@ def fansign_handle_quick_reply(sender_id, quickreply):
         im = Image.open(imageFile)
         userName = last_name + ' ' + first_name
         draw = ImageDraw.Draw(im)
-        draw.text(10, 450), userName, (0, 0, 0), font = font)
-        draw=ImageDraw.Draw(im)
-        name_fansigned="/home/hoangphuc/Bot_Pictures/fs_sb" +
+        draw.text((10, 450), userName, (0, 0, 0), font=font)
+        draw = ImageDraw.Draw(im)
+        name_fansigned = "/home/hoangphuc/Bot_Pictures/fs_sb" + \
             sender_id + last_name + first_name + ".jpg"
         im.save(name_fansigned)
         print("Da tao xong fansign Soobin")
         page.send(sender_id, Attachment.Image(
             "http://210.211.109.211/weqbfyretnccbsaf/fs_sb" + sender_id + last_name + first_name + ".jpg"))
 
-    fs_hlv_list={
+    fs_hlv_list = {
         'sb': fs_sb,
         'vct': fs_vct,
         'ht': fs_ht,
