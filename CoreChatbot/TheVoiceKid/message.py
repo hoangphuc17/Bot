@@ -90,37 +90,6 @@ def new_faq_answer(message, sender_id):
 
         found_question = False
         final_data = {}
-        # task 1. check word trong first level
-        # task 2. neu co trong first level thi moi check tiep trong medial level
-        # task 3. neu co trong medial level thi check trong final level, va lay answer
-
-        # TASK 1:
-        for document_first_level in FAQ.find():
-            if document_first_level['priority'] == "1":
-                print("da tim thay level 1")
-                for keyword_1 in document_first_level['keyword']:
-                    if keyword_1 in message:
-                        # TASK 2:
-                        for document_medial_level in FAQ.find():
-                            # 1 question co the co hoac khong co medial_level
-                            if document_medial_level['priority'] == "2" and document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
-                                print("da tim thay level 2")
-                                for keyword_2 in document_medial_level['keyword']:
-                                    if keyword_2 in message:
-                                        # TASK 3:
-                                        for document_final_level in FAQ.find():
-                                            if document_final_level['priority'] == "3" and document_final_level['id_node_parent'] == document_medial_level['id_medial_level_node']:
-                                                print("da tim thay level 3")
-                                                for keyword_3 in document_final_level['keyword']:
-                                                    if keyword_3 in message:
-                                                        final_data = document_final_level
-                                                        found_question = True
-                            elif document_medial_level['priority'] == "3" and document_medial_level['id_node_parent'] == document_first_level['id_first_level_node']:
-                                print("khong co level 2, nhung tim thay level 3")
-                                for keyword_2 in document_medial_level['keyword']:
-                                    if keyword_2 in message:
-                                        final_data = document_medial_level
-                                        found_question = True
 
         if found_question:
             page.send(sender_id, final_data['answer'])

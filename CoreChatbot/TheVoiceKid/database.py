@@ -22,6 +22,8 @@ USER = db.USER
 FAQ = db.FAQ
 NEWS = db.NEWS
 
+FAQ2 = db.FAQ2
+
 
 # collection USER
 def insert_new_user(first_name, last_name, id_user):
@@ -94,34 +96,14 @@ def insert_news(title, subtitle, image_url, item_url):
         NEWS.insert_one(new_news)
 
 
-# FAQ collection
-def first_level(id_first_level, keyword):
-    first_level_node = {
-        'id_first_level_node': id_first_level,
-        # 'id_node_children': id_node_children,
-        'keyword': keyword,
-        'priority': "1"
-    }
-    FAQ.insert_one(first_level_node)
-
-
-def medial_level(id_medial_level, id_node_parent, keyword):
-    medial_level_node = {
-        'id_medial_level_node': id_medial_level,
-        'id_node_parent': id_node_parent,
-        # 'id_node_children': id_node_children,
-        'keyword': keyword,
-        'priority': "2"
-    }
-    FAQ.insert_one(medial_level_node)
-
-
-def final_level(id_final_level, id_node_parent, keyword, answer):
-    final_level_node = {
-        'id_final_level_node': id_final_level,
-        'id_node_parent': id_node_parent,
-        'keyword': keyword,
-        'answer': answer,
-        'priority': "3"
-    }
-    FAQ.insert_one(final_level_node)
+# collection FAQ2
+def add_cat(title, keyword):
+    check_cat = FAQ2.find_one({'title': title})
+    if bool(check_cat):
+        pass
+    else:
+        new_cat = {
+            'title': title,
+            'keyword': keyword
+        }
+        FAQ2.insert_one(new_cat)
