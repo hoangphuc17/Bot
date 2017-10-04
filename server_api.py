@@ -224,6 +224,7 @@ def broadcast_image():
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     page.send("1370330196399177", Attachment.Image(request.form['url']))
+    return 'aaaa'
 
     # for user in USER.find():
     #     page.send(user['id_user'], Attachment.Image(url))
