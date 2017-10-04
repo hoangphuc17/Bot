@@ -201,21 +201,42 @@ def delete_news():
 # BROADCAST API: message, image, video, message+button, general
 @app.route('/broadcast/message', methods=['POST'])
 def broadcast_message():
-    for user in USER.find():
-        message = request.form['message']
-        page.send(user['id_user'], message)
-        return 'Sent a broadcast message'
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        # for user in USER.find():
+        #     message = request.form['message']
+        #     page.send(user['id_user'], message)
+
+        page.send("1370330196399177", Attachment.Image(request.form['url']))
+        page.send("1437973719614452", Attachment.Image(request.form['url']))
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/broadcast/message_button', methods=['POST'])
 def broadcast_message_button():
-    for user in USER.find():
-        message = request.form['message']
-        buttons = [
-            Template.ButtonPostBack("Home", "home")
-        ]
-        page.send(user['id_user'], Template.Buttons(message, buttons))
-        return 'Sent a broadcast message_button'
+    def broadcast_message():
+        users = mongo.db.USER_CMS
+        check_user_activation_key = users.find_one(
+            {'user_activation_key': request.form['user_activation_key']})
+        if bool(check_user_activation_key):
+            # for user in USER.find():
+            #     message = request.form['message']
+            #     buttons = [
+            #         Template.ButtonPostBack("Home", "home")
+            #     ]
+            #     page.send(user['id_user'], Template.Buttons(message, buttons))
+
+            page.send("1370330196399177",
+                      Attachment.Image(request.form['url']))
+            page.send("1437973719614452",
+                      Attachment.Image(request.form['url']))
+            return 'True'
+        else:
+            return 'False'
 
 
 @app.route('/broadcast/image', methods=['POST'])
@@ -224,14 +245,14 @@ def broadcast_image():
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
-        page.send("1370330196399177", Attachment.Image(request.form['url']))
-        return 'aaaa'
-    else:
-        return 'bbbb'
+        # for user in USER.find():
+        #     page.send(user['id_user'], Attachment.Image(url))
 
-    # for user in USER.find():
-    #     page.send(user['id_user'], Attachment.Image(url))
-    #     return 'Sent a broadcast image'
+        page.send("1370330196399177", Attachment.Image(request.form['url']))
+        page.send("1437973719614452", Attachment.Image(request.form['url']))
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/broadcast/video', methods=['POST'])
@@ -239,9 +260,15 @@ def broadcast_video(url):
     users = mongo.db.USER_CMS
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
-    for user in USER.find():
-        page.send(user['id_user'], Attachment.Video(request.form['url']))
-        return 'Sent a broadcast video'
+    if bool(check_user_activation_key):
+        # for user in USER.find():
+        #     page.send(user['id_user'], Attachment.Video(url))
+
+        page.send("1370330196399177", Attachment.Video(request.form['url']))
+        page.send("1437973719614452", Attachment.Video(request.form['url']))
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/broadcast/general_template', methods=['POST'])
