@@ -259,8 +259,8 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
+            # return redirect(url_for('uploaded_file', filename=filename))
+            return ('http://210.211.109.211/weqbfyretnccbsaf/' + filename)
 
 
 # @app.route('/broadcast/upload', methods=['GET', 'POST'])
