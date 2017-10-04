@@ -21,6 +21,7 @@ db = client.Phuc
 USER = db.USER
 FAQ = db.FAQ
 NEWS = db.NEWS
+NOFAQ = db.NOFAQ
 
 
 def answer(message, sender_id):
@@ -94,7 +95,9 @@ def new_faq_answer(message, sender_id):
         if found_question:
             page.send(sender_id, final_data['answer'])
         else:
-            print('khong tim thay cau hoi trong FAQ')
+            new_nofaq = {'message': message}
+            NOFAQ.insert_one(new_nofaq)
+            print('khong tim thay cau hoi trong FAQ, vao nofaq de xem')
             # text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
             text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử lại với một ‘Từ Khóa’ khác nhé!"
             buttons = [
