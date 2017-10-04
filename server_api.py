@@ -223,18 +223,24 @@ def broadcast_image():
     users = mongo.db.USER_CMS
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
-    page.send("1370330196399177", Attachment.Image(request.form['url']))
-    return 'aaaa'
+    if bool(check_user_activation_key):
+        page.send("1370330196399177", Attachment.Image(request.form['url']))
+        return 'aaaa'
+    else:
+        return 'bbbb'
 
     # for user in USER.find():
     #     page.send(user['id_user'], Attachment.Image(url))
     #     return 'Sent a broadcast image'
 
 
-@app.route('/broadcast/video/url', methods=['POST'])
+@app.route('/broadcast/video', methods=['POST'])
 def broadcast_video(url):
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
     for user in USER.find():
-        page.send(user['id_user'], Attachment.Video(url))
+        page.send(user['id_user'], Attachment.Video(request.form['url']))
         return 'Sent a broadcast video'
 
 
