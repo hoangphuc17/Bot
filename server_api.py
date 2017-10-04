@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-# from importlib import reload
-
-# reload(sys)
-# sys.setdefaultencoding('utf-8')
 
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
@@ -25,8 +21,13 @@ app.config['MONGO_DBNAME'] = 'Phuc'
 app.config['MONGO_URI'] = 'mongodb://cb.saostar.vn:27017/Phuc'
 mongo = PyMongo(app)
 
+UPLOAD_FOLDER = '/home/hoangphuc/Bot_Pictures'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # USER_CMS authentication
+
+
 @app.route('/')
 def index():
     if 'username' in session:
@@ -236,14 +237,40 @@ def broadcast_video():
         return 'Sent a broadcast video'
 
 
-#  @app.route('/broadcast/upload', methods=['GET', 'POST'])
-#  def broadcast_upload():
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/broadcast/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+
+
+# @app.route('/broadcast/upload', methods=['GET', 'POST'])
+# def broadcast_upload():
 #     if request.method == 'POST':
 #         file = request.files['file']
 #         extension = os.path.splitext(file.filename)[1]
 #         f_name = str(uuid.uuid4()) + extension
 #         file.save(os.path.join(app.config['UPLOAD_FOLDER'], f_name))
-#         return json.dumps({'filename':f_name})
+#         return json.dumps({'filename': f_name})
+
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
