@@ -11,9 +11,10 @@ from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 # from CoreChatbot.TheVoiceKid.database import *
 
-from flask import Flask, render_template, url_for, request, session, redirect, jsonify
+from flask import Flask, render_template, url_for, request, session, redirect, jsonify, flash
 from flask_pymongo import PyMongo, ObjectId
 import bcrypt
+from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
@@ -275,3 +276,8 @@ def upload_file():
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
     app.run(host='210.211.109.211', port=3000, debug=True, threaded=True)
+
+
+# tieng anh tieng viet thong nhat
+# json or form
+# check user_activation_key trong broadcast
