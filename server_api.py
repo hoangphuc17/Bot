@@ -113,38 +113,85 @@ def get_all_user():
 # NEWS
 @app.route('/news/get', methods=['GET'])
 def get_all_news():
-    news = mongo.db.NEWS
-    output = []
-    for news in news.find():
-        output.append({
-            'id_news': str(news['_id']),
-            'title': news['title'],
-            'subtitle': news['subtitle'],
-            'image_url': news['image_url'],
-            'item_url': news['item_url']
-        })
-    return jsonify({'result': output})
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        news = mongo.db.NEWS
+        output = []
+        for news in news.find():
+            output.append({
+                'id_news': str(news['_id']),
+                'title': news['title'],
+                'subtitle': news['subtitle'],
+                'image_url': news['image_url'],
+                'item_url': news['item_url']
+            })
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/news/insert', methods=['POST'])
 def add_news():
-    news = mongo.db.NEWS
-    title = request.form['title']
-    subtitle = request.form['subtitle']
-    image_url = request.form['image_url']
-    item_url = request.form['item_url']
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        news = mongo.db.NEWS
+        title = request.form['title']
+        subtitle = request.form['subtitle']
+        image_url = request.form['image_url']
+        item_url = request.form['item_url']
 
-    check_news = news.find_one({'item_url': item_url})
-    if bool(check_news):
-        return "This news already exists in database!"
+        check_news = news.find_one({'item_url': item_url})
+        if bool(check_news):
+            return "This news already exists in database!"
+        else:
+            insert_news = news.insert({
+                'title': title,
+                'subtitle': subtitle,
+                'image_url': image_url,
+                'item_url': item_url
+            })
+            new_news = news.find_one({'_id': insert_news})
+            output = {
+                'id_news': str(new_news['_id']),
+                'title': new_news['title'],
+                'subtitle': new_news['subtitle'],
+                'image_url': new_news['image_url'],
+                'item_url': new_news['item_url']
+            }
+            return 'True'
     else:
-        insert_news = news.insert({
-            'title': title,
-            'subtitle': subtitle,
-            'image_url': image_url,
-            'item_url': item_url
-        })
-        new_news = news.find_one({'_id': insert_news})
+        return 'False'
+
+
+@app.route('/news/update', methods=['PUT'])
+def update_news():
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        news = mongo.db.NEWS
+
+        title = request.form['title']
+        subtitle = request.form['subtitle']
+        image_url = request.form['image_url']
+        item_url = request.form['item_url']
+
+        updated_news = news.update_one(
+            {news['item_url']: item_url},
+            {'$set': {
+                news['title']: title,
+                news['subtitle']: subtitle,
+                news['image_url']: image_url,
+                news['item_url']: item_url
+            }}
+        )
+
+        new_news = news.find_one({'_id': updated_news})
+
         output = {
             'id_news': str(new_news['_id']),
             'title': new_news['title'],
@@ -152,50 +199,27 @@ def add_news():
             'image_url': new_news['image_url'],
             'item_url': new_news['item_url']
         }
-        return jsonify({'result': output})
 
-
-@app.route('/news/update', methods=['PUT'])
-def update_news():
-    news = mongo.db.NEWS
-
-    title = request.form['title']
-    subtitle = request.form['subtitle']
-    image_url = request.form['image_url']
-    item_url = request.form['item_url']
-
-    updated_news = news.update_one(
-        {news['item_url']: item_url},
-        {'$set': {
-            news['title']: title,
-            news['subtitle']: subtitle,
-            news['image_url']: image_url,
-            news['item_url']: item_url
-        }}
-    )
-
-    new_news = news.find_one({'_id': updated_news})
-
-    output = {
-        'id_news': str(new_news['_id']),
-        'title': new_news['title'],
-        'subtitle': new_news['subtitle'],
-        'image_url': new_news['image_url'],
-        'item_url': new_news['item_url']
-    }
-
-    return jsonify({'result': output})
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/news/update', methods=['DELETE'])
 def delete_news():
-    news = mongo.db.NEWS
-    title = request.form['title']
-    subtitle = request.form['subtitle']
-    image_url = request.form['image_url']
-    item_url = request.form['item_url']
-    news.delete_one({'item_url': item_url})
-    return 'Deleted news'
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        news = mongo.db.NEWS
+        title = request.form['title']
+        subtitle = request.form['subtitle']
+        image_url = request.form['image_url']
+        item_url = request.form['item_url']
+        news.delete_one({'item_url': item_url})
+        return 'True'
+    else:
+        return 'False'
 
 
 # BROADCAST API: message, image, video, message+button, general
@@ -209,8 +233,8 @@ def broadcast_message():
         #     message = request.form['message']
         #     page.send(user['id_user'], message)
 
-        page.send("1370330196399177", Attachment.Image(request.form['url']))
-        page.send("1437973719614452", Attachment.Image(request.form['url']))
+        page.send("1370330196399177", request.form['message'])
+        page.send("1437973719614452", request.form['message'])
         return 'True'
     else:
         return 'False'
@@ -218,25 +242,26 @@ def broadcast_message():
 
 @app.route('/broadcast/message_button', methods=['POST'])
 def broadcast_message_button():
-    def broadcast_message():
-        users = mongo.db.USER_CMS
-        check_user_activation_key = users.find_one(
-            {'user_activation_key': request.form['user_activation_key']})
-        if bool(check_user_activation_key):
-            # for user in USER.find():
-            #     message = request.form['message']
-            #     buttons = [
-            #         Template.ButtonPostBack("Home", "home")
-            #     ]
-            #     page.send(user['id_user'], Template.Buttons(message, buttons))
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        # for user in USER.find():
+        #     message = request.form['message']
+        #     buttons = [
+        #         Template.ButtonPostBack("Home", "home")
+        #     ]
+        #     page.send(user['id_user'], Template.Buttons(message, buttons))
 
-            page.send("1370330196399177",
-                      Attachment.Image(request.form['url']))
-            page.send("1437973719614452",
-                      Attachment.Image(request.form['url']))
-            return 'True'
-        else:
-            return 'False'
+        message = request.form['message']
+        buttons = [
+            Template.ButtonPostBack("Home", "home")
+        ]
+        page.send("1370330196399177", Template.Buttons(message, buttons))
+        page.send("1437973719614452", Template.Buttons(message, buttons))
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/broadcast/image', methods=['POST'])
@@ -273,16 +298,22 @@ def broadcast_video(url):
 
 @app.route('/broadcast/general_template', methods=['POST'])
 def broadcast_general_template():
-    element = Template.GenericElement(
-        title=request.form['title'],
-        subtitle=request.form['subtitle'],
-        image_url=request.form['image_url'],
-        buttons=[
-            Template.ButtonWeb('Đọc tin', request.form['item_url']),
-            Template.ButtonPostBack('Về Home', 'home')
-        ])
-    page.send(sender_id, Template.Generic(element))
-    return 'Sent a broadcast general template'
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        element = Template.GenericElement(
+            title=request.form['title'],
+            subtitle=request.form['subtitle'],
+            image_url=request.form['image_url'],
+            buttons=[
+                Template.ButtonWeb('Đọc tin', request.form['item_url']),
+                Template.ButtonPostBack('Về Home', 'home')
+            ])
+        page.send(sender_id, Template.Generic(element))
+        return 'True'
+    else:
+        return 'False'
 
 
 if __name__ == '__main__':
