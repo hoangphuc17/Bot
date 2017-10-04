@@ -39,6 +39,7 @@ def greeting(sender_id):
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
+    print (user_profile)
 
     # kiem tra user, neu chua co thi them vao database
     check_user = USER.find_one({'id_user': sender_id})
