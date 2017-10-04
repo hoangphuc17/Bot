@@ -208,7 +208,7 @@ def broadcast_message():
 
 
 @app.route('/broadcast/message_button', methods=['POST'])
-def broadcast_message():
+def broadcast_message_button():
     for user in USER.find():
         message = request.form['message']
         buttons = [
