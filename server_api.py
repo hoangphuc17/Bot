@@ -26,17 +26,8 @@ UPLOAD_FOLDER = '/home/hoangphuc/Bot_Pictures'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 # USER_CMS authentication
-
-
-@app.route('/')
-def index():
-    if 'username' in session:
-        return 'You are logged in as ' + session['username']
-    else:
-        return 'You are not logged.'
-
-
 @app.route('/login', methods=['POST'])
 def login():
     users = mongo.db.USER_CMS
@@ -56,12 +47,12 @@ def login():
         return 'False'
 
 
-@app.route('/logout/<string:username>', methods=['POST'])
-def logout(username):
+@app.route('/logout', methods=['POST'])
+def logout():
     # xoa user_activation_key
     logged_out = ''
     users = mongo.db.USER_CMS
-    login_user = users.find_one({'username': username})
+    login_user = users.find_one({'username': request.form['username']})
     if login_user:
         users.update_one(
             {'username': login_user['username']},
@@ -74,9 +65,9 @@ def logout(username):
     return logged_out
 
 
-@app.route('/register/<string:username>', methods=['POST', 'GET'])
-def register(username):
-    if username == 'admin':
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.form['username'] == 'admin':
         register = 'False'
         if request.method == 'POST':
             users = mongo.db.USER_CMS
@@ -99,11 +90,10 @@ def register(username):
                 return 'That username already exists!'
         return register
     else:
-        return 'Admin moi duoc dang ky user'
+        return 'admin, dm please'
+
 
 # USER
-
-
 @app.route('/user/get', methods=['GET'])
 def get_all_user():
     user = mongo.db.USER
@@ -139,10 +129,10 @@ def get_all_news():
 @app.route('/news/insert', methods=['POST'])
 def add_news():
     news = mongo.db.NEWS
-    title = request.json['title']
-    subtitle = request.json['subtitle']
-    image_url = request.json['image_url']
-    item_url = request.json['item_url']
+    title = request.form['title']
+    subtitle = request.form['subtitle']
+    image_url = request.form['image_url']
+    item_url = request.form['item_url']
 
     check_news = news.find_one({'item_url': item_url})
     if bool(check_news):
@@ -169,10 +159,10 @@ def add_news():
 def update_news():
     news = mongo.db.NEWS
 
-    title = request.json['title']
-    subtitle = request.json['subtitle']
-    image_url = request.json['image_url']
-    item_url = request.json['item_url']
+    title = request.form['title']
+    subtitle = request.form['subtitle']
+    image_url = request.form['image_url']
+    item_url = request.form['item_url']
 
     updated_news = news.update_one(
         {news['item_url']: item_url},
@@ -200,91 +190,67 @@ def update_news():
 @app.route('/news/update', methods=['DELETE'])
 def delete_news():
     news = mongo.db.NEWS
-    title = request.json['title']
-    subtitle = request.json['subtitle']
-    image_url = request.json['image_url']
-    item_url = request.json['item_url']
+    title = request.form['title']
+    subtitle = request.form['subtitle']
+    image_url = request.form['image_url']
+    item_url = request.form['item_url']
     news.delete_one({'item_url': item_url})
     return 'Deleted news'
 
 
-# BROADCAST API: message, image, video
+# BROADCAST API: message, image, video, message+button, general
 @app.route('/broadcast/message', methods=['POST'])
 def broadcast_message():
     for user in USER.find():
-        message = request.json['message']
+        message = request.form['message']
+        page.send(user['id_user'], message)
+        return 'Sent a broadcast message'
+
+
+@app.route('/broadcast/message_button', methods=['POST'])
+def broadcast_message():
+    for user in USER.find():
+        message = request.form['message']
         buttons = [
             Template.ButtonPostBack("Home", "home")
         ]
         page.send(user['id_user'], Template.Buttons(message, buttons))
-        return 'Sent a broadcast message'
+        return 'Sent a broadcast message_button'
 
 
 @app.route('/broadcast/image', methods=['POST'])
 def broadcast_image():
-    for user in USER.find():
-        image_url = "http://210.211.109.211/weqbfyretnccbsaf/" + \
-            request.json['image']
-        page.send(user['id_user'], Attachment.Image(image_url))
-        return 'Sent a broadcast image'
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    page.send("1370330196399177", Attachment.Image(request.form['url']))
+
+    # for user in USER.find():
+    #     page.send(user['id_user'], Attachment.Image(url))
+    #     return 'Sent a broadcast image'
 
 
-@app.route('/broadcast/video', methods=['POST'])
-def broadcast_video():
+@app.route('/broadcast/video/url', methods=['POST'])
+def broadcast_video(url):
     for user in USER.find():
-        video_url = "http://210.211.109.211/weqbfyretnccbsaf/" + \
-            request.json['video']
-        page.send(user['id_user'], Attachment.Video(video_url))
+        page.send(user['id_user'], Attachment.Video(url))
         return 'Sent a broadcast video'
 
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-@app.route('/broadcast/upload', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        # if 'file' not in request.files:
-        #     flash('No file part')
-        #     # return redirect(request.url)
-        #     return 'file not in format'
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            # return redirect(request.url)
-            return 'No selected file'
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # return redirect(url_for('uploaded_file', filename=filename))
-            return ('http://210.211.109.211/weqbfyretnccbsaf/' + filename)
-# def upload_file():
-#     if request.method == 'POST':
-#         f = request.files['file']
-#         f.save(secure_filename(f.filename))
-#         return 'file uploaded successfully'
-
-
-# @app.route('/broadcast/upload', methods=['GET', 'POST'])
-# def broadcast_upload():
-#     if request.method == 'POST':
-#         file = request.files['file']
-#         extension = os.path.splitext(file.filename)[1]
-#         f_name = str(uuid.uuid4()) + extension
-#         file.save(os.path.join(app.config['UPLOAD_FOLDER'], f_name))
-#         return json.dumps({'filename': f_name})
+@app.route('/broadcast/general_template', methods=['POST'])
+def broadcast_general_template():
+    element = Template.GenericElement(
+        title=request.form['title'],
+        subtitle=request.form['subtitle'],
+        image_url=request.form['image_url'],
+        buttons=[
+            Template.ButtonWeb('Đọc tin', request.form['item_url']),
+            Template.ButtonPostBack('Về Home', 'home')
+        ])
+    page.send(sender_id, Template.Generic(element))
+    return 'Sent a broadcast general template'
 
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
     app.run(host='210.211.109.211', port=3000, debug=True, threaded=True)
-
-
-# tieng anh tieng viet thong nhat
-# json or form
-# check user_activation_key trong broadcast
