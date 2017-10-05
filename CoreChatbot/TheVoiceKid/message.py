@@ -14,6 +14,8 @@ from CoreChatbot.Preparation.fbpage import page
 from CoreChatbot.TheVoiceKid.database import *
 
 
+from underthesea import word_sent
+
 import datetime
 from pymongo import MongoClient
 client = MongoClient('cb.saostar.vn', 27017)
@@ -94,6 +96,9 @@ def new_faq_answer(message, sender_id):
 
         found_question = False
         final_data = {}
+
+        # TACH TU (word_segmentation)
+        print(word_sent(message))
 
         if found_question:
             page.send(sender_id, final_data['answer'])

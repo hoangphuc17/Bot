@@ -112,15 +112,5 @@ def insert_new_news():
     print('da them new news')
 
 
-# insert_new_news()
-# insert_new_questions()
-
-def insert_node():
-    first_level("1", ["tổ chức", "diễn ra"])
-    final_level("2", "1", ["ở đâu"], "38 Nguyễn Du")
-    final_level("3", "1", ["ai"], "Cat Tien Sa")
-
-
-# insert_node()
-
-insert_new_questions()
+# def insert_new_faq():
+#     add_cat('1',)

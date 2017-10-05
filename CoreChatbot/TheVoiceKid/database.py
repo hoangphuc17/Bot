@@ -97,13 +97,50 @@ def insert_news(title, subtitle, image_url, item_url):
 
 
 # collection FAQ2
-def add_cat(title, keyword):
-    check_cat = FAQ2.find_one({'title': title})
-    if bool(check_cat):
-        pass
+def add_cat(cat_id, cat_title, cat_keyword):
+    check_cat_title = FAQ2.find_one({'cat_title': cat_title})
+    if bool(check_cat_title):
+        print('cat_title giong nhau')
     else:
-        new_cat = {
-            'title': title,
-            'keyword': keyword
+        check_cat_id = FAQ2.find_one({'cat_id': cat_id})
+        if bool(check_cat_id):
+            print('cat_id giong nhau')
+        else:
+            new_cat = {
+                'cat_id': cat_id,
+                'cat_title': cat_title,
+                'cat_keyword': cat_keyword
+            }
+            FAQ2.insert_one(new_cat)
+
+
+def add_subcat(subcat_id, subcat_title, subcat_keyword, cat_id):
+    check_subcat_title = FAQ2.find_one({'subcat_title': subcat_title})
+    if bool(check_subcat_title):
+        print('subcat_title giong nhau')
+    else:
+        check_subcat_id = FAQ2.find_one({'subcat_id': subcat_id})
+        if bool(check_subcat_id):
+            print('subcat_id giong nhau')
+        else:
+            new_subcat = {
+                'subcat_id': subcat_id,
+                'subcat_title': subcat_title,
+                'subcat_keyword': subcat_keyword,
+                'cat_id': cat_id
+            }
+            FAQ2.insert_one(new_subcat)
+
+
+def add_qa(question, answer, qa_keyword, subcat_id):
+    check_keyword = FAQ2.find_one({'qa_keyword': qa_keyword})
+    if bool(check_keyword):
+        print('qa_keyword giong nhau')
+    else:
+        new_qa = {
+            'question': question,
+            'answer': answer,
+            'qa_keyword': qa_keyword,
+            'subcat_id': subcat_id
         }
-        FAQ2.insert_one(new_cat)
+        FAQ2.insert_one(new_qa)
