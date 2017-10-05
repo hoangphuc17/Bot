@@ -147,6 +147,7 @@ def new_faq_answer(message, sender_id):
             if count_subcat < count_word_in_subcat:
                 chosen_subcat = subcat_document
                 count_subcat = count_word_in_subcat
+
             elif count_subcat == count_word_in_subcat:
                 if chosen_subcat != {}:  # co 2 subcat_document phu hop
                     text = 'chon noi dung cho cau hoi cua ban nhe, subcat'
@@ -167,6 +168,8 @@ def new_faq_answer(message, sender_id):
             if count_qa < count_word_in_qa:
                 chosen_qa = qa_document
                 count_qa = count_word_in_qa
+                found_question = True
+                final_data = chosen_qa
             elif count_qa == count_word_in_qa:
                 if chosen_qa != {}:  # co 2 qa_document phu hop
                     text = 'chon noi dung cho cau hoi cua ban nhe, subcat'
