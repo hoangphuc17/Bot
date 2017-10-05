@@ -130,6 +130,12 @@ def insert_new_faq():
            "top 15", "team Vũ Cát Tường", "team Hương Tràm Tiên Cookie", "team Soobin"]	, 'Team Vũ Cát Tường bao gồm 15 thí sinh:', 'tc_1')
     add_qa('Website Giọng Hát Việt Nhí là gì vậy?', ["trang web", "website", "địa chỉ web"	],
            'Website chính thức của chương trình Giọng Hát Việt Nhí/The Voice Kids Việt Nam truy cập vào link: http://gionghatvietnhi.com.vn', 'tc_1')
+    add_qa('Địa điểm quay hình ở đâu?',	["địa điểm", "quay hình", "ở đâu"],
+           'Theo dõi Fanpage để cập nhật thông tin địa điểm ghi hình sớm nhất bạn nhé!', 'tc_2')
+    add_qa('Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?', [
+           "ghvn", "tvk", "tổ chức", "ở đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!', 'tc_2')
+    add_qa('Năm sau còn tổ chức nữa không ạ?', [
+           "năm sau", "2018", "tổ chức"], 'Bạn đáng yêu ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!', 'tc_3')
 
 
 insert_new_faq()
