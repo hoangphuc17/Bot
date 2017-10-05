@@ -127,7 +127,7 @@ def new_faq_answer(message, sender_id):
                 # 1. khong tim thay cat_document phu hop
                 # 2. co 2 cat_document phu hop
                 if chosen_cat != {}:  # co 2 cat_document phu hop
-                    text = 'chon chu de cho cau hoi cua ban nhe'
+                    text = chosen_cat['cat_id']
                     page.send(sender_id, text)
                 else:  # khong tim thay cat_document phu hop
                     text = 'truong hop 2 chua co du lieu cho cau hoi nay'
@@ -150,7 +150,7 @@ def new_faq_answer(message, sender_id):
 
             elif count_subcat == count_word_in_subcat:
                 if chosen_subcat != {}:  # co 2 subcat_document phu hop
-                    text = 'chon noi dung cho cau hoi cua ban nhe, subcat'
+                    text = chosen_subcat['subcat_id']
                     page.send(sender_id, text)
                 else:  # khong tim thay cat_document phu hop
                     text = 'truong hop 2 chua co du lieu cho cau hoi nay, subcat'
@@ -172,7 +172,7 @@ def new_faq_answer(message, sender_id):
                 final_data = chosen_qa
             elif count_qa == count_word_in_qa:
                 if chosen_qa != {}:  # co 2 qa_document phu hop
-                    text = 'chon noi dung cho cau hoi cua ban nhe, subcat'
+                    text = chosen_qa['question']
                     page.send(sender_id, text)
                 else:  # khong tim thay qa_document phu hop
                     text = 'truong hop 2 chua co du lieu cho cau hoi nay, subcat'
