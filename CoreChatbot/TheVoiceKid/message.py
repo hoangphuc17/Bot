@@ -97,8 +97,88 @@ def new_faq_answer(message, sender_id):
         found_question = False
         final_data = {}
 
+        count_word_in_cat = 0
+        count_cat = 0
+        count_word_in_subcat = 0
+        count_subcat = 0
+        count_word_in_qa = 0
+        count_qa = 0
+        chosen_cat = {}
+        chosen_subcat = {}
+        chosen_qa = {}
+
         # TACH TU (word_segmentation)
-        print(word_sent(message))
+        word_dict = word_sent(message)
+
+        # - voi moi tu trong word_dict, xet xem tu do co trong cat_keyword hay ko
+        # - vi 1 tu co the o trong nhieu cat khac nhau, nen ta dat 1 bien ten la chosen_cat,
+        # khi word co trong cat, thi choose_cat se tang 1 don vi, sau khi tim tat ca cat,
+        # ta chon cat nao co choose_cat lon nhat de tiep tuc hanh trinh
+        for cat_document in FAQ2.find({'level': '1'}):
+            for word in word_dict:
+                if word in cat_document['cat_keyword']:
+                    print(word + " in cat_document " +
+                          cat_document['cat_title'])
+                    count_word_in_cat = count_word_in_cat + 1
+            if count_cat < count_word_in_cat:
+                chosen_cat = cat_document
+                count_cat = count_word_in_cat
+            elif count_cat == count_word_in_cat:
+                # 1. khong tim thay cat_document phu hop
+                # 2. co 2 cat_document phu hop
+                if chosen_cat != {}:  # co 2 cat_document phu hop
+                    text = 'chon chu de cho cau hoi cua ban nhe'
+                    page.send(sender_id, text)
+                else:  # khong tim thay cat_document phu hop
+                    text = 'truong hop 2 chua co du lieu cho cau hoi nay'
+                    page.send(sender_id, text)
+
+            else:  # count_cat > count_word_in_cat
+                # khong tim thay hoac khong phai cat_document nay
+                text = "chua co du lieu cho cau hoi nay"
+                page.send(sender_id, text)
+
+        for subcat_document in FAQ2.find({'level': '2', 'cat_id': chosen_cat['cat_id']}):
+            for word in word_dict:
+                if word in subcat_document['subcat_keyword']:
+                    print(word + ' in subcat_document ' +
+                          subcat_document['subcat_title'])
+                    count_word_in_subcat = count_word_in_subcat + 1
+            if count_subcat < count_word_in_subcat:
+                chosen_subcat = subcat_document
+                count_subcat = count_word_in_subcat
+            elif count_subcat == count_word_in_subcat:
+                if chosen_subcat != {}:  # co 2 subcat_document phu hop
+                    text = 'chon noi dung cho cau hoi cua ban nhe, subcat'
+                    page.send(sender_id, text)
+                else:  # khong tim thay cat_document phu hop
+                    text = 'truong hop 2 chua co du lieu cho cau hoi nay, subcat'
+                    page.send(sender_id, text)
+
+            else:  # count_cat > count_word_in_cat
+                # khong tim thay hoac khong phai cat_document nay
+                text = "chua co du lieu cho cau hoi nay"
+                page.send(sender_id, text)
+
+        for qa_document in FAQ2.find({'level': '3', 'subcat_id': chosen_subcat['subcat_id']}):
+            for word in word_dict:
+                if word in qa_document['qa_keyword']:
+                    count_word_in_qa = count_word_in_qa + 1
+            if count_qa < count_word_in_qa:
+                chosen_qa = qa_document
+                count_qa = count_word_in_qa
+            elif count_qa == count_word_in_qa:
+                if chosen_qa != {}:  # co 2 qa_document phu hop
+                    text = 'chon noi dung cho cau hoi cua ban nhe, subcat'
+                    page.send(sender_id, text)
+                else:  # khong tim thay qa_document phu hop
+                    text = 'truong hop 2 chua co du lieu cho cau hoi nay, subcat'
+                    page.send(sender_id, text)
+
+            else:  # count_cat > count_word_in_cat
+                # khong tim thay hoac khong phai qa_document nay
+                text = "chua co du lieu cho cau hoi nay"
+                page.send(sender_id, text)
 
         if found_question:
             page.send(sender_id, final_data['answer'])
@@ -106,8 +186,6 @@ def new_faq_answer(message, sender_id):
             new_nofaq = {'message': message}
             NOFAQ.insert_one(new_nofaq)
             print('khong tim thay cau hoi trong FAQ, vao nofaq de xem')
-            # text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
-            # text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử lại với một ‘Từ Khóa’ khác nhé!"
             text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
             buttons = [
                 Template.ButtonPostBack(

@@ -112,5 +112,24 @@ def insert_new_news():
     print('da them new news')
 
 
-# def insert_new_faq():
-#     add_cat('1',)
+def insert_new_faq():
+    add_cat('tc', 'tổ chức', ["địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
+                              "giọng hát việt nhí", "top 15", "team vũ cát tường", "team hương tràm tiên cookie", "team soobin", "trang web", "website", "địa chỉ web", "mỗi", "đội", "thí sinh", "mùa sau", "năm sau"])
+    add_subcat('tc_1', 'là gì', ["bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "top 15", "team Vũ Cát Tường",
+                                 "team Hương Tràm Tiên Cookie", "team Soobin Hoàng Sơn", "trang web", "website", "địa chỉ web"], 'tc')
+    add_subcat('tc_2', 'địa điểm', [
+               "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu"], 'tc')
+    add_subcat('tc_3', 'thời gian', ["năm sau", "2018", "tổ chức"], 'tc')
+    add_subcat('tc_4', 'nhân sự', [
+               "quán quân", "năm nay", "hlv", "tvk", "ghvn", "Giọng hát việt nhí", "mùa sau", "năm sau"], 'tc')
+    add_qa("Một tập gồm mấy thí sinh vậy Ad?", ["bao nhiêu", "số lượng", "thí sinh"],
+           "Bạn ơi bạn à! Bạn muốn hỏi tập mấy nà? Ahihi Mình đùa đấy!! Tùy theo mỗi tập sẽ có số lượng thí sinh khác nhau. Bạn nhớ xem chương trình vào 21h tối Thứ Bảy Hàng tuần trên VTV3 để nắm thông tin nhé!", "tc_1")
+    add_qa('Vòng giấu mặt có bao nhiêu tập?', [
+           "giấu mặt", "bao nhiêu"], 'Vòng giấu mặt thường có 4-5 tập bạn nhé!', 'tc_1')
+    add_qa('Top 15 của mỗi đội gồm bé nào vậy?', [
+           "top 15", "team Vũ Cát Tường", "team Hương Tràm Tiên Cookie", "team Soobin"]	, 'Team Vũ Cát Tường bao gồm 15 thí sinh:', 'tc_1')
+    add_qa('Website Giọng Hát Việt Nhí là gì vậy?', ["trang web", "website", "địa chỉ web"	],
+           'Website chính thức của chương trình Giọng Hát Việt Nhí/The Voice Kids Việt Nam truy cập vào link: http://gionghatvietnhi.com.vn', 'tc_1')
+
+
+insert_new_faq()

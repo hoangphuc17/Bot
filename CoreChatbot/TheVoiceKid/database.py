@@ -107,6 +107,7 @@ def add_cat(cat_id, cat_title, cat_keyword):
             print('cat_id giong nhau')
         else:
             new_cat = {
+                'level': '1',
                 'cat_id': cat_id,
                 'cat_title': cat_title,
                 'cat_keyword': cat_keyword
@@ -124,6 +125,7 @@ def add_subcat(subcat_id, subcat_title, subcat_keyword, cat_id):
             print('subcat_id giong nhau')
         else:
             new_subcat = {
+                'level': '2',
                 'subcat_id': subcat_id,
                 'subcat_title': subcat_title,
                 'subcat_keyword': subcat_keyword,
@@ -132,12 +134,13 @@ def add_subcat(subcat_id, subcat_title, subcat_keyword, cat_id):
             FAQ2.insert_one(new_subcat)
 
 
-def add_qa(question, answer, qa_keyword, subcat_id):
+def add_qa(question, qa_keyword, answer, subcat_id):
     check_keyword = FAQ2.find_one({'qa_keyword': qa_keyword})
     if bool(check_keyword):
         print('qa_keyword giong nhau')
     else:
         new_qa = {
+            'level': '3',
             'question': question,
             'answer': answer,
             'qa_keyword': qa_keyword,
