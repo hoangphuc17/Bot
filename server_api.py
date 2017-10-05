@@ -50,19 +50,23 @@ def login():
 @app.route('/logout', methods=['POST'])
 def logout():
     # xoa user_activation_key
-    logged_out = ''
     users = mongo.db.USER_CMS
-    login_user = users.find_one({'username': request.form['username']})
-    if login_user:
-        users.update_one(
-            {'username': login_user['username']},
-            {'$set': {'user_activation_key': ''}}
-        )
-        logged_out = 'True'
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        logged_out = ''
+        login_user = users.find_one({'username': request.form['username']})
+        if login_user:
+            users.update_one(
+                {'username': login_user['username']},
+                {'$set': {'user_activation_key': ''}}
+            )
+            logged_out = 'True'
+        else:
+            logged_out = 'False'
+        return logged_out
     else:
-        logged_out = "False"
-    # return 'Removed user_activation_key'
-    return logged_out
+        return 'False'
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -314,6 +318,10 @@ def broadcast_general_template():
         return 'True'
     else:
         return 'False'
+
+
+# @app.route('/handle_message', methods=['POST'])
+# def handle_message():
 
 
 if __name__ == '__main__':
