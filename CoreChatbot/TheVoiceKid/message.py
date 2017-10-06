@@ -127,6 +127,8 @@ def new_faq_answer(message, sender_id):
         # Just use 'min' instead of 'max' for minimum.
         maximum = max(dict_cat, key=dict_cat.get)
         print(maximum, dict_cat[maximum])
+        sorted_dict_cat = sorted(dict_cat, key=dict_cat.get, reverse=True)[:5]
+        print(sorted_dict_cat)
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
