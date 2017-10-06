@@ -138,7 +138,7 @@ def new_faq_answer(message, sender_id):
         # max_dict = {maximum: flipped[maximum]}
 
         if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
-            print(flipped[maximum])
+            print(flipped[maximum][0])
         elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
             print('a')
         else:  # khong co cat nao, max = 0
