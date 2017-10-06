@@ -124,15 +124,10 @@ def new_faq_answer(message, sender_id):
             count_word_in_cat = 0
         print (dict_cat)
 
-        # Get index of smallest value
-        values = dict_cat.values()
-        largeIndex = list(values).index(max(values))
+        # Just use 'min' instead of 'max' for minimum.
+        maximum = max(dict_cat, key=dict_cat.get)
+        print(maximum, dict_cat[maximum])
 
-        # Get the corresponding key
-        keys = dict_cat.keys()
-        largeKey = keys[largeIndex]
-
-        print(largeKey)
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
         #         count_cat = count_word_in_cat
