@@ -119,13 +119,20 @@ def new_faq_answer(message, sender_id):
         for cat_document in FAQ2.find({'level': '1'}):
             for word in word_dict:
                 if word in cat_document['cat_keyword']:
-                    print(word + " in cat_document " +
-                          cat_document['cat_title'])
                     count_word_in_cat = count_word_in_cat + 1
             dict_cat.update({cat_document['cat_title']: count_word_in_cat})
             count_word_in_cat = 0
-
         print (dict_cat)
+
+        # Get index of smallest value
+        values = dict_cat.values()
+        largeIndex = values.index(max(values))
+
+        # Get the corresponding key
+        keys = dict_cat.keys()
+        largeKey = keys[largeIndex]
+
+        print(largeKey)
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
         #         count_cat = count_word_in_cat
