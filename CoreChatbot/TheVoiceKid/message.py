@@ -124,18 +124,20 @@ def new_faq_answer(message, sender_id):
             count_word_in_cat = 0
         print (dict_cat)
 
+        # gom cac cat co count_word_in_cat giong nhau lai
         flipped = {}
         for key, value in dict_cat.items():
             if value not in flipped:
                 flipped[value] = [key]
             else:
                 flipped[value].append(key)
-
         print(flipped)
 
-        # Just use 'min' instead of 'max' for minimum.
+        # xep lai de thanh maximum
         maximum = max(flipped, key=flipped.get)
-        print(maximum, flipped[maximum])
+        # print(maximum, flipped[maximum])
+        max = {maximum: flipped[maximum]}
+        print(max)
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
