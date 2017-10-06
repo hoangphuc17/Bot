@@ -136,8 +136,13 @@ def new_faq_answer(message, sender_id):
         # xep lai de thanh maximum
         maximum = max(flipped, key=flipped.get)
         # max_dict = {maximum: flipped[maximum]}
-        if maximum > 0:
-            print(len(flipped[maximum]))
+
+        if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
+            print(flipped[maximum])
+        elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
+            print('a')
+        else:  # khong co cat nao, max = 0
+            print('b')
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
