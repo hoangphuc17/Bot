@@ -136,8 +136,8 @@ def new_faq_answer(message, sender_id):
         # xep lai de thanh maximum
         maximum = max(flipped, key=flipped.get)
         # print(maximum, flipped[maximum])
-        max = {maximum: flipped[maximum]}
-        print(max)
+        max_dict = {maximum: flipped[maximum]}
+        print(max_dict)
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
