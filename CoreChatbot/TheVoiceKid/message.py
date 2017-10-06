@@ -124,11 +124,18 @@ def new_faq_answer(message, sender_id):
             count_word_in_cat = 0
         print (dict_cat)
 
+        flipped = {}
+        for key, value in dict_cat.items():
+            if value not in flipped:
+                flipped[value] = [key]
+            else:
+                flipped[value].append(key)
+
+        print(flipped)
+
         # Just use 'min' instead of 'max' for minimum.
-        maximum = max(dict_cat, key=dict_cat.get)
-        print(maximum, dict_cat[maximum])
-        sorted_dict_cat = sorted(dict_cat, key=dict_cat.get, reverse=True)[:5]
-        print(sorted_dict_cat)
+        maximum = max(flipped, key=flipped.get)
+        print(maximum, flipped[maximum])
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
