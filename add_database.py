@@ -137,5 +137,10 @@ def insert_new_faq():
     add_qa('Năm sau còn tổ chức nữa không ạ?', [
            "năm sau", "2018", "tổ chức"], 'Bạn đáng yêu ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!', 'tc_3')
 
+    add_cat('ps', 'phát sóng', ['ghvn', 'youtube', 'tvk'])
+    add_subcat('ps_1', 'là gì', ['ghvn', 'youtube', 'tvk'], 'ps')
+    add_qa('Chương trình có trên Youtube không?', [
+           'ghvn', 'youtube', 'tvk'], 'Để xem chương trình trên Youtube bạn truy cập vào link: http://youtube.com/btcgionghatvietnhi Nhớ nhấn Subcribe để xem các tiết mục đầu tiên.', 'tc_1')
+
 
 insert_new_faq()
