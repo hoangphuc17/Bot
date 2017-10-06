@@ -131,13 +131,13 @@ def new_faq_answer(message, sender_id):
                 flipped[value] = [key]
             else:
                 flipped[value].append(key)
-        print(flipped)
+        # print(flipped)
 
         # xep lai de thanh maximum
         maximum = max(flipped, key=flipped.get)
-        # print(maximum, flipped[maximum])
         max_dict = {maximum: flipped[maximum]}
-        print(max_dict)
+        print(max_dict.keys())
+        print(max_dict.values())
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
