@@ -110,6 +110,7 @@ def new_faq_answer(message, sender_id):
 
         # TACH TU (word_segmentation)
         word_dict = word_sent(message)
+        print(word_dict)
 
         # - voi moi tu trong word_dict, xet xem tu do co trong cat_keyword hay ko
         # - vi 1 tu co the o trong nhieu cat khac nhau, nen ta dat 1 bien ten la chosen_cat,
