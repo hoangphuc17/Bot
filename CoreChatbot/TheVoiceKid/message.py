@@ -126,7 +126,7 @@ def new_faq_answer(message, sender_id):
 
         # Get index of smallest value
         values = dict_cat.values()
-        largeIndex = values.index(max(values))
+        largeIndex = list(values).index(max(values))
 
         # Get the corresponding key
         keys = dict_cat.keys()
