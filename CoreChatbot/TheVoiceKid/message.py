@@ -123,7 +123,7 @@ def new_faq_answer(message, sender_id):
                     count_word_in_cat = count_word_in_cat + 1
             dict_cat.update({cat_document['title']: count_word_in_cat})
 
-        print dict_cat
+        print (dict_cat)
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
         #         count_cat = count_word_in_cat
