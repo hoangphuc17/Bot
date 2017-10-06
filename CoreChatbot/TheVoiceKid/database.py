@@ -98,40 +98,32 @@ def insert_news(title, subtitle, image_url, item_url):
 
 # collection FAQ2
 def add_cat(cat_id, cat_title, cat_keyword):
-    check_cat_title = FAQ2.find_one({'cat_title': cat_title})
-    if bool(check_cat_title):
-        print('cat_title giong nhau')
+    check_cat_id = FAQ2.find_one({'cat_id': cat_id})
+    if bool(check_cat_id):
+        print('cat_id giong nhau')
     else:
-        check_cat_id = FAQ2.find_one({'cat_id': cat_id})
-        if bool(check_cat_id):
-            print('cat_id giong nhau')
-        else:
-            new_cat = {
-                'level': '1',
-                'cat_id': cat_id,
-                'cat_title': cat_title,
-                'cat_keyword': cat_keyword
-            }
-            FAQ2.insert_one(new_cat)
+        new_cat = {
+            'level': '1',
+            'cat_id': cat_id,
+            'cat_title': cat_title,
+            'cat_keyword': cat_keyword
+        }
+        FAQ2.insert_one(new_cat)
 
 
 def add_subcat(subcat_id, subcat_title, subcat_keyword, cat_id):
-    check_subcat_title = FAQ2.find_one({'subcat_title': subcat_title})
-    if bool(check_subcat_title):
-        print('subcat_title giong nhau')
+    check_subcat_id = FAQ2.find_one({'subcat_id': subcat_id})
+    if bool(check_subcat_id):
+        print('subcat_id giong nhau')
     else:
-        check_subcat_id = FAQ2.find_one({'subcat_id': subcat_id})
-        if bool(check_subcat_id):
-            print('subcat_id giong nhau')
-        else:
-            new_subcat = {
-                'level': '2',
-                'subcat_id': subcat_id,
-                'subcat_title': subcat_title,
-                'subcat_keyword': subcat_keyword,
-                'cat_id': cat_id
-            }
-            FAQ2.insert_one(new_subcat)
+        new_subcat = {
+            'level': '2',
+            'subcat_id': subcat_id,
+            'subcat_title': subcat_title,
+            'subcat_keyword': subcat_keyword,
+            'cat_id': cat_id
+        }
+        FAQ2.insert_one(new_subcat)
 
 
 def add_qa(question, qa_keyword, answer, subcat_id):
