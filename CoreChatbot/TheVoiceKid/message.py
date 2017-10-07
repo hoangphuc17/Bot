@@ -219,18 +219,18 @@ def new_faq_answer(message, sender_id):
         #         text = "chua co du lieu cho cau hoi nay"
         #         page.send(sender_id, text)
 
-        if found_question:
-            page.send(sender_id, final_data['answer'])
-        else:
-            new_nofaq = {'message': message}
-            NOFAQ.insert_one(new_nofaq)
-            print('khong tim thay cau hoi trong FAQ, vao nofaq de xem')
-            text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
-            buttons = [
-                Template.ButtonPostBack(
-                    "Home", "home")
-            ]
-            page.send(sender_id, Template.Buttons(text, buttons))
+        # if found_question:
+        #     page.send(sender_id, final_data['answer'])
+        # else:
+        #     new_nofaq = {'message': message}
+        #     NOFAQ.insert_one(new_nofaq)
+        #     print('khong tim thay cau hoi trong FAQ, vao nofaq de xem')
+        #     text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
+        #     buttons = [
+        #         Template.ButtonPostBack(
+        #             "Home", "home")
+        #     ]
+        #     page.send(sender_id, Template.Buttons(text, buttons))
 
     else:
         pass
