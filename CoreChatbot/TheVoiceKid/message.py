@@ -141,11 +141,20 @@ def new_faq_answer(message, sender_id):
             # print(flipped[maximum][0])
             chosen_cat = FAQ2.find_one(
                 {'level': '1', 'cat_title': flipped[maximum][0]})
-            print(chosen_cat)
+
         elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
-            print('a')
+            question = 'cau hoi cua ban lien quan toi khai niem nao'
+            quick_replies = []
+            for cat_title in flipped[maximum]:
+                quick_replies.append(QuickReply(
+                    title=cat_title, payload=cat_title))
+            page.send(sender_id,
+                      question,
+                      quick_replies=quick_replies,
+                      metadata="DEVELOPER_DEFINED_METADATA")
+
         else:  # khong co cat nao, max = 0
-            print('b')
+            print('cau hoi chua co trong cat nao')
 
         #     if count_cat < count_word_in_cat:
         #         chosen_cat = cat_document
