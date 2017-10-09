@@ -112,7 +112,8 @@ def find_cat(sender_id, word_dict):
         # page.send(sender_id, text)
         # return chosen_cat
 
-    elif len(maximum_value) > 1:  # co nhieu cat co so luong keyword max bang nhau
+    # co nhieu cat co so luong keyword max bang nhau
+    elif len(maximum_value) > 1 and maximum_key > 0:
         question = 'cau hoi cua ban lien quan toi khai niem nao'
         quick_replies = []
         for cat_title in maximum_value:
