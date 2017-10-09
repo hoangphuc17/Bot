@@ -256,6 +256,7 @@ def handle_faq_quickreply(quickreply_dict):
 
 def handle_faq_message(sender_id, message):
     if message is not None:
+        print('message la: ', message)
         # kiem tra user, neu chua co thi them vao database
         check_user = USER.find_one({'id_user': sender_id})
         if bool(check_user):
@@ -286,12 +287,9 @@ def handle_faq_message(sender_id, message):
                 else:
                     print(
                         'tim thay chosen_cat,tim thay chosen_subcat, khong tim thay chosen_qa')
-
             else:
                 print('tim thay chosen_cat, khong tim thay chosen_subcat')
         else:
             print('khong tim thay chosen_cat')
-
     else:
-        pass
-    return
+        print('Message is None')
