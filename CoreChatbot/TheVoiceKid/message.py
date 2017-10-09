@@ -244,20 +244,29 @@ def find_qa(sender_id, word_dict, chosen_subcat):
     return chosen_qa
 
 
-def handle_faq_quickreply(quickreply_dict):
+def handle_faq_quickreply(sender_id, quickreply_dict):
     length = len(quickreply_dict)
-    if length == 2:
-        cat_id = quickreply_dict[1]
-        if length == 3:
-            subcat_id = quickreply_dict[2]
-            if length == 4:
-                qa_id = quickreply_dict[3]
-            else:
-                print('co cat_id, co subcat_id, khong co qa_id trong quick_reply')
+    cat_id = quickreply_dict[1]
+    if length == 3:
+        subcat_id = quickreply_dict[2]
+        if length == 4:
+            qa_id = quickreply_dict[3]
         else:
-            print('co cat_id, khong co subcat_id trong quick_reply')
+            print('co cat_id, co subcat_id, khong co qa_id trong quick_reply')
     else:
-        print('khong co cat_id trong quick_reply')
+        print('co cat_id, khong co subcat_id trong quick_reply')
+        dict_subcat = FAQ2.find({'level': '2', 'cat_id': cat_id})
+        question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
+        quick_replies = []
+        for subcat in dict_subcat:
+            payload = '>' + cat_id + '>' + subcat['subcat_id']
+            quick_replies.append(QuickReply(
+                title=subcat['subcat_title'], payload=payload))
+
+        page.send(sender_id,
+                  question,
+                  quick_replies=quick_replies,
+                  metadata="DEVELOPER_DEFINED_METADATA")
 
 
 def handle_faq_message(sender_id, message):

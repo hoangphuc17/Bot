@@ -81,8 +81,7 @@ def message_handler(event):
     quickreply_dict = quickreply.split('>')
     print('quick reply la ', quickreply_dict)
     if quickreply_dict[0] == '' and len(quickreply_dict) > 1:
-        print('day la 1 quick reply cua cat')
-        handle_faq_quickreply(quickreply_dict)
+        handle_faq_quickreply(sender_id, quickreply_dict)
     else:
         pass
 
