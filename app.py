@@ -144,7 +144,7 @@ def postback_handler(event):
         'minigame2': minigame2,
         'minigame2_rule': minigame2_rule,
         'minigame2_menu': minigame2_menu,
-        'timeline': timeline,
+        'time line': timeline,
         'introduce': introduce,
         'fansign': fansign_menu
     }

@@ -123,7 +123,7 @@ def home(sender_id):
                                     Template.ButtonWeb(
                                         "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
                                     Template.ButtonPostBack(
-                                        "Giờ phát sóng", "timeline"),
+                                        "Giờ phát sóng", "time line"),
                                     Template.ButtonPostBack(
                                         "Giới thiệu", "introduce")
                                 ])
