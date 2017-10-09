@@ -214,8 +214,8 @@ def find_qa(sender_id, word_dict, chosen_subcat):
         # print(maximum_value[0])
         chosen_qa = FAQ2.find_one(
             {'level': '3', 'question': maximum_value[0]})
-        # text = 'da chon dc qa ' + chosen_qa['question']
-        # page.send(sender_id, text)
+        text = chosen_qa['answer']
+        page.send(sender_id, text)
         # return chosen_qa
 
     else:  # len(maximum_value) > 1
