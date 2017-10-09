@@ -81,7 +81,7 @@ def answer(message, sender_id):
 def find_cat(sender_id, word_dict):
     dict_cat = {}
     count_word_in_cat = 0
-    # chosen_cat = {}
+    chosen_cat = {}
     for cat_document in FAQ2.find({'level': '1'}):
         for word in word_dict:
             if word in cat_document['cat_keyword']:
@@ -110,7 +110,7 @@ def find_cat(sender_id, word_dict):
             {'level': '1', 'cat_title': maximum_value[0]})
         text = 'da chon dc cat ' + chosen_cat['cat_title']
         page.send(sender_id, text)
-        return chosen_cat
+        # return chosen_cat
 
     elif len(maximum_value) > 1:  # co nhieu cat co so luong keyword max bang nhau
         question = 'cau hoi cua ban lien quan toi khai niem nao'
@@ -129,10 +129,13 @@ def find_cat(sender_id, word_dict):
         text = 'cat_document: ko tim dc tu khoa'
         page.send(sender_id, text)
 
+    return chosen_cat
+
 
 def find_subcat(sender_id, word_dict, chosen_cat):
     dict_subcat = {}
     count_word_in_subcat = 0
+    chosen_subcat = {}
     for subcat_document in FAQ2.find({'level': '2', 'cat_id': chosen_cat['cat_id']}):
         for word in word_dict:
             if word in subcat_document['subcat_keyword']:
@@ -162,7 +165,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
             {'level': '2', 'subcat_title': maximum_value[0], 'cat_id': chosen_cat['cat_id']})
         text = 'da chon dc subcat ' + chosen_subcat['subcat_id']
         page.send(sender_id, text)
-        return chosen_subcat
+        # return chosen_subcat
 
     else:  # len(maximum_value) > 1
         question = 'cau hoi cua ban lien quan toi khai niem nao'
@@ -177,12 +180,13 @@ def find_subcat(sender_id, word_dict, chosen_cat):
                   question,
                   quick_replies=quick_replies,
                   metadata="DEVELOPER_DEFINED_METADATA")
+    return chosen_subcat
 
 
 def find_qa(sender_id, word_dict, chosen_subcat):
     dict_qa = {}
     count_word_in_qa = 0
-    # chosen_qa = {}
+    chosen_qa = {}
     for qa_document in FAQ2.find({'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']}):
         for word in word_dict:
             if word in qa_document['qa_keyword']:
@@ -212,7 +216,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
             {'level': '3', 'question': maximum_value[0]})
         text = 'da chon dc qa ' + chosen_subcat['question']
         page.send(sender_id, text)
-        return chosen_qa
+        # return chosen_qa
 
     else:  # len(maximum_value) > 1
         text = 'cau hoi nao dung voi mong muoon cua ban nhat'
@@ -230,6 +234,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
                   text,
                   quick_replies=quick_replies,
                   metadata="DEVELOPER_DEFINED_METADATA")
+    return chosen_qa
 
 
 def handle_faq_quickreply(quickreply_dict):
@@ -250,10 +255,6 @@ def handle_faq_quickreply(quickreply_dict):
 
 def handle_faq_message(sender_id, message):
     if message is not None:
-
-        # dau tien phai split message thanh 1 list word, neu list[0]==cat, list[2]==subcat thi xu ly tu khoa
-        # neu ko co thi xu ly binh thuong
-
         # kiem tra user, neu chua co thi them vao database
         check_user = USER.find_one({'id_user': sender_id})
         if bool(check_user):
@@ -270,7 +271,7 @@ def handle_faq_message(sender_id, message):
 
         # TACH TU (word_segmentation)
         word_dict = word_sent(message)
-        print(word_dict)
+        print('Word Segmentation: ', word_dict)
 
         chosen_cat = find_cat(sender_id, word_dict)
         if chosen_cat is not {}:
