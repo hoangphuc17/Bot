@@ -100,7 +100,7 @@ def find_cat(sender_id, word_dict, message):
     # xep lai de thanh maximum
     maximum_key = max(flipped)
     maximum_value = flipped[maximum_key]
-    print('maximum value cua find_cat la ', maximum_value, maximum_key)
+    # print('maximum value cua find_cat la ', maximum_value, maximum_key)
 
     if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
         # print(maximum_value[0])
