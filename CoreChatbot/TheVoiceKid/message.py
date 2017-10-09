@@ -151,9 +151,11 @@ def find_subcat(sender_id, word_dict, chosen_cat):
     print(flipped)
 
     # xep lai de thanh maximum
+    maximum_key = max(flipped)
+    maximum_value = flipped[maximum_key]
     maximum = max(flipped, key=flipped.get)
     # max_dict = {maximum: flipped[maximum]}
-    print(flipped[maximum])
+    print('maximum value la ', maximum_value)
 
     if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
         # print(flipped[maximum][0])
