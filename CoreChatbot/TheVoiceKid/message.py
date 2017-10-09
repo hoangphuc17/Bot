@@ -136,6 +136,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
     dict_subcat = {}
     count_word_in_subcat = 0
     chosen_subcat = {}
+    print('chosen_cat ', chosen_cat)
     for subcat_document in FAQ2.find({'level': '2', 'cat_id': chosen_cat['cat_id']}):
         for word in word_dict:
             if word in subcat_document['subcat_keyword']:
