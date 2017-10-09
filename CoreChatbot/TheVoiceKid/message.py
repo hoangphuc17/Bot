@@ -136,7 +136,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
     dict_subcat = {}
     count_word_in_subcat = 0
     chosen_subcat = {}
-    print('chosen_cat ', chosen_cat)
+    # print('chosen_cat ', chosen_cat)
     for subcat_document in FAQ2.find({'level': '2', 'cat_id': chosen_cat['cat_id']}):
         for word in word_dict:
             if word in subcat_document['subcat_keyword']:
@@ -275,13 +275,13 @@ def handle_faq_message(sender_id, message):
         print('Word Segmentation: ', word_dict)
 
         chosen_cat = find_cat(sender_id, word_dict)
-        if chosen_cat is not {}:
+        if chosen_cat != {}:
             print('da tim thay chosen_cat')
             chosen_subcat = find_subcat(sender_id, word_dict, chosen_cat)
-            if chosen_subcat is not {}:
+            if chosen_subcat != {}:
                 print('da tim thay chosen_subcat')
                 chosen_qa = find_qa(sender_id, word_dict, chosen_subcat)
-                if chosen_qa is not {}:
+                if chosen_qa != {}:
                     print('da tim thay chosen_qa')
                 else:
                     print(
