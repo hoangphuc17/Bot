@@ -78,6 +78,9 @@ def message_handler(event):
     else:
         pass
 
+    quickreply_dict = quickreply.split('>')
+    print(quickreply_dict)
+
     keyword_list = {
         'home': home,
         'hello': greeting,
