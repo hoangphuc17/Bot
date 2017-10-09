@@ -149,7 +149,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
             flipped[value] = [key]
         else:
             flipped[value].append(key)
-    print(flipped)
+    # print(flipped)
 
     # xep lai de thanh maximum
     maximum_key = max(flipped)
@@ -182,7 +182,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
 def find_qa(sender_id, word_dict, chosen_subcat):
     dict_qa = {}
     count_word_in_qa = 0
-    print(chosen_subcat)
+    # chosen_qa = {}
     for qa_document in FAQ2.find({'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']}):
         for word in word_dict:
             if word in qa_document['qa_keyword']:
@@ -204,7 +204,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
     # xep lai de thanh maximum
     maximum_key = max(flipped)
     maximum_value = flipped[maximum_key]
-    # print('maximum value la ', maximum_value)
+    print('maximum value cua qa la ', maximum_value)
 
     if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
         # print(maximum_value[0])
@@ -219,13 +219,13 @@ def find_qa(sender_id, word_dict, chosen_subcat):
         quick_replies = []
         for question in maximum_value:
             text = text + \
-                ('\n' + str(maximum_value.index(question)) + '. ' + question)
+                ('\n' + str(maximum_value.index(question) + 1) + '. ' + question)
             qa = FAQ2.find_one(
                 {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})
             payload = '>' + chosen_subcat['cat_id'] + '>' + \
                 chosen_subcat['subcat_id'] + '>' + qa['qa_id']
             quick_replies.append(QuickReply(
-                title=str(maximum_value.index(question)), payload=payload))
+                title=str(maximum_value.index(question) + 1), payload=payload))
         page.send(sender_id,
                   text,
                   quick_replies=quick_replies,
@@ -279,7 +279,7 @@ def handle_faq_message(sender_id, message):
             if chosen_subcat is not {}:
                 print('da tim thay chosen_subcat')
                 chosen_qa = find_qa(sender_id, word_dict, chosen_subcat)
-                if chosen_qa is not None:
+                if chosen_qa is not {}:
                     print('da tim thay chosen_qa')
                 else:
                     print(
