@@ -112,7 +112,7 @@ def find_cat(sender_id, word_dict, message):
 
     # co nhieu cat co so luong keyword max bang nhau
     elif len(maximum_value) > 1 and maximum_key > 0:
-        question = 'cau hoi cua ban lien quan toi khai niem nao'
+        question = 'Giúp mình tìm câu trả lời nhé, bạn muốn tìm biết về mục nào của chương trình 😜'
         quick_replies = []
         for cat_title in maximum_value:
             payload = '>' + \
@@ -175,7 +175,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
         # return chosen_subcat
 
     else:  # len(maximum_value) > 1
-        question = 'cau hoi cua ban lien quan toi khai niem nao'
+        question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
         quick_replies = []
         for subcat_title in maximum_value:
             subcat = FAQ2.find_one(
@@ -226,7 +226,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
         # return chosen_qa
 
     else:  # len(maximum_value) > 1
-        text = 'cau hoi nao dung voi mong muoon cua ban nhat'
+        text = 'Câu hỏi nào giống với ý của nhất? 😋'
         quick_replies = []
         for question in maximum_value:
             text = text + \
