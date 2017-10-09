@@ -139,7 +139,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
         dict_subcat.update(
             {subcat_document['subcat_title']: count_word_in_subcat})
         count_word_in_subcat = 0
-        # print (dict_cat)
+        print (dict_subcat)
 
     # gom cac cat_title co count_word_in_cat giong nhau lai
     flipped = {}
@@ -153,7 +153,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
     # xep lai de thanh maximum
     maximum = max(flipped, key=flipped.get)
     # max_dict = {maximum: flipped[maximum]}
-    print(maximum, flipped[maximum])
+    # print(maximum, flipped[maximum])
 
     if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
         # print(flipped[maximum][0])
