@@ -109,6 +109,7 @@ def find_cat(sender_id, word_dict):
             {'level': '1', 'cat_title': flipped[maximum][0]})
         text = 'da chon dc cat ' + chosen_cat['cat_title']
         page.send(sender_id, text)
+        return chosen_cat
 
     elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
         question = 'cau hoi cua ban lien quan toi khai niem nao'
@@ -126,7 +127,6 @@ def find_cat(sender_id, word_dict):
     else:  # khong co cat nao, max = 0
         text = 'cat_document: ko tim dc tu khoa'
         page.send(sender_id, text)
-    return chosen_cat
 
 
 def find_subcat(sender_id, word_dict, chosen_cat):
@@ -160,21 +160,21 @@ def find_subcat(sender_id, word_dict, chosen_cat):
             {'level': '2', 'subcat_title': flipped[maximum][0], 'cat_id': chosen_cat['cat_id']})
         text = 'da chon dc subcat ' + chosen_subcat['subcat_id']
         page.send(sender_id, text)
+        return chosen_subcat
 
     else:  # len(flipped[maximum]) > 1
         question = 'cau hoi cua ban lien quan toi khai niem nao'
         quick_replies = []
         for subcat_title in flipped[maximum]:
-            payload = '>' + chosen_cat['cat_id'] + '>' + FAQ2.find(
-                {'level': '2', 'cat_id': chosen_cat['cat_id'], 'subcat_title': subcat_title})['subcat_id']
+            subcat = FAQ2.find(
+                {'level': '2', 'cat_id': chosen_cat['cat_id'], 'subcat_title': subcat_title})
+            payload = '>' + chosen_cat['cat_id'] + '>' + subcat['subcat_id']
             quick_replies.append(QuickReply(
                 title=subcat_title, payload=payload))
         page.send(sender_id,
                   question,
                   quick_replies=quick_replies,
                   metadata="DEVELOPER_DEFINED_METADATA")
-
-    return chosen_subcat
 
 
 def find_qa(sender_id, word_dict, chosen_subcat):
@@ -208,22 +208,23 @@ def find_qa(sender_id, word_dict, chosen_subcat):
             {'level': '3', 'question': flipped[maximum][0]})
         text = 'da chon dc qa ' + chosen_subcat['question']
         page.send(sender_id, text)
+        return chosen_qa
 
     else:  # len(flipped[maximum]) > 1
         text = 'cau hoi nao dung voi mong muoon cua ban nhat'
         quick_replies = []
         for question in flipped[maximum]:
             text = text + ('\n' + question.get + '. ' + question)
-            payload = '>' + chosen_subcat['cat_id'] + '>' + chosen_subcat['subcat_id'] + '>' + FAQ2.find(
-                {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})['qa_id']
+            qa = FAQ2.find(
+                {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})
+            payload = '>' + chosen_subcat['cat_id'] + '>' + \
+                chosen_subcat['subcat_id'] + '>' + qa['qa_id']
             quick_replies.append(QuickReply(
                 title=question.get, payload=payload))
         page.send(sender_id,
                   text,
                   quick_replies=quick_replies,
                   metadata="DEVELOPER_DEFINED_METADATA")
-
-    return chosen_qa
 
 
 def handle_faq_quickreply(quickreply_dict):
