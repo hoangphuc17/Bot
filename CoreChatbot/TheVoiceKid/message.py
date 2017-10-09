@@ -128,7 +128,7 @@ def find_cat(sender_id, word_dict, message):
         new_nofaq = {'message': message, 'id_user': sender_id}
         NOFAQ.insert_one(new_nofaq)
         print('khong tim thay cau hoi trong FAQ2, vao NOFAQ de xem')
-        text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
+        text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!😬😬"
         buttons = [
             Template.ButtonPostBack(
                 "Home", "home")
