@@ -78,7 +78,171 @@ def answer(message, sender_id):
     return
 
 
-def new_faq_answer(message, sender_id):
+def find_cat(sender_id, word_dict):
+    dict_cat = {}
+    count_word_in_cat = 0
+    # chosen_cat = {}
+    for cat_document in FAQ2.find({'level': '1'}):
+        for word in word_dict:
+            if word in cat_document['cat_keyword']:
+                count_word_in_cat = count_word_in_cat + 1
+        dict_cat.update({cat_document['cat_title']: count_word_in_cat})
+        count_word_in_cat = 0
+        # print (dict_cat)
+
+    # gom cac cat_title co count_word_in_cat giong nhau lai
+    flipped = {}
+    for key, value in dict_cat.items():
+        if value not in flipped:
+            flipped[value] = [key]
+        else:
+            flipped[value].append(key)
+    # print(flipped)
+
+    # xep lai de thanh maximum
+    maximum = max(flipped, key=flipped.get)
+    # max_dict = {maximum: flipped[maximum]}
+
+    if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
+        # print(flipped[maximum][0])
+        chosen_cat = FAQ2.find_one(
+            {'level': '1', 'cat_title': flipped[maximum][0]})
+        text = 'da chon dc cat ' + chosen_cat['cat_title']
+        page.send(sender_id, text)
+
+    elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
+        question = 'cau hoi cua ban lien quan toi khai niem nao'
+        quick_replies = []
+        for cat_title in flipped[maximum]:
+            payload = '>' + \
+                FAQ2.find({'level': '1', 'cat_title': cat_title})['cat_id']
+            quick_replies.append(QuickReply(
+                title=cat_title, payload=payload))
+        page.send(sender_id,
+                  question,
+                  quick_replies=quick_replies,
+                  metadata="DEVELOPER_DEFINED_METADATA")
+
+    else:  # khong co cat nao, max = 0
+        text = 'cat_document: ko tim dc tu khoa'
+        page.send(sender_id, text)
+    return chosen_cat
+
+
+def find_subcat(sender_id, word_dict, chosen_cat):
+    dict_subcat = {}
+    count_word_in_subcat = 0
+    for subcat_document in FAQ2.find({'level': '2', 'cat_id': chosen_cat['cat_id']}):
+        for word in word_dict:
+            if word in subcat_document['subcat_keyword']:
+                count_word_in_subcat = count_word_in_subcat + 1
+        dict_subcat.update(
+            {subcat_document['subcat_title']: count_word_in_subcat})
+        count_word_in_subcat = 0
+        # print (dict_cat)
+
+    # gom cac cat_title co count_word_in_cat giong nhau lai
+    flipped = {}
+    for key, value in dict_subcat.items():
+        if value not in flipped:
+            flipped[value] = [key]
+        else:
+            flipped[value].append(key)
+    # print(flipped)
+
+    # xep lai de thanh maximum
+    maximum = max(flipped, key=flipped.get)
+    # max_dict = {maximum: flipped[maximum]}
+
+    if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
+        # print(flipped[maximum][0])
+        chosen_subcat = FAQ2.find_one(
+            {'level': '2', 'subcat_title': flipped[maximum][0], 'cat_id': chosen_cat['cat_id']})
+        text = 'da chon dc subcat ' + chosen_subcat['subcat_id']
+        page.send(sender_id, text)
+
+    else:  # len(flipped[maximum]) > 1
+        question = 'cau hoi cua ban lien quan toi khai niem nao'
+        quick_replies = []
+        for subcat_title in flipped[maximum]:
+            payload = '>' + chosen_cat['cat_id'] + '>' + FAQ2.find(
+                {'level': '2', 'cat_id': chosen_cat['cat_id'], 'subcat_title': subcat_title})['subcat_id']
+            quick_replies.append(QuickReply(
+                title=subcat_title, payload=payload))
+        page.send(sender_id,
+                  question,
+                  quick_replies=quick_replies,
+                  metadata="DEVELOPER_DEFINED_METADATA")
+
+    return chosen_subcat
+
+
+def find_qa(sender_id, word_dict, chosen_subcat):
+    dict_qa = {}
+    count_word_in_qa = 0
+    for qa_document in FAQ2.find({'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']}):
+        for word in word_dict:
+            if word in qa_document['qa_keyword']:
+                count_word_in_qa = count_word_in_qa + 1
+        dict_qa.update(
+            {qa_document['question']: count_word_in_qa})
+        count_word_in_qa = 0
+        # print (dict_cat)
+
+    # gom cac cat_title co count_word_in_cat giong nhau lai
+    flipped = {}
+    for key, value in dict_qa.items():
+        if value not in flipped:
+            flipped[value] = [key]
+        else:
+            flipped[value].append(key)
+    # print(flipped)
+
+    # xep lai de thanh maximum
+    maximum = max(flipped, key=flipped.get)
+    # max_dict = {maximum: flipped[maximum]}
+
+    if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
+        # print(flipped[maximum][0])
+        chosen_qa = FAQ2.find_one(
+            {'level': '3', 'question': flipped[maximum][0]})
+        text = 'da chon dc qa ' + chosen_subcat['question']
+        page.send(sender_id, text)
+
+    else:  # len(flipped[maximum]) > 1
+        text = 'cau hoi nao dung voi mong muoon cua ban nhat'
+        quick_replies = []
+        for question in flipped[maximum]:
+            text = text + ('\n' + question.get + '. ' + question)
+            payload = '>' + chosen_subcat['cat_id'] + '>' + chosen_subcat['subcat_id'] + '>' + FAQ2.find(
+                {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})['qa_id']
+            quick_replies.append(QuickReply(
+                title=question.get, payload=payload))
+        page.send(sender_id,
+                  text,
+                  quick_replies=quick_replies,
+                  metadata="DEVELOPER_DEFINED_METADATA")
+
+    return chosen_qa
+
+
+def handle_faq_quickreply(quickreply_dict):
+    length = len(quickreply_dict)
+    if length == 2:
+        cat_id = quickreply_dict[1]
+        if length == 3:
+            subcat_id = quickreply_dict[2]
+            if length == 4:
+                qa_id = quickreply_dict[3]
+            else:
+                print('co cat_id, co subcat_id, khong co qa_id trong quick_reply')
+        else:
+            print('co cat_id, khong co subcat_id trong quick_reply')
+    else:
+        print('khong co cat_id trong quick_reply')
+
+
+def handle_faq_message(sender_id, message):
     if message is not None:
 
         # dau tien phai split message thanh 1 list word, neu list[0]==cat, list[2]==subcat thi xu ly tu khoa
@@ -98,152 +262,27 @@ def new_faq_answer(message, sender_id):
             id_user = user_profile["id"]
             insert_new_user(first_name, last_name, id_user)
 
-        found_question = False
-        final_data = {}
-
-        count_word_in_cat = 0
-        count_cat = 0
-        count_word_in_subcat = 0
-        count_subcat = 0
-        count_word_in_qa = 0
-        count_qa = 0
-        chosen_cat = {}
-        chosen_subcat = {}
-        chosen_qa = {}
-        dict_cat = {}
-
         # TACH TU (word_segmentation)
         word_dict = word_sent(message)
-        print(word_dict)
+        # print(word_dict)
 
-        # - voi moi tu trong word_dict, xet xem tu do co trong cat_keyword hay ko
-        # - vi 1 tu co the o trong nhieu cat khac nhau, nen ta dat 1 bien ten la chosen_cat,
-        # khi word co trong cat, thi choose_cat se tang 1 don vi, sau khi tim tat ca cat,
-        # ta chon cat nao co choose_cat lon nhat de tiep tuc hanh trinh
-        for cat_document in FAQ2.find({'level': '1'}):
-            for word in word_dict:
-                if word in cat_document['cat_keyword']:
-                    count_word_in_cat = count_word_in_cat + 1
-            dict_cat.update({cat_document['cat_title']: count_word_in_cat})
-            count_word_in_cat = 0
-        print (dict_cat)
-
-        # gom cac cat co count_word_in_cat giong nhau lai
-        flipped = {}
-        for key, value in dict_cat.items():
-            if value not in flipped:
-                flipped[value] = [key]
+        chosen_cat = find_cat(sender_id, word_dict)
+        if chosen_cat is not {}:
+            print('da tim thay chosen_cat')
+            chosen_subcat = find_subcat(sender_id, word_dict, chosen_cat)
+            if chosen_subcat is not {}:
+                print('da tim thay chosen_subcat')
+                chosen_qa = find_qa(sender_id, word_dict, chosen_subcat)
+                if chosen_qa is not None:
+                    print('da tim thay chosen_qa')
+                else:
+                    print(
+                        'tim thay chosen_cat,tim thay chosen_subcat, khong tim thay chosen_qa')
             else:
-                flipped[value].append(key)
-        # print(flipped)
-
-        # xep lai de thanh maximum
-        maximum = max(flipped, key=flipped.get)
-        # max_dict = {maximum: flipped[maximum]}
-
-        if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
-            # print(flipped[maximum][0])
-            chosen_cat = FAQ2.find_one(
-                {'level': '1', 'cat_title': flipped[maximum][0]})
-            text = 'da chon dc cat ' + chosen_cat['cat_title']
-            page.send(sender_id, text)
-
-        elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
-            question = 'cau hoi cua ban lien quan toi khai niem nao'
-            quick_replies = []
-            for cat_title in flipped[maximum]:
-                payload = '>' + cat_title
-                quick_replies.append(QuickReply(
-                    title=cat_title, payload=payload))
-            page.send(sender_id,
-                      question,
-                      quick_replies=quick_replies,
-                      metadata="DEVELOPER_DEFINED_METADATA")
-
-        else:  # khong co cat nao, max = 0
-            text = 'cat_document: ko tim dc tu khoa'
-            page.send(sender_id, text)
-
-        #     if count_cat < count_word_in_cat:
-        #         chosen_cat = cat_document
-        #         count_cat = count_word_in_cat
-        #     elif count_cat == count_word_in_cat:
-        #         # 1. khong tim thay cat_document phu hop
-        #         # 2. co 2 cat_document phu hop
-        #         if chosen_cat != {}:  # co 2 cat_document phu hop
-        #             text = chosen_cat['cat_id']
-        #             page.send(sender_id, text)
-        #         else:  # khong tim thay cat_document phu hop
-        #             text = 'truong hop 2 chua co du lieu cho cau hoi nay'
-        #             page.send(sender_id, text)
-
-        #     else:  # count_cat > count_word_in_cat
-        #         # khong tim thay hoac khong phai cat_document nay
-        #         text = "chua co du lieu cho cau hoi nay"
-        #         page.send(sender_id, text)
-
-        # for subcat_document in FAQ2.find({'level': '2', 'cat_id': chosen_cat['cat_id']}):
-        #     for word in word_dict:
-        #         if word in subcat_document['subcat_keyword']:
-        #             print(word + ' in subcat_document ' +
-        #                   subcat_document['subcat_title'])
-        #             count_word_in_subcat = count_word_in_subcat + 1
-        #     if count_subcat < count_word_in_subcat:
-        #         chosen_subcat = subcat_document
-        #         count_subcat = count_word_in_subcat
-
-        #     elif count_subcat == count_word_in_subcat:
-        #         if chosen_subcat != {}:  # co 2 subcat_document phu hop
-        #             text = chosen_subcat['subcat_id']
-        #             page.send(sender_id, text)
-        #         else:  # khong tim thay cat_document phu hop
-        #             text = 'truong hop 2 chua co du lieu cho cau hoi nay, subcat'
-        #             page.send(sender_id, text)
-
-        #     else:  # count_cat > count_word_in_cat
-        #         # khong tim thay hoac khong phai cat_document nay
-        #         text = "chua co du lieu cho cau hoi nay"
-        #         page.send(sender_id, text)
-
-        # for qa_document in FAQ2.find({'level': '3', 'subcat_id': chosen_subcat['subcat_id']}):
-        #     for word in word_dict:
-        #         if word in qa_document['qa_keyword']:
-        #             count_word_in_qa = count_word_in_qa + 1
-        #     if count_qa < count_word_in_qa:
-        #         chosen_qa = qa_document
-        #         count_qa = count_word_in_qa
-        #         found_question = True
-        #         final_data = chosen_qa
-        #     elif count_qa == count_word_in_qa:
-        #         if chosen_qa != {}:  # co 2 qa_document phu hop
-        #             text = chosen_qa['question']
-        #             page.send(sender_id, text)
-        #         else:  # khong tim thay qa_document phu hop
-        #             text = 'truong hop 2 chua co du lieu cho cau hoi nay, subcat'
-        #             page.send(sender_id, text)
-
-        #     else:  # count_cat > count_word_in_cat
-        #         # khong tim thay hoac khong phai qa_document nay
-        #         text = "chua co du lieu cho cau hoi nay"
-        #         page.send(sender_id, text)
-
-        # if found_question:
-        #     page.send(sender_id, final_data['answer'])
-        # else:
-        #     new_nofaq = {'message': message}
-        #     NOFAQ.insert_one(new_nofaq)
-        #     print('khong tim thay cau hoi trong FAQ, vao nofaq de xem')
-        #     text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
-        #     buttons = [
-        #         Template.ButtonPostBack(
-        #             "Home", "home")
-        #     ]
-        #     page.send(sender_id, Template.Buttons(text, buttons))
+                print('tim thay chosen_cat, khong tim thay chosen_subcat')
+        else:
+            print('khong tim thay chosen_cat')
 
     else:
         pass
-
     return
-
-
-# def handle_cat():
