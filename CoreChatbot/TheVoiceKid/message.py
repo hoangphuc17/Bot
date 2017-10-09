@@ -116,7 +116,7 @@ def find_cat(sender_id, word_dict):
         quick_replies = []
         for cat_title in flipped[maximum]:
             payload = '>' + \
-                FAQ2.find({'level': '1', 'cat_title': cat_title})['cat_id']
+                FAQ2.find_one({'level': '1', 'cat_title': cat_title})['cat_id']
             quick_replies.append(QuickReply(
                 title=cat_title, payload=payload))
         page.send(sender_id,
@@ -166,7 +166,7 @@ def find_subcat(sender_id, word_dict, chosen_cat):
         question = 'cau hoi cua ban lien quan toi khai niem nao'
         quick_replies = []
         for subcat_title in flipped[maximum]:
-            subcat = FAQ2.find(
+            subcat = FAQ2.find_one(
                 {'level': '2', 'cat_id': chosen_cat['cat_id'], 'subcat_title': subcat_title})
             payload = '>' + chosen_cat['cat_id'] + '>' + subcat['subcat_id']
             quick_replies.append(QuickReply(
@@ -215,7 +215,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
         quick_replies = []
         for question in flipped[maximum]:
             text = text + ('\n' + question.get + '. ' + question)
-            qa = FAQ2.find(
+            qa = FAQ2.find_one(
                 {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})
             payload = '>' + chosen_subcat['cat_id'] + '>' + \
                 chosen_subcat['subcat_id'] + '>' + qa['qa_id']
