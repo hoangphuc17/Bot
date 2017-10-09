@@ -83,9 +83,9 @@ def new_faq_answer(message, sender_id):
 
         # dau tien phai split message thanh 1 list word, neu list[0]==cat, list[2]==subcat thi xu ly tu khoa
         # neu ko co thi xu ly binh thuong
-
+        print('message ', message)
         message_dict = message.split('>')
-        print(message_dict)
+        print('message_dict ', message_dict)
         # if message_dict[0] == '':
 
         # kiem tra user, neu chua co thi them vao database
