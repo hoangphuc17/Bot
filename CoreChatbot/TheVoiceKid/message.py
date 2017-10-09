@@ -219,13 +219,13 @@ def find_qa(sender_id, word_dict, chosen_subcat):
         quick_replies = []
         for question in maximum_value:
             text = text + \
-                ('\n' + maximum_value.index(question) + '. ' + question)
+                ('\n' + str(maximum_value.index(question)) + '. ' + question)
             qa = FAQ2.find_one(
                 {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})
             payload = '>' + chosen_subcat['cat_id'] + '>' + \
                 chosen_subcat['subcat_id'] + '>' + qa['qa_id']
             quick_replies.append(QuickReply(
-                title=maximum_value.index(question), payload=payload))
+                title=str(maximum_value.index(question)), payload=payload))
         page.send(sender_id,
                   text,
                   quick_replies=quick_replies,
