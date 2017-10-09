@@ -100,21 +100,22 @@ def find_cat(sender_id, word_dict):
     # print(flipped)
 
     # xep lai de thanh maximum
-    maximum = max(flipped, key=flipped.get)
-    # max_dict = {maximum: flipped[maximum]}
+    maximum_key = max(flipped)
+    maximum_value = flipped[maximum_key]
+    # print('maximum value la ', maximum_value)
 
-    if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
-        # print(flipped[maximum][0])
+    if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
+        # print(maximum_value[0])
         chosen_cat = FAQ2.find_one(
-            {'level': '1', 'cat_title': flipped[maximum][0]})
+            {'level': '1', 'cat_title': maximum_value[0]})
         text = 'da chon dc cat ' + chosen_cat['cat_title']
         page.send(sender_id, text)
         return chosen_cat
 
-    elif len(flipped[maximum]) > 1:  # co nhieu cat co so luong keyword max bang nhau
+    elif len(maximum_value) > 1:  # co nhieu cat co so luong keyword max bang nhau
         question = 'cau hoi cua ban lien quan toi khai niem nao'
         quick_replies = []
-        for cat_title in flipped[maximum]:
+        for cat_title in maximum_value:
             payload = '>' + \
                 FAQ2.find_one({'level': '1', 'cat_title': cat_title})['cat_id']
             quick_replies.append(QuickReply(
@@ -153,22 +154,20 @@ def find_subcat(sender_id, word_dict, chosen_cat):
     # xep lai de thanh maximum
     maximum_key = max(flipped)
     maximum_value = flipped[maximum_key]
-    maximum = max(flipped, key=flipped.get)
-    # max_dict = {maximum: flipped[maximum]}
-    print('maximum value la ', maximum_value)
+    # print('maximum value la ', maximum_value)
 
-    if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
-        # print(flipped[maximum][0])
+    if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
+        # print(maximum_value[0])
         chosen_subcat = FAQ2.find_one(
-            {'level': '2', 'subcat_title': flipped[maximum][0], 'cat_id': chosen_cat['cat_id']})
+            {'level': '2', 'subcat_title': maximum_value[0], 'cat_id': chosen_cat['cat_id']})
         text = 'da chon dc subcat ' + chosen_subcat['subcat_id']
         page.send(sender_id, text)
         return chosen_subcat
 
-    else:  # len(flipped[maximum]) > 1
+    else:  # len(maximum_value) > 1
         question = 'cau hoi cua ban lien quan toi khai niem nao'
         quick_replies = []
-        for subcat_title in flipped[maximum]:
+        for subcat_title in maximum_value:
             subcat = FAQ2.find_one(
                 {'level': '2', 'cat_id': chosen_cat['cat_id'], 'subcat_title': subcat_title})
             payload = '>' + chosen_cat['cat_id'] + '>' + subcat['subcat_id']
@@ -203,21 +202,22 @@ def find_qa(sender_id, word_dict, chosen_subcat):
     # print(flipped)
 
     # xep lai de thanh maximum
-    maximum = max(flipped, key=flipped.get)
-    # max_dict = {maximum: flipped[maximum]}
+    maximum_key = max(flipped)
+    maximum_value = flipped[maximum_key]
+    # print('maximum value la ', maximum_value)
 
-    if len(flipped[maximum]) == 1:  # chi co 1 cat co so luong keyword la max
-        # print(flipped[maximum][0])
+    if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
+        # print(maximum_value[0])
         chosen_qa = FAQ2.find_one(
-            {'level': '3', 'question': flipped[maximum][0]})
+            {'level': '3', 'question': maximum_value[0]})
         text = 'da chon dc qa ' + chosen_subcat['question']
         page.send(sender_id, text)
         return chosen_qa
 
-    else:  # len(flipped[maximum]) > 1
+    else:  # len(maximum_value) > 1
         text = 'cau hoi nao dung voi mong muoon cua ban nhat'
         quick_replies = []
-        for question in flipped[maximum]:
+        for question in maximum_value:
             text = text + ('\n' + question.get + '. ' + question)
             qa = FAQ2.find_one(
                 {'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']})
