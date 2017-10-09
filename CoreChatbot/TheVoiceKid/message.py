@@ -199,7 +199,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
             flipped[value] = [key]
         else:
             flipped[value].append(key)
-    # print(flipped)
+    print(flipped)
 
     # xep lai de thanh maximum
     maximum_key = max(flipped)
