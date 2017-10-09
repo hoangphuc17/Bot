@@ -270,7 +270,7 @@ def handle_faq_message(sender_id, message):
 
         # TACH TU (word_segmentation)
         word_dict = word_sent(message)
-        # print(word_dict)
+        print(word_dict)
 
         chosen_cat = find_cat(sender_id, word_dict)
         if chosen_cat is not {}:
