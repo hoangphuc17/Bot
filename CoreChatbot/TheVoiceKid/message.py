@@ -80,6 +80,14 @@ def answer(message, sender_id):
 
 def new_faq_answer(message, sender_id):
     if message is not None:
+
+        # dau tien phai split message thanh 1 list word, neu list[0]==cat, list[2]==subcat thi xu ly tu khoa
+        # neu ko co thi xu ly binh thuong
+
+        message_dict = message.split('>')
+        print(message_dict)
+        # if message_dict[0] == '':
+
         # kiem tra user, neu chua co thi them vao database
         check_user = USER.find_one({'id_user': sender_id})
         if bool(check_user):
@@ -148,8 +156,9 @@ def new_faq_answer(message, sender_id):
             question = 'cau hoi cua ban lien quan toi khai niem nao'
             quick_replies = []
             for cat_title in flipped[maximum]:
+                payload = '>' + cat_title
                 quick_replies.append(QuickReply(
-                    title=cat_title, payload=cat_title))
+                    title=cat_title, payload=payload))
             page.send(sender_id,
                       question,
                       quick_replies=quick_replies,
@@ -239,3 +248,6 @@ def new_faq_answer(message, sender_id):
         pass
 
     return
+
+
+def handle_cat():
