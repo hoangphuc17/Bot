@@ -250,4 +250,4 @@ def new_faq_answer(message, sender_id):
     return
 
 
-def handle_cat():
+# def handle_cat():
