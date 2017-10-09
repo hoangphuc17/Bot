@@ -127,7 +127,7 @@ def add_subcat(cat_id, subcat_id, subcat_title, subcat_keyword):
 
 
 def add_qa(cat_id, subcat_id, qa_id, question, qa_keyword, answer):
-    check_keyword = FAQ2.find_one({'qa_keyword': qa_keyword})
+    check_keyword = FAQ2.find_one({'qa_id': qa_id})
     if bool(check_keyword):
         print('qa_keyword giong nhau')
     else:
