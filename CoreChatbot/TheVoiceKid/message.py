@@ -63,8 +63,6 @@ def answer(message, sender_id):
             new_nofaq = {'message': message}
             NOFAQ.insert_one(new_nofaq)
             print('khong tim thay cau hoi trong FAQ, vao nofaq de xem')
-            # text = "Ôi, mình chưa hiểu rõ ý bạn lắm ☹. Có lẽ nội dung này đã vượt ngoài bộ nhớ của mình mất rồi 🤖🤖🤖. Bạn nhấn tính năng “Home” bên duới 👇 để xem thêm những thông tin của chương trình nha, biết đâu bạn sẽ tìm ra được câu trả lời cho thắc mắc của mình đấy! 😉"
-            # text = "Oops…!!! ‘Từ Khóa’ của bạn chưa chính xác. Hãy thử lại với một ‘Từ Khóa’ khác nhé!"
             text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
             buttons = [
                 Template.ButtonPostBack(
@@ -78,7 +76,7 @@ def answer(message, sender_id):
     return
 
 
-def find_cat(sender_id, word_dict):
+def find_cat(sender_id, word_dict, message):
     dict_cat = {}
     count_word_in_cat = 0
     chosen_cat = {}
@@ -127,8 +125,15 @@ def find_cat(sender_id, word_dict):
                   metadata="DEVELOPER_DEFINED_METADATA")
 
     else:  # khong co cat nao, max = 0
-        text = 'cat_document: ko tim dc tu khoa'
-        page.send(sender_id, text)
+        new_nofaq = {'message': message, 'id_user': sender_id}
+        NOFAQ.insert_one(new_nofaq)
+        print('khong tim thay cau hoi trong FAQ2, vao NOFAQ de xem')
+        text = "Oops..!Hiện tại mình chưa có dữ liệu câu hỏi của bạn, mình sẽ cập nhật và trả lời bạn sớm nhất. Hãy tiếp tục kết nối với chương trình qua các tính năng khác bạn nhé!"
+        buttons = [
+            Template.ButtonPostBack(
+                "Home", "home")
+        ]
+        page.send(sender_id, Template.Buttons(text, buttons))
 
     return chosen_cat
 
@@ -276,7 +281,7 @@ def handle_faq_message(sender_id, message):
         word_dict = word_sent(message)
         print('Word Segmentation: ', word_dict)
 
-        chosen_cat = find_cat(sender_id, word_dict)
+        chosen_cat = find_cat(sender_id, word_dict, message)
         if chosen_cat != {}:
             print('da tim thay chosen_cat')
             chosen_subcat = find_subcat(sender_id, word_dict, chosen_cat)
