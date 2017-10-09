@@ -285,6 +285,7 @@ def handle_faq_message(sender_id, message):
                 else:
                     print(
                         'tim thay chosen_cat,tim thay chosen_subcat, khong tim thay chosen_qa')
+
             else:
                 print('tim thay chosen_cat, khong tim thay chosen_subcat')
         else:
