@@ -202,7 +202,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
         dict_qa.update(
             {qa_document['question']: count_word_in_qa})
         count_word_in_qa = 0
-        print ('dict_qa ', dict_qa)
+    print ('dict_qa ', dict_qa)
 
     # gom cac cat_title co count_word_in_cat giong nhau lai
     flipped = {}
@@ -211,7 +211,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
             flipped[value] = [key]
         else:
             flipped[value].append(key)
-    # print('flipped trong find_qa ', flipped)
+    print('flipped trong find_qa ', flipped)
 
     # xep lai de thanh maximum
     maximum_key = max(flipped)
@@ -278,7 +278,6 @@ def handle_faq_message(sender_id, message):
         if bool(check_user):
             # pass
             # page.send(sender_id, "user da co trong database")
-            print("day la ham new_faq_answer")
             print('user da co trong database')
         else:
             user_profile = page.get_user_profile(sender_id)  # return dict
@@ -298,6 +297,7 @@ def handle_faq_message(sender_id, message):
             if chosen_subcat != {}:
                 print('da tim thay chosen_subcat')
                 chosen_qa = find_qa(sender_id, word_dict, chosen_subcat)
+
                 if chosen_qa != {}:
                     print('da tim thay chosen_qa')
                 else:
