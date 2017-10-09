@@ -108,8 +108,8 @@ def find_cat(sender_id, word_dict):
         # print(maximum_value[0])
         chosen_cat = FAQ2.find_one(
             {'level': '1', 'cat_title': maximum_value[0]})
-        text = 'da chon dc cat ' + chosen_cat['cat_title']
-        page.send(sender_id, text)
+        # text = 'da chon dc cat ' + chosen_cat['cat_title']
+        # page.send(sender_id, text)
         # return chosen_cat
 
     elif len(maximum_value) > 1:  # co nhieu cat co so luong keyword max bang nhau
@@ -163,8 +163,8 @@ def find_subcat(sender_id, word_dict, chosen_cat):
         # print(maximum_value[0])
         chosen_subcat = FAQ2.find_one(
             {'level': '2', 'subcat_title': maximum_value[0], 'cat_id': chosen_cat['cat_id']})
-        text = 'da chon dc subcat ' + chosen_subcat['subcat_id']
-        page.send(sender_id, text)
+        # text = 'da chon dc subcat ' + chosen_subcat['subcat_id']
+        # page.send(sender_id, text)
         # return chosen_subcat
 
     else:  # len(maximum_value) > 1
@@ -203,19 +203,19 @@ def find_qa(sender_id, word_dict, chosen_subcat):
             flipped[value] = [key]
         else:
             flipped[value].append(key)
-    print(flipped)
+    # print(flipped)
 
     # xep lai de thanh maximum
     maximum_key = max(flipped)
     maximum_value = flipped[maximum_key]
-    print('maximum value cua qa la ', maximum_value)
+    # print('maximum value cua qa la ', maximum_value)
 
     if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
         # print(maximum_value[0])
         chosen_qa = FAQ2.find_one(
             {'level': '3', 'question': maximum_value[0]})
-        text = 'da chon dc qa ' + chosen_qa['question']
-        page.send(sender_id, text)
+        # text = 'da chon dc qa ' + chosen_qa['question']
+        # page.send(sender_id, text)
         # return chosen_qa
 
     else:  # len(maximum_value) > 1
