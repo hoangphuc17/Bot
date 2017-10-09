@@ -78,12 +78,12 @@ def message_handler(event):
     else:
         pass
 
-    # quickreply_dict = quickreply.split('>')
-    # if quickreply_dict[0] == '':
-    #     print('day la 1 quick reply cua cat')
-    #     handle_faq_quickreply(quickreply_dict)
-    # else:
-    #     pass
+    quickreply_dict = quickreply.split('>')
+    if quickreply_dict[0] == '':
+        print('day la 1 quick reply cua cat')
+        handle_faq_quickreply(quickreply_dict)
+    else:
+        pass
 
     keyword_list = {
         'home': home,
@@ -130,7 +130,7 @@ def message_handler(event):
         save_message(sender_id, message)
         # tra loi tin nhan
         # answer(message, sender_id)
-        handle_faq_message(message, sender_id)
+        handle_faq_message(sender_id, message)
 
     return
 
