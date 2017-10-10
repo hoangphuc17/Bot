@@ -135,7 +135,7 @@ def insert_new_faq():
     add_qa('tc', 'tc_dd', 'tc_dd_1', 'Địa điểm quay hình ở đâu?',	["địa điểm", "quay hình", "ở", "đâu"],
            'Theo dõi Fanpage để cập nhật thông tin địa điểm ghi hình sớm nhất bạn nhé!')
     add_qa('tc', 'tc_dd', 'tc_dd_2', 'Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?', [
-           "ghvn", "tvk", "tổ chức", "ở đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!')
+           "ghvn", "tvk", "tổ chức", "ở", "đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!')
 
     # TO CHUC - THOI GIAN
     add_subcat('tc', 'tc_tg', 'thời gian', ["năm", "sau", "2018", "tổ chức"])

@@ -194,16 +194,15 @@ def find_qa(sender_id, word_dict, chosen_subcat):
     dict_qa = {}
     count_word_in_qa = 0
     chosen_qa = {}
-    print('chosen_subcat trong find_qa', chosen_subcat)
+    # print('chosen_subcat trong find_qa', chosen_subcat)
     for qa_document in FAQ2.find({'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']}):
-        print('a')
         for word in word_dict:
             if word in qa_document['qa_keyword']:
                 count_word_in_qa = count_word_in_qa + 1
         dict_qa.update(
             {qa_document['question']: count_word_in_qa})
         count_word_in_qa = 0
-    print ('dict_qa ', dict_qa)
+    # print ('dict_qa ', dict_qa)
 
     # gom cac cat_title co count_word_in_cat giong nhau lai
     flipped = {}
@@ -212,7 +211,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
             flipped[value] = [key]
         else:
             flipped[value].append(key)
-    print('flipped trong find_qa ', flipped)
+    # print('flipped trong find_qa ', flipped)
 
     # xep lai de thanh maximum
     maximum_key = max(flipped)
