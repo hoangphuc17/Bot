@@ -129,14 +129,29 @@ def add_subcat(cat_id, subcat_id, subcat_title, subcat_keyword):
 
 
 def add_qa(cat_id, subcat_id, qa_id, question, qa_keyword, answer):
+    # lam tat ca keyword thanh chu thuong
     lower_qa_keyword = [x.lower() for x in qa_keyword]
-    # FAQ2.update_one(
-    #     {'':}
-    # )
+    # remove cac duplicate item
+    qa_keyword = list(set(lower_qa_keyword))
 
-    check_qa_id = FAQ2.find_one({'qa_id': qa_id})
-    if bool(check_qa_id):
+    qa = FAQ2.find_one({'qa_id': qa_id})
+    if bool(qa):
         print('qa_id giong nhau')
+
+        FAQ2.update_one(
+            {'qa_id': qa['qa_id']},
+            {'$set': {'qa_keyword': qa_keyword}}
+        )
+        print('da update qa_document', qa['qa_keyword'])
+
+        subcat = FAQ2.find_one({'subcat_id': subcat_id})
+        subcat_keyword = subcat['keyword'] + qa_keyword
+        subcat_keyword = list(set(subcat_keyword))
+        FAQ2.update_one(
+            {'subcat_id': subcat['subcat_id']},
+            {'$set': {'subcat_keyword': subcat_keyword}}
+        )
+        print('da update subcat_keyword', subcat['subcat_keyword'])
 
     else:
         new_qa = {

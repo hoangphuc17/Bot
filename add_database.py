@@ -167,7 +167,7 @@ def insert_new_faq():
     add_qa('ts', 'ts_dd', 'ts_dd_2', 'Tham gia thử giọng ở đâu vậy ad?', [
            "đăng ký", "thử giọng"], 'Theo dõi Fanpage để cập nhật thông tin đăng  ký và địa điểm ghi hình sớm nhất bạn nhé!')
     add_qa('ts', 'ts_dd', 'ts_dd_3', 'Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?',	[
-           "đăng ký", "tham gia", "thi", "tuyển sinh", "đi thi"]	, 'Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!')
+           "đăng ký", "tham gia", "thi", "tuyển sinh", "đi thi", "sao"]	, 'Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!')
     # TUYEN SINH - THOI GIAN
     add_subcat('ts', 'ts_tg', 'thời gian', [
                "đăng ký", "còn", "tuyển sinh", "dự tuyển", "thi"])
