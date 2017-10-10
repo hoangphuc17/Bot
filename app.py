@@ -79,11 +79,7 @@ def message_handler(event):
         pass
 
     quickreply_dict = quickreply.split('>')
-    print('quick reply la ', quickreply_dict)
-    if quickreply_dict[0] == '' and len(quickreply_dict) > 1:
-        handle_faq_quickreply(sender_id, quickreply_dict)
-    else:
-        pass
+    # print('quick reply la ', quickreply_dict)
 
     keyword_list = {
         'home': home,
@@ -124,6 +120,8 @@ def message_handler(event):
     elif fansign_list.count(quickreply) == 1:
         fansign_handle_quick_reply(sender_id, quickreply)
         return
+    elif quickreply_dict[0] == '' and len(quickreply_dict) > 1:
+        handle_faq_quickreply(sender_id, quickreply_dict)
 
     else:
         # luu tin nhan
