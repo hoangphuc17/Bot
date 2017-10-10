@@ -259,13 +259,13 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
             dict_qa = FAQ2.find(
                 {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
             quick_replies = []
-            print(dict_qa)
+            stt = 0
             for qa in dict_qa:
                 question = question + \
-                    ('\n' + str(dict_qa.index(qa) + 1) + '. ' + qa)
+                    ('\n' + str(stt + 1) + '. ' + qa['question'])
                 payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
                 quick_replies.append(QuickReply(
-                    title=str(dict_qa.index(qa) + 1), payload=payload))
+                    title=str(stt + 1), payload=payload))
             page.send(sender_id,
                       question,
                       quick_replies=quick_replies,
