@@ -258,9 +258,9 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
         qa_id = quickreply_dict[3]
         result = FAQ2.find_one(
             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
-        print(result)
-        # text = result['answer']
-        # page.send(sender_id, text)
+        # print(result)
+        text = result['answer']
+        page.send(sender_id, text)
 
     elif length > 2:
         # length = 3
