@@ -159,14 +159,14 @@ def insert_new_faq():
     add_qa('ts', 'ts_lg', 'ts_lg_1', 'Bao nhiêu tuổi thì được tham gia chương trình vậy ạ?', [
            "tuổi", "tham gia", "đăng ký"], 'Độ tuổi đăng ký tham gia chương trình Giọng Hát Việt Nhí là từ 5 tuổi - 15 tuổi bạn nhé!')
 
-    # TUYEN SINH - DIA DIEM
-    add_subcat('ts', 'ts_dd', 'địa điểm', ["sao", "cách", "như thế nào",
-                                           "đăng ký", "hà nội", "thử giọng", "tham gia", "thi", "tuyển sinh", "đi thi"])
-    add_qa('ts', 'ts_dd', 'ts_dd_1', 'Địa điểm đăng ký ở Hà Nội', [
+    # TUYEN SINH - NHU THE NAO
+    add_subcat('ts', 'ts_ntn', 'như thế nào', ["sao", "cách", "như thế nào",
+                                               "đăng ký", "hà nội", "thử giọng", "tham gia", "thi", "tuyển sinh", "đi thi"])
+    add_qa('ts', 'ts_ntn', 'ts_ntn_1', 'Địa điểm đăng ký ở Hà Nội', [
            "đăng ký", "hà nội"], 'Theo dõi Fanpage để cập nhật thông tin địa điểm đăng ký, tham gia dự tuyển vòng sơ loại nhanh nhất bạn nhé!')
-    add_qa('ts', 'ts_dd', 'ts_dd_2', 'Tham gia thử giọng ở đâu vậy ad?', [
+    add_qa('ts', 'ts_ntn', 'ts_ntn_2', 'Tham gia thử giọng ở đâu vậy ad?', [
            "đăng ký", "thử giọng"], 'Theo dõi Fanpage để cập nhật thông tin đăng  ký và địa điểm ghi hình sớm nhất bạn nhé!')
-    add_qa('ts', 'ts_dd', 'ts_dd_3', 'Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?',	[
+    add_qa('ts', 'ts_ntn', 'ts_ntn_3', 'Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?',	[
            "đăng ký", "tham gia", "thi", "tuyển sinh", "đi thi", "sao", "cách", "như thế nào"]	, 'Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!')
     # TUYEN SINH - THOI GIAN
     add_subcat('ts', 'ts_tg', 'thời gian', [
