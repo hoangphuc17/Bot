@@ -142,11 +142,87 @@ def insert_new_faq():
                "quán quân", "năm nay", "hlv", "tvk", "ghvn", "Giọng hát việt nhí", "mùa sau", "năm sau"])
     add_qa('tc', 'tc_ns', 'tc_ns_1', 'Quán quân năm nay là ai vậy ạ?', [
            "quán quân", "năm", "nay"], 'Tham gia dự đoán quán quân Giọng Hát Việt Nhí tại Chatbot bạn nhé!')
+    add_qa('tc', 'tc_ns', 'tc_ns_2', 'HLV Giọng Hát Việt Nhí 2017 là ai?', [
+           "HLV", "TVK", "GHVN", "giọng hát việt nhí"], 'HLV Giọng Hát Việt Nhí 2017 bao gồm ghế đôi ca sĩ Hương Tràm & nhạc sĩ Tiên Cookie, ghế đơn ca sĩ Soobin Hoàng Sơn và sự trở lại của HLV Giọng Hát Việt Nhí 2016 Vũ Cát Tường. Theo dõi chương trình và ủng hộ các đội mà bạn yêu thích nhé! ❤')
+    add_qa('tc', 'tc_ns', 'tc_ns_3', 'Vũ Cát Tường/Soobin Hoàng Sơn/Hương Tràm/Tiên Cookie có làm HLV năm sau nữa không?',
+           ["HLV", "mùa sau", "năm sau"], "Cám ơn @user đã quan tâm và theo dõi chương trình. Thông tin về 'ghế nóng' năm sau vẫn là một 'ẩn số'. Theo dõi Fanpage để cập nhật tin tức mới nhất 'nóng hổi nhất' bạn nhé!")
 
-    add_cat('ps', 'phát sóng', ['ghvn', 'youtube', 'tvk'])
-    add_subcat('ps', 'ps_lg', 'là gì', ['ghvn', 'youtube', 'tvk'])
-    add_qa('ps', 'ps_lg', 'ps_lg_1', 'Chương trình có trên Youtube không?', [
+    add_cat('ts', 'tuyển sinh', ["đăng ký", "còn", "tuyển sinh", "dự tuyển",
+                                 "thi", "hà nội", "thử giọng", "tham gia", "thi", "tuổi", "tham gia"])
+    add_subcat('ts', 'ts_lg', 'là gì', ["tuổi", "tham gia", "đăng ký"])
+    add_qa('ts', 'ts_lg', 'ts_lg_1', 'Bao nhiêu tuổi thì được tham gia chương trình vậy ạ?', [
+           "tuổi", "tham gia", "đăng ký"], 'Độ tuổi đăng ký tham gia chương trình Giọng Hát Việt Nhí là từ 5 tuổi - 15 tuổi bạn nhé!')
+
+    add_subcat('ts', 'ts_dd', 'địa điểm', [
+               "đăng ký", "hà nội", "thử giọng", "tham gia", "thi", "tuyển sinh"])
+    add_qa('ts', 'ts_dd', 'ts_dd_1', 'Địa điểm đăng ký ở Hà Nội', [
+           "đăng ký", "hà nội"], 'Theo dõi Fanpage để cập nhật thông tin địa điểm đăng ký, tham gia dự tuyển vòng sơ loại nhanh nhất bạn nhé!')
+    add_qa('ts', 'ts_dd', 'ts_dd_2', 'Tham gia thử giọng ở đâu vậy ad?', [
+           "đăng ký", "thử giọng"], 'Theo dõi Fanpage để cập nhật thông tin đăng  ký và địa điểm ghi hình sớm nhất bạn nhé!')
+    add_qa('ts', 'ts_dd', 'ts_dd_3', 'Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?',	[
+           "đăng ký", "tham gia", "thi", "tuyển sinh"]	, 'Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!')
+    # TUYEN SINH - THOI GIAN
+    add_subcat('ts', 'ts_tg', 'thời gian', [
+               "đăng ký", "còn", "tuyển sinh", "dự tuyển", "thi"])
+    add_qa('ts', 'ts_tg', 'ts_tg_1', 'Bây giờ còn đăng ký được nữa không?', ["đăng ký", "còn", "tuyển sinh", "dự tuyển", "thi"],
+           'Tuyển sinh Giọng Hát Việt Nhí 2018 sẽ được mở ngay sau khi Chung Kết Giọng Hát Việt Nhí 2017 kết thúc. Các bạn theo dõi Fanpage để cập nhật thông tin sớm nhất nhé!')
+    # PHAT SONG - LA GI
+    add_cat('ps', 'phát sóng', ["phát sóng", "tuần", "này", "lịch", "lịch chiếu", "giờ", "chiếu", "lại", "phát", "xem", "full", "bản", "cut",
+                                "youtube", "GHVN", "TVK", "link", "tập", "mới", "Livestream", "hậu trường", "behind", "sence", "bts", "trực tiếp", "liveshow"])
+    add_subcat('ps', 'ps_lg', 'là gì', ["phát sóng", "tuần", "này", "trực tiếp", "liveshow",
+                                        "youtube", "GHVN", "TVK", "link", "tập", "mới", "hậu trường", "behind", "sence", "bts"])
+    add_qa('ps', 'ps_lg', 'ps_lg_3', 'Chương trình có trên Youtube không?', [
            'ghvn', 'youtube', 'tvk'], 'Để xem chương trình trên Youtube bạn truy cập vào link: http://youtube.com/btcgionghatvietnhi Nhớ nhấn Subcribe để xem các tiết mục đầu tiên.')
+    add_qa('ps', 'ps_lg', 'ps_lg_1', 'Tuần này có phát sóng Giọng Hát Việt Nhí 2017 không Ad?', [
+           "phát sóng", "tuần", "này"], 'Bạn thân yêu ơi Giọng Hát Việt Nhí 2017 sẽ được phát sóng vào 21h thứ bảy trên kênh VTV3. Bạn nhớ đón xem nha!')
+    add_qa('ps', 'ps_lg', 'ps_lg_2', 'Năm nay các vòng Liveshow có phát trực tiếp không?', [
+           "trực tiếp", "liveshow"], 'Liveshow chung kết Giọng Hát Việt Nhí sẽ được phát sóng trực tiếp trên kênh VTV3 vào ngày 25/11/2017 các bạn nhé!')
+    add_qa('ps', 'ps_lg', 'ps_lg_4', 'Cho mình xin link tập mới nha', [
+           "link", "tập", "mới"], "Bạn thân mến! Để xem lại tập vừa phát sóng hãy trở lại phím 'Home' và nhấp vào 'Xem lại tập phát sóng' trên kênh Youtube chính thức của chương trình bạn nhé!")
+    add_qa('ps', 'ps_lg', 'ps_lg_5', 'Admin có quay cảnh hậu trường không?', [
+           "hậu trường", "behind", "sence", "bts"], 'Để xem lại những khoảnh khắc hậu trường vui nhộn bạn nhớ subcribe kênh VIVA Shows: http://bit.ly/vivashows nhé!')
+    add_qa('ps', 'ps_lg', 'ps_lg_6', 'Tại sao the voice kids không có bản full trên youtube', [
+           "full", "youtube", "bản", "cut"], 'Vì lý do bản quyền The Voice Kids không cho phép công bố bản Full trên Youtube nên chúng tôi rất tiếc vì sự bất tiện này. Tuy nhiên, khán giả có thể dễ dàng theo dõi từ thí sính mà mình yêu thích một cách dễ dàng mà không tốn quá nhiều thời gian.')
+
+    # PHAT SONG - THOI GIAN
+    add_subcat('ps', 'ps_tg', 'thời gian', ["lịch", "phát sóng", "chiếu", "mấy", "giờ",
+                                            "GHVN", "TVK", "chiếu", "phát", "lại", "livestream", "trực tiếp", "liveshow"])
+    add_qa('ps', 'ps_tg', 'ps_tg_1', 'Em muốn hỏi lịch phát sóng Giọng Hát Việt nhí', [
+           "phát sóng", "lịch", "mấy", "giờ"], 'Giọng Hát Việt Nhí 2017 được phát sóng vào lúc 21 giờ thứ Bảy hàng tuần trên kênh VTV3 bạn nhé! ❤')
+    add_qa('ps', 'ps_tg', 'ps_tg_2', 'GHVN có phát sóng lại không Ad?', [
+           "GHVN", "TVK", "chiếu", "phát", "lại"], "Giọng Hát Việt Nhí 2017 sẽ được phát sóng vào lúc 21h thứ bảy hàng tuần trên VTV3 và được phát lại vào lúc 14h30 thứ hai tuần tiếp theo cũng trên kênh VTV3 nhé 'bạn dấu yêu'.")
+    add_qa('ps', 'ps_tg', 'ps_tg_3', 'Có Livestream phát sóng không ad?', [
+           "Livestream", "phát sóng"], 'Chương trình Giọng Hát Việt Nhí sẽ được Livestream phát sóng trực tiếp trên Fanpage Saostar vào 21h30 tối thứ Bảy hàng tuần. Đừng bỏ lỡ nhé bạn yêu !!!')
+    add_qa('ps', 'ps_tg', 'ps_tg_4', 'Năm nay các vòng Liveshow có phát trực tiếp không?', [
+           "trực tiếp", "liveshow"], 'Liveshow chung kết Giọng Hát Việt Nhí sẽ được phát sóng trực tiếp trên kênh VTV3 vào ngày 25/11/2017 các bạn nhé!')
+    add_qa('ps', 'ps_tg', 'ps_tg_5', 'Làm sao xem lại GHVN được ạ?'	, [
+           "xem", "lại", "GHVN", "TVK"], 'Bạn có thể xem phát sóng lại Giọng Hát Việt Nhí vào lúc 14h30 thứ 2 tuần tiếp theo trên VTV3 hoặc vào Youtube chính thức của chương trình để xem lại những tiết mục yêu thích bạn nhé!')
+
+    # KHAN GIA
+    # KHAN GIA - NHU THE NAO
+    add_cat('ks', 'khán giả', ["bình chọn", "dùng", "sử dụng", "chatbot", "mua",
+                               "vé", "trực tiếp", "minigame", "tham gia", "hình", "fansign", "HLV"])
+    add_subcat('ks', 'ks_ntn', 'như thế nào', ["bình chọn", "dùng", "sử dụng", "chatbot", "mua",
+                                               "vé", "trực tiếp", "minigame", "tham gia", "hình", "fansign", "HLV"])
+    add_qa('ks', 'ks_ntn', 'ks_ntn_1', 'Làm sao để bình chọn cho thí sinh',	[
+           "bình chọn"]	, 'Hệ thống bình chọn chỉ hoạt động để bình chọn chiếc vé may mắn cho thí sinh quay trở lại đêm chung kết và bình chọn cho quán quân chương trình Giọng Hát Việt Nhí 2017 trong đêm chung kết được mở từ ngày 19/11 - 25/11/2017')
+    add_qa('ks', 'ks_ntn', 'ks_ntn_2', 'Làm sao để sử dụng Chatbot', [
+           "dùng", "sử dụng", "chatbot"], "Bạn truy cập vào link m.me/gionghatvietnhi và nhấn nút 'Bắt đầu' để tham gia Chatbot Giọng Hát Việt Nhí nhé!")
+    add_qa('ks', 'ks_ntn', 'ks_ntn_3', 'Làm sao để mua vé xem trực tiếp?', [
+           "mua", "vé", "trực tiếp"], 'Vé xem ghi hình Giọng Hát Việt Nhí được phát miễn phí cho các bạn tham gia Minigame trên Fanpage. Theo dõi Fanpage, nhanh tay tham gia Minigame để có cơ hội nhận vé miễn phí nhé!')
+    add_qa('ks', 'ks_ntn', 'ks_ntn_4', 'Tham gia mini game như thế nào?', [
+           "minigame", "tham gia"], "Tham gia Chatbot Giọng Hát Việt Nhí và nhấn 'Home' => Tiếp theo vào menu 'Minigame 1/2' nhấn 'Tham gia dự đoán' và bắt đầu chơi game thật vui nhé!")
+    add_qa('ks', 'ks_ntn', 'ks_ntn_5', 'Gửi cho mình hình của Vũ Cát Tường/Hương Tràm/Tiên Cookie/Soobin Hoàng Sơn được không ạ?',
+           ["hình", "fansign", "HLV"], "Bạn vào 'Home' chọn menu 'Fansign' => chọn HLV mà bạn yêu thích để nhận được Fansign của HLV thần tượng bạn nhé!")
+    # TUONG TAC USER
+    add_cat('ttu', 'tương tác user', [
+            "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank"])
+    add_subcat('ttu', "ttu_ntn", 'như thế nào', [
+        "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank"])
+    add_qa('ttu', 'ttu_ntn', 'ttu_ntn_1', "Xin chào", [
+           "Xin chào", "chào", "hi", "hey", "hello"], 'Chào bạn đáng yêu, Bot có thể giúp gì cho bạn?')
+    add_qa('ttu', 'ttu_ntn', 'ttu_ntn_2', "Cảm ơn", ["Cảm ơn", "Thankyou", "Thank", "Thanks", "Cam on"],
+           "Chúc bạn 1 ngày tốt lành, nếu có gì thắc mắc về chương trình,nhắn ngay cho Bot nhé, Bot luôn sẵn lòng giải đáp cho bạn")
 
 
 insert_new_faq()

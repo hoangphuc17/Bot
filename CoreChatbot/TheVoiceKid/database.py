@@ -98,6 +98,7 @@ def insert_news(title, subtitle, image_url, item_url):
 
 # collection FAQ2
 def add_cat(cat_id, cat_title, cat_keyword):
+    lower_cat_keyword = [x.lower() for x in cat_keyword]
     check_cat_id = FAQ2.find_one({'cat_id': cat_id})
     if bool(check_cat_id):
         print('cat_id giong nhau')
@@ -106,12 +107,13 @@ def add_cat(cat_id, cat_title, cat_keyword):
             'level': '1',
             'cat_id': cat_id,
             'cat_title': cat_title,
-            'cat_keyword': cat_keyword
+            'cat_keyword': lower_cat_keyword
         }
         FAQ2.insert_one(new_cat)
 
 
 def add_subcat(cat_id, subcat_id, subcat_title, subcat_keyword):
+    lower_subcat_keyword = [x.lower() for x in subcat_keyword]
     check_subcat_id = FAQ2.find_one({'subcat_id': subcat_id})
     if bool(check_subcat_id):
         print('subcat_id giong nhau')
@@ -120,23 +122,24 @@ def add_subcat(cat_id, subcat_id, subcat_title, subcat_keyword):
             'level': '2',
             'subcat_id': subcat_id,
             'subcat_title': subcat_title,
-            'subcat_keyword': subcat_keyword,
+            'subcat_keyword': lower_subcat_keyword,
             'cat_id': cat_id
         }
         FAQ2.insert_one(new_subcat)
 
 
 def add_qa(cat_id, subcat_id, qa_id, question, qa_keyword, answer):
-    check_keyword = FAQ2.find_one({'qa_id': qa_id})
-    if bool(check_keyword):
-        print('qa_keyword giong nhau')
+    lower_qa_keyword = [x.lower() for x in qa_keyword]
+    check_qa_id = FAQ2.find_one({'qa_id': qa_id})
+    if bool(check_qa_id):
+        print('qa_id giong nhau')
     else:
         new_qa = {
             'level': '3',
             'qa_id': qa_id,
             'question': question,
             'answer': answer,
-            'qa_keyword': qa_keyword,
+            'qa_keyword': lower_qa_keyword,
             'subcat_id': subcat_id,
             'cat_id': cat_id
         }
