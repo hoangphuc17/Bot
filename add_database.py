@@ -226,8 +226,8 @@ def insert_new_faq():
             "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank", "ok", "cam on", "chao"])
     add_subcat('ttu', "ttu_ntn", 'như thế nào', ["chao",
                                                  "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank", "ok", "cam on"])
-    add_qa('ttu', 'ttu_ntn', 'ttu_ntn_1', "Xin chào", [
-           "Xin chào", "chào", "hi", "hey", "hello"], 'Chào bạn đáng yêu, Bot có thể giúp gì cho bạn?')
+    add_qa('ttu', 'ttu_ntn', 'ttu_ntn_1', "Xin chào", ["chao",
+                                                       "Xin chào", "chào", "hi", "hey", "hello"], 'Chào bạn đáng yêu, Bot có thể giúp gì cho bạn?')
     add_qa('ttu', 'ttu_ntn', 'ttu_ntn_2', "Cảm ơn", ["ok", "Cảm ơn", "Thankyou", "Thank", "Thanks", "Cam on"],
            "Chúc bạn 1 ngày tốt lành, nếu có gì thắc mắc về chương trình,nhắn ngay cho Bot nhé, Bot luôn sẵn lòng giải đáp cho bạn")
 

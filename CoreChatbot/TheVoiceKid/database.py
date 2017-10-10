@@ -130,9 +130,14 @@ def add_subcat(cat_id, subcat_id, subcat_title, subcat_keyword):
 
 def add_qa(cat_id, subcat_id, qa_id, question, qa_keyword, answer):
     lower_qa_keyword = [x.lower() for x in qa_keyword]
+    # FAQ2.update_one(
+    #     {'':}
+    # )
+
     check_qa_id = FAQ2.find_one({'qa_id': qa_id})
     if bool(check_qa_id):
         print('qa_id giong nhau')
+
     else:
         new_qa = {
             'level': '3',
