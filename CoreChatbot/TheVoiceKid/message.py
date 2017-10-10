@@ -259,6 +259,7 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
             dict_qa = FAQ2.find(
                 {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
             quick_replies = []
+            print(dict_qa)
             for qa in dict_qa:
                 question = question + \
                     ('\n' + str(dict_qa.index(qa) + 1) + '. ' + qa)
