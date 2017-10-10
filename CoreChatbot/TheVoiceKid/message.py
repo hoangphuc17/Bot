@@ -275,8 +275,9 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
         dict_qa = FAQ2.find(
             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
         quick_replies = []
-        stt = 0
+
         for qa in dict_qa:
+            stt = 0
             question = question + \
                 ('\n' + str(stt + 1) + '. ' + qa['question'])
             payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
