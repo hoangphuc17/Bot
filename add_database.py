@@ -115,13 +115,9 @@ def insert_new_news():
 def insert_new_faq():
     add_cat('tc', 'tổ chức', ["địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
                               "giọng hát việt nhí", "top 15", "team vũ cát tường", "team hương tràm tiên cookie", "team soobin", "trang web", "website", "địa chỉ web", "mỗi", "đội", "thí sinh", "mùa sau", "năm sau"])
+
     add_subcat('tc', 'tc_lg', 'là gì', ["bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "top 15", "team Vũ Cát Tường",
                                         "team Hương Tràm Tiên Cookie", "team Soobin Hoàng Sơn", "trang web", "website", "địa chỉ web"])
-    add_subcat('tc', 'tc_dd', 'địa điểm', [
-               "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu"])
-    add_subcat('tc', 'tc_tg', 'thời gian', ["năm sau", "2018", "tổ chức"])
-    add_subcat('tc', 'tc_ns', 'nhân sự', [
-               "quán quân", "năm nay", "hlv", "tvk", "ghvn", "Giọng hát việt nhí", "mùa sau", "năm sau"])
     add_qa('tc', 'tc_lg', 'tc_lg_1', "Một tập gồm mấy thí sinh vậy Ad?", ["bao nhiêu", "số lượng", "thí sinh"],
            "Bạn ơi bạn à! Bạn muốn hỏi tập mấy nà? Ahihi Mình đùa đấy!! Tùy theo mỗi tập sẽ có số lượng thí sinh khác nhau. Bạn nhớ xem chương trình vào 21h tối Thứ Bảy Hàng tuần trên VTV3 để nắm thông tin nhé!")
     add_qa('tc', 'tc_lg', 'tc_lg_2', 'Vòng giấu mặt có bao nhiêu tập?', [
@@ -130,12 +126,22 @@ def insert_new_faq():
            "top 15", "team Vũ Cát Tường", "team Hương Tràm Tiên Cookie", "team Soobin"]	, 'Team Vũ Cát Tường bao gồm 15 thí sinh:')
     add_qa('tc', 'tc_lg', 'tc_lg_4', 'Website Giọng Hát Việt Nhí là gì vậy?', ["trang web", "website", "địa chỉ web"	],
            'Website chính thức của chương trình Giọng Hát Việt Nhí/The Voice Kids Việt Nam truy cập vào link: http://gionghatvietnhi.com.vn')
+
+    add_subcat('tc', 'tc_dd', 'địa điểm', [
+               "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu"])
     add_qa('tc', 'tc_dd', 'tc_dd_1', 'Địa điểm quay hình ở đâu?',	["địa điểm", "quay hình", "ở đâu"],
            'Theo dõi Fanpage để cập nhật thông tin địa điểm ghi hình sớm nhất bạn nhé!')
     add_qa('tc', 'tc_dd', 'tc_dd_2', 'Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?', [
            "ghvn", "tvk", "tổ chức", "ở đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!')
+
+    add_subcat('tc', 'tc_tg', 'thời gian', ["năm sau", "2018", "tổ chức"])
     add_qa('tc', 'tc_tg', 'tc_tg_1', 'Năm sau còn tổ chức nữa không ạ?', [
            "năm sau", "2018", "tổ chức"], 'Bạn đáng yêu ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!')
+
+    add_subcat('tc', 'tc_ns', 'nhân sự', [
+               "quán quân", "năm nay", "hlv", "tvk", "ghvn", "Giọng hát việt nhí", "mùa sau", "năm sau"])
+    add_qa('tc', 'tc_ns', 'tc_ns_1', 'Quán quân năm nay là ai vậy ạ?', [
+           "quán quân", "năm", "nay"], 'Tham gia dự đoán quán quân Giọng Hát Việt Nhí tại Chatbot bạn nhé!')
 
     add_cat('ps', 'phát sóng', ['ghvn', 'youtube', 'tvk'])
     add_subcat('ps', 'ps_lg', 'là gì', ['ghvn', 'youtube', 'tvk'])
