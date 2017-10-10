@@ -250,35 +250,41 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
     length = len(quickreply_dict)
     print('length of quick_reply_dict ', length)
     print(quickreply_dict)
-    cat_id = quickreply_dict[1]
-    if length == 3:
-        subcat_id = quickreply_dict[2]
-        if length == 4:
-            qa_id = quickreply_dict[3]
-            result = FAQ2.find(
-                {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
-            text = result['answer']
-            page.send(sender_id, text)
-        else:
-            print('quick_reply: co cat_id, co subcat_id, khong co qa_id')
-            question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
-            dict_qa = FAQ2.find(
-                {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
-            quick_replies = []
-            stt = 0
-            for qa in dict_qa:
-                question = question + \
-                    ('\n' + str(stt + 1) + '. ' + qa['question'])
-                payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
-                quick_replies.append(QuickReply(
-                    title=str(stt + 1), payload=payload))
-            page.send(sender_id,
-                      question,
-                      quick_replies=quick_replies,
-                      metadata="DEVELOPER_DEFINED_METADATA")
 
+    if length > 3:
+        # length = 4
+        cat_id = quickreply_dict[1]
+        subcat_id = quickreply_dict[2]
+        qa_id = quickreply_dict[3]
+        result = FAQ2.find(
+            {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
+        text = result['answer']
+        page.send(sender_id, text)
+
+    elif length > 2:
+        # length = 3
+        print('quick_reply: co cat_id, co subcat_id, khong co qa_id')
+        cat_id = quickreply_dict[1]
+        subcat_id = quickreply_dict[2]
+        question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
+        dict_qa = FAQ2.find(
+            {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
+        quick_replies = []
+        stt = 0
+        for qa in dict_qa:
+            question = question + \
+                ('\n' + str(stt + 1) + '. ' + qa['question'])
+            payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
+            quick_replies.append(QuickReply(
+                title=str(stt + 1), payload=payload))
+        page.send(sender_id,
+                  question,
+                  quick_replies=quick_replies,
+                  metadata="DEVELOPER_DEFINED_METADATA")
     else:
+        # length = 2
         print('quick_reply: co cat_id, khong co subcat_id')
+        cat_id = quickreply_dict[1]
         dict_subcat = FAQ2.find({'level': '2', 'cat_id': cat_id})
         question = 'Giúp mình tìm câu trả lời nhé, bạn muốn tìm biết về mục nào của chương trình 😜'
         quick_replies = []
@@ -286,11 +292,52 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
             payload = '>' + cat_id + '>' + subcat['subcat_id']
             quick_replies.append(QuickReply(
                 title=subcat['subcat_title'], payload=payload))
-
         page.send(sender_id,
                   question,
                   quick_replies=quick_replies,
                   metadata="DEVELOPER_DEFINED_METADATA")
+
+    # cat_id = quickreply_dict[1]
+    # if length == 3:
+    #     subcat_id = quickreply_dict[2]
+    #     if length == 4:
+    #         qa_id = quickreply_dict[3]
+    #         result = FAQ2.find(
+    #             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
+    #         text = result['answer']
+    #         page.send(sender_id, text)
+    #     else:
+    #         print('quick_reply: co cat_id, co subcat_id, khong co qa_id')
+    #         question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
+    #         dict_qa = FAQ2.find(
+    #             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
+    #         quick_replies = []
+    #         stt = 0
+    #         for qa in dict_qa:
+    #             question = question + \
+    #                 ('\n' + str(stt + 1) + '. ' + qa['question'])
+    #             payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
+    #             quick_replies.append(QuickReply(
+    #                 title=str(stt + 1), payload=payload))
+    #         page.send(sender_id,
+    #                   question,
+    #                   quick_replies=quick_replies,
+    #                   metadata="DEVELOPER_DEFINED_METADATA")
+
+    # else:
+    #     print('quick_reply: co cat_id, khong co subcat_id')
+    #     dict_subcat = FAQ2.find({'level': '2', 'cat_id': cat_id})
+    #     question = 'Giúp mình tìm câu trả lời nhé, bạn muốn tìm biết về mục nào của chương trình 😜'
+    #     quick_replies = []
+    #     for subcat in dict_subcat:
+    #         payload = '>' + cat_id + '>' + subcat['subcat_id']
+    #         quick_replies.append(QuickReply(
+    #             title=subcat['subcat_title'], payload=payload))
+
+    #     page.send(sender_id,
+    #               question,
+    #               quick_replies=quick_replies,
+    #               metadata="DEVELOPER_DEFINED_METADATA")
 
 
 def handle_faq_message(sender_id, message):
