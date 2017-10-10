@@ -102,7 +102,7 @@ def find_cat(sender_id, word_dict, message):
     maximum_value = flipped[maximum_key]
     # print('maximum value cua find_cat la ', maximum_value, maximum_key)
 
-    if len(maximum_value) == 1:  # chi co 1 cat co so luong keyword la max
+    if len(maximum_value) == 1 and maximum_key > 0:  # chi co 1 cat co so luong keyword la max
         # print(maximum_value[0])
         chosen_cat = FAQ2.find_one(
             {'level': '1', 'cat_title': maximum_value[0]})
