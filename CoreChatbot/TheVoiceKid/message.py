@@ -256,7 +256,7 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
         cat_id = quickreply_dict[1]
         subcat_id = quickreply_dict[2]
         qa_id = quickreply_dict[3]
-        result = FAQ2.find(
+        result = FAQ2.find_one(
             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
         print(result)
         # text = result['answer']
