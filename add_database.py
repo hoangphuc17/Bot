@@ -113,6 +113,8 @@ def insert_new_news():
 
 
 def insert_new_faq():
+    # TO CHUC
+    # TO CHUC - LA GI
     add_cat('tc', 'tổ chức', ["địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
                               "giọng hát việt nhí", "top 15", "team vũ cát tường", "team hương tràm tiên cookie", "team soobin", "trang web", "website", "địa chỉ web", "mỗi", "đội", "thí sinh", "mùa sau", "năm sau"])
 
@@ -127,6 +129,7 @@ def insert_new_faq():
     add_qa('tc', 'tc_lg', 'tc_lg_4', 'Website Giọng Hát Việt Nhí là gì vậy?', ["trang web", "website", "địa chỉ web"	],
            'Website chính thức của chương trình Giọng Hát Việt Nhí/The Voice Kids Việt Nam truy cập vào link: http://gionghatvietnhi.com.vn')
 
+    # TO CHUC - DIA DIEM
     add_subcat('tc', 'tc_dd', 'địa điểm', [
                "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu"])
     add_qa('tc', 'tc_dd', 'tc_dd_1', 'Địa điểm quay hình ở đâu?',	["địa điểm", "quay hình", "ở đâu"],
@@ -134,25 +137,29 @@ def insert_new_faq():
     add_qa('tc', 'tc_dd', 'tc_dd_2', 'Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?', [
            "ghvn", "tvk", "tổ chức", "ở đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!')
 
+    # TO CHUC - THOI GIAN
     add_subcat('tc', 'tc_tg', 'thời gian', ["năm sau", "2018", "tổ chức"])
     add_qa('tc', 'tc_tg', 'tc_tg_1', 'Năm sau còn tổ chức nữa không ạ?', [
            "năm sau", "2018", "tổ chức"], 'Bạn đáng yêu ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!')
 
-    add_subcat('tc', 'tc_ns', 'nhân sự', [
-               "quán quân", "năm nay", "hlv", "tvk", "ghvn", "Giọng hát việt nhí", "mùa sau", "năm sau"])
+    # TO CHUC - NHAN SU
+    add_subcat('tc', 'tc_ns', 'nhân sự', ["huấn luận viên",
+                                          "quán quân", "năm nay", "hlv", "tvk", "ghvn", "Giọng hát việt nhí", "mùa", "năm", "sau"])
     add_qa('tc', 'tc_ns', 'tc_ns_1', 'Quán quân năm nay là ai vậy ạ?', [
            "quán quân", "năm", "nay"], 'Tham gia dự đoán quán quân Giọng Hát Việt Nhí tại Chatbot bạn nhé!')
-    add_qa('tc', 'tc_ns', 'tc_ns_2', 'HLV Giọng Hát Việt Nhí 2017 là ai?', [
-           "HLV", "TVK", "GHVN", "giọng hát việt nhí"], 'HLV Giọng Hát Việt Nhí 2017 bao gồm ghế đôi ca sĩ Hương Tràm & nhạc sĩ Tiên Cookie, ghế đơn ca sĩ Soobin Hoàng Sơn và sự trở lại của HLV Giọng Hát Việt Nhí 2016 Vũ Cát Tường. Theo dõi chương trình và ủng hộ các đội mà bạn yêu thích nhé! ❤')
+    add_qa('tc', 'tc_ns', 'tc_ns_2', 'HLV Giọng Hát Việt Nhí 2017 là ai?', ["huấn luận viên",
+                                                                            "HLV", "TVK", "GHVN", "giọng hát việt nhí"], 'HLV Giọng Hát Việt Nhí 2017 bao gồm ghế đôi ca sĩ Hương Tràm & nhạc sĩ Tiên Cookie, ghế đơn ca sĩ Soobin Hoàng Sơn và sự trở lại của HLV Giọng Hát Việt Nhí 2016 Vũ Cát Tường. Theo dõi chương trình và ủng hộ các đội mà bạn yêu thích nhé! ❤')
     add_qa('tc', 'tc_ns', 'tc_ns_3', 'Vũ Cát Tường/Soobin Hoàng Sơn/Hương Tràm/Tiên Cookie có làm HLV năm sau nữa không?',
-           ["HLV", "mùa sau", "năm sau"], "Cám ơn @user đã quan tâm và theo dõi chương trình. Thông tin về 'ghế nóng' năm sau vẫn là một 'ẩn số'. Theo dõi Fanpage để cập nhật tin tức mới nhất 'nóng hổi nhất' bạn nhé!")
+           ["HLV", "mùa", "năm", "sau", "huấn luận viên"], "Cám ơn @user đã quan tâm và theo dõi chương trình. Thông tin về 'ghế nóng' năm sau vẫn là một 'ẩn số'. Theo dõi Fanpage để cập nhật tin tức mới nhất 'nóng hổi nhất' bạn nhé!")
 
+    # TUYEN SINH - LA GI
     add_cat('ts', 'tuyển sinh', ["đăng ký", "còn", "tuyển sinh", "dự tuyển",
                                  "thi", "hà nội", "thử giọng", "tham gia", "thi", "tuổi", "tham gia"])
     add_subcat('ts', 'ts_lg', 'là gì', ["tuổi", "tham gia", "đăng ký"])
     add_qa('ts', 'ts_lg', 'ts_lg_1', 'Bao nhiêu tuổi thì được tham gia chương trình vậy ạ?', [
            "tuổi", "tham gia", "đăng ký"], 'Độ tuổi đăng ký tham gia chương trình Giọng Hát Việt Nhí là từ 5 tuổi - 15 tuổi bạn nhé!')
 
+    # TUYEN SINH - DIA DIEM
     add_subcat('ts', 'ts_dd', 'địa điểm', [
                "đăng ký", "hà nội", "thử giọng", "tham gia", "thi", "tuyển sinh"])
     add_qa('ts', 'ts_dd', 'ts_dd_1', 'Địa điểm đăng ký ở Hà Nội', [
@@ -185,10 +192,10 @@ def insert_new_faq():
            "full", "youtube", "bản", "cut"], 'Vì lý do bản quyền The Voice Kids không cho phép công bố bản Full trên Youtube nên chúng tôi rất tiếc vì sự bất tiện này. Tuy nhiên, khán giả có thể dễ dàng theo dõi từ thí sính mà mình yêu thích một cách dễ dàng mà không tốn quá nhiều thời gian.')
 
     # PHAT SONG - THOI GIAN
-    add_subcat('ps', 'ps_tg', 'thời gian', ["lịch", "phát sóng", "chiếu", "mấy", "giờ",
+    add_subcat('ps', 'ps_tg', 'thời gian', ["lịch", "phát sóng", "chiếu", "mấy", "giờ", "thời gian",
                                             "GHVN", "TVK", "chiếu", "phát", "lại", "livestream", "trực tiếp", "liveshow"])
-    add_qa('ps', 'ps_tg', 'ps_tg_1', 'Em muốn hỏi lịch phát sóng Giọng Hát Việt nhí', [
-           "phát sóng", "lịch", "mấy", "giờ"], 'Giọng Hát Việt Nhí 2017 được phát sóng vào lúc 21 giờ thứ Bảy hàng tuần trên kênh VTV3 bạn nhé! ❤')
+    add_qa('ps', 'ps_tg', 'ps_tg_1', 'Em muốn hỏi lịch phát sóng Giọng Hát Việt nhí', ["thời gian", "chiếu",
+                                                                                       "phát sóng", "lịch", "mấy", "giờ"], 'Giọng Hát Việt Nhí 2017 được phát sóng vào lúc 21 giờ thứ Bảy hàng tuần trên kênh VTV3 bạn nhé! ❤')
     add_qa('ps', 'ps_tg', 'ps_tg_2', 'GHVN có phát sóng lại không Ad?', [
            "GHVN", "TVK", "chiếu", "phát", "lại"], "Giọng Hát Việt Nhí 2017 sẽ được phát sóng vào lúc 21h thứ bảy hàng tuần trên VTV3 và được phát lại vào lúc 14h30 thứ hai tuần tiếp theo cũng trên kênh VTV3 nhé 'bạn dấu yêu'.")
     add_qa('ps', 'ps_tg', 'ps_tg_3', 'Có Livestream phát sóng không ad?', [
