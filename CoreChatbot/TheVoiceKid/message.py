@@ -196,6 +196,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
     chosen_qa = {}
     print('chosen_subcat trong find_qa', chosen_subcat)
     for qa_document in FAQ2.find({'level': '3', 'cat_id': chosen_subcat['cat_id'], 'subcat_id': chosen_subcat['subcat_id']}):
+        print('a')
         for word in word_dict:
             if word in qa_document['qa_keyword']:
                 count_word_in_qa = count_word_in_qa + 1
