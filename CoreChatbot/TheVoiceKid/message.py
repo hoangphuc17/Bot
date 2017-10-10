@@ -260,7 +260,11 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
         # print(result)
         text = result['answer']
-        page.send(sender_id, text)
+        buttons = [
+            Template.ButtonPostBack(
+                "Home", "home")
+        ]
+        page.send(sender_id, Template.Buttons(text, buttons))
 
     elif length > 2:
         # length = 3
