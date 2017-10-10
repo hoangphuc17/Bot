@@ -223,12 +223,12 @@ def insert_new_faq():
            ["hình", "fansign", "HLV"], "Bạn vào 'Home' chọn menu 'Fansign' => chọn HLV mà bạn yêu thích để nhận được Fansign của HLV thần tượng bạn nhé!")
     # TUONG TAC USER
     add_cat('ttu', 'tương tác user', [
-            "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank"])
+            "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank", "ok"])
     add_subcat('ttu', "ttu_ntn", 'như thế nào', [
-        "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank"])
+        "Xin chào", "chào", "hi", "hey", "hello", "Cảm ơn", "Thankyou", "Thank", "ok"])
     add_qa('ttu', 'ttu_ntn', 'ttu_ntn_1', "Xin chào", [
            "Xin chào", "chào", "hi", "hey", "hello"], 'Chào bạn đáng yêu, Bot có thể giúp gì cho bạn?')
-    add_qa('ttu', 'ttu_ntn', 'ttu_ntn_2', "Cảm ơn", ["Cảm ơn", "Thankyou", "Thank", "Thanks", "Cam on"],
+    add_qa('ttu', 'ttu_ntn', 'ttu_ntn_2', "Cảm ơn", ["ok", "Cảm ơn", "Thankyou", "Thank", "Thanks", "Cam on"],
            "Chúc bạn 1 ngày tốt lành, nếu có gì thắc mắc về chương trình,nhắn ngay cho Bot nhé, Bot luôn sẵn lòng giải đáp cho bạn")
 
 
