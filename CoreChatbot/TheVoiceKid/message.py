@@ -272,17 +272,20 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
         cat_id = quickreply_dict[1]
         subcat_id = quickreply_dict[2]
         question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
-        dict_qa = FAQ2.find(
+        cursor_qa = FAQ2.find(
             {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id})
+        dict_qa = []
+        for i in cursor_qa:
+            dict_qa.append(i)
+        print('dict_qa la ', dict_qa)
         quick_replies = []
 
         for qa in dict_qa:
-            stt = 0
             question = question + \
-                ('\n' + str(stt + 1) + '. ' + qa['question'])
+                ('\n' + str(dict_qa.index(qa)) + '. ' + qa['question'])
             payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
             quick_replies.append(QuickReply(
-                title=str(stt + 1), payload=payload))
+                title=str(dict_qa.index(qa)), payload=payload))
         page.send(sender_id,
                   question,
                   quick_replies=quick_replies,
