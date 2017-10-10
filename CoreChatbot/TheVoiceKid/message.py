@@ -253,6 +253,10 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
         subcat_id = quickreply_dict[2]
         if length == 4:
             qa_id = quickreply_dict[3]
+            result = FAQ2.find(
+                {'level': '3', 'cat_id': cat_id, 'subcat_id': subcat_id, 'qa_id': qa_id})
+            text = result['answer']
+            page.send(sender_id, text)
         else:
             print('quick_reply: co cat_id, co subcat_id, khong co qa_id')
             question = 'Hee, câu hỏi nào sẽ giúp mình giải đáp thắc mắc của bạn 😇'
