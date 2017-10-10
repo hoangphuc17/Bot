@@ -131,8 +131,8 @@ def insert_new_faq():
 
     # TO CHUC - DIA DIEM
     add_subcat('tc', 'tc_dd', 'địa điểm', [
-               "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu"])
-    add_qa('tc', 'tc_dd', 'tc_dd_1', 'Địa điểm quay hình ở đâu?',	["địa điểm", "quay hình", "ở đâu"],
+               "địa điểm", "quay hình", "ở", "đâu", "ghvn", "tvk", "tổ chức", ])
+    add_qa('tc', 'tc_dd', 'tc_dd_1', 'Địa điểm quay hình ở đâu?',	["địa điểm", "quay hình", "ở", "đâu"],
            'Theo dõi Fanpage để cập nhật thông tin địa điểm ghi hình sớm nhất bạn nhé!')
     add_qa('tc', 'tc_dd', 'tc_dd_2', 'Giọng Hát Việt Nhí tổ chức ở đâu vậy ạ?', [
            "ghvn", "tvk", "tổ chức", "ở đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!')
