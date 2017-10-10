@@ -115,7 +115,7 @@ def insert_new_news():
 def insert_new_faq():
     # TO CHUC
     # TO CHUC - LA GI
-    add_cat('tc', 'tổ chức', ["huấn luận viên", "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
+    add_cat('tc', 'tổ chức', ["huấn luận viên", "địa điểm", "quay hình", "ở", "đâu", "ghvn", "tvk", "tổ chức", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
                               "giọng hát việt nhí", "top 15", "team vũ cát tường", "team hương tràm tiên cookie", "team soobin", "trang web", "website", "địa chỉ web", "mỗi", "đội", "thí sinh", "mùa sau", "năm sau"])
 
     add_subcat('tc', 'tc_lg', 'là gì', ["bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "top 15", "team Vũ Cát Tường",
@@ -174,7 +174,7 @@ def insert_new_faq():
     add_qa('ts', 'ts_tg', 'ts_tg_1', 'Bây giờ còn đăng ký được nữa không?', ["đăng ký", "còn", "tuyển sinh", "dự tuyển", "thi"],
            'Tuyển sinh Giọng Hát Việt Nhí 2018 sẽ được mở ngay sau khi Chung Kết Giọng Hát Việt Nhí 2017 kết thúc. Các bạn theo dõi Fanpage để cập nhật thông tin sớm nhất nhé!')
     # PHAT SONG - LA GI
-    add_cat('ps', 'phát sóng', ["phát sóng", "tuần", "này", "lịch", "lịch chiếu", "giờ", "chiếu", "lại", "phát", "xem", "full", "bản", "cut",
+    add_cat('ps', 'phát sóng', ["khi", "nào", "phát sóng", "tuần", "này", "lịch", "lịch chiếu", "giờ", "chiếu", "lại", "phát", "xem", "full", "bản", "cut",
                                 "youtube", "GHVN", "TVK", "link", "tập", "mới", "Livestream", "hậu trường", "behind", "sence", "bts", "trực tiếp", "liveshow"])
     add_subcat('ps', 'ps_lg', 'là gì', ["phát sóng", "tuần", "này", "trực tiếp", "liveshow",
                                         "youtube", "GHVN", "TVK", "link", "tập", "mới", "hậu trường", "behind", "sence", "bts"])
@@ -192,10 +192,10 @@ def insert_new_faq():
            "full", "youtube", "bản", "cut"], 'Vì lý do bản quyền The Voice Kids không cho phép công bố bản Full trên Youtube nên chúng tôi rất tiếc vì sự bất tiện này. Tuy nhiên, khán giả có thể dễ dàng theo dõi từ thí sính mà mình yêu thích một cách dễ dàng mà không tốn quá nhiều thời gian.')
 
     # PHAT SONG - THOI GIAN
-    add_subcat('ps', 'ps_tg', 'thời gian', ["lịch", "phát sóng", "chiếu", "mấy", "giờ", "thời gian",
+    add_subcat('ps', 'ps_tg', 'thời gian', ["khi", "nào", "lịch", "phát sóng", "chiếu", "mấy", "giờ", "thời gian",
                                             "GHVN", "TVK", "chiếu", "phát", "lại", "livestream", "trực tiếp", "liveshow"])
     add_qa('ps', 'ps_tg', 'ps_tg_1', 'Em muốn hỏi lịch phát sóng Giọng Hát Việt nhí', ["thời gian", "chiếu",
-                                                                                       "phát sóng", "lịch", "mấy", "giờ"], 'Giọng Hát Việt Nhí 2017 được phát sóng vào lúc 21 giờ thứ Bảy hàng tuần trên kênh VTV3 bạn nhé! ❤')
+                                                                                       "phát sóng", "lịch", "mấy", "giờ", "khi", "nào"], 'Giọng Hát Việt Nhí 2017 được phát sóng vào lúc 21 giờ thứ Bảy hàng tuần trên kênh VTV3 bạn nhé! ❤')
     add_qa('ps', 'ps_tg', 'ps_tg_2', 'GHVN có phát sóng lại không Ad?', [
            "GHVN", "TVK", "chiếu", "phát", "lại"], "Giọng Hát Việt Nhí 2017 sẽ được phát sóng vào lúc 21h thứ bảy hàng tuần trên VTV3 và được phát lại vào lúc 14h30 thứ hai tuần tiếp theo cũng trên kênh VTV3 nhé 'bạn dấu yêu'.")
     add_qa('ps', 'ps_tg', 'ps_tg_3', 'Có Livestream phát sóng không ad?', [
