@@ -248,6 +248,7 @@ def find_qa(sender_id, word_dict, chosen_subcat):
 
 def handle_faq_quickreply(sender_id, quickreply_dict):
     length = len(quickreply_dict)
+    print('length of quick_reply_dict ', length)
     cat_id = quickreply_dict[1]
     if length == 3:
         subcat_id = quickreply_dict[2]
