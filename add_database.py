@@ -115,7 +115,7 @@ def insert_new_news():
 def insert_new_faq():
     # TO CHUC
     # TO CHUC - LA GI
-    add_cat('tc', 'tổ chức', ["địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
+    add_cat('tc', 'tổ chức', ["huấn luận viên", "địa điểm", "quay hình", "ở đâu", "ghvn", "tvk", "tổ chức", "ở đâu", "năm sau", "2018", "bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "quán quân", "hlv",
                               "giọng hát việt nhí", "top 15", "team vũ cát tường", "team hương tràm tiên cookie", "team soobin", "trang web", "website", "địa chỉ web", "mỗi", "đội", "thí sinh", "mùa sau", "năm sau"])
 
     add_subcat('tc', 'tc_lg', 'là gì', ["bao nhiêu", "số lượng", "thí sinh", "giấu mặt", "bao nhiêu", "top 15", "team Vũ Cát Tường",
@@ -138,9 +138,9 @@ def insert_new_faq():
            "ghvn", "tvk", "tổ chức", "ở đâu"],	'Giọng Hát Việt Nhí được tổ chức ghi hình tại TP. HCM bạn nhé! Để biết thêm thông tin địa điểm ghi hình chương trình bạn vui lòng theo dõi Fanpage thường xuyên nhé!')
 
     # TO CHUC - THOI GIAN
-    add_subcat('tc', 'tc_tg', 'thời gian', ["năm sau", "2018", "tổ chức"])
+    add_subcat('tc', 'tc_tg', 'thời gian', ["năm", "sau", "2018", "tổ chức"])
     add_qa('tc', 'tc_tg', 'tc_tg_1', 'Năm sau còn tổ chức nữa không ạ?', [
-           "năm sau", "2018", "tổ chức"], 'Bạn đáng yêu ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!')
+           "năm", "sau", "2018", "tổ chức"], 'Bạn đáng yêu ơi! Giọng Hát Việt Nhí đã trải qua 5 mùa và sẽ tiếp tục đồng hành cùng khán giả yêu mến chương trình vào những năm tiếp theo bạn nhé!')
 
     # TO CHUC - NHAN SU
     add_subcat('tc', 'tc_ns', 'nhân sự', ["huấn luận viên",
@@ -154,20 +154,20 @@ def insert_new_faq():
 
     # TUYEN SINH - LA GI
     add_cat('ts', 'tuyển sinh', ["đăng ký", "còn", "tuyển sinh", "dự tuyển",
-                                 "thi", "hà nội", "thử giọng", "tham gia", "thi", "tuổi", "tham gia"])
+                                 "thi", "hà nội", "thử giọng", "tham gia", "tuổi", "tham gia", "đi thi"])
     add_subcat('ts', 'ts_lg', 'là gì', ["tuổi", "tham gia", "đăng ký"])
     add_qa('ts', 'ts_lg', 'ts_lg_1', 'Bao nhiêu tuổi thì được tham gia chương trình vậy ạ?', [
            "tuổi", "tham gia", "đăng ký"], 'Độ tuổi đăng ký tham gia chương trình Giọng Hát Việt Nhí là từ 5 tuổi - 15 tuổi bạn nhé!')
 
     # TUYEN SINH - DIA DIEM
     add_subcat('ts', 'ts_dd', 'địa điểm', [
-               "đăng ký", "hà nội", "thử giọng", "tham gia", "thi", "tuyển sinh"])
+               "đăng ký", "hà nội", "thử giọng", "tham gia", "thi", "tuyển sinh", "đi thi"])
     add_qa('ts', 'ts_dd', 'ts_dd_1', 'Địa điểm đăng ký ở Hà Nội', [
            "đăng ký", "hà nội"], 'Theo dõi Fanpage để cập nhật thông tin địa điểm đăng ký, tham gia dự tuyển vòng sơ loại nhanh nhất bạn nhé!')
     add_qa('ts', 'ts_dd', 'ts_dd_2', 'Tham gia thử giọng ở đâu vậy ad?', [
            "đăng ký", "thử giọng"], 'Theo dõi Fanpage để cập nhật thông tin đăng  ký và địa điểm ghi hình sớm nhất bạn nhé!')
     add_qa('ts', 'ts_dd', 'ts_dd_3', 'Mình muốn tham gia Giọng Hát Việt Nhí năm sau thì đăng ký ở đâu ạ?',	[
-           "đăng ký", "tham gia", "thi", "tuyển sinh"]	, 'Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!')
+           "đăng ký", "tham gia", "thi", "tuyển sinh", "đi thi"]	, 'Để đăng ký tham gia chương trình bạn vui lòng truy cập vào website chính thức Giọng Hát Việt Nhí / The Voice Kids Viet Nam: http://gionghatvietnhi.com.vn và theo dõi Fanpage chính thức Giọng Hát Việt Nhí để cập nhật thông tin mới nhất bạn nhé!')
     # TUYEN SINH - THOI GIAN
     add_subcat('ts', 'ts_tg', 'thời gian', [
                "đăng ký", "còn", "tuyển sinh", "dự tuyển", "thi"])
