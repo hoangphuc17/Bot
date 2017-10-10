@@ -277,15 +277,14 @@ def handle_faq_quickreply(sender_id, quickreply_dict):
         dict_qa = []
         for i in cursor_qa:
             dict_qa.append(i)
-        print('dict_qa la ', dict_qa)
+        # print('dict_qa la ', dict_qa)
         quick_replies = []
-
         for qa in dict_qa:
             question = question + \
-                ('\n' + str(dict_qa.index(qa)) + '. ' + qa['question'])
+                ('\n' + str(dict_qa.index(qa) + 1) + '. ' + qa['question'])
             payload = '>' + cat_id + '>' + subcat_id + '>' + qa['qa_id']
             quick_replies.append(QuickReply(
-                title=str(dict_qa.index(qa)), payload=payload))
+                title=str(dict_qa.index(qa) + 1), payload=payload))
         page.send(sender_id,
                   question,
                   quick_replies=quick_replies,
