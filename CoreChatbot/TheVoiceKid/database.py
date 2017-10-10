@@ -145,7 +145,7 @@ def add_qa(cat_id, subcat_id, qa_id, question, qa_keyword, answer):
         print('da update qa_document', qa['qa_keyword'])
 
         subcat = FAQ2.find_one({'subcat_id': subcat_id})
-        subcat_keyword = subcat['keyword'] + qa_keyword
+        subcat_keyword = subcat['subcat_keyword'] + qa_keyword
         subcat_keyword = list(set(subcat_keyword))
         FAQ2.update_one(
             {'subcat_id': subcat['subcat_id']},
