@@ -59,12 +59,10 @@ def send_video_broadcast(sender_id):
 
 dict_user = []
 for user in USER.find():
-    # send_video_broadcast(user['id_user'])
-    # send_broadcast(user['id_user'])
     dict_user.append(user['id_user'])
 
-print(len(dict_user))
 
-for id in dict_user:
-    send_broadcast(id_phuc2)
-    print('Da gui nguoi thu ', dict_user.index(id))
+for id_user in dict_user:
+    send_broadcast(id_user)
+    print('Co ', len(dict_user), ' user')
+    print('Da gui broadcast cho user thu:', dict_user.index(id))
