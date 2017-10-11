@@ -67,3 +67,4 @@ print(len(dict_user))
 
 for id in dict_user:
     send_broadcast(id_phuc2)
+    print('Da gui nguoi thu ', dict_user.index(id))
