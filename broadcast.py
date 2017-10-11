@@ -58,7 +58,10 @@ def send_video_broadcast(sender_id):
 
 # send_broadcast(id_phuc2)
 
-
+dict_user = []
 for user in USER.find():
     # send_video_broadcast(user['id_user'])
-    send_broadcast(user['id_user'])
+    # send_broadcast(user['id_user'])
+    dict_user.append(user['id_user'])
+
+print(len(dict_user))
