@@ -61,8 +61,7 @@ dict_user = []
 for user in USER.find():
     dict_user.append(user['id_user'])
 
-
 for id_user in dict_user:
     send_broadcast(id_user)
     print('Co ', len(dict_user), ' user')
-    print('Da gui broadcast cho user thu:', dict_user.index(id))
+    print('Da gui broadcast cho user thu:', dict_user.index(id_user))
