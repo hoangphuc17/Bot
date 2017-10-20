@@ -35,7 +35,7 @@ def send_broadcast(sender_id):
     # text2 = "🔰 Bình chọn qua Zalo Giọng Hát Việt Nhí: zalo.me/gionghatvietnhi\n👉 Truy cập Zalo Page Giọng Hát Việt Nhí ➡️ Nhấn 'Quan Tâm'.\n👉 Vào mục tin nhắn ➡️ Bình Chọn ➡️ Click vào ảnh thí sinh bạn yêu thích để bình chọn ➡️ Xác nhận.\n👉 Mỗi tài khoản Zalo có tối đa 18 lượt bình chọn. Lưu ý mỗi thí sinh chỉ nhận được tối đa 1 lượt bình chọn.\n🔰 Bình chọn được mở từ ngày 07/10/2017 đến ngày 18/11/2017.\n#teamVuCatTuong #teamHuongTramTienCookie #teamSoobinHoangSon\nTheo dõi Fanpage và đồng hành cùng Giọng Hát Việt Nhí 2017 tìm ra Quán quân xứng đáng các bạn nhé!"
     # text = "Tèng teng! Tập 9 Giọng Hat Việt Nhí 2017 sẽ lên sóng vào lúc 21h00 ngày 14/10/2017 trên kênh VTV3. Các bạn nhớ đón xem nhé!"
     text = "Chào mừng Ngày Phụ Nữ Việt Nam 20-10. Xin kính chúc các fan của Giọng Hát Việt Nhí thật nhiều sức khỏe, niềm vui và hạnh phúc trong cuộc sống. Nhân đây chúng ta hãy cùng xem lại một màn trình diễn rất hay tại Vòng Đối Đấu nhé - ca khúc Chưa Bao Giờ Mẹ Kể trình bày bởi Quốc Thái, Thiên Thanh, Ái Vy đến từ team Soobin Hoàng Sơn."
-    page.send(sender_id, text)
+    # page.send(sender_id, text)
     # text2 = ""
     buttons = [
         Template.ButtonWeb(
