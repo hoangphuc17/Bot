@@ -39,7 +39,7 @@ def send_broadcast(sender_id):
     # text2 = ""
     buttons = [
         Template.ButtonWeb(
-            'Click để xem', 'https://www.youtube.com/watch?v=5aeJgzX7TS0')
+            'Click để xem', 'https://www.youtube.com/watch?v=5aeJgzX7TS0'),
         Template.ButtonPostBack("Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
