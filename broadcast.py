@@ -42,13 +42,13 @@ def send_broadcast(sender_id):
 
 
 def send_video_broadcast(sender_id):
-    text = "Nào nào, trước khi Tập 7 lên sóng, chúng ta hãy cùng dự đoán kết quả đêm nay nhé !!! 😉😉\n\n⭐️ Đón xem Tập 7 - Vòng đối đầu | Giọng Hát Việt Nhí 2017 vào lúc 21h Ngày 30/09/2017 trên kênh VTV3.\n🔰 Livestream phát sóng độc quyền trên Fanpage Giọng Hát Việt Nhí."
+    text = "Chào mừng Ngày Phụ Nữ Việt Nam 20-10. Xin kính chúc các fan của Giọng Hát Việt Nhí thật nhiều sức khỏe, niềm vui và hạnh phúc trong cuộc sống. Nhân đây chúng ta hãy cùng xem lại một màn trình diễn rất hay tại Vòng Đối Đấu nhé - ca khúc Chưa Bao Giờ Mẹ Kể trình bày bởi Quốc Thái, Thiên Thanh, Ái Vy đến từ team Soobin Hoàng Sơn."
     buttons = [
         Template.ButtonPostBack("Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
 
-    url_video = "http://210.211.109.211/weqbfyretnccbsaf/video_30_9.mp4"
+    url_video = "http://210.211.109.211/weqbfyretnccbsaf/video_20_10.mp4"
     page.send(sender_id, Attachment.Video(url_video))
 
 
@@ -59,11 +59,14 @@ def send_video_broadcast(sender_id):
 #     pass
 
 
-dict_user = []
-for user in USER.find():
-    dict_user.append(user['id_user'])
+# dict_user = []
+# for user in USER.find():
+#     dict_user.append(user['id_user'])
 
-for id_user in dict_user:
-    send_broadcast(id_user)
-    print('Co ', len(dict_user), ' user')
-    print('Da gui broadcast cho user thu:', dict_user.index(id_user))
+# for id_user in dict_user:
+#     send_video_broadcast(id_user)
+#     print('Co ', len(dict_user), ' user')
+#     print('Da gui broadcast cho user thu:', dict_user.index(id_user))
+
+
+send_video_broadcast(id_phuc2)
