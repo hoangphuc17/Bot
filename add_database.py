@@ -105,10 +105,22 @@ def insert_new_questions():
 
 
 def insert_new_news():
-    insert_news("Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào", "Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
-                "https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg", "https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html")
-    insert_news("Thể hiện hit của diva Hà Trần, ‘thiên thần nhí’ khiến Soobin, Vũ Cát Tường phải tung ‘chiêu’ hết mình chinh phục", "Lần đầu tiên ở mùa giải năm nay, Giọng hát Việt nhí 2017 đã có một thí sinh khiến các HLV phải tung hết tất cả các chiêu trò để chiêu dụ về đội của mình. ",
-                "https://img.saostar.vn/265x149/2017/08/19/1500621/mg_8085.jpg", "https://saostar.vn/tv-show/hien-hit-cua-diva-ha-tran-thien-nhi-khien-soobin-vu-cat-tuong-phai-tung-chieu-het-minh-chinh-phuc-1500621.html")
+    # insert_news("Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào", "Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
+    #             "https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg", "https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html")
+    # insert_news("Thể hiện hit của diva Hà Trần, ‘thiên thần nhí’ khiến Soobin, Vũ Cát Tường phải tung ‘chiêu’ hết mình chinh phục", "Lần đầu tiên ở mùa giải năm nay, Giọng hát Việt nhí 2017 đã có một thí sinh khiến các HLV phải tung hết tất cả các chiêu trò để chiêu dụ về đội của mình. ",
+    #             "https://img.saostar.vn/265x149/2017/08/19/1500621/mg_8085.jpg", "https://saostar.vn/tv-show/hien-hit-cua-diva-ha-tran-thien-nhi-khien-soobin-vu-cat-tuong-phai-tung-chieu-het-minh-chinh-phuc-1500621.html")
+    insert_news("Vũ Cát Tường khoe ảnh nhí nhố cùng trò cưng tập luyện tại vòng Liveshow The Voice Kids", "Một Vũ Cát Tường chính chắn, điềm đạm trên ghế nóng khi ở bên cạnh các học trò lại trẻ trung và nữ tính hẳn ra!",
+                "https://img.saostar.vn/360x203/2017/10/19/1687499/page-1.jpg", "https://saostar.vn/tv-show/vu-cat-tuong-khoe-anh-nhi-nho-cung-tro-cung-tap-luyen-tai-vong-liveshow-voice-kids-1687499.html")
+    insert_news("Tập 10 The Voice Kids: Vì trò cưng, Vũ Cát Tường lần đầu khoe khả năng bắn ‘rap’ cực ngầu! ", " Khoảnh khắc Vũ Cát Tường hóa thân thành rapper chỉ là một trong những đểm nhấn ấn tượng trong tập 10 sắp lên sóng của chương trình Giọng hát Việt nhí. ",
+                "https://img.saostar.vn/265x149/2017/10/15/1673813/trrr.jpg", "https://saostar.vn/tv-show/tap-10-voice-kids-vi-tro-cung-vu-cat-tuong-lan-dau-khoe-kha-nang-ban-rap-cuc-ngau-1673813.html")
+    insert_news("Thuỵ Bình, Thảo Nguyên và học trò Giọng hát Việt nhí 2017 đáng yêu mừng sinh nhật Vũ Cát Tường ", " Có mặt từ sớm ở hậu trường, các học trò của Vũ Cát Tường cùng nhau gửi lời chúc tốt đẹp nhất đến cô giáo trong đêm Birthday Concert mừng sinh nhật tuổi 25. ",
+                "https://img.saostar.vn/265x149/2017/10/14/1672817/sntuong.jpg", "https://saostar.vn/tv-show/thuy-binh-thao-nguyen-va-hoc-tro-giong-hat-viet-nhi-2017-dang-yeu-mung-sinh-nhat-vu-cat-tuong-1672817.html")
+    insert_news("Tâm Hào - Thu Hà ‘đốn tim’ fan bằng Bolero, Phi Long - Quốc Thái bùng nổ với hit quốc tế ", " Đêm liveshow 1 vòng Đấu loại trực tiếp của Giọng hát Việt nhí đầy màu sắc với những tiết mục được 'đo ni đóng giày' cho từng thí sinh, phần nào cũng khiến cho chính những HLV phải đau đầu lựa chọn ai đi ai ở. ",
+                "https://img.saostar.vn/265x149/2017/10/14/1671675/avakids.jpg", "https://saostar.vn/tv-show/tam-hao-thu-ha-don-tim-fan-bang-bolero-phi-long-quoc-thai-bung-no-voi-hit-quoc-te-1671675.html")
+    insert_news("Soobin Hoàng Sơn ‘chơi lớn’ khi cho 2 học trò hát hit Michael Jackson, G-Dragon ", " Thể hiện lại hai ca khúc nổi tiếng Beat It và Untitled, có vẻ Phi Long và Quốc Thái đã khiến Soobin Hoàng Sơn thật sự hài lòng. ",
+                "https://img.saostar.vn/265x149/2017/10/14/1672297/long-thai.jpg", "https://saostar.vn/tv-show/soobin-hoang-son-choi-lon-khi-cho-2-hoc-tro-hat-hit-michael-jackson-g-dragon-1672297.html")
+    insert_news("Xử lý quá ‘ngọt’, học trò HLV Vũ Cát Tường xứng đáng là ‘truyền nhân Bolero’ ", " Thể hiện ca khúc Xin trả tôi về trong vòng loại trực tiếp của Giọng hát Việt nhí 2017, Thu Hà như 'đốn tim' những ai theo dõi phần thi của cô bé vì hát Bolero quá ngọt. ",
+                "https://img.saostar.vn/265x149/2017/10/14/1672235/avthuha.jpg", "https://saostar.vn/tv-show/xu-ly-qua-ngot-hoc-tro-hlv-vu-cat-tuong-xung-dang-la-truyen-nhan-bolero-1672235.html")
     print('da them new news')
 
 
@@ -232,4 +244,5 @@ def insert_new_faq():
            "Chúc bạn 1 ngày tốt lành, nếu có gì thắc mắc về chương trình,nhắn ngay cho Bot nhé, Bot luôn sẵn lòng giải đáp cho bạn")
 
 
-insert_new_faq()
+# insert_new_faq()
+insert_new_news()
