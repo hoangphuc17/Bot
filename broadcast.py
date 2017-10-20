@@ -27,8 +27,8 @@ id_duc = "1627683190629761"
 
 
 def send_broadcast(sender_id):
-    url_broadcast_image = "http://210.211.109.211/weqbfyretnccbsaf/broadcast1310.jpg"
-    page.send(sender_id, Attachment.Image(url_broadcast_image))
+    # url_broadcast_image = "http://210.211.109.211/weqbfyretnccbsaf/broadcast1310.jpg"
+    # page.send(sender_id, Attachment.Image(url_broadcast_image))
     # text = "Hôm nay trời rộng lên cao. Hóng The Voice Kids nôn nao cả ngày !!! Nhớ đón xem Giọng Hát Việt Nhí vào 21h tối nay trên VTV3 nhé bạn đáng yêu ơi ! 💕💕 "
     # text = "CHIẾC VÉ MAY MẮN - BÌNH CHỌN THÍCH SINH BẠN YÊU THÍCH\nTop 18 Giọng hát Việt Nhí 2017 đã lộ diện, Ban Tổ Chức chính thức mở cổng bình chọn 'Chiếc Vé May Mắn'.\nCơ hội 'Đặc Biệt' dành cho các giọng ca nhí bị loại trong vòng Liveshow chương trình có thể trở lại đêm Chung kết nếu nhận được Tổng lượt bình chọn cao nhất từ khán giả thông qua Zalo Page Giọng Hát Việt Nhí và Tạp chí điện tử Saostar.\n🔰 Bình chọn qua Tạp chí điện tử Saostar: http://saostar.vn"
     # page.send(sender_id, text)
@@ -39,7 +39,7 @@ def send_broadcast(sender_id):
     # text2 = ""
     buttons = [
         Template.ButtonWeb(
-            'Click để xem', 'https://www.youtube.com/watch?v=5aeJgzX7TS0'),
+            '👉 Click để xem', 'https://www.youtube.com/watch?v=5aeJgzX7TS0'),
         Template.ButtonPostBack("Home", "home")
     ]
     page.send(sender_id, Template.Buttons(text, buttons))
