@@ -52,8 +52,8 @@ def broadcast_video(sender_id, video_name):
 
 def broadcast(list_user_broadcast):
     for id_user in list_user_broadcast:
-        broadcast_message_link_button(
-            id_phuc2, "Sau một tuần làm việc vất vả, hãy cùng gia đình theo dõi tập 10 của Giọng Hát Việt Nhí với thật nhiều điều thú vị và bất ngờ nhé. Chương trình sẽ được phát sóng lúc 21h00 ngày thứ 7 21/10 trên kênh VTV3.", "https://www.youtube.com/watch?v=KlUAIOtGjdw")
+        broadcast_message_link_button(id_phuc2, "Giọng Hát Việt Nhí tập 10 với rất nhiều tiết mục vô cùng hấp dẫn hiện đang được livestream trên fanpage của Saostar.vn. Cùng đón xem và ủng hộ cho giọng ca mà mình yêu thích",
+                                      "https://www.facebook.com/gionghatvietnhi/videos/1587288074703919/?notif_id=1508596247236181&notif_t=live_video_explicit&ref=notif")
         print('Co ', len(list_user_broadcast), ' user')
         print('Da gui broadcast cho user thu:',
               list_user_broadcast.index(id_user))
@@ -73,7 +73,7 @@ def partition(lst, n):
 
 
 list_thread = []
-list_group_user = partition(list_user, 10)
+list_group_user = partition(list_user, 100)
 
 for group in list_group_user:
     thread = threading.Thread(target=broadcast, args=(group,))
