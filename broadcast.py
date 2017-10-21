@@ -56,8 +56,8 @@ for user in USER.find():
 
 def partition(lst, n):
     division = len(lst) / n
-    print(len([lst[round(division * i):round(division * (i + 1))]
-               for i in range(n)]))
+    print([lst[round(division * i):round(division * (i + 1))]
+           for i in range(n)])
 
 
 partition(dict_user, 100)
