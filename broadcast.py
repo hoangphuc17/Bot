@@ -53,7 +53,7 @@ def broadcast_video(sender_id, video_name):
 def broadcast(list_user_broadcast):
     for id_user in list_user_broadcast:
         broadcast_message_link_button(
-            id_phuc2, "Sau một tuần làm việc vất vả, hãy cùng gia đình theo dõi tập 10 của Giọng Hát Việt Nhí với thật nhiều điều thú vị và bất ngờ nhé. Chương trình sẽ được phát sóng lúc 21h00 ngày thứ 7 21/10 trên kênh VTV3.", "https://www.youtube.com/watch?v=KlUAIOtGjdw")
+            id_user, "Sau một tuần làm việc vất vả, hãy cùng gia đình theo dõi tập 10 của Giọng Hát Việt Nhí với thật nhiều điều thú vị và bất ngờ nhé. Chương trình sẽ được phát sóng lúc 21h00 ngày thứ 7 21/10 trên kênh VTV3.", "https://www.youtube.com/watch?v=KlUAIOtGjdw")
         print('Co ', len(list_user_broadcast), ' user')
         print('Da gui broadcast cho user thu:',
               list_user_broadcast.index(id_user))
