@@ -53,7 +53,7 @@ def broadcast_video(sender_id, video_name):
 def broadcast(list_user_broadcast):
     for id_user in list_user_broadcast:
         broadcast_message_link_button(
-            id_user, "Sau một tuần làm việc vất vả, hãy cùng gia đình theo dõi tập 10 của Giọng Hát Việt Nhí với thật nhiều điều thú vị và bất ngờ nhé. Chương trình sẽ được phát sóng lúc 21h00 ngày thứ 7 21/10 trên kênh VTV3.", "https://www.youtube.com/watch?v=KlUAIOtGjdw")
+            id_phuc2, "Sau một tuần làm việc vất vả, hãy cùng gia đình theo dõi tập 10 của Giọng Hát Việt Nhí với thật nhiều điều thú vị và bất ngờ nhé. Chương trình sẽ được phát sóng lúc 21h00 ngày thứ 7 21/10 trên kênh VTV3.", "https://www.youtube.com/watch?v=KlUAIOtGjdw")
         print('Co ', len(list_user_broadcast), ' user')
         print('Da gui broadcast cho user thu:',
               list_user_broadcast.index(id_user))
@@ -65,50 +65,64 @@ for user in USER.find():
     list_user.append(user['id_user'])
 
 
-# chia user thanh 100 groups
+# chia user thanh n groups
 def partition(lst, n):
     division = len(lst) / n
     return [lst[round(division * i):round(division * (i + 1))]
             for i in range(n)]
 
 
-# dict_group_user = {}
+list_thread = []
 list_group_user = partition(list_user, 10)
-# for item in list_group_user:
+
+for group in list_group_user:
+    thread = threading.Thread(target=broadcast, args=(group,))
+    list_thread.append(thread)
 
 t = time.time()
 
-t1 = threading.Thread(target=broadcast, args=(list_group_user[0],))
-t2 = threading.Thread(target=broadcast, args=(list_group_user[1],))
-t3 = threading.Thread(target=broadcast, args=(list_group_user[2],))
-t4 = threading.Thread(target=broadcast, args=(list_group_user[3],))
-t5 = threading.Thread(target=broadcast, args=(list_group_user[4],))
-t6 = threading.Thread(target=broadcast, args=(list_group_user[5],))
-t7 = threading.Thread(target=broadcast, args=(list_group_user[6],))
-t8 = threading.Thread(target=broadcast, args=(list_group_user[7],))
-t9 = threading.Thread(target=broadcast, args=(list_group_user[8],))
-t10 = threading.Thread(target=broadcast, args=(list_group_user[9],))
+for t in list_thread:
+    t.start()
 
-t1.start()
-t2.start()
-t3.start()
-t4.start()
-t5.start()
-t6.start()
-t7.start()
-t8.start()
-t9.start()
-t10.start()
+for t in list_thread:
+    t.join()
 
-t1.join()
-t2.join()
-t3.join()
-t4.join()
-t5.join()
-t6.join()
-t7.join()
-t8.join()
-t9.join()
-t10.join()
+print('done in: ', time.time() - t)
 
-print('doin in: ', time.time() - t)
+
+# t = time.time()
+
+# t1 = threading.Thread(target=broadcast, args=(list_group_user[0],))
+# t2 = threading.Thread(target=broadcast, args=(list_group_user[1],))
+# t3 = threading.Thread(target=broadcast, args=(list_group_user[2],))
+# t4 = threading.Thread(target=broadcast, args=(list_group_user[3],))
+# t5 = threading.Thread(target=broadcast, args=(list_group_user[4],))
+# t6 = threading.Thread(target=broadcast, args=(list_group_user[5],))
+# t7 = threading.Thread(target=broadcast, args=(list_group_user[6],))
+# t8 = threading.Thread(target=broadcast, args=(list_group_user[7],))
+# t9 = threading.Thread(target=broadcast, args=(list_group_user[8],))
+# t10 = threading.Thread(target=broadcast, args=(list_group_user[9],))
+
+# t1.start()
+# t2.start()
+# t3.start()
+# t4.start()
+# t5.start()
+# t6.start()
+# t7.start()
+# t8.start()
+# t9.start()
+# t10.start()
+
+# t1.join()
+# t2.join()
+# t3.join()
+# t4.join()
+# t5.join()
+# t6.join()
+# t7.join()
+# t8.join()
+# t9.join()
+# t10.join()
+
+# print('doin in: ', time.time() - t)
