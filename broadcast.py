@@ -87,7 +87,9 @@ for t in list_thread:
 for t in list_thread:
     t.join()
 
-print('done in: ', time.time() - second)
+
+minutes = (time.time() - second) / 60
+print('Done in: ', minutes, ' minutes')
 
 
 # t = time.time()
