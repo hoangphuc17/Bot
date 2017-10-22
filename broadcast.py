@@ -79,7 +79,7 @@ for group in list_group_user:
     thread = threading.Thread(target=broadcast, args=(group,))
     list_thread.append(thread)
 
-t = time.time()
+second = time.time()
 
 for t in list_thread:
     t.start()
@@ -87,7 +87,7 @@ for t in list_thread:
 for t in list_thread:
     t.join()
 
-print('done in: ', time.time() - t)
+print('done in: ', time.time() - second)
 
 
 # t = time.time()
