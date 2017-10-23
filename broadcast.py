@@ -52,8 +52,8 @@ def broadcast_video(sender_id, video_name):
 
 def broadcast(list_user_broadcast):
     for id_user in list_user_broadcast:
-        broadcast_message_link_button(id_user, "Giọng Hát Việt Nhí tập 10 với rất nhiều tiết mục vô cùng hấp dẫn hiện đang được livestream trên fanpage của Saostar.vn. Cùng đón xem và ủng hộ cho giọng ca mà mình yêu thích",
-                                      "https://www.facebook.com/gionghatvietnhi/videos/1587288074703919/?notif_id=1508596247236181&notif_t=live_video_explicit&ref=notif")
+        broadcast_message_link_button(id_user, "Chúc các fans có một đầu tuần thật vui vẻ và tràn đầy năng lượng nhé 😍😍😍 Các bạn nhớ ăn uống đầy đủ để có đủ sức khỏe nhé.\nVà cùng xem lại ca khúc mới của nhạc sĩ Tiên Cookie - 'Chiếc Bụng Đói' với phần trình bày của bạn Khủng Long Tham Ăn Thanh Ngân nào 🍕🍔🍨🍭🍩🍜🍗",
+                                      "https://www.youtube.com/watch?v=shqCQFnAXgo")
         print('Co ', len(list_user_broadcast), ' user')
         print('Da gui broadcast cho user thu:',
               list_user_broadcast.index(id_user))
