@@ -59,6 +59,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
+    print('Payload: ', payload)
     page.handle_webhook(payload, message=message_handler,
                         postback=postback_handler)
     cdhh.handle_webhook(payload, message=message_handler_cdhh,
