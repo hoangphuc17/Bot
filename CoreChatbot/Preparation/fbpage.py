@@ -6,7 +6,8 @@ os.sys.path.insert(0, parentdir)
 from ApiMessenger.fbmq import Page
 from CoreChatbot.Preparation.config import CONFIG
 
-page = Page(CONFIG['FACEBOOK_TOKEN'])
+page = Page(CONFIG['FACEBOOK_TOKEN_GHVN'])
+cdhh = Page(CONFIG['FACEBOOK_TOKEN_CDHH'])
 
 
 @page.after_send

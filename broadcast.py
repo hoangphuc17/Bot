@@ -89,42 +89,4 @@ for t in list_thread:
 
 
 minutes = (time.time() - second) / 60
-print('Done in: ', minutes, ' minutes')
-
-
-# t = time.time()
-
-# t1 = threading.Thread(target=broadcast, args=(list_group_user[0],))
-# t2 = threading.Thread(target=broadcast, args=(list_group_user[1],))
-# t3 = threading.Thread(target=broadcast, args=(list_group_user[2],))
-# t4 = threading.Thread(target=broadcast, args=(list_group_user[3],))
-# t5 = threading.Thread(target=broadcast, args=(list_group_user[4],))
-# t6 = threading.Thread(target=broadcast, args=(list_group_user[5],))
-# t7 = threading.Thread(target=broadcast, args=(list_group_user[6],))
-# t8 = threading.Thread(target=broadcast, args=(list_group_user[7],))
-# t9 = threading.Thread(target=broadcast, args=(list_group_user[8],))
-# t10 = threading.Thread(target=broadcast, args=(list_group_user[9],))
-
-# t1.start()
-# t2.start()
-# t3.start()
-# t4.start()
-# t5.start()
-# t6.start()
-# t7.start()
-# t8.start()
-# t9.start()
-# t10.start()
-
-# t1.join()
-# t2.join()
-# t3.join()
-# t4.join()
-# t5.join()
-# t6.join()
-# t7.join()
-# t8.join()
-# t9.join()
-# t10.join()
-
-# print('doin in: ', time.time() - t)
+print('Done in:', minutes, 'minutes')

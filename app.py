@@ -43,11 +43,6 @@ fansign_list = ["vct", "sb", "ht", "tc"]
 
 @app.route('/', methods=['GET'])
 def verify():
-    # if request.args.get("hub.verify_token") == 'phuc123':
-    #     return request.args["hub.challenge"], 200
-    # else:
-    #     return "Verification token mismatch", 403
-    # Webhook verification
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
         if not request.args.get("hub.verify_token") == CONFIG['VERIFY_TOKEN']:
             return "Verification token mismatch", 403
@@ -157,27 +152,6 @@ def postback_handler(event):
     if postback in postback_list:
         postback_list[postback](sender_id)
 
-    return
-
-
-# @app.route('/', methods=['POST'])
-# def handle_subscribe():
-#     news_for_subscribe()
-#     print('day la handle subscribe')
-#     return "ok", 200
-
-
-def send_news(sender_id):
-    element = Template.GenericElement(
-        title="Sau Thụy Bình, Vũ Cát Tường lại chiêu mộ thành công ‘hoàng tử dân ca’ Tâm Hào",
-        subtitle="Dự thi với ca khúc mang âm hưởng dân ca vô cùng mộc mạc nhưng cậu bé Nguyễn Tâm Hào vẫn khiến cả trường quay dậy sóng bởi tiếng hò reo, cổ vũ.",
-        image_url="https://img.saostar.vn/265x149/2017/08/19/1500005/8.jpg",
-        buttons=[
-            Template.ButtonWeb(
-                'Đọc tin', "https://saostar.vn/tv-show/sau-thuy-binh-vu-cat-tuong-lai-chieu-mo-thanh-cong-hoang-tu-dan-ca-tam-hao-1500005.html"),
-            Template.ButtonPostBack('Về Home', 'home')
-        ])
-    page.send(sender_id, Template.Generic(element))
     return
 
 
