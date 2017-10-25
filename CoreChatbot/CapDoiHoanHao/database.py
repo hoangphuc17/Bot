@@ -32,13 +32,7 @@ def insert_new_user(first_name, last_name, id_user):
         'last_name': last_name,
         'id_user': id_user,
         'subscribe_news': 'no',
-        'message': [
-            # {
-            #     'content': '',
-            #     'time': '',
-            #     'type': ''
-            # }
-        ]
+        'message': []
     }
     USER.insert_one(new_user)
 
@@ -48,9 +42,7 @@ def check_user(sender_id):
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
     id_user = user_profile["id"]
-    # print (user_profile)
 
-    # kiem tra user, neu chua co thi them vao database
     check = USER.find_one({'id_user': sender_id})
     if bool(check):
         print('USER is IN')
