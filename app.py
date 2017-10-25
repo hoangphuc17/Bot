@@ -77,7 +77,7 @@ def webhook():
 
 def message_handler_cdhh(event):
     print('Cap doi hoan hao message handler')
-    print(event)
+    # print(event)
     sender_id = event.sender_id
     message = event.message_text
     quickreply = event.quick_reply_payload
@@ -92,7 +92,7 @@ def message_handler_cdhh(event):
     keyword_list = {
         'hello': cdhh_greeting,
         'hi': cdhh_greeting,
-        'home': cdhh_greeting
+        'home': cdhh_home
     }
 
     if message in keyword_list:
@@ -112,6 +112,8 @@ def postback_handler_cdhh(event):
 
     if postback in postback_list:
         postback_list[postback](sender_id)
+
+    return
 
 
 # @page.handle_message
