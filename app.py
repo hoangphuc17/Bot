@@ -28,15 +28,6 @@ from CoreChatbot.Preparation.fbpage import cdhh
 from CoreChatbot.CapDoiHoanHao.message import *
 from CoreChatbot.CapDoiHoanHao.postback import *
 
-import datetime
-from pymongo import MongoClient
-client = MongoClient('cb.saostar.vn', 27017)
-db = client.Phuc
-
-USER = db.USER
-FAQ = db.FAQ
-NEWS = db.NEWS
-
 
 app = Flask(__name__)
 

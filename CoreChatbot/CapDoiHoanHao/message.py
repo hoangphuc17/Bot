@@ -20,10 +20,10 @@ import datetime
 from pymongo import MongoClient
 client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
-USER = db.USER_CDHH
-FAQ = db.FAQ_CDHH
-NEWS = db.NEWS_CDHH
-NOFAQ = db.NOFAQ_CDHH
+USER = db.CDHH_USER
+FAQ = db.CDHH_FAQ
+NEWS = db.CDHH_NEWS
+NOFAQ = db.CDHH_NOFAQ
 
 
 # def answer(message, sender_id):
