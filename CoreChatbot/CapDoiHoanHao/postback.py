@@ -29,26 +29,17 @@ NEWS = db.CDHH_NEWS
 
 
 def cdhh_greeting(sender_id):
-    # get user info
-    user_profile = cdhh.get_user_profile(sender_id)  # return dict
+    user_profile = cdhh.get_user_profile(sender_id)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
-    id_user = user_profile["id"]
-    print (user_profile)
+    # id_user = user_profile["id"]
 
-    # kiem tra user, neu chua co thi them vao database
-    check_user = USER.find_one({'id_user': sender_id})
-    if bool(check_user):
-        # pass
-        # cdhh.send(sender_id, "user da co trong database")
-        print('day la ham greeting, user da co trong database')
-    else:
-        insert_new_user(first_name, last_name, id_user)
+    check_user(sender_id)
 
     space = " "
     a = "Chào"
     b = "đến với Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero. \nMình là LERO, rất vui được gặp bạn. Bạn có thể cùng mình cập nhật thông tin về chương trình một cách nhanh nhất. Cùng khám phá nào! 👇👇"
-    seq = (a, first_name, b)
+    seq = (a, first_name, last_name, b)
     text = space.join(seq)
     buttons = [
         Template.ButtonPostBack(
@@ -58,17 +49,12 @@ def cdhh_greeting(sender_id):
 
 
 def cdhh_home(sender_id):
-    user_profile = cdhh.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
-    id_user = user_profile["id"]
+    user_profile = cdhh.get_user_profile(sender_id)
+    # first_name = user_profile["first_name"]
+    # last_name = user_profile["last_name"]
+    # id_user = user_profile["id"]
 
-    # kiem tra user, neu chua co thi them vao database
-    check_user = USER.find_one({'id_user': sender_id})
-    if bool(check_user):
-        print('user da co trong database')
-    else:
-        insert_new_user(first_name, last_name, id_user)
+    check_user(sender_id)
 
     elements = [
         Template.GenericElement("Đăng ký nhận tin",

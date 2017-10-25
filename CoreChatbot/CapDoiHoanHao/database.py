@@ -9,7 +9,7 @@ from ApiMessenger.fbmq import Page
 
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
-from CoreChatbot.Preparation.fbpage import page
+# from CoreChatbot.Preparation.fbpage import page
 from CoreChatbot.Preparation.fbpage import cdhh
 
 # from CoreChatbot.TheVoiceKid.database import *
@@ -41,6 +41,21 @@ def insert_new_user(first_name, last_name, id_user):
         ]
     }
     USER.insert_one(new_user)
+
+
+def check_user(sender_id):
+    user_profile = cdhh.get_user_profile(sender_id)  # return dict
+    first_name = user_profile["first_name"]
+    last_name = user_profile["last_name"]
+    id_user = user_profile["id"]
+    # print (user_profile)
+
+    # kiem tra user, neu chua co thi them vao database
+    check = USER.find_one({'id_user': sender_id})
+    if bool(check):
+        print('day la ham greeting, user da co trong database')
+    else:
+        insert_new_user(first_name, last_name, id_user)
 
 
 # def save_message(sender_id, message):

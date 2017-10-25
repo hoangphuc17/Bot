@@ -56,11 +56,11 @@ def webhook():
     payload_dict = json.loads(payload)
     # print('PAYLOAD la: ', payload_dict)
     # if payload_dict['entry'][0]['id'] == "344510328981706":
-    #     print('Day la webhook giong hat viet nhi')
+    #     print('GIONG HAT VIET NHI')
     #     page.handle_webhook(payload, message=message_handler,
     #                         postback=postback_handler)
     if payload_dict['entry'][0]['id'] == "693691134038165":
-        print('Day la webhook cap doi hoan hao')
+        print('CAP DOI HOAN HAO')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
                             postback=postback_handler_cdhh)
 
