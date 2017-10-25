@@ -69,7 +69,7 @@ def webhook():
     elif payload_dict['entry'][0]['id'] == "693691134038165":
         print('Day la webhook cap doi hoan hao')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
-                            postback=postback_handler_cdhh)
+                            postback=postback_cdhh)
     else:
         print('khong co webhook nao')
     return "ok", 200
@@ -100,7 +100,7 @@ def message_handler_cdhh(event):
         return
 
 
-def postback_handler_cdhh(event):
+def postback_cdhh(event):
     print('Cap doi hoan hao postback handler')
     sender_id = event.sender_id
     postback = event.postback_payload
