@@ -62,7 +62,7 @@ def webhook():
     payload = request.get_data(as_text=True)
     # print(payload)
     cdhh.handle_webhook(
-        payload, message=message_handler_cdhh, postback=postback_cdhh)
+        payload, message=message_handler_cdhh, postback=postback_handler_cdhh)
     # payload_dict = json.loads(payload)
     # print('PAYLOAD la: ', payload_dict)
     # if payload_dict['entry'][0]['id'] == "344510328981706":
@@ -79,12 +79,12 @@ def webhook():
     #     return "ok", 200
 
 
-def postback_cdhh(event):
+def postback_handler_cdhh(event):
     print('Cap doi hoan hao postback handler')
     sender_id = event.sender_id
     postback = event.postback_payload
 
-    print('aaaaa')
+    # print('aaaaa')
     postback_list = {
         'cdhh_greeting': cdhh_greeting,
         'cdhh_home': cdhh_home
@@ -92,7 +92,6 @@ def postback_cdhh(event):
 
     if postback in postback_list:
         postback_list[postback](sender_id)
-
         return
 
 
