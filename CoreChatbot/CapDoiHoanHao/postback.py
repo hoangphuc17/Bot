@@ -46,6 +46,7 @@ def cdhh_greeting(sender_id):
             "Home", "cdhh_home")
     ]
     cdhh.send(sender_id, Template.Buttons(text, buttons))
+    return 'cdhh_greeting OK'
 
 
 def cdhh_home(sender_id):
@@ -106,3 +107,4 @@ def cdhh_home(sender_id):
                                 ])
     ]
     cdhh.send(sender_id, Template.Generic(elements))
+    return 'cdhh_home OK'
