@@ -62,7 +62,7 @@ def webhook():
     payload = request.get_data(as_text=True)
     payload_dict = json.loads(payload)
     print(payload_dict)
-    print(payload_dict['entry'][0])
+    print(payload_dict['entry'][0]['id'])
     # if payload_dict["entry"]["id"] == 344510328981706:
     #     print('Day la webhook ghvn')
     page.handle_webhook(payload, message=message_handler,
