@@ -92,7 +92,7 @@ def postback_handler_cdhh(event):
 
     if postback in postback_list:
         postback_list[postback](sender_id)
-        return
+        return 'postback ok'
 
 
 def message_handler_cdhh(event):
@@ -117,7 +117,7 @@ def message_handler_cdhh(event):
 
     if message in keyword_list:
         keyword_list[message](sender_id)
-        return
+        return 'message ok'
 
 
 # @page.handle_message
