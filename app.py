@@ -91,7 +91,8 @@ def message_handler_cdhh(event):
 
     keyword_list = {
         'hello': cdhh_greeting,
-        'cdhh_home': cdhh_home
+        'hi': cdhh_greeting,
+        'home': cdhh_greeting
     }
 
     if message in keyword_list:
