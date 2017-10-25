@@ -60,7 +60,9 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-    print(payload)
+    # print(payload)
+    cdhh.handle_webhook(
+        payload, message=message_handler_cdhh, postback=postback_cdhh)
     # payload_dict = json.loads(payload)
     # print('PAYLOAD la: ', payload_dict)
     # if payload_dict['entry'][0]['id'] == "344510328981706":
