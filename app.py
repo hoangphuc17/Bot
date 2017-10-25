@@ -59,7 +59,8 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-    print('Payload: ', payload)
+    if payload['entry']['id'] == '344510328981706':
+        print('Day la webhook ghvn')
     page.handle_webhook(payload, message=message_handler,
                         postback=postback_handler)
     cdhh.handle_webhook(payload, message=message_handler_cdhh,
