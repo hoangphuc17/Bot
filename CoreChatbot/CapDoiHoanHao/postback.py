@@ -56,8 +56,6 @@ def cdhh_greeting(sender_id):
     ]
     cdhh.send(sender_id, Template.Buttons(text, buttons))
 
-    return
-
 
 def cdhh_home(sender_id):
     user_profile = cdhh.get_user_profile(sender_id)  # return dict
@@ -122,4 +120,3 @@ def cdhh_home(sender_id):
                                 ])
     ]
     cdhh.send(sender_id, Template.Generic(elements))
-    return
