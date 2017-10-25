@@ -71,7 +71,7 @@ def webhook():
     if payload_dict['entry'][0]['id'] == "693691134038165":
         print('Day la webhook cap doi hoan hao')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
-                            postback=postback_cdhh)
+                            postback=postback_handler_cdhh)
     else:
         pass
         # print('khong co webhook nao')
