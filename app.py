@@ -70,8 +70,9 @@ def webhook():
         print('Day la webhook cap doi hoan hao')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
                             postback=postback_cdhh)
-    # else:
-    #     print('khong co webhook nao')
+    else:
+        pass
+        # print('khong co webhook nao')
         return "ok", 200
 
 
