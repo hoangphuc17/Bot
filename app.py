@@ -61,7 +61,7 @@ def verify():
 def webhook():
     payload = request.get_data(as_text=True)
     payload_dict = json.loads(payload)
-    print(payload_dict)
+    print('PAYLOAD la: ', payload_dict)
     if payload_dict['entry'][0]['id'] == "344510328981706":
         print('Day la webhook giong hat viet nhi')
         page.handle_webhook(payload, message=message_handler,
@@ -114,7 +114,7 @@ def postback_handler_cdhh(event):
     if postback in postback_list:
         postback_list[postback](sender_id)
 
-    return
+        return
 
 
 # @page.handle_message
