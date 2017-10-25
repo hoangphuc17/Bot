@@ -18,11 +18,14 @@ from ApiMessenger.fbmq import Page
 
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
+
 from CoreChatbot.Preparation.fbpage import page
-from CoreChatbot.Preparation.fbpage import cdhh
 from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
+from CoreChatbot.Preparation.fbpage import cdhh
+from CoreChatbot.CapDoiHoanHao.message import *
+from CoreChatbot.CapDoiHoanHao.postback import *
 
 import datetime
 from pymongo import MongoClient
