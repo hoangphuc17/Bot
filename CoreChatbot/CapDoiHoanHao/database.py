@@ -19,11 +19,10 @@ import datetime
 from pymongo import MongoClient
 client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
-USER = db.USER_CDHH
-FAQ = db.FAQ_CDHH
-NEWS = db.NEWS_CDHH
-
-FAQ2 = db.FAQ2_CDHH
+USER = db.CDHH_USER
+FAQ = db.CDHH_FAQ
+NEWS = db.CDHH_NEWS
+FAQ2 = db.CDHH_FAQ2
 
 
 # collection USER
@@ -32,7 +31,6 @@ def insert_new_user(first_name, last_name, id_user):
         'first_name': first_name,
         'last_name': last_name,
         'id_user': id_user,
-        'HLV_da_binh_chon': '',
         'subscribe_news': 'no',
         'message': [
             # {

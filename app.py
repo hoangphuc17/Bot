@@ -75,7 +75,7 @@ def webhook():
 
 
 def message_handler_cdhh(event):
-    print('message handler cdhh')
+    print('Cap doi hoan hao message handler')
     sender_id = event.sender_id
     message = event.message_text
     quickreply = event.quick_reply_payload
@@ -88,20 +88,7 @@ def message_handler_cdhh(event):
     quickreply_dict = quickreply.split('>')
 
     keyword_list = {
-        'home': home,
-        'hello': cdhh_greeting,
-        'hi': greeting,
-        'chào': greeting,
-        'alo': greeting,
-        'chao': greeting,
-        'xin chào': greeting,
-        'xin chao': greeting,
-        'Xin chào': greeting,
-        'giờ phát sóng': timeline,
-        'lịch phát sóng': timeline,
-        'giới thiệu': introduce,
-        'subscribe': handle_subscribe_1,
-        'fansign': fansign_menu
+        'hello': cdhh_greeting
     }
 
     if message in keyword_list:
@@ -110,12 +97,12 @@ def message_handler_cdhh(event):
 
 
 def postback_handler_cdhh(event):
+    print('Cap doi hoan hao postback handler')
     sender_id = event.sender_id
     postback = event.postback_payload
 
     postback_list = {
-        'cdhh_greeting': cdhh_greeting,
-        'home': home
+        'cdhh_greeting': cdhh_greeting
     }
 
     if postback in postback_list:

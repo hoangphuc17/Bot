@@ -23,9 +23,9 @@ import datetime
 from pymongo import MongoClient
 client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
-USER = db.USER_CDHH
-FAQ = db.FAQ_CDHH
-NEWS = db.NEWS_CDHH
+USER = db.CDHH_USER
+FAQ = db.CDHH_FAQ
+NEWS = db.CDHH_NEWS
 
 danh_sach_hinh_anh_HLV = {
     "Vũ Cát Tường": "hinh5_minigame.jpg",
