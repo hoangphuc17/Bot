@@ -68,6 +68,37 @@ def webhook():
 
 def message_handler_cdhh(event):
     print('message handler cdhh')
+    sender_id = event.sender_id
+    message = event.message_text
+    quickreply = event.quick_reply_payload
+
+    if message is not None:
+        message = message.lower()
+    else:
+        pass
+
+    quickreply_dict = quickreply.split('>')
+
+    keyword_list = {
+        'home': home,
+        'hello': cdhh_greeting,
+        'hi': greeting,
+        'chào': greeting,
+        'alo': greeting,
+        'chao': greeting,
+        'xin chào': greeting,
+        'xin chao': greeting,
+        'Xin chào': greeting,
+        'giờ phát sóng': timeline,
+        'lịch phát sóng': timeline,
+        'giới thiệu': introduce,
+        'subscribe': handle_subscribe_1,
+        'fansign': fansign_menu
+    }
+
+    if message in keyword_list:
+        keyword_list[message](sender_id)
+        return
 
 
 def postback_handler_cdhh(event):
