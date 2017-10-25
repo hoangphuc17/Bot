@@ -78,7 +78,7 @@ def cdhh_home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Lấy Fansign", "fansign")
+                                        "fda", "fansign")
                                 ]),
         Template.GenericElement("Tin tức",
                                 subtitle="Tin tức mới nhất từ Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero",
