@@ -53,7 +53,7 @@ def check_user(sender_id):
     # kiem tra user, neu chua co thi them vao database
     check = USER.find_one({'id_user': sender_id})
     if bool(check):
-        print('day la ham greeting, user da co trong database')
+        print('USER is IN')
     else:
         insert_new_user(first_name, last_name, id_user)
 

@@ -68,7 +68,7 @@ def webhook():
 
 
 def postback_handler_cdhh(event):
-    print('Cap doi hoan hao postback handler')
+    print('POSTBACK HANDLER CDHH')
     sender_id = event.sender_id
     postback = event.postback_payload
 
@@ -83,7 +83,7 @@ def postback_handler_cdhh(event):
 
 
 def message_handler_cdhh(event):
-    print('Cap doi hoan hao message handler')
+    print('MESSAGE HANDLER CDHH')
     sender_id = event.sender_id
     message = event.message_text
     quickreply = event.quick_reply_payload
