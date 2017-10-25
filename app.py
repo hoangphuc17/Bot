@@ -61,7 +61,7 @@ def verify():
 def webhook():
     payload = request.get_data(as_text=True)
     payload_dict = json.loads(payload)
-    print(payload_dict)
+    print(payload_dict[0]['entry']['id'])
     # if payload_dict["entry"]["id"] == 344510328981706:
     #     print('Day la webhook ghvn')
     page.handle_webhook(payload, message=message_handler,
