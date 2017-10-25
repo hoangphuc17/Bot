@@ -60,7 +60,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-    payload_dict = json.load(payload)
+    payload_dict = json.loads(payload)
     # print(payload_dict)
     # if payload is not None:
     if payload_dict["entry"]["id"] == 344510328981706:
