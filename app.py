@@ -75,6 +75,23 @@ def webhook():
     return "ok", 200
 
 
+def postback_cdhh(event):
+    print('Cap doi hoan hao postback handler')
+    sender_id = event.sender_id
+    postback = event.postback_payload
+
+    print('aaaaa')
+    postback_list = {
+        'cdhh_greeting': cdhh_greeting,
+        'cdhh_home': cdhh_home
+    }
+
+    if postback in postback_list:
+        postback_list[postback](sender_id)
+
+        return
+
+
 def message_handler_cdhh(event):
     print('Cap doi hoan hao message handler')
     # print(event)
@@ -97,23 +114,6 @@ def message_handler_cdhh(event):
 
     if message in keyword_list:
         keyword_list[message](sender_id)
-        return
-
-
-def postback_cdhh(event):
-    print('Cap doi hoan hao postback handler')
-    sender_id = event.sender_id
-    postback = event.postback_payload
-
-    print('aaaaa')
-    postback_list = {
-        'cdhh_greeting': cdhh_greeting,
-        'cdhh_home': cdhh_home
-    }
-
-    if postback in postback_list:
-        postback_list[postback](sender_id)
-
         return
 
 
