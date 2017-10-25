@@ -34,7 +34,7 @@ danh_sach_hinh_anh_HLV = {
 }
 
 
-def greeting(sender_id):
+def cdhh_greeting(sender_id):
     # get user info
     user_profile = cdhh.get_user_profile(sender_id)  # return dict
     first_name = user_profile["first_name"]

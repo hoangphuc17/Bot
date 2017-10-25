@@ -75,7 +75,7 @@ def postback_handler_cdhh(event):
     postback = event.postback_payload
 
     postback_list = {
-        'greeting_cdhh': greeting_cdhh,
+        'cdhh_greeting': cdhh_greeting,
         'home': home
     }
 
