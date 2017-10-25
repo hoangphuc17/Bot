@@ -58,7 +58,26 @@ def webhook():
     payload = request.get_data(as_text=True)
     page.handle_webhook(payload, message=message_handler,
                         postback=postback_handler)
+    cdhh.handle_webhook(payload, message=message_handler_cdhh,
+                        postback=postback_handler_cdhh)
     return "ok", 200
+
+
+def message_handler_cdhh(event):
+    print('message handler cdhh')
+
+
+def postback_handler_cdhh(event):
+    sender_id = event.sender_id
+    postback = event.postback_payload
+
+    postback_list = {
+        'greeting_cdhh': greeting_cdhh,
+        'home': home
+    }
+
+    if postback in postback_list:
+        postback_list[postback](sender_id)
 
 
 # @page.handle_message
