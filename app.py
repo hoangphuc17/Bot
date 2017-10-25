@@ -76,6 +76,7 @@ def webhook():
 
 def message_handler_cdhh(event):
     print('Cap doi hoan hao message handler')
+    print(event)
     sender_id = event.sender_id
     message = event.message_text
     quickreply = event.quick_reply_payload
