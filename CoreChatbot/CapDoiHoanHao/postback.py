@@ -52,7 +52,7 @@ def cdhh_greeting(sender_id):
     text = space.join(seq)
     buttons = [
         Template.ButtonPostBack(
-            "Home", "home")
+            "Home", "cdhh_home")
     ]
     cdhh.send(sender_id, Template.Buttons(text, buttons))
 
