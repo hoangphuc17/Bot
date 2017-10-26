@@ -25,7 +25,7 @@ from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
 from CoreChatbot.Preparation.fbpage import cdhh
-from CoreChatbot.CapDoiHoanHao.message import *
+# from CoreChatbot.CapDoiHoanHao.message import *
 from CoreChatbot.CapDoiHoanHao.postback import *
 
 
@@ -65,7 +65,7 @@ def webhook():
                             postback=postback_handler_cdhh)
         return "ok", 200
     else:
-        pass
+        return 'no app correspondent'
 
 
 def postback_handler_cdhh(event):
@@ -80,7 +80,7 @@ def postback_handler_cdhh(event):
 
     if postback in postback_list:
         postback_list[postback](sender_id)
-        # return 'postback ok'
+    return 'postback ok'
 
 
 def message_handler_cdhh(event):
@@ -104,7 +104,7 @@ def message_handler_cdhh(event):
 
     if message in keyword_list:
         keyword_list[message](sender_id)
-        # return 'message ok'
+    return 'message ok'
 
 
 # @page.handle_message
