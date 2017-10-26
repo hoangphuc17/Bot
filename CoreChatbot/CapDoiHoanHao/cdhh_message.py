@@ -10,8 +10,9 @@ from ApiMessenger.fbmq import Page
 
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
+
 from CoreChatbot.Preparation.fbpage import cdhh
-from CoreChatbot.CapDoiHoanHao.database import *
+from CoreChatbot.CapDoiHoanHao.cdhh_database import *
 
 
 from underthesea import word_sent
