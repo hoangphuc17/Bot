@@ -107,7 +107,7 @@ def vote(sender_id):
     else:
         # user da binh chon
         space = " "
-        a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho "
+        a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho"
         b = check_vote["vote"]
         seq = (a, b)
         text = space.join(seq)
@@ -144,7 +144,7 @@ def vote_menu(sender_id):
 
 def vote_handler(sender_id, quickreply):
     space = " "
-    a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho "
+    a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho"
     seq = (a, quickreply)
     text = space.join(seq)
     buttons = [
