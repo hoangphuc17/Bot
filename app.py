@@ -105,6 +105,8 @@ def message_handler_cdhh(event):
         keyword_list[message](sender_id)
     elif cdhh_vote_list.count(quickreply) == 1:
         vote_handler(sender_id, quickreply)
+    elif subscribe_options.count(quickreply) == 1:
+        subscribe_handler(sender_id, quickreply)
 
     return 'message ok'
 

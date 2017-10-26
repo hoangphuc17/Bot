@@ -123,6 +123,31 @@ def subscribe(sender_id):
     return 'subscribe OK'
 
 
+def subscribe_handler(sender_id, quick_reply_payload):
+    if quick_reply_payload == 'no':
+        text = "Okey. Bất cứ khi nào bạn cần đăng ký nhận tin tức thì quay lại đây nhé!"
+        buttons = [
+            Template.ButtonPostBack("Home", "home")
+        ]
+
+        cdhh.send(sender_id, Template.Buttons(text, buttons))
+        USER.update_one(
+            {'id_user': sender_id},
+            {'$set': {'subscribe': quick_reply_payload}}
+        )
+    else:
+        text = "Bạn đã đăng ký nhận thông báo thành công. \nMỗi khi có thông báo mới về chương trình, mình sẽ gửi tới bạn."
+        buttons = [
+            Template.ButtonPostBack("Home", "home")
+        ]
+
+        cdhh.send(sender_id, Template.Buttons(text, buttons))
+        USER.update_one(
+            {'id_user': sender_id},
+            {'$set': {'subscribe': quick_reply_payload}}
+        )
+
+
 def vote(sender_id):
     check_vote = USER.find_one({'id_user': sender_id})
 
