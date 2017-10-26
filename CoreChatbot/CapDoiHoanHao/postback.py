@@ -81,9 +81,8 @@ def cdhh_home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/cdhh_binhchon.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Xem tin tức 👓", "read_news"),
-                                    Template.ButtonPostBack(
-                                        "Theo dõi tin tức 📸", "subscribe_news")
+                                        "Bình chọn", "vote")
+
                                 ]),
         Template.GenericElement("Tìm hiểu thêm thông tin",
                                 subtitle="Theo dõi Cặp Đôi Hoàn Hảo ngay nhé",
