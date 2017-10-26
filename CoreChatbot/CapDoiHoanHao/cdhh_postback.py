@@ -91,10 +91,35 @@ def home(sender_id):
 
 
 def news(sender_id):
+    elements = []
+    for news in NEWS.find():
+        element = Template.GenericElement(
+            title=news['title'],
+            subtitle=news['subtitle'],
+            image_url=news['image_url'],
+            buttons=[
+                Template.ButtonWeb('Đọc tin', news['item_url']),
+                Template.ButtonPostBack('Về Home', 'home')
+            ])
+        elements.append(element)
+
+    cdhh.send(sender_id, Template.Generic(elements))
+
     return 'news OK'
 
 
 def subscribe(sender_id):
+    question = "Bằng cách đồng ý theo dõi tin tức dưới đây, bạn sẽ nhận được thông báo mỗi khi tin tức mới của chương trình được cập nhật.\nBạn muốn nhận thông báo chứ?"
+    quick_replies = [
+        QuickReply(title="1 tuần 1 lần 😋", payload="yes1"),
+        QuickReply(title="1 tuần 2 lần 😈", payload="yes2"),
+        QuickReply(title="Nhắc lại sau 😜", payload="no")
+    ]
+    cdhh.send(sender_id,
+              question,
+              quick_replies=quick_replies,
+              metadata="DEVELOPER_DEFINED_METADATA")
+
     return 'subscribe OK'
 
 
@@ -107,7 +132,7 @@ def vote(sender_id):
     else:
         # user da binh chon
         space = " "
-        a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho"
+        a = "Bạn đã dự đoán thành công. Dự đoán của bạn đang dành cho"
         b = check_vote["vote"]
         seq = (a, b)
         text = space.join(seq)
@@ -144,7 +169,7 @@ def vote_menu(sender_id):
 
 def vote_handler(sender_id, quickreply):
     space = " "
-    a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho"
+    a = "Bạn đã dự đoán thành công. Dự đoán của bạn đang dành cho"
     seq = (a, quickreply)
     text = space.join(seq)
     buttons = [
