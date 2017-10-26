@@ -58,32 +58,23 @@ def cdhh_home(sender_id):
     check_user(sender_id)
 
     elements = [
-        Template.GenericElement("Đăng ký nhận tin",
-                                subtitle="Nhấn theo dõi ngay để nhận được thông báo mỗi khi Cặp Đôi Hoàn Hảo cập nhật tin tức mới nhất nhé.",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
-                                buttons=[
-                                    Template.ButtonPostBack(
-                                        "fda", "fansign")
-                                ]),
         Template.GenericElement("Tin tức",
                                 subtitle="Tin tức mới nhất từ Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero",
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
-                                        "Xem tin tức 👓", "read_news"),
+                                        "Xem tin tức 👓", "news"),
                                     Template.ButtonPostBack(
-                                        "Theo dõi tin tức 📸", "subscribe_news")
+                                        "Theo dõi tin tức 📸", "subscribe")
                                 ]),
         Template.GenericElement("Xem chương trình",
                                 subtitle="Chương trình phát sóng 20:30 thứ 5 hàng tuần trên VTV3.\nBạn có thế xem lại tập Full với các bản tình ca siêu ngọt ngào tại đây nha!",
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh2_xem_video.jpg",
                                 buttons=[
                                     Template.ButtonWeb(
-                                        "Xem lại tập đã phát", "https://www.youtube.com/user/btcgionghatvietnhi"),
+                                        "Tập 2", "https://www.youtube.com/watch?v=Ynu6u0WSxrU"),
                                     Template.ButtonWeb(
-                                        "Oh my kids", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBml5RPOlILDvj5DqNwmG9AI"),
-                                    Template.ButtonWeb(
-                                        "Off the air", "https://www.youtube.com/playlist?list=PLEhBV4sOYnBk1BX8Jks9152rkNTIZQWuK")
+                                        "Tập 1", "https://www.youtube.com/watch?v=6xE6VOkRr4Qv")
                                 ]),
         Template.GenericElement("Bình chọn thí sinh",
                                 subtitle="Tin tức mới nhất từ Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero",
@@ -99,11 +90,10 @@ def cdhh_home(sender_id):
                                 image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh4_about_us.jpg",
                                 buttons=[
                                     Template.ButtonWeb(
-                                        "Facebook", "https://www.facebook.com/gionghatvietnhi/"),
-                                    Template.ButtonPostBack(
-                                        "Giờ phát sóng", "time line"),
-                                    Template.ButtonPostBack(
-                                        "Giới thiệu", "introduce")
+                                        "Facebook", "https://www.facebook.com/capdoihoanhaotrutinhbolero/"),
+                                    Template.ButtonWeb(
+                                        "Youtube", "https://www.youtube.com/channel/UCF5RuEuoGrqGtscvLGLOMew/featured")
+
                                 ])
     ]
     cdhh.send(sender_id, Template.Generic(elements))
