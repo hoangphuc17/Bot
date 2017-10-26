@@ -54,6 +54,7 @@ def webhook():
         print('GIONG HAT VIET NHI')
         page.handle_webhook(payload, message=message_handler,
                             postback=postback_handler)
+        return 'ok', '200'
     elif payload_dict['entry'][0]['id'] == "693691134038165":
         print('CAP DOI HOAN HAO')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
@@ -79,7 +80,7 @@ def postback_handler_cdhh(event):
 
     if postback in postback_list:
         postback_list[postback](sender_id)
-    return 'postback ok'
+    return 'cdhh postback ok'
 
 
 def message_handler_cdhh(event):
@@ -108,7 +109,7 @@ def message_handler_cdhh(event):
     elif subscribe_options.count(quickreply) == 1:
         subscribe_handler(sender_id, quickreply)
 
-    return 'message ok'
+    return 'cdhh message ok'
 
 
 # @page.handle_message
@@ -174,7 +175,7 @@ def message_handler(event):
         # answer(message, sender_id)
         handle_faq_message(sender_id, message)
 
-    return
+    return 'ghvn message ok'
 
 
 def postback_handler(event):
@@ -201,7 +202,7 @@ def postback_handler(event):
     if postback in postback_list:
         postback_list[postback](sender_id)
 
-    return
+    return 'ghvn postback ok'
 
 
 if __name__ == '__main__':
