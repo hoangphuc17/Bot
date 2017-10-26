@@ -31,7 +31,8 @@ def insert_new_user(first_name, last_name, id_user):
         'first_name': first_name,
         'last_name': last_name,
         'id_user': id_user,
-        'subscribe_news': 'no',
+        'subscribe': 'no',
+        'vote': '',
         'message': []
     }
     USER.insert_one(new_user)

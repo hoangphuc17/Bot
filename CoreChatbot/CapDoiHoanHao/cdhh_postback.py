@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-# reload(sys)
-# sys.setdefaultencoding('utf8')
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
 
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
+
+
 from CoreChatbot.Preparation.fbpage import cdhh
-
-
-from CoreChatbot.CapDoiHoanHao.database import *
+from CoreChatbot.CapDoiHoanHao.cdhh_database import *
 
 import PIL
-
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -32,7 +29,6 @@ def greeting(sender_id):
     user_profile = cdhh.get_user_profile(sender_id)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
-    # id_user = user_profile["id"]
 
     check_user(sender_id)
 
@@ -50,11 +46,6 @@ def greeting(sender_id):
 
 
 def home(sender_id):
-    # user_profile = cdhh.get_user_profile(sender_id)
-    # first_name = user_profile["first_name"]
-    # last_name = user_profile["last_name"]
-    # id_user = user_profile["id"]
-
     check_user(sender_id)
 
     elements = [
@@ -108,4 +99,62 @@ def subscribe(sender_id):
 
 
 def vote(sender_id):
+    check_vote = USER.find_one({'id_user': sender_id})
+
+    if check_vote['vote'] == '':
+        # user chua binh chon
+        vote_menu(sender_id)
+    else:
+        # user da binh chon
+        space = " "
+        a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho "
+        b = check_vote["vote"]
+        seq = (a, b)
+        text = space.join(seq)
+
+        buttons = [
+            Template.ButtonPostBack("Bình chọn lại", "vote_menu"),
+            Template.ButtonPostBack("Home", "home")
+        ]
+
+        cdhh.send(sender_id, Template.Buttons(text, buttons))
+
     return 'vote OK'
+
+
+def vote_menu(sender_id):
+    question = 'Bình chọn ngay cho thí sinh bạn yêu thích nhất ngay nào! Bạn thuộc'
+    quick_replies = [
+        QuickReply(title="Team Mai Tiến Dũng", payload="Team Mai Tiến Dũng"),
+        QuickReply(title="Team Giang Hồng Ngọc",
+                   payload="Team Giang Hồng Ngọc"),
+        QuickReply(title="Team Đào Bá Lộc", payload="Team Đào Bá Lộc"),
+        QuickReply(title='Team Tiêu Châu Như Quỳnh',
+                   payload='Team Tiêu Châu Như Quỳnh'),
+        QuickReply(title='Team Erik', payload='Team Erik'),
+        QuickReply(title='Team Hòa Mizy', payload='Team Hòa Mizy'),
+        QuickReply(title='Team Đức Phúc', payload='Team Đức Phúc')
+    ]
+    cdhh.send(sender_id,
+              question,
+              quick_replies=quick_replies,
+              metadata="DEVELOPER_DEFINED_METADATA")
+    return 'vote_menu OK'
+
+
+def vote_handler(sender_id, quickreply):
+    space = " "
+    a = "Bạn đã dự đoán dự đoán thành công. Dự đoán của bạn đang dành cho "
+    seq = (a, quickreply)
+    text = space.join(seq)
+    buttons = [
+        Template.ButtonPostBack("Bình chọn lại", "vote_menu"),
+        Template.ButtonPostBack("Home", "home")
+    ]
+    cdhh.send(sender_id, Template.Buttons(text, buttons))
+
+    USER.update_one(
+        {'id_user': sender_id},
+        {'$set': {'vote': quickreply}}
+    )
+    return 'vote handler OK'

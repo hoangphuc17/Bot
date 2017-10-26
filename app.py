@@ -2,17 +2,12 @@
 import os
 import sys
 import json
-# from importlib import reload
-
-# reload(sys)
-# sys.setdefaultencoding('utf-8')
 import requests
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.sys.path.insert(0, parentdir)
 
 from flask import Flask, request, send_from_directory, render_template
 
-# from ApiMessenger import Attachment, Template, QuickReply, Page
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
@@ -25,8 +20,8 @@ from CoreChatbot.TheVoiceKid.message import *
 from CoreChatbot.TheVoiceKid.postback import *
 
 from CoreChatbot.Preparation.fbpage import cdhh
-# from CoreChatbot.CapDoiHoanHao.message import *
-from CoreChatbot.CapDoiHoanHao.postback import *
+from CoreChatbot.CapDoiHoanHao.cdhh_message import *
+from CoreChatbot.CapDoiHoanHao.cdhh_postback import *
 
 
 app = Flask(__name__)
@@ -34,6 +29,9 @@ app = Flask(__name__)
 danh_sach_HLV = ["Vũ Cát Tường", "Tiên Cookie và Hương Tràm", "Soobin"]
 subscribe_options = ["yes1", "yes2", "no"]
 fansign_list = ["vct", "sb", "ht", "tc"]
+
+cdhh_vote_list = ['Team Mai Tiến Dũng', 'Team Giang Hồng Ngọc', 'Team Đào Bá Lộc',
+                  'Team Tiêu Châu Như Quỳnh', 'Team Erik', 'Team Hòa Mizy', 'Team Đức Phúc']
 
 
 @app.route('/', methods=['GET'])
@@ -51,10 +49,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     payload = request.get_data(as_text=True)
-    # cdhh.handle_webhook(
-    #     payload, message=message_handler_cdhh, postback=postback_handler_cdhh)
     payload_dict = json.loads(payload)
-    # print('PAYLOAD la: ', payload_dict)
     # if payload_dict['entry'][0]['id'] == "344510328981706":
     #     print('GIONG HAT VIET NHI')
     #     page.handle_webhook(payload, message=message_handler,
@@ -107,6 +102,9 @@ def message_handler_cdhh(event):
 
     if message in keyword_list:
         keyword_list[message](sender_id)
+    elif cdhh_vote_list.count(quickreply) == 1:
+        vote_handler(sender_id, quickreply)
+
     return 'message ok'
 
 
