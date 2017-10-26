@@ -39,7 +39,7 @@ def cdhh_greeting(sender_id):
     space = " "
     a = "Chào"
     b = "đến với Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero. \nMình là LERO, rất vui được gặp bạn. Bạn có thể cùng mình cập nhật thông tin về chương trình một cách nhanh nhất. Cùng khám phá nào! 👇👇"
-    seq = (a, first_name, last_name, b)
+    seq = (a, last_name, first_name, b)
     text = space.join(seq)
     buttons = [
         Template.ButtonPostBack(
@@ -60,7 +60,7 @@ def cdhh_home(sender_id):
     elements = [
         Template.GenericElement("Tin tức",
                                 subtitle="Tin tức mới nhất từ Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/cdhh_tintuc.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
                                         "Xem tin tức 👓", "news"),
@@ -69,7 +69,7 @@ def cdhh_home(sender_id):
                                 ]),
         Template.GenericElement("Xem chương trình",
                                 subtitle="Chương trình phát sóng 20:30 thứ 5 hàng tuần trên VTV3.\nBạn có thế xem lại tập Full với các bản tình ca siêu ngọt ngào tại đây nha!",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh2_xem_video.jpg",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/cdhh_xemtintuc.jpg",
                                 buttons=[
                                     Template.ButtonWeb(
                                         "Tập 2", "https://www.youtube.com/watch?v=Ynu6u0WSxrU"),
@@ -78,7 +78,7 @@ def cdhh_home(sender_id):
                                 ]),
         Template.GenericElement("Bình chọn thí sinh",
                                 subtitle="Tin tức mới nhất từ Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh1_tin_tuc.jpg",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/cdhh_binhchon.jpg",
                                 buttons=[
                                     Template.ButtonPostBack(
                                         "Xem tin tức 👓", "read_news"),
@@ -87,7 +87,7 @@ def cdhh_home(sender_id):
                                 ]),
         Template.GenericElement("Tìm hiểu thêm thông tin",
                                 subtitle="Theo dõi Cặp Đôi Hoàn Hảo ngay nhé",
-                                image_url="http://210.211.109.211/weqbfyretnccbsaf/home_hinh4_about_us.jpg",
+                                image_url="http://210.211.109.211/weqbfyretnccbsaf/cdhh_lienhe.jpg",
                                 buttons=[
                                     Template.ButtonWeb(
                                         "Facebook", "https://www.facebook.com/capdoihoanhaotrutinhbolero/"),
