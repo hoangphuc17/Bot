@@ -50,11 +50,11 @@ def verify():
 def webhook():
     payload = request.get_data(as_text=True)
     payload_dict = json.loads(payload)
-    # if payload_dict['entry'][0]['id'] == "344510328981706":
-    #     print('GIONG HAT VIET NHI')
-    #     page.handle_webhook(payload, message=message_handler,
-    #                         postback=postback_handler)
-    if payload_dict['entry'][0]['id'] == "693691134038165":
+    if payload_dict['entry'][0]['id'] == "344510328981706":
+        print('GIONG HAT VIET NHI')
+        page.handle_webhook(payload, message=message_handler,
+                            postback=postback_handler)
+    elif payload_dict['entry'][0]['id'] == "693691134038165":
         print('CAP DOI HOAN HAO')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
                             postback=postback_handler_cdhh)
