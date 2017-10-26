@@ -99,7 +99,15 @@ def message_handler_cdhh(event):
     keyword_list = {
         'hello': cdhh_greeting,
         'hi': cdhh_greeting,
-        'home': cdhh_home
+        'home': cdhh_home,
+        'bình chọn': vote,
+        'binh chon': vote,
+        'vote': vote,
+        'dang ky': subscribe,
+        'dang ki': subscribe,
+        'subscribe': subscribe,
+        'đăng ký': subscribe,
+        'đăng kí': subscribe
     }
 
     if message in keyword_list:
