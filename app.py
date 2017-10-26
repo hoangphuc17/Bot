@@ -73,7 +73,8 @@ def postback_handler_cdhh(event):
         'home': home,
         'news': news,
         'subscribe': subscribe,
-        'vote': vote
+        'vote': vote,
+        'vote_menu': vote_menu
     }
 
     if postback in postback_list:
