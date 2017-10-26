@@ -146,6 +146,7 @@ def subscribe_handler(sender_id, quick_reply_payload):
             {'id_user': sender_id},
             {'$set': {'subscribe': quick_reply_payload}}
         )
+    return 'subscribe handler OK'
 
 
 def vote(sender_id):

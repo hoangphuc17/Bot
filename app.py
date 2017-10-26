@@ -54,7 +54,7 @@ def webhook():
         print('GIONG HAT VIET NHI')
         page.handle_webhook(payload, message=message_handler,
                             postback=postback_handler)
-        return 'ok', '200'
+        return 'ok', 200
     elif payload_dict['entry'][0]['id'] == "693691134038165":
         print('CAP DOI HOAN HAO')
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
