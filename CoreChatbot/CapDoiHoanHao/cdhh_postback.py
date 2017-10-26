@@ -25,7 +25,7 @@ FAQ = db.CDHH_FAQ
 NEWS = db.CDHH_NEWS
 
 
-def greeting(sender_id):
+def cdhh_greeting(sender_id):
     user_profile = cdhh.get_user_profile(sender_id)
     first_name = user_profile["first_name"]
     last_name = user_profile["last_name"]
@@ -42,10 +42,10 @@ def greeting(sender_id):
             "Home", "home")
     ]
     cdhh.send(sender_id, Template.Buttons(text, buttons))
-    return 'greeting OK'
+    return 'cdhh_greeting OK'
 
 
-def home(sender_id):
+def cdhh_home(sender_id):
     check_user(sender_id)
 
     elements = [
@@ -87,7 +87,7 @@ def home(sender_id):
                                 ])
     ]
     cdhh.send(sender_id, Template.Generic(elements))
-    return 'home OK'
+    return 'cdhh_home OK'
 
 
 def news(sender_id):

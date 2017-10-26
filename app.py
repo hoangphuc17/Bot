@@ -70,8 +70,8 @@ def postback_handler_cdhh(event):
     postback = event.postback_payload
 
     postback_list = {
-        'cdhh_greeting': greeting,
-        'home': home,
+        'cdhh_greeting': cdhh_greeting,
+        'home': cdhh_home,
         'news': news,
         'subscribe': subscribe,
         'vote': vote,
@@ -97,9 +97,9 @@ def message_handler_cdhh(event):
     # quickreply_dict = quickreply.split('>')
 
     keyword_list = {
-        'hello': greeting,
-        'hi': greeting,
-        'home': home
+        'hello': cdhh_greeting,
+        'hi': cdhh_greeting,
+        'home': cdhh_home
     }
 
     if message in keyword_list:
