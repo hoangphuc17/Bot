@@ -35,6 +35,7 @@ def insert_new_user(first_name, last_name, id_user):
         'message': []
     }
     USER.insert_one(new_user)
+    return 'insert new user OK'
 
 
 def check_user(sender_id):
@@ -49,6 +50,7 @@ def check_user(sender_id):
     else:
         insert_new_user(first_name, last_name, id_user)
 
+    return 'check user OK'
 
 # def save_message(sender_id, message):
 #     if message is not None:

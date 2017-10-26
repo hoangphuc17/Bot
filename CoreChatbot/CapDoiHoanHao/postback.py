@@ -50,7 +50,7 @@ def cdhh_greeting(sender_id):
 
 
 def cdhh_home(sender_id):
-    user_profile = cdhh.get_user_profile(sender_id)
+    # user_profile = cdhh.get_user_profile(sender_id)
     # first_name = user_profile["first_name"]
     # last_name = user_profile["last_name"]
     # id_user = user_profile["id"]
