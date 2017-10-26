@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-# reload(sys)
-# sys.setdefaultencoding('utf8')
 from ApiMessenger import Attachment, Template
 from ApiMessenger.payload import QuickReply
 from ApiMessenger.fbmq import Page
 
 import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
-# from CoreChatbot.Preparation.fbpage import page
 from CoreChatbot.Preparation.fbpage import cdhh
-
-# from CoreChatbot.TheVoiceKid.database import *
 
 
 import datetime
@@ -90,20 +85,20 @@ def check_user(sender_id):
 #         FAQ.insert_one(new_question)
 
 
-# # collection NEWS
-# def insert_news(title, subtitle, image_url, item_url):
-#     check_news = NEWS.find_one({'item_url': item_url})
-#     if bool(check_news):
-#         pass
-#     else:
-#         new_news = {
-#             'title': title,
-#             'subtitle': subtitle,
-#             'image_url': image_url,
-#             'item_url': item_url
-#         }
-#         NEWS.insert_one(new_news)
-
+# collection NEWS
+def insert_news(title, subtitle, image_url, item_url):
+    check_news = NEWS.find_one({'item_url': item_url})
+    if bool(check_news):
+        pass
+    else:
+        new_news = {
+            'title': title,
+            'subtitle': subtitle,
+            'image_url': image_url,
+            'item_url': item_url
+        }
+        NEWS.insert_one(new_news)
+    return 'insert news OK'
 
 # # collection FAQ2
 # def add_cat(cat_id, cat_title, cat_keyword):
