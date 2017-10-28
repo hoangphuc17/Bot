@@ -74,7 +74,7 @@ def partition(lst, n):
 
 
 list_thread = []
-list_group_user = partition(list_user, 1000)
+list_group_user = partition(list_user, 100)
 
 for group in list_group_user:
     thread = threading.Thread(target=broadcast, args=(group,))
