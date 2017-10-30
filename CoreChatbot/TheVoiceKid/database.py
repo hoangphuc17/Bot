@@ -46,8 +46,8 @@ def insert_new_user(first_name, last_name, id_user):
 
 def save_message(sender_id, message):
     user_profile = page.get_user_profile(sender_id)
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
     id_user = user_profile["id"]
 
     if message is not None:
@@ -55,7 +55,7 @@ def save_message(sender_id, message):
         if bool(check_user):
             print("Day la ham save_message(). User da co trong database")
         else:
-            insert_new_user(first_name, last_name, id_user)
+            insert_new_user(first, last, id_user)
 
         USER.update_one(
             {'id_user': sender_id},
