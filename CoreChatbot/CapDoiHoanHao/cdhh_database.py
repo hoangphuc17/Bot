@@ -36,15 +36,15 @@ def insert_new_user(first_name, last_name, id_user):
 
 def check_user(sender_id):
     user_profile = cdhh.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
     id_user = user_profile["id"]
 
     check = USER.find_one({'id_user': sender_id})
     if bool(check):
         print('USER is IN')
     else:
-        insert_new_user(first_name, last_name, id_user)
+        insert_new_user(first, last, id_user)
 
     return 'check user OK'
 

@@ -28,8 +28,8 @@ NEWS = db.CDHH_NEWS
 def cdhh_greeting(sender_id):
     user_profile = cdhh.get_user_profile(sender_id)
     print(user_profile)
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
 
     check_user(sender_id)
 
