@@ -53,7 +53,7 @@ def broadcast_video(sender_id, video_name):
 def broadcast(list_user_broadcast):
     for id_user in list_user_broadcast:
         # text = "Giọng Hát Việt Nhí tập 11 với rất nhiều tiết mục vô cùng hấp dẫn hiện đang được livestream trên fanpage của chương trình 💞💞 Cùng đón xem và ủng hộ cho giọng ca mà mình yêu thích 🎤🎤 Và đừng quên bình chọn tấm vé may mắn tới Đêm Chung Kết nữa nhé 🎶🎶"
-        text = "Trời cao nắng đẹp mây xanh, có The Voice Kids Việt Nam đồng hành.\nCùng xem lại tiết mục xuất sắc "Trên Đỉnh Phù Vân" của Đình Tâm\nkhiến người xem nổi da gà <3"
+        text = "Trời cao nắng đẹp mây xanh, có The Voice Kids Việt Nam đồng hành.\nCùng xem lại tiết mục xuất sắc 'Trên Đỉnh Phù Vân' của Đình Tâm\nkhiến người xem nổi da gà <3"
         link_livestream = "https://www.youtube.com/watch?v=cZjcbPWw-NE"
         broadcast_message_link_button(id_user, text, link_livestream)
         print('Co ', len(list_user_broadcast), ' user')
