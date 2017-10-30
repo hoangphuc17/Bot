@@ -36,8 +36,8 @@ danh_sach_hinh_anh_HLV = {
 def greeting(sender_id):
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
     id_user = user_profile["id"]
     print (user_profile)
 
@@ -48,12 +48,12 @@ def greeting(sender_id):
         # page.send(sender_id, "user da co trong database")
         print('day la ham greeting, user da co trong database')
     else:
-        insert_new_user(first_name, last_name, id_user)
+        insert_new_user(first, last, id_user)
 
     space = " "
     a = "Chào"
     b = "đến với Giọng Hát Việt Nhí. Tại đây, bạn có thể đặt câu hỏi, chơi Mini game và theo dõi những tin tức “nóng hổi” nhất từ chương trình. Còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” ngay nào !!! ;) ;)\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺 "
-    seq = (a, first_name, b)
+    seq = (a, first, b)
     text = space.join(seq)
     buttons = [
         Template.ButtonPostBack(
@@ -67,8 +67,8 @@ def greeting(sender_id):
 def home(sender_id):
 
     user_profile = page.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
     id_user = user_profile["id"]
 
     # kiem tra user, neu chua co thi them vao database
@@ -76,7 +76,7 @@ def home(sender_id):
     if bool(check_user):
         print('user da co trong database')
     else:
-        insert_new_user(first_name, last_name, id_user)
+        insert_new_user(first, last, id_user)
 
     elements = [
         Template.GenericElement("Fansign",
@@ -160,8 +160,8 @@ def minigame2(sender_id):
 def subscribe_news(sender_id):
 
     user_profile = page.get_user_profile(sender_id)  # return dict
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
     id_user = user_profile["id"]
 
     # kiem tra user, neu chua co thi them vao database
@@ -171,7 +171,7 @@ def subscribe_news(sender_id):
         # page.send(sender_id, "user da co trong database")
         print('user da co trong database')
     else:
-        insert_new_user(first_name, last_name, id_user)
+        insert_new_user(first, last, id_user)
 
     question = "Bằng cách đồng ý theo dõi tin tức dưới đây, bạn sẽ nhận được thông báo mỗi khi tin tức mới của chương trình “Giọng Hát Việt Nhí” 2017 được cập nhật.\nBạn muốn nhận thông báo chứ?"
     quick_replies = [
@@ -405,20 +405,20 @@ def minigame2_handle_result(message, sender_id):
     # template để hiện nút và hình cho user gửi feedback
 def fansign_menu(sender_id):
     user_profile = page.get_user_profile(sender_id)
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
     id_user = user_profile["id"]
-    print(last_name + ' ' + first_name)
+    print(last + ' ' + first)
 
     check_user = USER.find_one({'id_user': sender_id})
     if bool(check_user):
         print('user da co trong database')
     else:
-        insert_new_user(first_name, last_name, id_user)
+        insert_new_user(first, last, id_user)
 
     space = " "
     a = "ơi, bạn muốn nhận fansign từ HLV nào?"
-    seq = (last_name, first_name, a)
+    seq = (last, first, a)
     question = space.join(seq)
 
     quick_replies = [
@@ -432,8 +432,8 @@ def fansign_menu(sender_id):
     return
 
 
-def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
-    userName = last_name + ' ' + first_name
+def image_fs(sender_id, sizeFont, hlv, first, last, x_Text, y_Text):
+    userName = last + ' ' + first
     font = ImageFont.truetype("./font.ttf", sizeFont)
     imageFile = "image/" + hlv + ".jpg"
     im = Image.open(imageFile)
@@ -470,33 +470,33 @@ def image_fs(sender_id, sizeFont, hlv, first_name, last_name, x_Text, y_Text):
 
 def fansign_handle_quick_reply(sender_id, quickreply):
     user_profile = page.get_user_profile(sender_id)
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
-    userName = last_name + ' ' + first_name
+    first = user_profile["first_name"]
+    last = user_profile["last_name"]
+    userName = last + ' ' + first
 
     def fs_vct():
         if len(userName) < 11:
-            image_fs(sender_id, 90, "vct", first_name, last_name, 180, 370)
+            image_fs(sender_id, 90, "vct", first, last, 180, 370)
         else:
-            image_fs(sender_id, 80, "vct", first_name, last_name, 90, 370)
+            image_fs(sender_id, 80, "vct", first, last, 90, 370)
 
     def fs_ht():
         if len(userName) < 11:
-            image_fs(sender_id, 80, "ht", first_name, last_name, 180, 330)
+            image_fs(sender_id, 80, "ht", first, last, 180, 330)
         else:
-            image_fs(sender_id, 65, "ht", first_name, last_name, 180, 330)
+            image_fs(sender_id, 65, "ht", first, last, 180, 330)
 
     def fs_tc():
         if len(userName) < 11:
-            image_fs(sender_id, 90, "tc", first_name, last_name, 180, 390)
+            image_fs(sender_id, 90, "tc", first, last, 180, 390)
         else:
-            image_fs(sender_id, 80, "tc", first_name, last_name, 90, 380)
+            image_fs(sender_id, 80, "tc", first, last, 90, 380)
 
     def fs_sb():
         if len(userName) < 11:
-            image_fs(sender_id, 85, "sb", first_name, last_name, 30, 450)
+            image_fs(sender_id, 85, "sb", first, last, 30, 450)
         else:
-            image_fs(sender_id, 70, "sb", first_name, last_name, 30, 455)
+            image_fs(sender_id, 70, "sb", first, last, 30, 455)
 
     fs_hlv_list = {
         'sb': fs_sb,
