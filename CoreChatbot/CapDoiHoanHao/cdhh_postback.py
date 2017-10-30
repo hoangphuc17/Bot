@@ -27,21 +27,22 @@ NEWS = db.CDHH_NEWS
 
 def cdhh_greeting(sender_id):
     user_profile = cdhh.get_user_profile(sender_id)
-    first_name = user_profile["first_name"]
-    last_name = user_profile["last_name"]
+    print(user_profile)
+    # first_name = user_profile["first_name"]
+    # last_name = user_profile["last_name"]
 
-    check_user(sender_id)
+    # check_user(sender_id)
 
-    space = " "
-    a = "Chào"
-    b = "đến với Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero. \nMình là LERO, rất vui được gặp bạn. Bạn có thể cùng mình cập nhật thông tin về chương trình một cách nhanh nhất. Cùng khám phá nào! 👇👇"
-    seq = (a, last_name, first_name, b)
-    text = space.join(seq)
-    buttons = [
-        Template.ButtonPostBack(
-            "Home", "home")
-    ]
-    cdhh.send(sender_id, Template.Buttons(text, buttons))
+    # space = " "
+    # a = "Chào"
+    # b = "đến với Cặp Đôi Hoàn Hảo - Trữ Tình & Bolero. \nMình là LERO, rất vui được gặp bạn. Bạn có thể cùng mình cập nhật thông tin về chương trình một cách nhanh nhất. Cùng khám phá nào! 👇👇"
+    # seq = (a, last_name, first_name, b)
+    # text = space.join(seq)
+    # buttons = [
+    #     Template.ButtonPostBack(
+    #         "Home", "home")
+    # ]
+    # cdhh.send(sender_id, Template.Buttons(text, buttons))
     return 'cdhh_greeting OK'
 
 
