@@ -37,10 +37,12 @@ def answer(message, sender_id):
             print('user da co trong database')
         else:
             user_profile = page.get_user_profile(sender_id)  # return dict
-            first = user_profile["first_name"]
-            last = user_profile["last_name"]
-            id_user = user_profile["id"]
-            insert_new_user(first, last, id_user)
+            if user_profile['first_name'] is not None:
+
+                first = user_profile["first_name"]
+                last = user_profile["last_name"]
+                id_user = user_profile["id"]
+                insert_new_user(first, last, id_user)
 
         found_question = False
 
@@ -358,10 +360,12 @@ def handle_faq_message(sender_id, message):
             print('user da co trong database')
         else:
             user_profile = page.get_user_profile(sender_id)  # return dict
-            first = user_profile["first_name"]
-            last = user_profile["last_name"]
-            id_user = user_profile["id"]
-            insert_new_user(first, last, id_user)
+            if user_profile['first_name'] is not None:
+
+                first = user_profile["first_name"]
+                last = user_profile["last_name"]
+                id_user = user_profile["id"]
+                insert_new_user(first, last, id_user)
 
         # TACH TU (word_segmentation)
         word_dict = word_sent(message)

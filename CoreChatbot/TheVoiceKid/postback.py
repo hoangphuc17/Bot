@@ -36,40 +36,43 @@ danh_sach_hinh_anh_HLV = {
 def greeting(sender_id):
     # get user info
     user_profile = page.get_user_profile(sender_id)  # return dict
-    first = user_profile["first_name"]
-    last = user_profile["last_name"]
-    id_user = user_profile["id"]
-    print (user_profile)
+    if user_profile['first_name'] is not None:
+        first = user_profile["first_name"]
+        last = user_profile["last_name"]
+        id_user = user_profile["id"]
+        print (user_profile)
 
-    # kiem tra user, neu chua co thi them vao database
-    check_user = USER.find_one({'id_user': sender_id})
-    if bool(check_user):
-        # pass
-        # page.send(sender_id, "user da co trong database")
-        print('day la ham greeting, user da co trong database')
+        # kiem tra user, neu chua co thi them vao database
+        check_user = USER.find_one({'id_user': sender_id})
+        if bool(check_user):
+            # pass
+            # page.send(sender_id, "user da co trong database")
+            print('day la ham greeting, user da co trong database')
+        else:
+            insert_new_user(first, last, id_user)
+
+        space = " "
+        a = "Chào"
+        b = "đến với Giọng Hát Việt Nhí. Tại đây, bạn có thể đặt câu hỏi, chơi Mini game và theo dõi những tin tức “nóng hổi” nhất từ chương trình. Còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” ngay nào !!! ;) ;)\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺 "
+        seq = (a, first, b)
+        text = space.join(seq)
+        buttons = [
+            Template.ButtonPostBack(
+                "Home", "home")
+        ]
+        page.send(sender_id, Template.Buttons(text, buttons))
     else:
-        insert_new_user(first, last, id_user)
-
-    space = " "
-    a = "Chào"
-    b = "đến với Giọng Hát Việt Nhí. Tại đây, bạn có thể đặt câu hỏi, chơi Mini game và theo dõi những tin tức “nóng hổi” nhất từ chương trình. Còn chần chừ gì mà không bắt đầu cuộc “trò chuyện thân mật” ngay nào !!! ;) ;)\n⏩⏩⏩ Quay về tính năng chính bằng cách ấn phím “Home” hoặc gõ vào chữ “Home” hoặc “Menu” 👇\n⏩⏩⏩ Chương trình “Giọng Hát Việt Nhí” 2017 sẽ được phát sóng vào lúc 21h10 thứ 7 hằng tuần trên kênh VTV3📺 "
-    seq = (a, first, b)
-    text = space.join(seq)
-    buttons = [
-        Template.ButtonPostBack(
-            "Home", "home")
-    ]
-    page.send(sender_id, Template.Buttons(text, buttons))
-
+        pass
     return
 
 
 def home(sender_id):
 
     user_profile = page.get_user_profile(sender_id)  # return dict
-    first = user_profile["first_name"]
-    last = user_profile["last_name"]
-    id_user = user_profile["id"]
+    if user_profile['first_name'] is not None:
+        first = user_profile["first_name"]
+        last = user_profile["last_name"]
+        id_user = user_profile["id"]
 
     # kiem tra user, neu chua co thi them vao database
     check_user = USER.find_one({'id_user': sender_id})
