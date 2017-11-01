@@ -212,7 +212,7 @@ def update_news():
         return 'False'
 
 
-@app.route('/news/update', methods=['DELETE'])
+@app.route('/news/delete', methods=['DELETE'])
 def delete_news():
     users = mongo.db.USER_CMS
     check_user_activation_key = users.find_one(
@@ -317,7 +317,9 @@ def broadcast_general_template():
                 Template.ButtonWeb('Đọc tin', request.form['item_url']),
                 Template.ButtonPostBack('Về Home', 'home')
             ])
-        page.send(sender_id, Template.Generic(element))
+        # page.send(sender_id, Template.Generic(element))
+        page.send("1370330196399177", Template.Generic(element))
+        page.send("1437973719614452", Template.Generic(element))
         return 'True'
     else:
         return 'False'
