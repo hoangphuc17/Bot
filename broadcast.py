@@ -51,17 +51,17 @@ def broadcast_video(sender_id, video_name):
 
 
 def broadcast(list_user_broadcast):
-    broadcast_image(id_phuc2, "broadcast0111.jpg")
-    text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
-    broadcast_message(id_phuc2, text)
+    # broadcast_image(id_phuc2, "broadcast0111.jpg")
+    # text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
+    # broadcast_message(id_phuc2, text)
 
-    # for id_user in list_user_broadcast:
-    #     broadcast_image(id_user, "broadcast0111.jpg")
-    #     text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
-    #     broadcast_message(id_user, text)
-    #     print('Co ', len(list_user_broadcast), ' user')
-    #     print('Da gui broadcast cho user thu:',
-    #           list_user_broadcast.index(id_user))
+    for id_user in list_user_broadcast:
+        broadcast_image(id_user, "broadcast0111.jpg")
+        text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
+        broadcast_message(id_user, text)
+        print('Co ', len(list_user_broadcast), ' user')
+        print('Da gui broadcast cho user thu:',
+              list_user_broadcast.index(id_user))
 
 
 # get user from database USER
