@@ -120,20 +120,22 @@ def get_all_news(user_activation_key):
     users = mongo.db.USER_CMS
     check_user_activation_key = users.find_one(
         {'user_activation_key': user_activation_key})
-    if bool(check_user_activation_key):
-        news = mongo.db.NEWS
-        output = []
-        for news in news.find():
-            output.append({
-                'id_news': str(news['_id']),
-                'title': news['title'],
-                'subtitle': news['subtitle'],
-                'image_url': news['image_url'],
-                'item_url': news['item_url']
-            })
-        return 'True'
-    else:
-        return 'False'
+
+    return 'check thanh cong'
+    # if bool(check_user_activation_key):
+    #     news = mongo.db.NEWS
+    #     output = []
+    #     for news in news.find():
+    #         output.append({
+    #             'id_news': str(news['_id']),
+    #             'title': news['title'],
+    #             'subtitle': news['subtitle'],
+    #             'image_url': news['image_url'],
+    #             'item_url': news['item_url']
+    #         })
+    #     return 'True'
+    # else:
+    #     return 'False'
 
 
 @app.route('/news/insert', methods=['POST'])
