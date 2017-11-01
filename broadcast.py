@@ -51,14 +51,17 @@ def broadcast_video(sender_id, video_name):
 
 
 def broadcast(list_user_broadcast):
-    for id_user in list_user_broadcast:
-        # text = "Giọng Hát Việt Nhí tập 11 với rất nhiều tiết mục vô cùng hấp dẫn hiện đang được livestream trên fanpage của chương trình 💞💞 Cùng đón xem và ủng hộ cho giọng ca mà mình yêu thích 🎤🎤 Và đừng quên bình chọn tấm vé may mắn tới Đêm Chung Kết nữa nhé 🎶🎶"
-        text = "Trời cao nắng đẹp mây xanh, có The Voice Kids Việt Nam đồng hành.\nCùng xem lại tiết mục xuất sắc 'Trên Đỉnh Phù Vân' của Đình Tâm\nkhiến người xem nổi da gà <3"
-        link_livestream = "https://www.youtube.com/watch?v=cZjcbPWw-NE"
-        broadcast_message_link_button(id_user, text, link_livestream)
-        print('Co ', len(list_user_broadcast), ' user')
-        print('Da gui broadcast cho user thu:',
-              list_user_broadcast.index(id_user))
+    broadcast_image(id_phuc2, "broadcast0111.jpg")
+    text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
+    broadcast_message(id_phuc2, text)
+
+    # for id_user in list_user_broadcast:
+    #     broadcast_image(id_user, "broadcast0111.jpg")
+    #     text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
+    #     broadcast_message(id_user, text)
+    #     print('Co ', len(list_user_broadcast), ' user')
+    #     print('Da gui broadcast cho user thu:',
+    #           list_user_broadcast.index(id_user))
 
 
 # get user from database USER
