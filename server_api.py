@@ -115,7 +115,7 @@ def get_all_user():
 
 
 # NEWS
-@app.route('/news/get/<activation_key>', methods=['GET'])
+@app.route('/news/get/<path:activation_key>', methods=['GET'])
 def get_all_news(activation_key):
     # users = mongo.db.USER_CMS
     # check_user_activation_key = users.find_one(
