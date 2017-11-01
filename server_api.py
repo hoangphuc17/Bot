@@ -116,10 +116,10 @@ def get_all_user():
 
 # NEWS
 @app.route('/news/get/', methods=['GET'])
-def get_all_news(user_activation_key):
+def get_all_news(activation_key):
     users = mongo.db.USER_CMS
     check_user_activation_key = users.find_one(
-        {'user_activation_key': user_activation_key})
+        {'user_activation_key': activation_key})
 
     return 'check thanh cong'
     # if bool(check_user_activation_key):
