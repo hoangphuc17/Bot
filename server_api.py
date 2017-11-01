@@ -117,25 +117,23 @@ def get_all_user():
 # NEWS
 @app.route('/news/get/<path:activation_key>', methods=['GET'])
 def get_all_news(activation_key):
-    # users = mongo.db.USER_CMS
-    # check_user_activation_key = users.find_one(
-    #     {'user_activation_key': activation_key})
-
-    return activation_key
-    # if bool(check_user_activation_key):
-    #     news = mongo.db.NEWS
-    #     output = []
-    #     for news in news.find():
-    #         output.append({
-    #             'id_news': str(news['_id']),
-    #             'title': news['title'],
-    #             'subtitle': news['subtitle'],
-    #             'image_url': news['image_url'],
-    #             'item_url': news['item_url']
-    #         })
-    #     return 'True'
-    # else:
-    #     return 'False'
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': activation_key})
+    if bool(check_user_activation_key):
+        news = mongo.db.NEWS
+        output = []
+        for news in news.find():
+            output.append({
+                'id_news': str(news['_id']),
+                'title': news['title'],
+                'subtitle': news['subtitle'],
+                'image_url': news['image_url'],
+                'item_url': news['item_url']
+            })
+        return jsonify({'result': output})
+    else:
+        return 'False'
 
 
 @app.route('/news/insert', methods=['POST'])
