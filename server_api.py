@@ -26,6 +26,9 @@ UPLOAD_FOLDER = '/home/hoangphuc/Bot_Pictures'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+timestamp = format(datetime.datetime.now())
+print(timestamp)
+
 
 # USER_CMS authentication
 @app.route('/login', methods=['POST'])
@@ -34,7 +37,9 @@ def login():
     login_user = users.find_one({'username': request.form['username']})
     if login_user:
         if login_user['password'] == request.form['password']:
-            user_activation_key = bcrypt.hashpw(login_user['username'].encode(
+            pre_hash_string = login_user['username'] + \
+                timestamp + login_user['password']
+            user_activation_key = bcrypt.hashpw(pre_hash_string.encode(
                 'utf-8'), bcrypt.gensalt()).decode('utf-8')
             users.update_one(
                 {'username': login_user['username']},
