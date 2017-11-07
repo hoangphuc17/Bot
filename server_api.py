@@ -233,15 +233,24 @@ def delete_news():
 @app.route('/broadcast/message', methods=['POST'])
 def broadcast_message():
     users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
+        message = request.form['message']
         # for user in USER.find():
-        #     message = request.form['message']
         #     page.send(user['id_user'], message)
 
-        page.send("1370330196399177", request.form['message'])
-        page.send("1437973719614452", request.form['message'])
+        page.send("1370330196399177", message)
+        page.send("1437973719614452", message)
+
+        # luu broadcast
+        new_bc = {
+            'type': 'message',
+            'content': message
+        }
+        bc.insert_one(new_bc)
+
         return 'True'
     else:
         return 'False'
@@ -250,6 +259,7 @@ def broadcast_message():
 @app.route('/broadcast/message_button', methods=['POST'])
 def broadcast_message_button():
     users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
@@ -266,6 +276,12 @@ def broadcast_message_button():
         ]
         page.send("1370330196399177", Template.Buttons(message, buttons))
         page.send("1437973719614452", Template.Buttons(message, buttons))
+        # luu broadcast
+        new_bc = {
+            'type': 'message with button',
+            'content': message
+        }
+        bc.insert_one(new_bc)
         return 'True'
     else:
         return 'False'
@@ -274,14 +290,22 @@ def broadcast_message_button():
 @app.route('/broadcast/image', methods=['POST'])
 def broadcast_image():
     users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
+        url = request.form['url']
         # for user in USER.find():
         #     page.send(user['id_user'], Attachment.Image(url))
 
-        page.send("1370330196399177", Attachment.Image(request.form['url']))
-        page.send("1437973719614452", Attachment.Image(request.form['url']))
+        page.send("1370330196399177", Attachment.Image(url))
+        page.send("1437973719614452", Attachment.Image(url))
+        # luu broadcast
+        new_bc = {
+            'type': 'image',
+            'content': url
+        }
+        bc.insert_one(new_bc)
         return 'True'
     else:
         return 'False'
@@ -290,14 +314,23 @@ def broadcast_image():
 @app.route('/broadcast/video', methods=['POST'])
 def broadcast_video(url):
     users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
+        url = request.form['url']
         # for user in USER.find():
         #     page.send(user['id_user'], Attachment.Video(url))
 
-        page.send("1370330196399177", Attachment.Video(request.form['url']))
-        page.send("1437973719614452", Attachment.Video(request.form['url']))
+        page.send("1370330196399177", Attachment.Video(url))
+        page.send("1437973719614452", Attachment.Video(url))
+
+        # luu broadcast
+        new_bc = {
+            'type': 'video',
+            'content': url
+        }
+        bc.insert_one(new_bc)
         return 'True'
     else:
         return 'False'
@@ -306,6 +339,7 @@ def broadcast_video(url):
 @app.route('/broadcast/general_template', methods=['POST'])
 def broadcast_general_template():
     users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
     check_user_activation_key = users.find_one(
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
@@ -320,13 +354,15 @@ def broadcast_general_template():
         # page.send(sender_id, Template.Generic(element))
         page.send("1370330196399177", Template.Generic(element))
         page.send("1437973719614452", Template.Generic(element))
+        # luu broadcast
+        new_bc = {
+            'type': 'general_template',
+            'content': item_url
+        }
+        bc.insert_one(new_bc)
         return 'True'
     else:
         return 'False'
-
-
-# @app.route('/handle_message', methods=['POST'])
-# def handle_message():
 
 
 if __name__ == '__main__':
