@@ -370,6 +370,28 @@ def broadcast_news():
         return 'False'
 
 
+@app.route('/broadcast/get/<path:activation_key>', methods=['GET'])
+def broadcast_get(activation_key):
+
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': activation_key})
+
+    if bool(check_user_activation_key):
+        output = []
+        for bc in bc.find():
+            output.append({
+                'type': bc['type'],
+                'content': bc['content'],
+                'timestamp': bc['timestamp']
+            })
+        return jsonify({'result': output})
+    else:
+        return 'False'
+
+
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
     app.run(host='210.211.109.211', port=3000, debug=True, threaded=True)
