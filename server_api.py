@@ -247,7 +247,8 @@ def broadcast_message():
         # luu broadcast
         new_bc = {
             'type': 'message',
-            'content': message
+            'content': message,
+            'timestamp': request.form['timestamp']
         }
         bc.insert_one(new_bc)
 
@@ -278,8 +279,9 @@ def broadcast_message_button():
         page.send("1437973719614452", Template.Buttons(message, buttons))
         # luu broadcast
         new_bc = {
-            'type': 'message with button',
-            'content': message
+            'type': 'message_button',
+            'content': message,
+            'timestamp': request.form['timestamp']
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -303,7 +305,8 @@ def broadcast_image():
         # luu broadcast
         new_bc = {
             'type': 'image',
-            'content': url
+            'content': url,
+            'timestamp': request.form['timestamp']
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -328,7 +331,8 @@ def broadcast_video(url):
         # luu broadcast
         new_bc = {
             'type': 'video',
-            'content': url
+            'content': url,
+            'timestamp': request.form['timestamp']
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -336,8 +340,8 @@ def broadcast_video(url):
         return 'False'
 
 
-@app.route('/broadcast/general_template', methods=['POST'])
-def broadcast_general_template():
+@app.route('/broadcast/news', methods=['POST'])
+def broadcast_news():
     users = mongo.db.USER_CMS
     bc = mongo.db.BROADCAST
     check_user_activation_key = users.find_one(
@@ -356,8 +360,9 @@ def broadcast_general_template():
         page.send("1437973719614452", Template.Generic(element))
         # luu broadcast
         new_bc = {
-            'type': 'general_template',
-            'content': item_url
+            'type': 'news',
+            'content': item_url,
+            'timestamp': request.form['timestamp']
         }
         bc.insert_one(new_bc)
         return 'True'
