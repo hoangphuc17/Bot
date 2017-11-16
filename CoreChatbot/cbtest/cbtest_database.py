@@ -11,6 +11,8 @@ import CoreChatbot.Preparation.messenger
 from CoreChatbot.Preparation.config import CONFIG
 from CoreChatbot.Preparation.fbpage import page
 
+from underthesea import word_sent
+
 
 import datetime
 from pymongo import MongoClient
@@ -51,7 +53,22 @@ def faq3_answer(chatbot, id_node_level_2, answer):
 
 
 def faq3_list(lv1, lv2, ans):
+    new_lv1 = []
+    new_lv2 = []
+
+    for item in lv1:
+        new_item = word_sent(item)
+        for it in new_item:
+            new_lv1.append(it)
+
+    for item in lv2:
+        new_item = word_sent(item)
+        for it in new_item:
+            new_lv2.append(it)
+
+        # new_lv1.append(item)
+
     lst = {
-        'list_array': [lv1, lv2, ans]
+        'list_array': [new_lv1, new_lv2, ans]
     }
     FAQ3.insert_one(lst)
