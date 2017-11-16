@@ -40,9 +40,11 @@ def handle_mess(sender_id, message):
         for record in FAQ3.find():
             count_lv1 = 0
             count_lv2 = 0
+            print('1')
             # print(record['list_array'][1])
             for word in word_dict:
                 if word in record['list_array'][0]:
+                    print('2')
                     print(record['list_array'], ' co chua ', word)
                     # count_lv1 = count_lv1 + 1
                     for word in word_dict:
