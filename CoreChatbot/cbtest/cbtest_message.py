@@ -37,7 +37,7 @@ def handle_mess(sender_id, message):
         #             print(level1['id_node_level_1'], ' level1 co chua ', word)
 
         for record in FAQ3.find():
-            print(record[1])
+            print(record['list_array'][1])
             # for word in word_dict:
             #     if
     else:
