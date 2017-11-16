@@ -1,3 +1,5 @@
+import os
+import sys
 from CoreChatbot.cbtest.cbtest_database import *
 
 
@@ -20,4 +22,8 @@ def add_faq3():
     faq3_answer('test', '21', 'chỉ ở TPHCM')
 
 
-add_faq3()
+# add_faq3()
+
+def add_faq3_list():
+    faq3_list(['tổ chức', 'diễn ra'], ['địa điểm',
+                                       'ở đâu', 'tại', 'chỗ', 'nơi'], '179 LCT')

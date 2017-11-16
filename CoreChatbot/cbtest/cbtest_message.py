@@ -23,4 +23,18 @@ FAQ3 = db.FAQ3
 
 
 def handle_mess(sender_id, message):
-    cbtest.send(sender_id, message)
+    if message is not None:
+        print('Message gui toi la:\n', message)
+
+        # tach tu
+        word_dict = word_sent(message)
+        print('Word Segmentation: ', word_dict)
+
+        level1_document = {}
+        for level1 in FAQ3.find({'chatbot': 'test', 'level': '1'}):
+            for word in word_dict:
+                if word in level1['keyword']:
+                    print(level1['id_node_level_1'], ' level1 co chua ', word)
+
+    else:
+        print('Message is None')

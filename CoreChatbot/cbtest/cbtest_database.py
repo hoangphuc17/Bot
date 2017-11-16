@@ -48,3 +48,10 @@ def faq3_answer(chatbot, id_node_level_2, answer):
         'answer': answer
     }
     FAQ3.insert_one(node_answer)
+
+
+def faq3_list(lv1, lv2, ans):
+    lst = {
+        'list_array': [lv1, lv2, ans]
+    }
+    FAQ3.insert_one(lst)
