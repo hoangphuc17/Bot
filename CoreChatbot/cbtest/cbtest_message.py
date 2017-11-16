@@ -30,11 +30,15 @@ def handle_mess(sender_id, message):
         word_dict = word_sent(message)
         print('Word Segmentation: ', word_dict)
 
-        level1_document = {}
-        for level1 in FAQ3.find({'chatbot': 'test', 'level': '1'}):
-            for word in word_dict:
-                if word in level1['keyword']:
-                    print(level1['id_node_level_1'], ' level1 co chua ', word)
+        # level1_document = {}
+        # for level1 in FAQ3.find({'chatbot': 'test', 'level': '1'}):
+        #     for word in word_dict:
+        #         if word in level1['keyword']:
+        #             print(level1['id_node_level_1'], ' level1 co chua ', word)
 
+        for record in FAQ3.find():
+            print(record[1])
+            # for word in word_dict:
+            #     if
     else:
         print('Message is None')
