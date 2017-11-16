@@ -38,8 +38,16 @@ def handle_mess(sender_id, message):
         #             print(level1['id_node_level_1'], ' level1 co chua ', word)
 
         for record in FAQ3.find():
-            print(record['list_array'][1])
-            # for word in word_dict:
-            #     if
+            count_lv1 = 0
+            count_lv2 = 0
+            # print(record['list_array'][1])
+            for word in word_dict:
+                if word in record['list_array'][0]:
+                    print(record['list_array'], ' co chua ', word)
+                    # count_lv1 = count_lv1 + 1
+                    for word in word_dict:
+                        if word in record['list_array'][1]:
+                            cbtest.send(sender_id, record['list_array'][2])
+
     else:
         print('Message is None')
