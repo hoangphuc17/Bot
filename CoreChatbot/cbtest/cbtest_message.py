@@ -43,6 +43,7 @@ def handle_mess(sender_id, message):
             print('1')
             # print(record['list_array'][1])
             for word in word_dict:
+                print(record['list_array'][0])
                 if word in record['list_array'][0]:
                     print('2')
                     print(record['list_array'], ' co chua ', word)
