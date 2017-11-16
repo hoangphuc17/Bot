@@ -8,6 +8,7 @@ from CoreChatbot.Preparation.config import CONFIG
 
 page = Page(CONFIG['FACEBOOK_TOKEN_GHVN'])
 cdhh = Page(CONFIG['FACEBOOK_TOKEN_CDHH'])
+cbtest = Page(CONFIG['FACEBOOK_TOKEN_CBTEST'])
 
 
 @page.after_send

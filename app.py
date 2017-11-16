@@ -23,6 +23,9 @@ from CoreChatbot.Preparation.fbpage import cdhh
 from CoreChatbot.CapDoiHoanHao.cdhh_message import *
 from CoreChatbot.CapDoiHoanHao.cdhh_postback import *
 
+from CoreChatbot.Preparation.fbpage import cbtest
+from CoreChatbot.cbtest.cbtest_message import *
+# from CoreChatbot.cbtest.cdhh_postback import *
 
 app = Flask(__name__)
 
@@ -60,8 +63,29 @@ def webhook():
         cdhh.handle_webhook(payload, message=message_handler_cdhh,
                             postback=postback_handler_cdhh)
         return "ok", 200
+
+    elif payload_dict['entry'][0]['id'] == "1987057708238038":
+        print('CBTEST')
+        cbtest.handle_webhook(payload, message=message_handler_cbtest)
+        return "cbtest ok", 200
     else:
         return 'no app correspondent'
+
+
+def message_handler_cbtest(event):
+    print('MESSAGE HANDLER CBTEST')
+    sender_id = event.sender_id
+    message = event.message_text
+    quickreply = event.quick_reply_payload
+
+    if message is not None:
+        message = message.lower()
+    else:
+        pass
+
+    handle_mess(sender_id, message)
+
+    return 'cbtest message ok'
 
 
 def postback_handler_cdhh(event):

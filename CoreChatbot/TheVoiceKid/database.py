@@ -23,6 +23,8 @@ FAQ = db.FAQ
 NEWS = db.NEWS
 
 FAQ2 = db.FAQ2
+CUSTOMER = db.CUSTOMER
+FAQ3 = db.FAQ3
 
 
 # collection USER
@@ -42,6 +44,51 @@ def insert_new_user(first_name, last_name, id_user):
         ]
     }
     USER.insert_one(new_user)
+
+
+def add_new_user(id_user, first_name, last_name, gender):
+    new_user = {
+        'ATTRIBUTES': {
+            'id_user': id_user,
+            'first_name': first_name,
+            'last_name': last_name,
+            'gender': gender,
+
+            'address': '',
+            'birthday': '',
+            'education': '',
+            'relationship_status': '',
+            'family_member': '',
+            'workplace': '',
+            'university': '',
+            'high_school': ''
+        },
+        'FRIENDS': [
+            # ban be thuong xuyen nhan tin
+            {
+                'id_friend': '',
+                'so_luong_tin_nhan': ''
+            }
+        ],
+        'TALKLINES': {
+            'chatbot': '',
+            'time': '',
+            'message': '',
+            'bot_message_previous': '',
+            'bot_message_next': ''
+
+        },
+        'HOBBIES': {
+            'sport': '',
+            'entertainment': '',
+            'travelling': '',
+            'xu_huong_chinh_tri': ''
+        },
+        'ADVERTISEMENT': {
+            'clicked_ads': ''
+        }
+    }
+    CUSTOMER.insert_one(new_user)
 
 
 def save_message(sender_id, message):

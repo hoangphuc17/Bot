@@ -245,4 +245,4 @@ def insert_new_faq():
 
 
 # insert_new_faq()
-insert_new_news()
+# insert_new_news()
