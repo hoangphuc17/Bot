@@ -27,3 +27,6 @@ def add_faq3():
 def add_faq3_list():
     faq3_list(['tổ chức', 'diễn ra'], ['địa điểm',
                                        'ở đâu', 'tại', 'chỗ', 'nơi'], '179 LCT')
+
+
+add_faq3_list()
