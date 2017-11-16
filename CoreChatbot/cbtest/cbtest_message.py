@@ -24,6 +24,7 @@ FAQ3 = db.FAQ3
 
 def handle_mess(sender_id, message):
     if message is not None:
+        cbtest.send(sender_id, message)
         print('Message gui toi la:\n', message)
 
         # tach tu
