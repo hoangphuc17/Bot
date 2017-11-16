@@ -29,9 +29,10 @@ def add_faq3_list():
                                        'ở đâu', 'tại', 'chỗ', 'nơi'], '179 LCT')
     faq3_list(['tổ chức', 'diễn ra'], ['khi', 'lúc', 'bao',
                                        'giờ', 'thời điểm'], 'Tháng 10 hàng năm')
-    faq3_list(['địa điểm', 'nơi', 'chỗ'], ['quay', 'ghi hình'], '5B NDC')
-    faq3_list(['địa điểm', 'nơi', 'chỗ'], ['tham gia', 'tuyển sinh',
-                                           'đăng kí', 'đăng ký', 'tham gia'], 'chỉ ở TPHCM')
+    faq3_list(['địa điểm', 'nơi', 'chỗ', 'ở đâu'],
+              ['quay', 'ghi hình'], '5B NDC')
+    faq3_list(['địa điểm', 'nơi', 'chỗ', 'ở đâu'], ['tham gia', 'tuyển sinh',
+                                                    'đăng kí', 'đăng ký', 'tham gia'], 'chỉ ở TPHCM')
 
 
 add_faq3_list()
