@@ -56,8 +56,8 @@ def broadcast(list_user_broadcast):
     # broadcast_message(id_phuc2, text)
 
     for id_user in list_user_broadcast:
-        broadcast_image(id_user, "broadcast0111.jpg")
-        text = "Chào tháng 11, tháng của những yêu thương ngọt ngào, tháng chuyển mình khi đông tới. Nếu sợ lẻ loi khi đông về hãy để Giọng Hát Việt Nhí mang tới cho bạn những lời ca thật ấm, bài hát thật hay 💖💖💖\nĐừng quên đón xem Tập 12 đầy cảm xúc vào lúc 21h00 Thứ Bảy Ngày 4/11/2017 trên kênh VTV3 các bạn nhé!"
+        # broadcast_image(id_user, "broadcast0111.jpg")
+        text = "Cổng bình chọn Chiếc vé may mắn sẽ đóng lại vào lúc 12h trưa ngày 19/11/2017 và kết quả sẽ được công bố trên fanpage của chương trình.\nVà đặc biệt, ở mùa giải năm nay, mỗi đội sẽ có 1 chiếc vé may mắn, đồng nghĩa là sẽ có thêm 3 gương mặt quay trở lại đêm chung kết!!\nHÃY BÌNH CHỌN CHO THÍ SINH XUẤT SẮC CỦA CHÚNG TA NHÉ!!\n✔Và đừng quên đón xem BÁN KẾT vào tối nay 21h30 trên kênh VTV3 cùng với top 6 sẽ biểu diễn cùng Đông Nhi, Đức Phúc, Ali Hoàng Dương nhé! ❤"
         broadcast_message(id_user, text)
         print('Co ', len(list_user_broadcast), ' user')
         print('Da gui broadcast cho user thu:',

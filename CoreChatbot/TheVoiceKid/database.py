@@ -67,7 +67,9 @@ def add_new_user(id_user, first_name, last_name, gender):
             # ban be thuong xuyen nhan tin
             {
                 'id_friend': '',
-                'so_luong_tin_nhan': ''
+                'name': '',
+                'so_luong_tin_nhan': '',
+                'muc_do_than_thiet': ''
             }
         ],
         'TALKLINES': {
@@ -82,7 +84,7 @@ def add_new_user(id_user, first_name, last_name, gender):
             'sport': '',
             'entertainment': '',
             'travelling': '',
-            'xu_huong_chinh_tri': ''
+            'politic': ''
         },
         'ADVERTISEMENT': {
             'clicked_ads': ''
