@@ -81,9 +81,26 @@ def add_new_user(id_user, first_name, last_name, gender):
 
         },
         'HOBBIES': {
-            'sport': '',
-            'entertainment': '',
-            'travelling': '',
+            'sport': [{
+                'rate': '',
+                'details': [{
+                    'football': '',
+                    'tennis': ''
+                }]
+            }],
+            'entertainment': [{
+                'rate': '',
+                'details': [{
+                    'music': '',
+                    'film': ''
+                }]
+            }],
+            'travelling': [{
+                'rate': '',
+                'details': [{
+                    'place': ''
+                }]
+            }],
             'politic': ''
         },
         'ADVERTISEMENT': {

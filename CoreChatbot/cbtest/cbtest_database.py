@@ -21,6 +21,14 @@ db = client.Phuc
 FAQ3 = db.FAQ3
 
 
+def faq3_intent():
+    new_intent = {
+        'entities': [
+
+        ]
+    }
+
+
 def faq3_level_1(chatbot, id_node_level_1, keyword):
     node_level_1 = {
         'chatbot': chatbot,

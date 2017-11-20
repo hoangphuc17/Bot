@@ -54,3 +54,12 @@ def handle_mess(sender_id, message):
 
     else:
         print('Message is None')
+
+
+def handle_mess_2(sender_id, message):
+    if message is not None:
+        print('mess is not none')
+        cbtest.send(sender_id, 'day la ham handle mess 2')
+
+    else:
+        print('message is none')

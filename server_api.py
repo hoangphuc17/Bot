@@ -392,6 +392,47 @@ def broadcast_get(activation_key):
         return 'False'
 
 
+@app.route('/broadcast/save_message', methods=['POST'])
+def broadcast_save_message():
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        message = request.form['message']
+
+        # luu broadcast
+        new_bc = {
+            'type': 'message',
+            'content': message,
+            'timestamp': request.form['timestamp']
+        }
+        bc.insert_one(new_bc)
+
+        return 'True'
+    else:
+        return 'False'
+
+
+@app.route('/broadcast/broadcast', methods=['POST'])
+def broadcast_broadcast():
+    users = mongo.db.USER_CMS
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        message = request.form['message']
+
+        # for user in USER.find():
+        #     page.send(user['id_user'], message)
+
+        page.send("1370330196399177", message)
+        page.send("1437973719614452", message)
+
+        return 'True'
+    else:
+        return 'False'
+
+
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
     app.run(host='210.211.109.211', port=3000, debug=True, threaded=True)
