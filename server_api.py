@@ -454,7 +454,7 @@ def broadcast_save_message():
         new_bc = {
             'type': 'message',
             'content': message,
-            'timestamp': bc['timestamp']
+            'timestamp': request.form['timestamp']
         }
         bc.insert_one(new_bc)
 
