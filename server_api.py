@@ -399,7 +399,7 @@ def broadcast_get(activation_key):
     if bool(check_user_activation_key):
 
         output = []
-        for bc in bc.find().sort({'timestamp': -1}):
+        for bc in bc.find().sort({"timestamp": -1}):
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
