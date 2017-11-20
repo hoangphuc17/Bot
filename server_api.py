@@ -408,7 +408,8 @@ def get_broadcsast_by_date(date):
     # if bool(check_user_activation_key):
     output = []
     for bc in bc.find():
-        if bc['timestamp'].date() == date:
+        date_db = str(bc['timestamp'].date())
+        if date_db == date:
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
@@ -416,7 +417,7 @@ def get_broadcsast_by_date(date):
             })
             return jsonify({'result': output})
         else:
-            return 'khong co broadcast nao vao ngay nay'
+            return bc['timestamp'].date()
     # else:
     #     return 'False'
 
