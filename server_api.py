@@ -417,7 +417,7 @@ def get_broadcsast_by_date(date):
             })
             return jsonify({'result': output})
         else:
-            return 'Khong co broadcast vao ngay nay'
+            return str(bc['timestamp'].date())
     # else:
     #     return 'False'
 
