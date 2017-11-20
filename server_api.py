@@ -402,23 +402,23 @@ def get_broadcsast_by_date(date):
     users = mongo.db.USER_CMS
     bc = mongo.db.BROADCAST
 
-    check_user_activation_key = users.find_one(
-        {'user_activation_key': activation_key})
+    # check_user_activation_key = users.find_one(
+    #     {'user_activation_key': activation_key})
 
-    if bool(check_user_activation_key):
-        output = []
-        for bc in bc.find():
-            if bc['timestamp'].date() == date:
-                output.append({
-                    'type': bc['type'],
-                    'content': bc['content'],
-                    'timestamp': bc['timestamp']
-                })
-                return jsonify({'result': output})
-            else:
-                return 'khong co broadcast nao vao ngay nay'
-    else:
-        return 'False'
+    # if bool(check_user_activation_key):
+    output = []
+    for bc in bc.find():
+        if bc['timestamp'].date() == date:
+            output.append({
+                'type': bc['type'],
+                'content': bc['content'],
+                'timestamp': bc['timestamp']
+            })
+            return jsonify({'result': output})
+        else:
+            return 'khong co broadcast nao vao ngay nay'
+    # else:
+    #     return 'False'
 
 
 @app.route('/broadcast/save_message', methods=['POST'])
