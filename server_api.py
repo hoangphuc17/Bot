@@ -432,7 +432,7 @@ def broadcast_save_message():
         message = request.form['message']
         dt = request.form['timestamp']
         # 'Jun 1 2005  1:33PM'
-        datetime_object = datetime.strptime(dt, '%Y-%b-%d %H:%M')
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         # luu broadcast
         new_bc = {
