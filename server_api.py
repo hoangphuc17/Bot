@@ -369,9 +369,9 @@ def broadcast_news():
                 Template.ButtonWeb('Đọc tin', request.form['item_url']),
                 Template.ButtonPostBack('Về Home', 'home')
             ])
-        dt = request.form['timestamp']
-        # 'Jun 1 2005  1:33PM'
-        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        # dt = request.form['timestamp']
+        # # 'Jun 1 2005  1:33PM'
+        # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         # page.send(sender_id, Template.Generic(element))
         page.send("1370330196399177", Template.Generic(element))
         page.send("1437973719614452", Template.Generic(element))
@@ -379,7 +379,7 @@ def broadcast_news():
         new_bc = {
             'type': 'news',
             'content': item_url,
-            'timestamp': datetime_object
+            'timestamp': bc['timestamp']
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -397,15 +397,13 @@ def broadcast_get(activation_key):
         {'user_activation_key': activation_key})
 
     if bool(check_user_activation_key):
-        dt = str(bc['timestamp'])
-        # 'Jun 1 2005  1:33PM'
-        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+
         output = []
         for bc in bc.find():
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
-                'timestamp': datetime_object
+                'timestamp': bc['timestamp']
             })
         return jsonify({'result': output})
     else:
@@ -423,15 +421,15 @@ def get_broadcsast_by_date(date):
     # if bool(check_user_activation_key):
     output = []
     for bc in bc.find():
-        dt = str(bc['timestamp'])
-        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        # dt = str(bc['timestamp'])
+        # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         date_db = str(bc['timestamp']).date()
         if date_db == date:
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
-                'timestamp': datetime_object
+                'timestamp': bc['timestamp']
             })
     return jsonify({'result': output})
     # else:
@@ -448,15 +446,15 @@ def broadcast_save_message():
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
         message = request.form['message']
-        dt = request.form['timestamp']
-        # 'Jun 1 2005  1:33PM'
-        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        # dt = request.form['timestamp']
+        # # 'Jun 1 2005  1:33PM'
+        # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         # luu broadcast
         new_bc = {
             'type': 'message',
             'content': message,
-            'timestamp': datetime_object
+            'timestamp': bc['timestamp']
         }
         bc.insert_one(new_bc)
 
