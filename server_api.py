@@ -35,7 +35,7 @@ def login():
     login_user = users.find_one({'username': request.form['username']})
     if login_user:
         if login_user['password'] == request.form['password']:
-            timestamp = format(datetime.datetime.now())
+            timestamp = datetime.datetime.now()
             pre_hash_string = login_user['username'] + \
                 timestamp + login_user['password']
             user_activation_key = bcrypt.hashpw(pre_hash_string.encode(
