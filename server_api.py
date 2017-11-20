@@ -241,7 +241,7 @@ def broadcast_message():
         message = request.form['message']
         dt = request.form['timestamp']
         # 'Jun 1 2005  1:33PM'
-        datetime_object = datetime.strptime(dt, '%b %d %Y %I:%M%p')
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         # for user in USER.find():
         #     page.send(user['id_user'], message)
