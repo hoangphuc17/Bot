@@ -238,6 +238,10 @@ def broadcast_message():
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
         message = request.form['message']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%b %d %Y %I:%M%p')
+
         # for user in USER.find():
         #     page.send(user['id_user'], message)
 
@@ -248,7 +252,7 @@ def broadcast_message():
         new_bc = {
             'type': 'message',
             'content': message,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
 
@@ -392,6 +396,7 @@ def broadcast_get(activation_key):
         return 'False'
 
 
+@app.route('/broadcast/get_broadcast_by_date')
 @app.route('/broadcast/save_message', methods=['POST'])
 def broadcast_save_message():
     users = mongo.db.USER_CMS
@@ -400,12 +405,15 @@ def broadcast_save_message():
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
         message = request.form['message']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%b %d %Y %I:%M%p')
 
         # luu broadcast
         new_bc = {
             'type': 'message',
             'content': message,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
 
