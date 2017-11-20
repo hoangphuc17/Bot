@@ -15,7 +15,8 @@ from flask import Flask, render_template, url_for, request, session, redirect, j
 from flask_pymongo import PyMongo, ObjectId
 import bcrypt
 from werkzeug.utils import secure_filename
-import datetime
+# import datetime
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'Phuc'
@@ -396,7 +397,7 @@ def broadcast_get(activation_key):
         return 'False'
 
 
-@app.route('/broadcast/get_broadcast_by_date')
+# @app.route('/broadcast/get_broadcsast_by_date')
 @app.route('/broadcast/save_message', methods=['POST'])
 def broadcast_save_message():
     users = mongo.db.USER_CMS
