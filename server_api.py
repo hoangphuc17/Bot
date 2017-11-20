@@ -417,7 +417,7 @@ def get_broadcsast_by_date(date):
             })
             return jsonify({'result': output})
         else:
-            return str(bc['timestamp'].date())
+            return 'False'
     # else:
     #     return 'False'
 
