@@ -424,7 +424,7 @@ def get_broadcsast_by_date(date):
         # dt = str(bc['timestamp'])
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
-        date_db = str(bc['timestamp']).date()
+        date_db = str(bc['timestamp'].date())
         if date_db == date:
             output.append({
                 'type': bc['type'],
