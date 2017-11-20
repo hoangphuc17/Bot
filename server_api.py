@@ -424,7 +424,7 @@ def get_broadcsast_by_date(date):
         # dt = str(bc['timestamp'])
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
-        date_db = str(bc['timestamp'].date())
+        date_db = bc['timestamp']
         if date_db == date:
             output.append({
                 'type': bc['type'],
@@ -446,15 +446,15 @@ def broadcast_save_message():
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
         message = request.form['message']
-        # dt = request.form['timestamp']
-        # # 'Jun 1 2005  1:33PM'
-        # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         # luu broadcast
         new_bc = {
             'type': 'message',
             'content': message,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
 
