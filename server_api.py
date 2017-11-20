@@ -277,6 +277,9 @@ def broadcast_message_button():
         #     page.send(user['id_user'], Template.Buttons(message, buttons))
 
         message = request.form['message']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         buttons = [
             Templatsae.ButtonPostBack("Home", "home")
         ]
@@ -286,7 +289,7 @@ def broadcast_message_button():
         new_bc = {
             'type': 'message_button',
             'content': message,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -302,6 +305,9 @@ def broadcast_image():
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
         url = request.form['url']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         # for user in USER.find():
         #     page.send(user['id_user'], Attachment.Image(url))
 
@@ -311,7 +317,7 @@ def broadcast_image():
         new_bc = {
             'type': 'image',
             'content': url,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -327,6 +333,9 @@ def broadcast_video(url):
         {'user_activation_key': request.form['user_activation_key']})
     if bool(check_user_activation_key):
         url = request.form['url']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         # for user in USER.find():
         #     page.send(user['id_user'], Attachment.Video(url))
 
@@ -337,7 +346,7 @@ def broadcast_video(url):
         new_bc = {
             'type': 'video',
             'content': url,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -360,6 +369,9 @@ def broadcast_news():
                 Template.ButtonWeb('Đọc tin', request.form['item_url']),
                 Template.ButtonPostBack('Về Home', 'home')
             ])
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         # page.send(sender_id, Template.Generic(element))
         page.send("1370330196399177", Template.Generic(element))
         page.send("1437973719614452", Template.Generic(element))
@@ -367,7 +379,7 @@ def broadcast_news():
         new_bc = {
             'type': 'news',
             'content': item_url,
-            'timestamp': request.form['timestamp']
+            'timestamp': datetime_object
         }
         bc.insert_one(new_bc)
         return 'True'
@@ -385,12 +397,15 @@ def broadcast_get(activation_key):
         {'user_activation_key': activation_key})
 
     if bool(check_user_activation_key):
+        dt = bc['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         output = []
         for bc in bc.find():
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
-                'timestamp': bc['timestamp']
+                'timestamp': datetime_object
             })
         return jsonify({'result': output})
     else:
@@ -408,12 +423,15 @@ def get_broadcsast_by_date(date):
     # if bool(check_user_activation_key):
     output = []
     for bc in bc.find():
+        dt = bc['timestamp']
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+
         date_db = str(bc['timestamp'].date())
         if date_db == date:
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
-                'timestamp': bc['timestamp']
+                'timestamp': datetime_object
             })
     return jsonify({'result': output})
     # else:
