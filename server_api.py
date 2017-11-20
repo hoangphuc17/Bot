@@ -415,9 +415,9 @@ def get_broadcsast_by_date(date):
                 'content': bc['content'],
                 'timestamp': bc['timestamp']
             })
-            return jsonify({'result': output})
-        else:
-            return 'False'
+    return jsonify({'result': output})
+    # else:
+    #     return 'False'
     # else:
     #     return 'False'
 
