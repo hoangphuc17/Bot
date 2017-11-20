@@ -397,7 +397,7 @@ def broadcast_get(activation_key):
         {'user_activation_key': activation_key})
 
     if bool(check_user_activation_key):
-        dt = bc['timestamp']
+        dt = str(bc['timestamp'])
         # 'Jun 1 2005  1:33PM'
         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         output = []
@@ -423,10 +423,10 @@ def get_broadcsast_by_date(date):
     # if bool(check_user_activation_key):
     output = []
     for bc in bc.find():
-        dt = bc['timestamp']
+        dt = str(bc['timestamp'])
         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
-        date_db = str(bc['timestamp'].date())
+        date_db = str(bc['timestamp']).date()
         if date_db == date:
             output.append({
                 'type': bc['type'],
