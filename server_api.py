@@ -433,7 +433,12 @@ def get_broadcsast_by_time(time):
     if bool(a):
 
         for i in a:
-            output.append(i)
+            # output.append(i)
+            output.append({
+                'type': i['type'],
+                'content': i['content'],
+                'timestamp': i['timestamp']
+            })
             # count = count + 1
         return jsonify({'result': output})
         # return str(count)
