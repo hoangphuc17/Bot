@@ -423,16 +423,18 @@ def get_broadcsast_by_time(time):
     # if bool(username):
     output = []
     # a = []
+    b = {}
     a = bc.find({'timestamp': time})
     if bool(a):
-        output.append({
-            'type': a['type'],
-            'content': a['content'],
-            'timestamp': a['timestamp']
-        })
-
+        # output.append({
+        #     'type': a['type'],
+        #     'content': a['content'],
+        #     'timestamp': a['timestamp']
+        # })
+        b = a
+        return b
         # return 'True'
-        return jsonify({'result': output})
+        # return jsonify({'result': output})
 
     else:
         return 'False'
