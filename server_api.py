@@ -422,14 +422,19 @@ def get_broadcsast_by_time(time):
     # username = users.find_one({'username': request.form['username']})
     # if bool(username):
     output = []
-    a = []
-    for bc in bc.find():
+    # a = []
+    a = bc.find({'timestamp': time})
+    if bool(a):
+        return 'True'
+    else:
+        return 'False'
+    # for bc in bc.find():
         # dt = str(bc['timestamp'])
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
         # date_db = str(bc['timestamp'].date())
 
-        a = str(bc['timestamp'])
-        return a
+        # a = str(bc['timestamp'])
+        # return a
 
         # abc = bc['timestamp']
         # if abc == time:
