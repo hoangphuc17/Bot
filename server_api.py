@@ -414,78 +414,20 @@ def broadcast_get(activation_key):
 def get_broadcsast_by_time(time):
     users = mongo.db.USER_CMS
     bc = mongo.db.BROADCAST
-
-    # check_user_activation_key = users.find_one(
-    #     {'user_activation_key': activation_key})
-
-    # if bool(check_user_activation_key):
-    # username = users.find_one({'username': request.form['username']})
-    # if bool(username):
     output = []
-    # a = []
-    count = 0
-    b = []
-
     time = datetime.strptime(time, '%Y-%m-%d %H:%M')
-
     a = bc.find({'timestamp': time})
 
     if bool(a):
-
         for i in a:
-            # output.append(i)
             output.append({
                 'type': i['type'],
                 'content': i['content'],
                 'timestamp': i['timestamp']
             })
-            # count = count + 1
         return jsonify({'result': output})
-        # return str(count)
-        # for doc in a:
-        #     # output.append(doc)
-        #     return doc
-        # return jsonify({'result': output})
-        # return jsonify(doc)
-        # output.append({
-        #     'type': a['type'],
-        #     'content': a['content'],
-        #     'timestamp': a['timestamp']
-        # })
-        # b.append(a)
-        # return b
-        # return 'True'
-        # return jsonify({'result': b})
-        # return a
-
     else:
         return 'False'
-    # for bc in bc.find():
-        # dt = str(bc['timestamp'])
-        # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
-        # date_db = str(bc['timestamp'].date())
-
-        # a = str(bc['timestamp'])
-        # return a
-
-        # abc = bc['timestamp']
-        # if abc == time:
-        #     output.append({
-        #         'type': bc['type'],
-        #         'content': bc['content'],
-        #         'timestamp': bc['timestamp']
-        #     })
-
-        #     return abc
-        # else:
-        #     return 'False'
-
-    # return jsonify({'result': output})
-    # return (abc)
-    # else:
-    #     return 'False'
-    # else:
-    #     return 'False'
 
 
 @app.route('/broadcast/save_message', methods=['POST'])
