@@ -410,8 +410,8 @@ def broadcast_get(activation_key):
         return 'False'
 
 
-@app.route('/broadcast/get_broadcsast_by_date/<path:date>', methods=['GET'])
-def get_broadcsast_by_date(date):
+@app.route('/broadcast/get_broadcsast_by_time/<path:time>', methods=['GET'])
+def get_broadcsast_by_time(time):
     users = mongo.db.USER_CMS
     bc = mongo.db.BROADCAST
 
@@ -428,15 +428,15 @@ def get_broadcsast_by_date(date):
 
         date_db = str(bc['timestamp'].date())
         abc = str(bc['timestamp'])
-        print(abc == date)
-        if date_db == date:
+        # print(abc == time)
+        if abc == time:
             output.append({
                 'type': bc['type'],
                 'content': bc['content'],
                 'timestamp': bc['timestamp']
             })
-    # return jsonify({'result': output})
-    return (abc)
+    return jsonify({'result': output})
+    # return (abc)
     # else:
     #     return 'False'
     # else:
