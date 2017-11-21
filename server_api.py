@@ -428,7 +428,7 @@ def get_broadcsast_by_time(time):
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         # date_db = str(bc['timestamp'].date())
-        abc = str(bc['timestamp'])
+        abc = bc['timestamp']
         # print(abc == time)
         if abc == time:
             output.append({
