@@ -426,20 +426,21 @@ def get_broadcsast_by_time(time):
     for bc in bc.find():
         # dt = str(bc['timestamp'])
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
-
         # date_db = str(bc['timestamp'].date())
-        abc = bc['timestamp']
-        # print(abc == time)
-        if abc == time:
-            output.append({
-                'type': bc['type'],
-                'content': bc['content'],
-                'timestamp': bc['timestamp']
-            })
 
-            return abc
-        else:
-            return 'False'
+        return bc['timestamp']
+
+        # abc = bc['timestamp']
+        # if abc == time:
+        #     output.append({
+        #         'type': bc['type'],
+        #         'content': bc['content'],
+        #         'timestamp': bc['timestamp']
+        #     })
+
+        #     return abc
+        # else:
+        #     return 'False'
 
     # return jsonify({'result': output})
     # return (abc)
