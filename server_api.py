@@ -427,7 +427,7 @@ def get_broadcsast_by_time(time):
         # dt = str(bc['timestamp'])
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
-        date_db = str(bc['timestamp'].date())
+        # date_db = str(bc['timestamp'].date())
         abc = str(bc['timestamp'])
         # print(abc == time)
         if abc == time:
@@ -437,9 +437,8 @@ def get_broadcsast_by_time(time):
                 'timestamp': bc['timestamp']
             })
 
-            return 'a'
-        else:
-            return 'b'
+    return abc
+
     # return jsonify({'result': output})
     # return (abc)
     # else:
