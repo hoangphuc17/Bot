@@ -427,7 +427,7 @@ def get_broadcsast_by_time(time):
     a = bc.find({'timestamp': time})
     if bool(a):
         for doc in a:
-            return doc
+            return jsonify(doc)
         # output.append({
         #     'type': a['type'],
         #     'content': a['content'],
