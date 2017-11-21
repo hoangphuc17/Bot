@@ -471,7 +471,8 @@ def broadcast_broadcast():
     # check_user_activation_key = users.find_one(
     #     {'user_activation_key': request.form['user_activation_key']})
     username = users.find_one({'username': request.form['username']})
-    if bool(username):
+    password = users.find_one({'password': request.form['password']})
+    if bool(username & password):
         message = request.form['message']
 
         # for user in USER.find():
