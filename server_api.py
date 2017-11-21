@@ -472,16 +472,19 @@ def broadcast_broadcast():
     #     {'user_activation_key': request.form['user_activation_key']})
     username = users.find_one({'username': request.form['username']})
     password = users.find_one({'password': request.form['password']})
-    if bool(username & password):
-        message = request.form['message']
+    if bool(password):
+        if bool(username):
+            message = request.form['message']
 
-        # for user in USER.find():
-        #     page.send(user['id_user'], message)
+            # for user in USER.find():
+            #     page.send(user['id_user'], message)
 
-        page.send("1370330196399177", message)
-        page.send("1437973719614452", message)
+            page.send("1370330196399177", message)
+            page.send("1437973719614452", message)
 
-        return 'True'
+            return 'True'
+        else:
+            return 'False'
     else:
         return 'False'
 
