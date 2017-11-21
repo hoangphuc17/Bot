@@ -428,7 +428,7 @@ def get_broadcsast_by_time(time):
     if bool(a):
         for i in a:
             output.append(i)
-        return output
+        return jsonify({'result': output})
         # for doc in a:
         #     # output.append(doc)
         #     return doc
