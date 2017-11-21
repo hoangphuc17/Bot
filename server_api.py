@@ -425,8 +425,13 @@ def get_broadcsast_by_time(time):
     # a = []
     count = 0
     b = []
-    a = bc.find({'timestamp': time})
+
+    time = datetime.strptime(time, '%Y-%m-%d %H:%M')
+
+    a = bc.find_one({'timestamp': time})
+
     if bool(a):
+
         for i in a:
             output.append(i)
             count = count + 1
