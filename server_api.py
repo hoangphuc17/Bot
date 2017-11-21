@@ -426,9 +426,12 @@ def get_broadcsast_by_time(time):
     b = []
     a = bc.find({'timestamp': time})
     if bool(a):
-        for doc in a:
-            # output.append(doc)
-            return doc
+        for i in a:
+            output.append(i)
+        return output
+        # for doc in a:
+        #     # output.append(doc)
+        #     return doc
         # return jsonify({'result': output})
         # return jsonify(doc)
         # output.append({
