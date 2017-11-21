@@ -428,7 +428,7 @@ def get_broadcsast_by_time(time):
 
     time = datetime.strptime(time, '%Y-%m-%d %H:%M')
 
-    a = bc.find_one({'timestamp': time})
+    a = bc.find({'timestamp': time})
 
     if bool(a):
 
@@ -436,7 +436,7 @@ def get_broadcsast_by_time(time):
             output.append(i)
             # count = count + 1
         return jsonify({'result': output})
-        return str(count)
+        # return str(count)
         # for doc in a:
         #     # output.append(doc)
         #     return doc
