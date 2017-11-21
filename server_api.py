@@ -422,6 +422,7 @@ def get_broadcsast_by_time(time):
     # username = users.find_one({'username': request.form['username']})
     # if bool(username):
     output = []
+    a = []
     for bc in bc.find():
         # dt = str(bc['timestamp'])
         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
@@ -435,8 +436,12 @@ def get_broadcsast_by_time(time):
                 'content': bc['content'],
                 'timestamp': bc['timestamp']
             })
+
+            return 'a'
+        else:
+            return 'b'
     # return jsonify({'result': output})
-    return (abc)
+    # return (abc)
     # else:
     #     return 'False'
     # else:
