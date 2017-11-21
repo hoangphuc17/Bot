@@ -432,9 +432,9 @@ def get_broadcsast_by_time(time):
         #     'timestamp': a['timestamp']
         # })
         b.append(a)
-        return b
+        # return b
         # return 'True'
-        # return jsonify({'result': output})
+        return jsonify({'result': b})
 
     else:
         return 'False'
