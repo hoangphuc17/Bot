@@ -19,14 +19,15 @@ from pymongo import MongoClient
 client = MongoClient('cb.saostar.vn', 27017)
 db = client.Phuc
 FAQ3 = db.FAQ3
+FAQ4 = db.FAQ4
 
 
-def faq3_intent():
-    new_intent = {
-        'entities': [
+# def faq3_intent():
+#     new_intent = {
+#         'entities': [
 
-        ]
-    }
+#         ]
+#     }
 
 
 def faq3_level_1(chatbot, id_node_level_1, keyword):
@@ -80,3 +81,33 @@ def faq3_list(lv1, lv2, ans):
         'list_array': [new_lv1, new_lv2, ans]
     }
     FAQ3.insert_one(lst)
+
+
+def lv1(id_node, keyword):
+    new_lv1 = {
+        'level': '1',
+        'id_node': id_node,
+        'keyword': keyword
+    }
+    FAQ4.insert_one(new_lv1)
+
+
+def lv2(id_node, id_node_parent, keyword):
+    new_lv2 = {
+        'level': '2',
+        'id_node': id_node,
+        'id_node_parent': id_node_parent,
+        'keyword': keyword
+    }
+    FAQ4.insert_one(new_lv2)
+
+
+def lv3(id_node, id_node_parent, keyword, answer):
+    new_lv3 = {
+        'level': '3',
+        'id_node': id_node,
+        'id_node_parent': id_node_parent,
+        'keyword': keyword,
+        'answer': answer
+    }
+    FAQ4.insert_one(new_lv3)
