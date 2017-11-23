@@ -240,7 +240,6 @@ def broadcast_message():
     if bool(check_user_activation_key):
         message = request.form['message']
         dt = request.form['timestamp']
-        # 'Jun 1 2005  1:33PM'
         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
         # for user in USER.find():
