@@ -231,160 +231,160 @@ def delete_news():
 
 
 # BROADCAST API: message, image, video, message+button, news
-# @app.route('/broadcast/message', methods=['POST'])
-# def broadcast_message():
-#     users = mongo.db.USER_CMS
-#     bc = mongo.db.BROADCAST
-#     check_user_activation_key = users.find_one(
-#         {'user_activation_key': request.form['user_activation_key']})
-#     if bool(check_user_activation_key):
-#         message = request.form['message']
-#         dt = request.form['timestamp']
-#         # 'Jun 1 2005  1:33PM'
-#         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+@app.route('/broadcast/message', methods=['POST'])
+def broadcast_message():
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        message = request.form['message']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
 
-#         # for user in USER.find():
-#         #     page.send(user['id_user'], message)
+        # for user in USER.find():
+        #     page.send(user['id_user'], message)
 
-#         page.send("1370330196399177", message)
-#         page.send("1437973719614452", message)
+        page.send("1370330196399177", message)
+        page.send("1437973719614452", message)
 
-#         # luu broadcast
-#         new_bc = {
-#             'type': 'message',
-#             'content': message,
-#             'timestamp': datetime_object
-#         }
-#         bc.insert_one(new_bc)
+        # luu broadcast
+        new_bc = {
+            'type': 'message',
+            'content': message,
+            'timestamp': datetime_object
+        }
+        bc.insert_one(new_bc)
 
-#         return 'True'
-#     else:
-#         return 'False'
-
-
-# @app.route('/broadcast/message_button', methods=['POST'])
-# def broadcast_message_button():
-#     users = mongo.db.USER_CMS
-#     bc = mongo.db.BROADCAST
-#     check_user_activation_key = users.find_one(
-#         {'user_activation_key': request.form['user_activation_key']})
-#     if bool(check_user_activation_key):
-#         # for user in USER.find():
-#         #     message = request.form['message']
-#         #     buttons = [
-#         #         Template.ButtonPostBack("Home", "home")
-#         #     ]
-#         #     page.send(user['id_user'], Template.Buttons(message, buttons))
-
-#         message = request.form['message']
-#         dt = request.form['timestamp']
-#         # 'Jun 1 2005  1:33PM'
-#         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
-#         buttons = [
-#             Templatsae.ButtonPostBack("Home", "home")
-#         ]
-#         page.send("1370330196399177", Template.Buttons(message, buttons))
-#         page.send("1437973719614452", Template.Buttons(message, buttons))
-#         # luu broadcast
-#         new_bc = {
-#             'type': 'message_button',
-#             'content': message,
-#             'timestamp': datetime_object
-#         }
-#         bc.insert_one(new_bc)
-#         return 'True'
-#     else:
-#         return 'False'
+        return 'True'
+    else:
+        return 'False'
 
 
-# @app.route('/broadcast/image', methods=['POST'])
-# def broadcast_image():
-#     users = mongo.db.USER_CMS
-#     bc = mongo.db.BROADCAST
-#     check_user_activation_key = users.find_one(
-#         {'user_activation_key': request.form['user_activation_key']})
-#     if bool(check_user_activation_key):
-#         url = request.form['url']
-#         dt = request.form['timestamp']
-#         # 'Jun 1 2005  1:33PM'
-#         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
-#         # for user in USER.find():
-#         #     page.send(user['id_user'], Attachment.Image(url))
+@app.route('/broadcast/message_button', methods=['POST'])
+def broadcast_message_button():
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        # for user in USER.find():
+        #     message = request.form['message']
+        #     buttons = [
+        #         Template.ButtonPostBack("Home", "home")
+        #     ]
+        #     page.send(user['id_user'], Template.Buttons(message, buttons))
 
-#         page.send("1370330196399177", Attachment.Image(url))
-#         page.send("1437973719614452", Attachment.Image(url))
-#         # luu broadcast
-#         new_bc = {
-#             'type': 'image',
-#             'content': url,
-#             'timestamp': datetime_object
-#         }
-#         bc.insert_one(new_bc)
-#         return 'True'
-#     else:
-#         return 'False'
-
-
-# @app.route('/broadcast/video', methods=['POST'])
-# def broadcast_video(url):
-#     users = mongo.db.USER_CMS
-#     bc = mongo.db.BROADCAST
-#     check_user_activation_key = users.find_one(
-#         {'user_activation_key': request.form['user_activation_key']})
-#     if bool(check_user_activation_key):
-#         url = request.form['url']
-#         dt = request.form['timestamp']
-#         # 'Jun 1 2005  1:33PM'
-#         datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
-#         # for user in USER.find():
-#         #     page.send(user['id_user'], Attachment.Video(url))
-
-#         page.send("1370330196399177", Attachment.Video(url))
-#         page.send("1437973719614452", Attachment.Video(url))
-
-#         # luu broadcast
-#         new_bc = {
-#             'type': 'video',
-#             'content': url,
-#             'timestamp': datetime_object
-#         }
-#         bc.insert_one(new_bc)
-#         return 'True'
-#     else:
-#         return 'False'
+        message = request.form['message']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        buttons = [
+            Templatsae.ButtonPostBack("Home", "home")
+        ]
+        page.send("1370330196399177", Template.Buttons(message, buttons))
+        page.send("1437973719614452", Template.Buttons(message, buttons))
+        # luu broadcast
+        new_bc = {
+            'type': 'message_button',
+            'content': message,
+            'timestamp': datetime_object
+        }
+        bc.insert_one(new_bc)
+        return 'True'
+    else:
+        return 'False'
 
 
-# @app.route('/broadcast/news', methods=['POST'])
-# def broadcast_news():
-#     users = mongo.db.USER_CMS
-#     bc = mongo.db.BROADCAST
-#     check_user_activation_key = users.find_one(
-#         {'user_activation_key': request.form['user_activation_key']})
-#     if bool(check_user_activation_key):
-#         element = Template.GenericElement(
-#             title=request.form['title'],
-#             subtitle=request.form['subtitle'],
-#             image_url=request.form['image_url'],
-#             buttons=[
-#                 Template.ButtonWeb('Đọc tin', request.form['item_url']),
-#                 Template.ButtonPostBack('Về Home', 'home')
-#             ])
-#         # dt = request.form['timestamp']
-#         # # 'Jun 1 2005  1:33PM'
-#         # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
-#         # page.send(sender_id, Template.Generic(element))
-#         page.send("1370330196399177", Template.Generic(element))
-#         page.send("1437973719614452", Template.Generic(element))
-#         # luu broadcast
-#         new_bc = {
-#             'type': 'news',
-#             'content': item_url,
-#             'timestamp': bc['timestamp']
-#         }
-#         bc.insert_one(new_bc)
-#         return 'True'
-#     else:
-#         return 'False'
+@app.route('/broadcast/image', methods=['POST'])
+def broadcast_image():
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        url = request.form['url']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        # for user in USER.find():
+        #     page.send(user['id_user'], Attachment.Image(url))
+
+        page.send("1370330196399177", Attachment.Image(url))
+        page.send("1437973719614452", Attachment.Image(url))
+        # luu broadcast
+        new_bc = {
+            'type': 'image',
+            'content': url,
+            'timestamp': datetime_object
+        }
+        bc.insert_one(new_bc)
+        return 'True'
+    else:
+        return 'False'
+
+
+@app.route('/broadcast/video', methods=['POST'])
+def broadcast_video(url):
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        url = request.form['url']
+        dt = request.form['timestamp']
+        # 'Jun 1 2005  1:33PM'
+        datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        # for user in USER.find():
+        #     page.send(user['id_user'], Attachment.Video(url))
+
+        page.send("1370330196399177", Attachment.Video(url))
+        page.send("1437973719614452", Attachment.Video(url))
+
+        # luu broadcast
+        new_bc = {
+            'type': 'video',
+            'content': url,
+            'timestamp': datetime_object
+        }
+        bc.insert_one(new_bc)
+        return 'True'
+    else:
+        return 'False'
+
+
+@app.route('/broadcast/news', methods=['POST'])
+def broadcast_news():
+    users = mongo.db.USER_CMS
+    bc = mongo.db.BROADCAST
+    check_user_activation_key = users.find_one(
+        {'user_activation_key': request.form['user_activation_key']})
+    if bool(check_user_activation_key):
+        element = Template.GenericElement(
+            title=request.form['title'],
+            subtitle=request.form['subtitle'],
+            image_url=request.form['image_url'],
+            buttons=[
+                Template.ButtonWeb('Đọc tin', request.form['item_url']),
+                Template.ButtonPostBack('Về Home', 'home')
+            ])
+        # dt = request.form['timestamp']
+        # # 'Jun 1 2005  1:33PM'
+        # datetime_object = datetime.strptime(dt, '%Y-%m-%d %H:%M')
+        # page.send(sender_id, Template.Generic(element))
+        page.send("1370330196399177", Template.Generic(element))
+        page.send("1437973719614452", Template.Generic(element))
+        # luu broadcast
+        new_bc = {
+            'type': 'news',
+            'content': item_url,
+            'timestamp': bc['timestamp']
+        }
+        bc.insert_one(new_bc)
+        return 'True'
+    else:
+        return 'False'
 
 
 @app.route('/broadcast/get/<path:activation_key>', methods=['GET'])

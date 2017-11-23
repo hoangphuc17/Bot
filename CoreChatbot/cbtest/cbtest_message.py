@@ -49,10 +49,17 @@ SESSION = db.SESSION
 #         print('Message is None')
 
 
-def find_node():
+def find_node(word_list,):
     # tìm các node có keyword trùng với word trong message
     # dùng hash table
     list_keyword = list_of_keyword()
+    list_node_in_message = []
+    for word in word_list:
+        for item in list_keyword:
+            if word == item['keyword']:
+                list_node_in_message.append(item)
+
+    return list_node_in_message
 
 
 def find_branch():
