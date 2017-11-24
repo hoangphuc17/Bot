@@ -35,7 +35,7 @@ def list_of_keyword():
                 'keyword': keyword,
                 'level': each_node['level'],
                 'id_node': each_node['id_node'],
-                'id_node_parents': each_node['id_node_parents']
+                'id_node_parents': each_node['list_id_node_parents']
             })
 
     return list_keyword
