@@ -120,8 +120,8 @@ def find_branch(word_list):
                 else:
                     # tạo mới 1 branch trong list_branch
                     list_branch.append([node_a, node_b])
-    print(list_node_in_message)
-    print(list_branch)
+    print('list_node_in_message', list_node_in_message)
+    print('list_branch: ', list_branch)
     # task 2:
     chosen_branch = max(list_branch, key=len)
 
@@ -132,6 +132,7 @@ def handle_mess(sender_id, message):
     if message is not None:
         print('mess is not none')
         word_list = word_sent(message)
+        print('word_list: ', word_list)
 
         find_node(word_list)
         chosen_branch = find_branch(word_list)
