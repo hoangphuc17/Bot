@@ -121,6 +121,7 @@ def find_branch(word_list):
                     # tạo mới 1 branch trong list_branch
                     list_branch.append([node_a, node_b])
 
+    print(list_branch)
     # task 2:
     chosen_branch = max(list_branch, key=len)
 
