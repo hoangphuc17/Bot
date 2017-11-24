@@ -127,7 +127,7 @@ def find_branch(word_list):
     return chosen_branch
 
 
-def handle_mess_2(sender_id, message):
+def handle_mess(sender_id, message):
     if message is not None:
         print('mess is not none')
         word_list = word_sent(message)
