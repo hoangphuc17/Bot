@@ -3,15 +3,15 @@ import os
 import sys
 # reload(sys)
 # sys.setdefaultencoding('utf8')
-from ApiMessenger import Attachment, Template
-from ApiMessenger.payload import QuickReply
-from ApiMessenger.fbmq import Page
+# from ApiMessenger import Attachment, Template
+# from ApiMessenger.payload import QuickReply
+# from ApiMessenger.fbmq import Page
 
-import CoreChatbot.Preparation.messenger
-from CoreChatbot.Preparation.config import CONFIG
-from CoreChatbot.Preparation.fbpage import page
+# import CoreChatbot.Preparation.messenger
+# from CoreChatbot.Preparation.config import CONFIG
+# from CoreChatbot.Preparation.fbpage import page
 
-from underthesea import word_sent
+# from underthesea import word_sent
 
 
 import datetime
